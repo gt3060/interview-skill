@@ -14,7 +14,7 @@
         <div class="fixText">栏目</div>
       </div>
       <div class="card-bottomItem card-bottomCircle">
-        <router-link to="/learn">
+        <router-link :to="cardRoute">
           <div
             :class="isChangeTriangle ? 'runExtraCircle' : ''"
             class="extraCircle"
@@ -42,6 +42,7 @@ export default {
     titleContain: String,
     columnNum: Number,
     chapterNum: Number,
+    cardRoute: String,
   },
   data() {
     return {
@@ -57,7 +58,6 @@ export default {
 </script>
 
 <style>
-
 /* 利用css实现card */
 .cardStyle {
   cursor: pointer;
