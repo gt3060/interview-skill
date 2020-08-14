@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-collapse v-model="activeNames" accordion>
-      <el-collapse-item title="绝对居中" name="1">
+      <el-collapse-item title="①绝对居中" name="1">
         <div class="fontStyle">
           原理：
           当top、bottom为0时,margin-top&bottom设置auto的话会无限延伸占满空间并且平分；
@@ -19,7 +19,7 @@
           </el-card>
         </div>
       </el-collapse-item>
-      <el-collapse-item title="table-cell" name="2">
+      <el-collapse-item title="②table-cell" name="2">
         <div class="fontStyle">
           使用：
           <el-card shadow="hover">
@@ -46,7 +46,7 @@
           设置float或position会对默认布局造成破坏，可以考虑为之增加一个父div定义float等属性；内容溢出时会自动撑开父元素。
         </div>
       </el-collapse-item>
-      <el-collapse-item title="绝对定位" name="3">
+      <el-collapse-item title="③绝对定位" name="3">
         <div
           class="fontStyle"
         >原理：子绝父相，top、right、bottom、left的值是相对于父元素尺寸的，然后margin或者transform是相对于自身尺寸的，组合使用达到几何上的水平垂直居中</div>
@@ -68,7 +68,7 @@
           </el-card>
         </div>
       </el-collapse-item>
-      <el-collapse-item title="任意个元素（flex）" name="4">
+      <el-collapse-item title="④任意个元素（flex）" name="4">
         <div class="fontStyle">
           使用：
           <el-card shadow="hover">

@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-collapse v-model="activeNames" accordion>
-      <el-collapse-item title="单行文本/行内元素/行内块级元素" name="1">
+      <el-collapse-item title="①单行文本/行内元素/行内块级元素" name="1">
         <div class="fontStyle">
           原理：
           <b>line-height</b>最终表现是通过inline box实现的，而无论inline box所占据的高度是多少，其占据的空间都是与文字内容公用水平垂线的。
@@ -20,7 +20,7 @@
         <div class="fontStyle">优点：简单快捷，容易理解，兼容性非常好</div>
         <div class="fontStyle">缺点：只能用于单行行内内容；要知道高度的值</div>
       </el-collapse-item>
-      <el-collapse-item title="多行文本/行内元素/行内块级元素" name="2">
+      <el-collapse-item title="②多行文本/行内元素/行内块级元素" name="2">
         <div class="fontStyle">
           使用：
           <el-card shadow="hover">
@@ -35,7 +35,7 @@
         <div class="fontStyle">优点：简单，兼容性好</div>
         <div class="fontStyle">缺点：只能用于行内内容；需要知道高度和最终呈现多少行来计算出line-height的值，建议用span包裹多行文。</div>
       </el-collapse-item>
-      <el-collapse-item title="图片" name="3">
+      <el-collapse-item title="③图片" name="3">
         <div class="fontStyle">
           使用：
           <el-card shadow="hover">
@@ -50,7 +50,7 @@ img#son{vertical-align: middle;} /*默认是基线对齐，改为middle*/
           </el-card>
         </div>
       </el-collapse-item>
-      <el-collapse-item title="单个块级元素" name="4">
+      <el-collapse-item title="④单个块级元素" name="4">
         <h6>使用table-cell</h6>
         <div class="fontStyle">原理：使用table，使表格内容对齐方式为middle。</div>
         <div class="fontStyle">
@@ -98,7 +98,7 @@ img#son{vertical-align: middle;} /*默认是基线对齐，改为middle*/
           </el-card>
         </div>
       </el-collapse-item>
-      <el-collapse-item title="任意个元素（flex）" name="5">
+      <el-collapse-item title="⑤任意个元素（flex）" name="5">
         <div class="fontStyle">
           使用：
           <el-card shadow="hover">

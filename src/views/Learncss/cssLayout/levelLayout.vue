@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-collapse v-model="activeNames" accordion>
-      <el-collapse-item title="文本/行内元素/行内块级元素" name="1">
+      <el-collapse-item title="①文本/行内元素/行内块级元素" name="1">
         <div class="fontStyle">
           原理：
           <b>text-align</b>只控制行内内容（文字、行内元素、行内块级元素）如何相对他的块父元素对齐
@@ -22,7 +22,7 @@
           只有后代的宽度小于设置text-align属性元素的宽度，才会水平居中
         </div>
       </el-collapse-item>
-      <el-collapse-item title="单个块级元素" name="2">
+      <el-collapse-item title="②单个块级元素" name="2">
         <div class="fontStyle">
           原理：
           <b>margin：0 auto</b>&nbsp;在margin有节余的情况下，如果设置左右margin为auto，则会平均分剩余的左右空间，另外，如果上下margin为auto
@@ -41,7 +41,7 @@
         <div class="fontStyle">优点：简单，兼容性好</div>
         <div class="fontStyle">缺点：必须定宽，并且值不能为auto；宽度要小于父元素否则无效。</div>
       </el-collapse-item>
-      <el-collapse-item title="多个块级元素" name="3">
+      <el-collapse-item title="③多个块级元素" name="3">
         <div class="fontStyle">原理：只控制行内内容（文字、行内元素、行内块级元素）如何相对他的块父元素对齐</div>
         <div class="fontStyle">
           使用：
@@ -59,7 +59,7 @@
         <div class="fontStyle">优点：简单快捷，容易理解，兼容性非常好</div>
         <div class="fontStyle">缺点：只对行内内容有效；属性会继承影响到后代行内内容；块级改为inline-block换行、空格会产生元素间隔</div>
       </el-collapse-item>
-      <el-collapse-item title="使用绝对定位实现" name="4">
+      <el-collapse-item title="④使用绝对定位实现" name="4">
         <div class="fontStyle">
           原理：子绝父相，top、left、right、bottom是相对父元素使用的，margin或者transform是相对于自身尺寸的
           组合以达到水平居中效果。
@@ -88,7 +88,7 @@
         <div class="fontStyle">优点：使用margin-left兼容性好；不管是块级还是行内元素都可以实现</div>
         <div class="fontStyle">缺点：代码较多；脱离文档流；使用margin-left需要知道宽度值；使用transform兼容性不好（ie9+）</div>
       </el-collapse-item>
-      <el-collapse-item title="任意个元素（flex）" name="5">
+      <el-collapse-item title="⑤任意个元素（flex）" name="5">
         <div class="fontStyle">原理：就是设置当前主轴对齐方式为居中。说不上为什么，flex无非就是主轴侧轴是重点，然后就是排列方式的设置。</div>
         <div class="fontStyle">
           使用：

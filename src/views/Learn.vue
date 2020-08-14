@@ -157,6 +157,9 @@
               <div v-if="containChildNum === '02-3'">
                 <levelVerticalLayout></levelVerticalLayout>
               </div>
+              <div v-if="containChildNum === '02-4'">
+                <twoColumnLayout></twoColumnLayout>
+              </div>
             </div>
           </div>
         </div>
@@ -171,6 +174,7 @@ import card from "../components/Card";
 import levelLayout from "./Learncss/cssLayout/levelLayout";
 import verticalLayout from "./Learncss/cssLayout/verticalLayout";
 import levelVerticalLayout from "./Learncss/cssLayout/levelVerticalLayout";
+import twoColumnLayout from "./Learncss/cssLayout/twoColumnLayout";
 import { cssData, inlineData, blockData } from "../data/index.js";
 export default {
   data() {
@@ -200,6 +204,7 @@ export default {
     levelLayout,
     verticalLayout,
     levelVerticalLayout,
+    twoColumnLayout,
   },
 };
 </script>
