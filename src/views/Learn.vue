@@ -127,7 +127,7 @@
                       </div>
                       <div>
                         <span>代码如下：</span>
-                        <el-card>
+                        <el-card shadow="hover">
                           <pre>
 &lt;div&gt;
   &lt;span&gt;此为行内元素span标签&lt;/span&gt;
@@ -148,8 +148,14 @@
             <div v-if="containNum === '02'">
               <h4>02-CSS布局</h4>
               <h5>{{containChildNum}}/{{tableTitle}}</h5>
-              <div v-if="containchildNum === '02-1'">
-                
+              <div v-if="containChildNum === '02-1'">
+                <levelLayout></levelLayout>
+              </div>
+              <div v-if="containChildNum === '02-2'">
+                <verticalLayout></verticalLayout>
+              </div>
+              <div v-if="containChildNum === '02-3'">
+                <levelVerticalLayout></levelVerticalLayout>
               </div>
             </div>
           </div>
@@ -162,6 +168,9 @@
 
 <script>
 import card from "../components/Card";
+import levelLayout from "./Learncss/cssLayout/levelLayout";
+import verticalLayout from "./Learncss/cssLayout/verticalLayout";
+import levelVerticalLayout from "./Learncss/cssLayout/levelVerticalLayout";
 import { cssData, inlineData, blockData } from "../data/index.js";
 export default {
   data() {
@@ -170,7 +179,6 @@ export default {
       tableData: cssData(),
       containChildNum: "",
       tableTitle: "",
-      activeNames: ["1"],
       introActive: "1",
       inlineData: inlineData(),
       blockData: blockData(),
@@ -186,12 +194,12 @@ export default {
       this.containNum = data.catalogNum;
       this.tableTitle = data.title;
     },
-    handleChange(val) {
-      console.log(val);
-    },
   },
   components: {
     card,
+    levelLayout,
+    verticalLayout,
+    levelVerticalLayout,
   },
 };
 </script>
