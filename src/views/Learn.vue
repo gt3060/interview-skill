@@ -160,6 +160,9 @@
               <div v-if="containChildNum === '02-4'">
                 <twoColumnLayout></twoColumnLayout>
               </div>
+              <div v-if="containChildNum === '02-5'">
+                <threeColumnLayout></threeColumnLayout>
+              </div>
             </div>
           </div>
         </div>
@@ -175,6 +178,7 @@ import levelLayout from "./Learncss/cssLayout/levelLayout";
 import verticalLayout from "./Learncss/cssLayout/verticalLayout";
 import levelVerticalLayout from "./Learncss/cssLayout/levelVerticalLayout";
 import twoColumnLayout from "./Learncss/cssLayout/twoColumnLayout";
+import threeColumnLayout from "./Learncss/cssLayout/threeColumnLayout";
 import { cssData, inlineData, blockData } from "../data/index.js";
 export default {
   data() {
@@ -205,6 +209,7 @@ export default {
     verticalLayout,
     levelVerticalLayout,
     twoColumnLayout,
+    threeColumnLayout,
   },
 };
 </script>

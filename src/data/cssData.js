@@ -27,12 +27,8 @@ export function cssData() {
       index: '02-6'
     },
     {
-      contain: "全屏布局",
-      index: '02-7'
-    },
-    {
       contain: "补充",
-      index: '02-8'
+      index: '02-7'
     },
   ];
   return data
