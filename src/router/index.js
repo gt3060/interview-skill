@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import homePage from '../views/homePage.vue';
-import Learn from '../views/Learn.vue';
+import LearnCSS from '../views/Learn.vue';
 
 Vue.use(VueRouter)
 
@@ -13,8 +13,8 @@ const routes = [
   },
   {
     path: '/learncss',
-    name: 'Learn',
-    component: Learn,
+    name: 'LearnCSS',
+    component: LearnCSS,
   },
 ]
 

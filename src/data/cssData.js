@@ -26,10 +26,6 @@ export function cssData() {
       contain: "多列布局",
       index: '02-6'
     },
-    {
-      contain: "补充",
-      index: '02-7'
-    },
   ];
   return data
 }
