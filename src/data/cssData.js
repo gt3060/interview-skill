@@ -149,3 +149,25 @@ export function blockData() {
   ];
   return data
 }
+
+export function cssBFCData(){
+  let data = [
+    {
+      contain: "视觉格式化模型",
+      index: '03-1'
+    },
+    {
+      contain: "三个定位方案",
+      index: '03-2'
+    },
+    {
+      contain: "块格式化上下文",
+      index: '03-3'
+    },
+    {
+      contain: "bfc作用",
+      index: '03-4'
+    },
+  ];
+  return data
+}

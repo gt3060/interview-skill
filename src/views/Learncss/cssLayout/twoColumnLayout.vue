@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-tabs v-model="activeName" @tab-click="handleClick">
+    <el-tabs v-model="activeName">
       <el-tab-pane label="左列定宽，右列自适应" name="1">
         <div class="fontStyle">
           <span>效果图：</span>

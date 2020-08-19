@@ -2,8 +2,16 @@
   <div class="cardDiv">
     <div class="numberDiv">{{catalogNum}}</div>
     <div class="containDiv">
-      <div style="font-size:22px;margin-top:5px;color:black" class="catalogTitleStyle">
-        <a @click="btnTransValue">{{catalogTitle}}</a>
+      <div
+        style="font-size:22px; margin-top:5px; color:black; display:flex"
+        class="catalogTitleStyle"
+      >
+        <div style="margin-top:3px; margin-right:5px">
+          <el-image :src="srcUrl"></el-image>
+        </div>
+        <div>
+          <a @click="btnTransValue">{{catalogTitle}}</a>
+        </div>
       </div>
       <div v-if="isShowTable === 'true'">
         <el-table :data="tableData" stripe>
@@ -28,9 +36,12 @@ export default {
     catalogNum: String,
     isShowTable: String,
     tableData: Array,
+    srcData: String,
   },
   data() {
-    return {};
+    return {
+      srcUrl: require(`${this.srcData}`),
+    };
   },
   methods: {
     btnTransValue() {
@@ -43,6 +54,7 @@ export default {
       obj.catalogNum = this.catalogNum;
       obj.index = data.index;
       obj.title = data.contain;
+      localStorage.setItem("currentTableRow", JSON.stringify(obj));
       this.$emit("childNum", obj);
     },
   },

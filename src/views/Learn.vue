@@ -32,7 +32,13 @@
               <el-divider></el-divider>
             </div>
             <div>
-              <card catalogTitle="概述" catalogNum="01" isShowTable="false" @clickNum="clickNum"></card>
+              <card
+                catalogTitle="概述"
+                catalogNum="01"
+                isShowTable="false"
+                @clickNum="clickNum"
+                srcData="./picture/summary.png"
+              ></card>
             </div>
             <div style="margin-top:50px">
               <card
@@ -42,6 +48,18 @@
                 @clickNum="clickNum"
                 :tableData="tableData"
                 @childNum="childNum"
+                srcData="./picture/layout.png"
+              ></card>
+            </div>
+            <div style="margin-top:50px">
+              <card
+                catalogTitle="BFC"
+                catalogNum="03"
+                isShowTable="true"
+                @clickNum="clickNum"
+                :tableData="tableBFCData"
+                @childNum="childNum"
+                srcData="./picture/bfc.png"
               ></card>
             </div>
           </div>
@@ -60,8 +78,13 @@
               <cssSummary></cssSummary>
             </div>
             <div v-if="containNum === '02'">
-              <h4>02-CSS布局</h4>
-              <h5>{{containChildNum}}/{{tableTitle}}</h5>
+              <div style="margin-bottom:10px">
+                <el-breadcrumb separator-class="el-icon-arrow-right">
+                  <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+                  <el-breadcrumb-item>02-CSS布局</el-breadcrumb-item>
+                  <el-breadcrumb-item>{{containChildNum}}{{tableTitle}}</el-breadcrumb-item>
+                </el-breadcrumb>
+              </div>
               <div v-if="containChildNum === '02-1'">
                 <levelLayout></levelLayout>
               </div>
@@ -81,11 +104,31 @@
                 <columnsLayout></columnsLayout>
               </div>
             </div>
+            <div v-if="containNum === '03'">
+              <div style="margin-bottom:20px">
+                <el-breadcrumb separator-class="el-icon-arrow-right">
+                  <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+                  <el-breadcrumb-item>03-BFC</el-breadcrumb-item>
+                  <el-breadcrumb-item>{{containChildNum}}{{tableTitle}}</el-breadcrumb-item>
+                </el-breadcrumb>
+              </div>
+              <div v-if="containChildNum === '03-1'">
+                <viewBFCModal></viewBFCModal>
+              </div>
+              <div v-if="containChildNum === '03-2'">
+                <bfcPosionCase></bfcPosionCase>
+              </div>
+              <div v-if="containChildNum === '03-3'">
+                <bfcIntroduce></bfcIntroduce>
+              </div>
+              <div v-if="containChildNum === '03-4'">
+                <bfcExample></bfcExample>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <el-backtop target=".page-component__scroll .el-scrollbar__wrap"></el-backtop>
   </div>
 </template>
 
@@ -98,17 +141,38 @@ import levelVerticalLayout from "./Learncss/cssLayout/levelVerticalLayout";
 import twoColumnLayout from "./Learncss/cssLayout/twoColumnLayout";
 import threeColumnLayout from "./Learncss/cssLayout/threeColumnLayout";
 import columnsLayout from "./Learncss/cssLayout/columnsLayout";
-import { cssData } from "../data/index.js";
+import viewBFCModal from "./Learncss/BFC/viewBFCModal";
+import bfcPosionCase from "./Learncss/BFC/bfcPosionCase";
+import bfcIntroduce from "./Learncss/BFC/bfcIntroduce";
+import bfcExample from "./Learncss/BFC/bfcExample";
+import { cssData, cssBFCData } from "../data/index.js";
 export default {
   data() {
     return {
       containNum: "01",
       tableData: cssData(),
+      tableBFCData: cssBFCData(),
       containChildNum: "",
       tableTitle: "",
     };
   },
-  created() {},
+  created() {
+    if (JSON.parse(localStorage.getItem("currentTableRow")).catalogNum) {
+      this.containNum = JSON.parse(
+        localStorage.getItem("currentTableRow")
+      ).catalogNum;
+    }
+    if (JSON.parse(localStorage.getItem("currentTableRow")).index) {
+      this.containChildNum = JSON.parse(
+        localStorage.getItem("currentTableRow")
+      ).index;
+    }
+    if (JSON.parse(localStorage.getItem("currentTableRow")).title) {
+      this.tableTitle = JSON.parse(
+        localStorage.getItem("currentTableRow")
+      ).title;
+    }
+  },
   methods: {
     clickNum(data) {
       this.containNum = data.catalogNum;
@@ -128,6 +192,10 @@ export default {
     threeColumnLayout,
     columnsLayout,
     cssSummary,
+    viewBFCModal,
+    bfcPosionCase,
+    bfcIntroduce,
+    bfcExample,
   },
 };
 </script>
