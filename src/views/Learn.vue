@@ -62,6 +62,17 @@
                 srcData="./picture/bfc.png"
               ></card>
             </div>
+            <div style="margin-top:50px">
+              <card
+                catalogTitle="Flex"
+                catalogNum="04"
+                isShowTable="true"
+                @clickNum="clickNum"
+                :tableData="tableFlexData"
+                @childNum="childNum"
+                srcData="./picture/flex.png"
+              ></card>
+            </div>
           </div>
           <div style="width:55%; margin-left:5%; margin-top:-100px">
             <div class="catalogStyle">
@@ -125,6 +136,24 @@
                 <bfcExample></bfcExample>
               </div>
             </div>
+            <div v-if="containNum === '04'">
+              <div style="margin-bottom:20px">
+                <el-breadcrumb separator-class="el-icon-arrow-right">
+                  <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+                  <el-breadcrumb-item>04-弹性布局</el-breadcrumb-item>
+                  <el-breadcrumb-item>{{containChildNum}}{{tableTitle}}</el-breadcrumb-item>
+                </el-breadcrumb>
+              </div>
+              <div v-if="containChildNum === '04-1'">
+                <flexIntroduce></flexIntroduce>
+              </div>
+              <div v-if="containChildNum === '04-2'">
+                <flexAttribute></flexAttribute>
+              </div>
+              <div v-if="containChildNum === '04-3'">
+                <flexProgressAttribute></flexProgressAttribute>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -145,7 +174,10 @@ import viewBFCModal from "./Learncss/BFC/viewBFCModal";
 import bfcPosionCase from "./Learncss/BFC/bfcPosionCase";
 import bfcIntroduce from "./Learncss/BFC/bfcIntroduce";
 import bfcExample from "./Learncss/BFC/bfcExample";
-import { cssData, cssBFCData } from "../data/index.js";
+import flexIntroduce from "./Learncss/Flex/flexIntroduce";
+import flexAttribute from "./Learncss/Flex/flexAttribute";
+import flexProgressAttribute from "./Learncss/Flex/flexProgressAttribute";
+import { cssData, cssBFCData, cssFlexData } from "../data/index.js";
 export default {
   data() {
     return {
@@ -154,6 +186,7 @@ export default {
       tableBFCData: cssBFCData(),
       containChildNum: "",
       tableTitle: "",
+      tableFlexData: cssFlexData(),
     };
   },
   created() {
@@ -196,6 +229,9 @@ export default {
     bfcPosionCase,
     bfcIntroduce,
     bfcExample,
+    flexIntroduce,
+    flexAttribute,
+    flexProgressAttribute,
   },
 };
 </script>

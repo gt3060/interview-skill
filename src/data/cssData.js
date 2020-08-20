@@ -150,7 +150,7 @@ export function blockData() {
   return data
 }
 
-export function cssBFCData(){
+export function cssBFCData() {
   let data = [
     {
       contain: "视觉格式化模型",
@@ -169,5 +169,28 @@ export function cssBFCData(){
       index: '03-4'
     },
   ];
+  return data
+}
+
+export function cssFlexData() {
+  let data = [
+    {
+      contain: "基本概念",
+      index: "04-1",
+    },
+    {
+      contain: "flex容器最外层属性",
+      index: "04-2",
+    },
+    {
+      contain: "flex项目item属性",
+      index: "04-3",
+    },
+    {
+      contain: "flex实例-骰子",
+      index: "04-4",
+    },
+
+  ]
   return data
 }
