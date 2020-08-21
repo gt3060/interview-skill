@@ -75,6 +75,15 @@
           <code>.item {align-self: auto | flex-start | flex-end | center | baseline | stretch}</code>
         </div>
       </el-collapse-item>
+      <el-collapse-item title="flex实例-骰子" name="6">
+        <p>详见：阮一峰（flex实例）</p>
+        <div class="linkFlexInstance fontStyle">
+          <a
+            href="http://www.ruanyifeng.com/blog/2015/07/flex-examples.html"
+            target="view_window"
+          >传送门</a>
+        </div>
+      </el-collapse-item>
     </el-collapse>
   </div>
 </template>
@@ -95,5 +104,18 @@ ul li {
 }
 ul {
   margin-left: 20px;
+}
+
+a {
+  color: black;
+}
+
+a:hover{
+  color: rgb(91, 146, 218);
+}
+
+.linkFlexInstance {
+  font-size: 17px;
+  font-family: "楷体";
 }
 </style>

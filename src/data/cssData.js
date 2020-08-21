@@ -186,10 +186,6 @@ export function cssFlexData() {
       contain: "flex项目item属性",
       index: "04-3",
     },
-    {
-      contain: "flex实例-骰子",
-      index: "04-4",
-    },
 
   ]
   return data
