@@ -18,7 +18,7 @@
             <img src="../assets/cssLogo.jpeg" class="imgStyle" />
           </div>
           <div class="titleFontStyle">
-            <span style="font-size:25px">数组和字符串</span>
+            <span style="font-size:25px">CSS篇</span>
             <p>title-----简介</p>
           </div>
         </div>
@@ -71,6 +71,17 @@
                 :tableData="tableFlexData"
                 @childNum="childNum"
                 srcData="./picture/flex.png"
+              ></card>
+            </div>
+            <div style="margin-top:50px">
+              <card
+                catalogTitle="CSS3"
+                catalogNum="05"
+                isShowTable="true"
+                @clickNum="clickNum"
+                :tableData="tableCSS3Data"
+                @childNum="childNum"
+                srcData="./picture/CSS.png"
               ></card>
             </div>
           </div>
@@ -154,6 +165,18 @@
                 <flexProgressAttribute></flexProgressAttribute>
               </div>
             </div>
+            <div v-if="containNum === '05'">
+              <div style="margin-bottom:20px">
+                <el-breadcrumb separator-class="el-icon-arrow-right">
+                  <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+                  <el-breadcrumb-item>05-CSS3新特性</el-breadcrumb-item>
+                  <el-breadcrumb-item>{{containChildNum}}{{tableTitle}}</el-breadcrumb-item>
+                </el-breadcrumb>
+              </div>
+              <div v-if="containChildNum === '05-1'">
+                <transitionCSS3></transitionCSS3>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -177,7 +200,8 @@ import bfcExample from "./Learncss/BFC/bfcExample";
 import flexIntroduce from "./Learncss/Flex/flexIntroduce";
 import flexAttribute from "./Learncss/Flex/flexAttribute";
 import flexProgressAttribute from "./Learncss/Flex/flexProgressAttribute";
-import { cssData, cssBFCData, cssFlexData } from "../data/index.js";
+import transitionCSS3 from "./Learncss/CSS3/transitionCSS3";
+import { cssData, cssBFCData, cssFlexData, css3Data } from "../data/index.js";
 export default {
   data() {
     return {
@@ -187,6 +211,7 @@ export default {
       containChildNum: "",
       tableTitle: "",
       tableFlexData: cssFlexData(),
+      tableCSS3Data: css3Data(),
     };
   },
   created() {
@@ -232,6 +257,7 @@ export default {
     flexIntroduce,
     flexAttribute,
     flexProgressAttribute,
+    transitionCSS3,
   },
 };
 </script>

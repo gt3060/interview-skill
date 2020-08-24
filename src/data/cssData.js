@@ -190,3 +190,33 @@ export function cssFlexData() {
   ]
   return data
 }
+
+export function css3Data() {
+  let data = [
+    {
+      contain: "css3过渡",
+      index: "05-1"
+    },
+    {
+      contain: "css3动画",
+      index: "05-2"
+    },
+    {
+      contain: "css3形状转换",
+      index: "05-3"
+    },
+    {
+      contain: "css3选择器",
+      index: "05-4"
+    },
+    {
+      contain: "css3阴影",
+      index: "05-5"
+    },
+    {
+      contain: "css3边框",
+      index: "05-6"
+    },
+  ]
+  return data;
+}
