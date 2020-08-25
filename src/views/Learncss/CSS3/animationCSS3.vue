@@ -4,7 +4,7 @@
       <div style="margin:4px 7px 0px 0px">
         <img src="../../../assets/light.png" />
       </div>
-      <p>Css3过渡：</p>
+      <p>Css3动画：</p>
     </div>
     <span>动画这个平常用的也很多，主要是做一个预设的动画。和一些页面交互的动画效果。</span>
     <p>语法如下：</p>

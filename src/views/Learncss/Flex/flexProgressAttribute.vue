@@ -99,9 +99,6 @@ export default {
 </script>
 
 <style>
-ul li {
-  list-style-type: square;
-}
 ul {
   margin-left: 20px;
 }
