@@ -206,17 +206,21 @@ export function css3Data() {
       index: "05-3"
     },
     {
-      contain: "css3选择器",
+      contain: "css3阴影",
       index: "05-4"
     },
     {
-      contain: "css3阴影",
+      contain: "css3边框",
       index: "05-5"
     },
     {
-      contain: "css3边框",
-      index: "05-6"
+      contain: "css3背景",
+      index: '05-6'
     },
+    {
+      contain: "css3其他",
+      index: '05-7'
+    }
   ]
   return data;
 }

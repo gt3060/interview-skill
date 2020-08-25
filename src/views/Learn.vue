@@ -19,7 +19,8 @@
           </div>
           <div class="titleFontStyle">
             <span style="font-size:25px">CSS篇</span>
-            <p>title-----简介</p>
+            <el-divider></el-divider>
+            <p>此篇主要包含，行内元素、块级元素、行内块级元素区别及种类；Css布局；BFC；Flex；CSS3增加的属性</p>
           </div>
         </div>
         <div style="display:flex">
@@ -176,6 +177,24 @@
               <div v-if="containChildNum === '05-1'">
                 <transitionCSS3></transitionCSS3>
               </div>
+              <div v-if="containChildNum === '05-2'">
+                <animationCSS3></animationCSS3>
+              </div>
+              <div v-if="containChildNum === '05-3'">
+                <transformCSS3></transformCSS3>
+              </div>
+              <div v-if="containChildNum === '05-4'">
+                <shadowCSS3></shadowCSS3>
+              </div>
+              <div v-if="containChildNum === '05-5'">
+                <borderCSS3></borderCSS3>
+              </div>
+              <div v-if="containChildNum === '05-6'">
+                <backgroundCSS3></backgroundCSS3>
+              </div>
+              <div v-if="containChildNum === '05-7'">
+                <otherPropCSS3></otherPropCSS3>
+              </div>
             </div>
           </div>
         </div>
@@ -201,6 +220,12 @@ import flexIntroduce from "./Learncss/Flex/flexIntroduce";
 import flexAttribute from "./Learncss/Flex/flexAttribute";
 import flexProgressAttribute from "./Learncss/Flex/flexProgressAttribute";
 import transitionCSS3 from "./Learncss/CSS3/transitionCSS3";
+import animationCSS3 from "./Learncss/CSS3/animationCSS3";
+import transformCSS3 from "./Learncss/CSS3/transformCSS3";
+import shadowCSS3 from "./Learncss/CSS3/shadowCSS3";
+import borderCSS3 from "./Learncss/CSS3/borderCSS3";
+import backgroundCSS3 from "./Learncss/CSS3/backgroundCSS3";
+import otherPropCSS3 from "./Learncss/CSS3/otherPropCSS3";
 import { cssData, cssBFCData, cssFlexData, css3Data } from "../data/index.js";
 export default {
   data() {
@@ -258,6 +283,12 @@ export default {
     flexAttribute,
     flexProgressAttribute,
     transitionCSS3,
+    animationCSS3,
+    transformCSS3,
+    shadowCSS3,
+    borderCSS3,
+    backgroundCSS3,
+    otherPropCSS3,
   },
 };
 </script>
