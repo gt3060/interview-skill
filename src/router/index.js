@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import homePage from '../views/homePage.vue';
 import LearnCSS from '../views/Learn.vue';
+import LearnhtmlAndCss from "../views/LearnhtmlAndCss.vue"
 
 Vue.use(VueRouter)
 
@@ -16,6 +17,11 @@ const routes = [
     name: 'LearnCSS',
     component: LearnCSS,
   },
+  {
+    path: '/htmlAndCssInterview',
+    name: 'htmlAndCssInterview',
+    component: LearnhtmlAndCss
+  }
 ]
 
 const router = new VueRouter({

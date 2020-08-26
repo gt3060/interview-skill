@@ -1,35 +1,9 @@
 <template>
-  <div class="cardStyle">
-    <div class="card-top">
-      <div class="cardTopText">{{title}}</div>
-      <div class="cardTopContain">{{titleContain}}</div>
-    </div>
-    <div class="card-bottom">
-      <div class="card-bottomItem">
-        <div>{{columnNum}}</div>
-        <div class="fixText">章节</div>
-      </div>
-      <div class="card-bottomItem">
-        <div>{{chapterNum}}</div>
-        <div class="fixText">栏目</div>
-      </div>
-      <div class="card-bottomItem card-bottomCircle">
-        <router-link :to="cardRoute">
-          <div
-            :class="isChangeTriangle ? 'runExtraCircle' : ''"
-            class="extraCircle"
-            @mouseenter="handleEnter"
-            @mouseleave="handleEnter"
-          >
-            <div class="inCircle">
-              <div
-                :class="isChangeTriangle? 'runplayIconStyle' : 'playiconStyle'"
-                class="commoniconSyle"
-              ></div>
-            </div>
-          </div>
-        </router-link>
-        <div class="fixText fixTextCircle">6%</div>
+  <div class="homePageCard" :style="style" @mouseenter="handleEnter" @mouseleave="handleEnter">
+    <div v-if="isChangeTriangle === true" class="shadowStyle">
+      <div class="homePageCardfont">
+        <p>{{chapterNum}}章&nbsp;/&nbsp;{{columnNum}}节</p>
+        <p style="margin-top:15px">{{chapterNum}}&nbsp;人阅读</p>
       </div>
     </div>
   </div>
@@ -39,14 +13,17 @@
 export default {
   props: {
     title: String,
-    titleContain: String,
     columnNum: Number,
     chapterNum: Number,
-    cardRoute: String,
+    img: String,
   },
   data() {
     return {
       isChangeTriangle: false,
+      style: {
+        backgroundImage: "url(" + "'" + require(`${this.img}`) + "'" + ")",
+        backgroundSize: "contain",
+      },
     };
   },
   methods: {
@@ -58,46 +35,41 @@ export default {
 </script>
 
 <style>
-/* 利用css实现card */
-.cardStyle {
-  cursor: pointer;
-  margin-top: 10px;
-  width: 350px;
+.homePageCard {
+  border-radius: 7px;
+  height: 220px;
+  flex: 1;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   transition: all 0.25s;
   margin-top: 10px;
-  width: 25%;
-  height: 330px;
 }
-
-.cardStyle:hover {
+.homePageCard:hover {
   margin-top: 0px;
   box-shadow: 5px 8px 5px #778899;
+  margin-bottom: 10px;
+  color: black;
+}
+.imgUrl {
+  background-image: url("./picture/cssLogo.jpeg");
+  background-size: contain;
 }
 
-.card {
-  height: 100%;
-}
-
-.card-top {
+.shadowStyle {
   width: 100%;
-  height: 66%;
-  background-image: url("../assets/img.png");
-  /* background-size: 100% 100%; */
-  background-size: cover;
-  background-repeat: no-repeat;
+  border-radius: 7px;
+  height: 100%;
+  background-color: black;
+  /* 若想背景透明，文字不透明，应使用css3属性rgba */
+  background-color: rgba(0, 0, 0, 0.2);
+  /* 背景透明，文字也透明 */
+  /* opacity: 0.5; */
 }
 
-.cardTopText {
-  padding: 20px;
-  color: rgb(247, 250, 253);
-}
-
-.cardTopContain {
-  color: rgb(247, 250, 253);
-  padding-left: 20px;
-  padding-top: -10px;
-  font-size: 25px;
+.homePageCardfont {
+  color: white;
+  padding: 30px 20px;
+  line-height: 20px;
+  font-size: 13px;
 }
 
 .card-bottom {

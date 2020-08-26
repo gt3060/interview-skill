@@ -68,6 +68,7 @@ export default {
   padding-top: 20px;
   padding-bottom: 20px;
   display: flex;
+  background-color: white;
 }
 
 .numberDiv {

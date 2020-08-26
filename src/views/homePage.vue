@@ -9,10 +9,34 @@
       <div>
         <div class="main-mid-text">
           <i class="el-icon-video-play"></i>
-          <span>&nbsp;&nbsp;继续之前的卡片</span>
+          <span>&nbsp;&nbsp;学习卡片</span>
         </div>
         <div class="main-mid-card">
-          <studingContain></studingContain>
+          <div class="main-mid-card1">
+            <router-link :to="cardData[0].cardRoute">
+              <vueCard
+                img="./picture/cssLogo.jpeg"
+                :columnNum="cardData[0].columnNum"
+                :chapterNum="cardData[0].chapterNum"
+              ></vueCard>
+              <div>
+                <div class="main-mid-card-font">{{cardData[0].title}}</div>
+              </div>
+            </router-link>
+          </div>
+
+          <div class="main-mid-card1">
+            <vueCard img="./picture/html.jpeg"></vueCard>
+          </div>
+          <div class="main-mid-card1">
+            <vueCard img="./picture/cssLogo.jpeg"></vueCard>
+          </div>
+          <div class="main-mid-card1">
+            <vueCard img="./picture/cssLogo.jpeg"></vueCard>
+          </div>
+          <div class="main-mid-card1">
+            <vueCard img="./picture/cssLogo.jpeg"></vueCard>
+          </div>
         </div>
       </div>
     </div>
@@ -20,10 +44,22 @@
 </template>
 
 <script>
-import studingContain from "./studingContain";
+import vueCard from "../components/vueCard";
 
 export default {
   name: "Home",
+  data() {
+    return {
+      cardData: [
+        {
+          title: "基本语言之CSS3",
+          columnNum: 5,
+          chapterNum: 21,
+          cardRoute: "/learncss",
+        },
+      ],
+    };
+  },
   methods: {
     handleOpen(key, keyPath) {
       console.log(key, keyPath);
@@ -33,7 +69,7 @@ export default {
     },
   },
   components: {
-    studingContain,
+    vueCard,
   },
 };
 </script>
@@ -57,6 +93,21 @@ export default {
 }
 .main-mid-text {
   margin-top: 30px;
+}
+
+.main-mid-card {
+  display: flex;
+  padding-right: 10%;
+}
+
+.main-mid-card1 {
+  margin-right: 5%;
+  width: 100%;
+  height: 280px;
+}
+
+.main-mid-card-font {
+  padding: 10px 0px 0px 0px;
 }
 
 /* a {

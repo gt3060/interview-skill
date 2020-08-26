@@ -149,7 +149,7 @@
               </div>
             </div>
             <div v-if="containNum === '04'">
-              <div style="margin-bottom:20px">
+              <div style="margin-bottom:20px;">
                 <el-breadcrumb separator-class="el-icon-arrow-right">
                   <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
                   <el-breadcrumb-item>04-弹性布局</el-breadcrumb-item>
@@ -294,6 +294,9 @@ export default {
 </script>
 
 <style>
+.learn{
+  background-image: linear-gradient(#fff2e9, white);;
+}
 .learnCard {
   /* text-align: center; */
   display: flex;
