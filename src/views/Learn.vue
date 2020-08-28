@@ -85,6 +85,17 @@
                 srcData="./picture/CSS.png"
               ></card>
             </div>
+            <div style="margin-top:50px">
+              <card
+                catalogTitle="常见面试考点"
+                catalogNum="06"
+                isShowTable="false"
+                @clickNum="clickNum"
+                :tableData="tableCSS3Data"
+                @childNum="childNum"
+                srcData="./picture/CSS.png"
+              ></card>
+            </div>
           </div>
           <div style="width:55%; margin-left:5%; margin-top:-100px">
             <div class="catalogStyle">
@@ -196,6 +207,16 @@
                 <otherPropCSS3></otherPropCSS3>
               </div>
             </div>
+            <div v-if="containNum === '06'">
+              <div style="margin-bottom:20px">
+                <el-breadcrumb separator-class="el-icon-arrow-right">
+                  <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+                  <el-breadcrumb-item>06-CSS常见考点</el-breadcrumb-item>
+                  <!-- <el-breadcrumb-item>{{containChildNum}}{{tableTitle}}</el-breadcrumb-item> -->
+                </el-breadcrumb>
+              </div>
+              <commonInterviewCss @transValue="childNum"></commonInterviewCss>
+            </div>
           </div>
         </div>
       </div>
@@ -226,6 +247,7 @@ import shadowCSS3 from "./Learncss/CSS3/shadowCSS3";
 import borderCSS3 from "./Learncss/CSS3/borderCSS3";
 import backgroundCSS3 from "./Learncss/CSS3/backgroundCSS3";
 import otherPropCSS3 from "./Learncss/CSS3/otherPropCSS3";
+import commonInterviewCss from "./Learncss/commonInterviewCss";
 import { cssData, cssBFCData, cssFlexData, css3Data } from "../data/index.js";
 export default {
   data() {
@@ -289,13 +311,14 @@ export default {
     borderCSS3,
     backgroundCSS3,
     otherPropCSS3,
+    commonInterviewCss,
   },
 };
 </script>
 
 <style>
-.learn{
-  background-image: linear-gradient(#fff2e9, white);;
+.learn {
+  background-image: linear-gradient(#fff2e9, white);
 }
 .learnCard {
   /* text-align: center; */
@@ -306,6 +329,7 @@ export default {
   /* display: flex; */
   width: 75%;
   padding-left: 50px;
+  padding-bottom: 30px;
 }
 
 .learn-back {

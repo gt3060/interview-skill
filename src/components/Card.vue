@@ -47,6 +47,7 @@ export default {
     btnTransValue() {
       let obj = {};
       obj.catalogNum = this.catalogNum;
+      localStorage.setItem("currentTableRow", JSON.stringify(obj));
       this.$emit("clickNum", obj);
     },
     handleRowData(data) {
