@@ -26,7 +26,16 @@
           </div>
 
           <div class="main-mid-card1">
-            <vueCard img="./picture/html.jpeg"></vueCard>
+            <router-link :to="cardData[1].cardRoute">
+              <vueCard
+                img="./picture/html.jpeg"
+                :columnNum="cardData[1].columnNum"
+                :chapterNum="cardData[1].chapterNum"
+              ></vueCard>
+              <div>
+                <div class="main-mid-card-font">{{cardData[1].title}}</div>
+              </div>
+            </router-link>
           </div>
           <div class="main-mid-card1">
             <vueCard img="./picture/cssLogo.jpeg"></vueCard>
@@ -52,10 +61,16 @@ export default {
     return {
       cardData: [
         {
-          title: "基本语言之CSS3",
+          title: "面试考点之CSS3",
+          columnNum: 6,
+          chapterNum: 22,
+          cardRoute: "/learncss",
+        },
+        {
+          title: "面试考点之HTML",
           columnNum: 5,
           chapterNum: 21,
-          cardRoute: "/learncss",
+          cardRoute: "/htmlAndCssInterview",
         },
       ],
     };
