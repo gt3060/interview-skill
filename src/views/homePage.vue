@@ -38,7 +38,16 @@
             </router-link>
           </div>
           <div class="main-mid-card1">
-            <vueCard img="./picture/cssLogo.jpeg"></vueCard>
+            <router-link :to="cardData[2].cardRoute">
+              <vueCard
+                img="./picture/javascript1.jpeg"
+                :columnNum="cardData[2].columnNum"
+                :chapterNum="cardData[2].chapterNum"
+              ></vueCard>
+              <div>
+                <div class="main-mid-card-font">{{cardData[2].title}}</div>
+              </div>
+            </router-link>
           </div>
           <div class="main-mid-card1">
             <vueCard img="./picture/cssLogo.jpeg"></vueCard>
@@ -68,9 +77,15 @@ export default {
         },
         {
           title: "面试考点之HTML",
-          columnNum: 5,
-          chapterNum: 21,
+          columnNum: 1,
+          chapterNum: 20,
           cardRoute: "/htmlAndCssInterview",
+        },
+        {
+          title: "面试考点之js基本语法",
+          columnNum: 1,
+          chapterNum: 20,
+          cardRoute: "/jsBasicsInterview",
         },
       ],
     };
