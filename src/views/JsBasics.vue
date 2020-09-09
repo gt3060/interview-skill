@@ -596,7 +596,7 @@
                   </pre>
                 </div>
               </div>
-              <div>
+              <div id="c16">
                 <div style="display:flex">
                   <div style="margin-right:7px;">
                     <img src="../assets/light.png" />
@@ -626,13 +626,89 @@
                     //创建实例，将构造函数Parent与形参作为参数传入
                     const child = newMethod(Parent, 'echo', 26);
                     child.sayName() //'echo';
-
                     //最后检验，与使用new的效果相同
                     child instanceof Parent//true
                     child.hasOwnProperty('name')//true
                     child.hasOwnProperty('age')//true
                     child.hasOwnProperty('sayName')//false
                   </pre>
+                  <p>除此之外，可以利用arguments来进行创建，创建实例不变，构造函数不变只改变封装new方法</p>
+                  <pre>
+
+                  function newMethod(){
+                    var obj = {};
+                    //取得该方法的第一个参数(并删除第一个参数)，该参数是构造函数
+                    var Constructor = [].shift.apply(arguments);
+                    //将新对象的内部属性__proto__指向构造函数的原型，这样新对象就可以访问原型中的属性和方法
+                    obj.__proto__ = Constructor.prototype;
+                    //取得构造函数的返回值
+                    var ret = Constructor.apply(obj, arguments);
+                    //如果返回值是一个对象就返回该对象，否则返回构造函数的一个实例对象
+                    return typeof ret === "object" ? ret : obj;
+                  }
+                  </pre>
+                </div>
+              </div>
+              <div id="c17">
+                <div style="display:flex">
+                  <div style="margin-right:7px;">
+                    <img src="../assets/light.png" />
+                  </div>
+                  <h4>17.arguments详解</h4>
+                </div>
+                <div class="fontIndent">
+                  <p>①首先介绍一下，形参和实参的概念</p>
+                  <ul>
+                    <li>形参是函数定义的参数；</li>
+                    <li>实参是函数调用的实际传的参数；</li>
+                    <li>形参的个数多于实参，那么，多余形参的参数值为undefined；</li>
+                    <li>实参的个数如果多于形参，那么，多余的参数值可以通过arguments访问。</li>
+                  </ul>
+                  <p>②前言</p>
+                  <ul>
+                    <li>
+                      js并没有重载函数的功能，但是arguments对象能够模拟重载，js中每个函数都会有一个Arguments对象实例的arguments，
+                      它引用着函数的实参，可以用数组下标的方式，引用arguments中的元素。
+                    </li>
+                    <li>arguments.length为函数实参个数，arguments.callee引用函数自身。</li>
+                  </ul>
+                  <el-card>
+                    <p>实例如下：</p>
+                    <pre>
+
+                    (function Person(name, sex){
+                      console.log(arguments)
+                    })('geng', 'male') 
+                    </pre>
+                    <p>
+                      <code>arguments.callee与形参一一对应：</code>
+                    </p>
+                    <pre>
+
+                    (function Person(name, sex){
+                      arguments[0] = 'chen'
+                      console.log(arguments[0], name)
+                    })('geng', 'male') // 输出：chen chen
+                    </pre>
+                  </el-card>
+                  <p>③特点</p>
+                  <ul>
+                    <li>arguments对象和Function是分不开的；因此不能显式创建；</li>
+                    <li>arguments对象参数可以被设置；</li>
+                    <li>arguments对象的callee属性的初始值就是正被执行的Function对象；</li>
+                    <li>arguments对象并不是一个数组，而是一个类数组。但是对于每个参数的访问方式等同于数组访问参数；</li>
+                    <li>
+                      将arguments的类数组对象，转换为数组对象，
+                      <code>[].slice.call(arguments,params);</code>
+                      或者
+                      <code>Array.prototype.slice.call(arguments,params);</code>
+                      或者
+                      <code>Array.from(arguments);</code>
+                      或者使用扩展运算符
+                      <code>[...arguments]</code>
+                      其中params是可选参数，如果不填则表示将所有数据转换为数组，若存在，则表示从parmas起开始转换
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>
@@ -709,6 +785,7 @@ export default {
         },
         { index: "c15", name: "new一个对象具体发生了什么", i: "15" },
         { index: "c16", name: "自己定义一个new方法", i: "16" },
+        { index: "c17", name: "arguments详解", i: "17" },
       ],
       itemIndex: "",
       typeofValue: "",
