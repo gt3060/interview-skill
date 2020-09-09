@@ -32,7 +32,7 @@
                 :columnNum="cardData[1].columnNum"
                 :chapterNum="cardData[1].chapterNum"
               ></vueCard>
-              <div>
+              <div class="width:100%">
                 <div class="main-mid-card-font">{{cardData[1].title}}</div>
               </div>
             </router-link>
@@ -50,10 +50,64 @@
             </router-link>
           </div>
           <div class="main-mid-card1">
-            <vueCard img="./picture/cssLogo.jpeg"></vueCard>
+            <router-link :to="cardData[3].cardRoute">
+              <vueCard
+                img="./picture/javascript2.jpeg"
+                :columnNum="cardData[3].columnNum"
+                :chapterNum="cardData[3].chapterNum"
+              ></vueCard>
+              <div>
+                <div class="main-mid-card-font">{{cardData[3].title}}</div>
+              </div>
+            </router-link>
           </div>
           <div class="main-mid-card1">
-            <vueCard img="./picture/cssLogo.jpeg"></vueCard>
+            <router-link :to="cardData[2].cardRoute">
+              <vueCard
+                img="./picture/javascript3.jpeg"
+                :columnNum="cardData[2].columnNum"
+                :chapterNum="cardData[2].chapterNum"
+              ></vueCard>
+              <div>
+                <div class="main-mid-card-font">{{cardData[2].title}}</div>
+              </div>
+            </router-link>
+          </div>
+          <div class="main-mid-card1">
+            <router-link :to="cardData[2].cardRoute">
+              <vueCard
+                img="./picture/javascript4.jpeg"
+                :columnNum="cardData[2].columnNum"
+                :chapterNum="cardData[2].chapterNum"
+              ></vueCard>
+              <div>
+                <div class="main-mid-card-font">{{cardData[2].title}}</div>
+              </div>
+            </router-link>
+          </div>
+          <div class="main-mid-card1">
+            <router-link :to="cardData[2].cardRoute">
+              <vueCard
+                img="./picture/javascript1.jpeg"
+                :columnNum="cardData[2].columnNum"
+                :chapterNum="cardData[2].chapterNum"
+              ></vueCard>
+              <div>
+                <div class="main-mid-card-font">{{cardData[2].title}}</div>
+              </div>
+            </router-link>
+          </div>
+          <div class="main-mid-card1">
+            <router-link :to="cardData[2].cardRoute">
+              <vueCard
+                img="./picture/javascript1.jpeg"
+                :columnNum="cardData[2].columnNum"
+                :chapterNum="cardData[2].chapterNum"
+              ></vueCard>
+              <div>
+                <div class="main-mid-card-font">{{cardData[2].title}}</div>
+              </div>
+            </router-link>
           </div>
         </div>
       </div>
@@ -84,8 +138,14 @@ export default {
         {
           title: "面试考点之js基本语法",
           columnNum: 1,
-          chapterNum: 20,
+          chapterNum: 17,
           cardRoute: "/jsBasicsInterview",
+        },
+        {
+          title: "前端常见的设计模式",
+          columnNum: 1,
+          chapterNum: 17,
+          cardRoute: "/designPatterns",
         },
       ],
     };
@@ -108,7 +168,10 @@ export default {
   height: 40px;
 }
 .contain-mid {
-  margin-left: 15%;
+  margin: auto;
+  min-width: 992px;
+  max-width: 1200px;
+  padding-left: 7%;
 }
 
 .main-top,
@@ -127,17 +190,18 @@ export default {
 
 .main-mid-card {
   display: flex;
-  padding-right: 10%;
+  flex-wrap: wrap;
 }
 
 .main-mid-card1 {
   margin-right: 5%;
-  width: 100%;
+  /* width: 100%; */
   height: 280px;
 }
 
 .main-mid-card-font {
   padding: 10px 0px 0px 0px;
+  min-width: 165px;
 }
 
 /* a {
