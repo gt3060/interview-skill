@@ -2,9 +2,10 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import homePage from '../views/homePage.vue';
 import LearnCSS from '../views/Learn.vue';
-import LearnhtmlAndCss from "../views/LearnhtmlAndCss.vue"
-import JsBasics from "../views/JsBasics.vue"
-import DesignPatterns from "../views/DesignPatterns.vue"
+import LearnhtmlAndCss from "../views/LearnhtmlAndCss.vue";
+import JsBasics from "../views/JsBasics.vue";
+import DesignPatterns from "../views/DesignPatterns.vue";
+import ExecutionMechanism from "../views/ExecutionMechanism.vue"
 
 Vue.use(VueRouter)
 
@@ -33,6 +34,11 @@ const routes = [
     path: '/designPatterns',
     name: 'designPatterns',
     component: DesignPatterns
+  },
+  {
+    path: '/executionMechanism',
+    name: 'executionMechanism',
+    component: ExecutionMechanism
   }
 ]
 
