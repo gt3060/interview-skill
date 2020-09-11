@@ -74,14 +74,14 @@
             </router-link>
           </div>
           <div class="main-mid-card1">
-            <router-link :to="cardData[2].cardRoute">
+            <router-link :to="cardData[5].cardRoute">
               <vueCard
                 img="./picture/javascript4.jpeg"
-                :columnNum="cardData[2].columnNum"
-                :chapterNum="cardData[2].chapterNum"
+                :columnNum="cardData[5].columnNum"
+                :chapterNum="cardData[5].chapterNum"
               ></vueCard>
               <div>
-                <div class="main-mid-card-font">{{cardData[2].title}}</div>
+                <div class="main-mid-card-font">{{cardData[5].title}}</div>
               </div>
             </router-link>
           </div>
@@ -150,8 +150,14 @@ export default {
         {
           title: "javascript的执行机制",
           columnNum: 1,
-          chapterNum: 7,
+          chapterNum: 3,
           cardRoute: "/executionMechanism",
+        },
+        {
+          title: "数组与字符串",
+          columnNum: 1,
+          chapterNum: 7,
+          cardRoute: "/arrayMethods",
         },
       ],
     };
