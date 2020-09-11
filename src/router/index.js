@@ -5,7 +5,8 @@ import LearnCSS from '../views/Learn.vue';
 import LearnhtmlAndCss from "../views/LearnhtmlAndCss.vue";
 import JsBasics from "../views/JsBasics.vue";
 import DesignPatterns from "../views/DesignPatterns.vue";
-import ExecutionMechanism from "../views/ExecutionMechanism.vue"
+import ExecutionMechanism from "../views/ExecutionMechanism.vue";
+import arrayMethods from "../views/arrayMethods.vue"
 
 Vue.use(VueRouter)
 
@@ -39,6 +40,11 @@ const routes = [
     path: '/executionMechanism',
     name: 'executionMechanism',
     component: ExecutionMechanism
+  },
+  {
+    path: '/arrayMethods',
+    name: 'arrayMethods',
+    component: arrayMethods
   }
 ]
 
