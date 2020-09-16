@@ -4,6 +4,7 @@ import homePage from '../views/homePage.vue';
 import LearnCSS from '../views/Learn.vue';
 import LearnhtmlAndCss from "../views/LearnhtmlAndCss.vue"
 import JsBasics from "../views/JsBasics.vue"
+import JsAdvanced from "../views/JsAdvanced/JsAdvanced.vue"
 
 Vue.use(VueRouter)
 
@@ -27,7 +28,12 @@ const routes = [
     path: '/jsBasicsInterview',
     name: 'jsBasicsInterview',
     component: JsBasics
-  }
+  },
+  {
+    path: '/jsAdvanced',
+    name: 'jsAdvanced',
+    component: JsAdvanced
+  },
 ]
 
 const router = new VueRouter({

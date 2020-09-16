@@ -50,7 +50,16 @@
             </router-link>
           </div>
           <div class="main-mid-card1">
-            <vueCard img="./picture/cssLogo.jpeg"></vueCard>
+            <router-link :to="cardData[3].cardRoute">
+              <vueCard
+                img="./picture/cssLogo.jpeg"
+                :columnNum="cardData[3].columnNum"
+                :chapterNum="cardData[3].chapterNum"
+              ></vueCard>
+              <div>
+                <div class="main-mid-card-font">{{cardData[3].title}}</div>
+              </div>
+            </router-link>
           </div>
           <div class="main-mid-card1">
             <vueCard img="./picture/cssLogo.jpeg"></vueCard>
@@ -86,6 +95,12 @@ export default {
           columnNum: 1,
           chapterNum: 20,
           cardRoute: "/jsBasicsInterview",
+        },
+        {
+          title: "js进阶",
+          columnNum: 1,
+          chapterNum: 20,
+          cardRoute: "/jsAdvanced",
         },
       ],
     };
