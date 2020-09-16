@@ -179,78 +179,167 @@
                 <span>①利用new+Object形式创建</span>
                 <pre>
 
-                  let person = new Object();
-                  person.name = "耿";
-                  person.sex = "male";
-                  person.hobby = function(){
-                    console.log(this.name);
-                  }
-                  </pre>
+                let person = new Object();
+                person.name = "耿";
+                person.sex = "male";
+                person.hobby = function(){
+                  console.log(this.name);
+                }
+                </pre>
                 <span>②字面式创建对象</span>
                 <pre>
 
-                  let person = {
-                    name:"耿",
-                    sex:"male",
-                    hobby:function(){
-                      console.log(this.name);
-                    }
+                let person = {
+                  name:"耿",
+                  sex:"male",
+                  hobby:function(){
+                    console.log(this.name);
                   }
-                  </pre>
-                  <span>③工厂模式 </span>
+                }
+                </pre>
+                <span>③工厂模式(解决重复实例化多个对象问题)</span>
+                <pre>
+
+                function Person(name, sex){
+                  let p = new Object();
+                  p.name = name;
+                  p.sex = sex;
+                  p.hobby = function(){
+                    console.log(this.name);
+                  };
+                  return p;
+                }
+                let person1 = Person("陈", "male");
+                let person2 = Person("耿", "male");
+                console.log(person1 instanceof Object);//true
+                console.log(person1 instanceof Person);//false
+                </pre>
+                <span>④构造函数模式</span>
+                <pre>
+
+                function Person(name, sex){
+                  this.name = name;
+                  this.sex = sex;
+                  this.hobby = function(){
+                    console.log(this.name);
+                  }
+                }
+                let person1 = new Person("耿", "male");
+                let person2 = new Person("陈", "male");
+                console.log(person1 instanceof Object);//true
+                console.log(person1 instanceof Person);//false
+                </pre>
+                <span>构造函数和工厂模式区别：</span>
+                <ul>
+                  <li>没有显示的创建对象p;</li>
+                  <li>没有return语句;</li>
+                  <li>直接将属性和方法赋值给this对象;</li>
+                  <li>通过构造函数创建的对象，既可以判断出是Object的实例，也可以判断（instanceof）出是Person的实例。</li>
+                </ul>
+                <span>⑤原型模式</span>
+                <pre>
+                
+                function Person(){};
+                Person.prototype.name = "陈";
+                Person.prototype.sex = "male";
+                Person.prototype.hobby = function(){
+                  console.log(this.name);
+                }
+                console.log(Person, Person.prototype);
+                //创建第一个实例person1
+                let person1 = new Person();
+                console.log(person1, person1.name);
+                //创建第二个实例person2
+                let person2 = new Person();
+                person2.name = "耿";//设置自己的属性和方法，即私有属性，可以覆盖原型对象上的同名属性（方法）
+                console.log(person2, person2.name);
+                </pre>
+                <p>运行结果：</p>
+                <img src="@/assets/createObjRunResult.png" />
+                <p>⑥混合模式（构造函数模式+原型模式）</p>
+                <pre>
+
+                function Person(name, sex){
+                  this.name = name;
+                  this.sex = sex;
+                }
+                Person.prototype = {
+                  constructor: Person, // 每个函数都有prototype属性指向该函数的原型对象，原型对象都有constructor属性，这是一个指向prototype属性所在函数的指针
+                  hobby: function(){
+                    console.log(this.name);
+                  }
+                }
+                let person1 = new Person("陈", "male");
+                let person2 = new Person("耿", "male");
+                </pre>
               </div>
-              <!-- <div id="c6">
+              <div id="c6">
                 <div style="display:flex">
                   <div style="margin-right:7px;">
-                    <img src="../assets/light.png" />
+                    <img src="@/assets/light.png" />
                   </div>
-                  <h4>7.简述以下src和href的区别</h4>
+                  <h4>7.事件捕获</h4>
                 </div>
-                <span class="fontIndent">
-                  <ul>
-                    <li>src用于替换当前元素，href用于在当前文档和引用资源之间建立联系；</li>
-                    <li>
-                      src指向外部资源的位置，指向的内容会嵌入到文档中当前标签所在位置，在解析时会暂停其他资源的下载和处理，直到该资源处理
-                      完毕，这也是为什么js文件建议放到底部而不是头部；
-                    </li>
-                    <li>
-                      href指向网络资源所在的位置，建立和当前元素（锚点）或当前文档（链接）之间的连接，他会并行下载资源不会停止对当前文档的处理；
-                      例如:
-                      <code>&lt;link href="common.css" rel="stylesheet" /&gt;</code>这也是为什么建议css的加载建议用link而不是@import。
-                    </li>
-                  </ul>
-                </span>
+                <p class="fontIndent">
+                  当事件发生在dom元素上，该事件并不完全发生在该dom元素上，在捕获阶段，事件从window开始一直到触发事件的元素,例如当点击子div时，
+                  父div的click函数同时响应。
+                </p>
+                <el-card style="margin:15px 0px 0px 30px" shadow="hover">
+                  <div
+                    @click="handleFather"
+                    style="width:150px; height:120px; border:1px solid black;"
+                    id="parentId"
+                  >
+                    <div
+                      style="width:70px; height:70px; border:1px solid black;margin:20px 0px 0px  20px"
+                      @click="handleChild"
+                      id="childId"
+                    ></div>
+                  </div>
+                  <p>addEventListener方法具有第三个可选参数useCapture，其默认值为false，事件将在冒泡阶段中发生，如果为true，则事件将在捕获阶段中发生</p>
+                </el-card>
               </div>
               <div id="c7">
                 <div style="display:flex">
                   <div style="margin-right:7px;">
                     <img src="../assets/light.png" />
                   </div>
-                  <h4>8.从用户刷新页面开始，一次js请求会可以在哪些地方进行缓存处理</h4>
+                  <h4>8.事件冒泡</h4>
                 </div>
-                <span class="fontIndent">DNS缓存、CDN缓存、浏览器缓存、服务器缓存</span>
+                <p class="fontIndent">
+                  事件冒泡刚好与事件捕获相反，当前元素---->body ----> html---->document ---->window。当事件发生在DOM元素上时，该事件并不完全发生在那个元素上。
+                  在冒泡阶段，事件冒泡，或者事件发生在它的父代，祖父母，祖父母的父代，直到到达window为止。例如：当点击子div时，先触发子div的click再触发父div的click
+                </p>
+                <el-card style="margin:15px 0px 0px 30px" shadow="hover">
+                  <div
+                    @click="handleFather('true')"
+                    style="width:150px; height:120px; border:1px solid black;"
+                    id="parentId"
+                  >
+                    <div
+                      style="width:70px; height:70px; border:1px solid black;margin:20px 0px 0px  20px"
+                      @click="handleChild('true')"
+                      id="childId"
+                    ></div>
+                  </div>
+                </el-card>
               </div>
               <div id="c8">
                 <div style="display:flex">
                   <div style="margin-right:7px;">
                     <img src="../assets/light.png" />
                   </div>
-                  <h4>9.html语义化</h4>
+                  <h4>9.var、let、const区别</h4>
                 </div>
+                <p class="fontIndent">①var声明的变量会挂载在window上，let和const声明的变量不会；</p>
                 <span class="fontIndent">
-                  使用语义化的作用：
                   <ul>
-                    <li>代码结构：使页面没有css情况下，也能呈现出很好的内容结构；</li>
-                    <li>有利于SEO：爬虫依赖标签来确定关键字的权重，因此可以和搜索引擎进行很好的沟通，帮助爬虫获取更多有效信息；</li>
-                    <li>提升用户体验；例如title、alt可以为用户解释名称或图片信息，以及label标签的灵活运用；</li>
-                    <li>便于团队开发和维护：使代码更具有可读性，让开发人员更容易理解html结构，减少差异化。</li>
-                    <li>方便其他设备解析：如屏幕阅读器、盲人阅读器、移动设备等以有意义的方式来渲染网页。</li>
-                  </ul>
-                  <span>常用语义元素：</span>
-                  <ul>
-                    <li>结构体：h1-h6、header、nav、footer、article、section</li>
-                    <li>文本：p、ul、ol、li、blockquote</li>
-                    <li>一致：a、strong、em、q、abrr、small</li>
+                    <li>
+                      const定义的变量不可被修改，而且必须初始化；
+                      <code>const a = 200;</code>
+                    </li>
+                    <li>var和let定义的变量可被修改，如果不初始化，则输出undefined；</li>
+                    <li>let是块级作用域，函数内部使用后，对函数外部无影响；var存在变量提升。</li>
                   </ul>
                 </span>
               </div>
@@ -259,31 +348,24 @@
                   <div style="margin-right:7px;">
                     <img src="../assets/light.png" />
                   </div>
-                  <h4>10.SEO的理解</h4>
+                  <h4>10.什么是对象解构</h4>
                 </div>
                 <div class="fontIndent">
-                  <span>
-                    <strong>什么是SEO？</strong>
-                  </span>
+                  <span>对象析构是从对象或数组中获取或提取值的一种新的、更简洁的方法，如下面的对象：</span>
+                  <pre>
+                  const Person = {
+                    name: "陈",
+                    sex: "male"
+                  }
+                  </pre>
                   <p>
-                    汉译为搜索引擎优化。是一种方式：利用搜索引擎的规则提高网站在有关搜索引擎内的自然排名。
-                    目的是：为网站提供生态式的自我营销解决方案，让其在行业内占据领先地位，获得品牌收益。
+                    通常的方法是：
+                    <code>let name = Person.name; let sex = Person.sex;</code>
                   </p>
-                  <span style="margin-left:30px">
-                    <strong>前端针对SEO 需要注意哪些？</strong>
-                  </span>
-                  <ul>
-                    <li>
-                      合理的title、description、keywords：搜索对着三项的权重逐个减小，title值强调重点即可，重要关键词出现不要超过2次，而且要靠前，不同页面title要有所不同；
-                      description把页面内容高度概括，长度合适，不可过分堆砌关键词，不同页面description有所不同；keywords列举出重要关键词即可;
-                    </li>
-                    <li>语义化的HTML代码，符合W3C规范：语义化代码让搜索引擎容易理解网页;</li>
-                    <li>重要内容HTML代码放在最前：搜索引擎抓取HTML顺序是从上到下，有的搜索引擎对抓取长度有限制，保证重要内容一定会被抓取;</li>
-                    <li>重要内容不要用js输出：爬虫不会执行js获取内容;</li>
-                    <li>少用iframe：搜索引擎不会抓取iframe中的内容;</li>
-                    <li>非装饰性图片必须加alt;</li>
-                    <li>提高网站速度：网站速度是搜索引擎排序的一个重要指标。</li>
-                  </ul>
+                  <p>
+                    如果使用解构方法：
+                    <code>const {name, sex} = Person;</code>
+                  </p>
                 </div>
               </div>
               <div id="c10">
@@ -291,22 +373,13 @@
                   <div style="margin-right:7px;">
                     <img src="../assets/light.png" />
                   </div>
-                  <h4>11.iframe优缺点</h4>
+                  <h4>11.模块化</h4>
                 </div>
                 <div class="fontIndent">
-                  <p>iframe优点：</p>
-                  <ul>
-                    <li>能原封不动的把嵌入网页展现出来；</li>
-                    <li>如果多个网页同时嵌入iframe，在修改iframe内容时候只需要修改一次；</li>
-                    <li>如果遇到加载缓慢的第三方内容如图标和广告，这些问题可以由iframe来解决。</li>
-                  </ul>
-                  <p>iframe缺点：</p>
-                  <ul>
-                    <li>不容易管理；</li>
-                    <li>用户体验感极差；</li>
-                    <li>代码结构复杂，无法被搜索引擎优化，因为爬虫还不能很好处理iframe；</li>
-                    <li>会增加对服务器的请求。</li>
-                  </ul>
+                  <p>
+                    一个模块是实现一个特定功能的一组方法，在最开始时候，js只用来实现一些简单的功能，
+                    所以并没有模块的概念，但随着程序越来越复杂，代码的模块化开发越来越重要。
+                  </p>
                 </div>
               </div>
               <div id="c11">
@@ -314,96 +387,170 @@
                   <div style="margin-right:7px;">
                     <img src="../assets/light.png" />
                   </div>
-                  <h4>12.TCP三次握手（网络资源）</h4>
+                  <h4>12.几种常见的模块规范</h4>
                 </div>
-                <div class="htmlImgStyle">
-                  <img src="../assets/tcpwoshou.jpg" style="width:100%" />
+                <div class="fontIndent">
+                  <p>①CommonJS方案：</p>
+                  <p>
+                    该规范的核心思想是允许模块通过 require 方法来同步加载所要依赖的其他模块，通过module.export定义模块的输出接口，
+                    缺点是:同步的模块加载方式不适合在浏览器环境中，同步意味着阻塞加载，浏览器资源是异步加载的。
+                  </p>
+                  <p>②AMD</p>
+                  <p>这种方案采用异步加载的方式来加载模块，模块的加载不影响后面语句的执行，所有依赖这个模块的语句都定义在一个回调函数里，等到加载完成后再执行回调函数。</p>
+                  <p>③CMD</p>
+                  <p>
+                    这种方案和 AMD 方案都是为了解决异步模块加载的问题，sea.js 实现了 CMD 规范。
+                    它和require.js的区别在于模块定义时对依赖的处理不同和对依赖模块的执行时机的处理不同。
+                  </p>
+                  <p>④ES6</p>
+                  <p>使用 import 和 export 的形式来导入导出模块.</p>
+                  <p>
+                    <strong>总结</strong>
+                  </p>
+                  <ul>
+                    <li>AMD和CMD：RequireJS是AMD规范的实现，SeaJS是CMD规范的实现， 一个主张提前加载依赖，一个主张延迟加载依赖</li>
+                    <li>无论是node应用模块，还是webpack 配置 ，均是采用CommonJS模块化规范</li>
+                  </ul>
                 </div>
-                <div class="htmlImgStyle">
-                  <img src="../assets/tcpwoshou1.jpg" style="width:100%" />
-                </div>
-                <span style="margin-left:35px">
-                  <strong class="fontIndet">为什么要进行三次握手？</strong>
-                </span>
-                <ul class="fontIndent">
-                  <li>为了防止服务器端开启一些无用的连接增加服务器开销以及防止已失效的连接请求报文段突然又传送到了服务端，因而产生错误。</li>
-                  <li>由于网络传输是有延时的(要通过网络光纤和各种中间代理服务器)，在传输的过程中，比如客户端发起了SYN=1创建连接的请求(第一次握手)。</li>
-                  <li>如果服务器端就直接创建了这个连接并返回包含SYN、ACK和Seq等内容的数据包给客户端，这个数据包因为网络传输的原因丢失了，丢失之后客户端就一直没有接收到服务器返回的数据包。</li>
-                  <li>服务器端是不知道客户端有没有接收到服务器端返回的信息的。</li>
-                </ul>
               </div>
               <div id="c12">
                 <div style="display:flex">
                   <div style="margin-right:7px;">
                     <img src="../assets/light.png" />
                   </div>
-                  <h4>13.TCP四次挥手（网络资源）</h4>
+                  <h4>13.什么是Set对象，它是如何工作的？</h4>
                 </div>
-                <div class="htmlImgStyle">
-                  <img src="../assets/tcphuishou.jpg" style="width:100%" />
+                <div class="fontIndent">
+                  <p>Set对象允许存储任何类型的唯一值。</p>
+                  <p>①Set对象构造函数创建实例</p>
+                  <p>
+                    <code>const set1 = new Set(); const set2 = new Set(['a','b','c','d'])</code>
+                  </p>
+                  <p>②Set对象中增加元素</p>
+                  <p>
+                    <code>set1.add('a');//向Set对象set1中增加值为'a',结果:Set {"a"}</code>
+                  </p>
+                  <p>
+                    <code>set2.add('a').add('e');//向Set对象set2中增加值为e，值为a不会添加，因为已经存在,结果:Set {"a", "b", "c", "d", "e"}</code>
+                  </p>
+                  <p>③Set对象中删除元素</p>
+                  <p>
+                    删除一个元素：
+                    <code>set2.delete('a');//Set {'b', 'c', 'd', 'e'}</code>
+                  </p>
+                  <p>
+                    删除全部元素：
+                    <code>set2.clear();</code>
+                  </p>
+                  <p>④Set查找是否存在某一个元素</p>
+                  <p>
+                    <code>set2.has('b'); //返回值为true/false</code>
+                  </p>
+                  <p>⑤Set对象的size属性</p>
+                  <p>
+                    用于返回set对象长度，等同于arr的length：
+                    <code>set2.size();</code>
+                  </p>
+                  <p>我们可以利用set存储的唯一值的特性来进行数组去重：</p>
+                  <code>let arr = [11,2,3,4,2,3]; let set3 = [...new Set(arr)];</code>
+                  <p>
+                    <strong>
+                      另外还有WeakSet， 与 Set 类似，也是不重复的值的集合。但是 WeakSet 的成员只能是对象，而不能是其他类型的值。
+                      WeakSet 中的对象都是弱引用，即垃圾回收机制不考虑 WeakSet对该对象的引用。
+                    </strong>
+                  </p>
                 </div>
-                <div class="htmlImgStyle">
-                  <img src="../assets/tcphuishou1.jpg" style="width:100%" />
-                </div>
-                <span style="margin-left:35px">
-                  <strong class="fontIndet">为什么“握手”是三次，“挥手”却要四次？</strong>
-                </span>
-                <p
-                  class="fontIndent"
-                >①：建立连接时，被动方服务器端结束CLOSED阶段进入“握手”阶段并不需要任何准备，可以直接返回SYN和ACK报文，开始建立连接。</p>
-                <p
-                  class="fontIndent"
-                >②：释放连接时，被动方服务器，突然收到主动方客户端释放连接的请求时并不能立即释放连接，因为还有必要的数据需要处理，所以服务器先返回ACK确认收到报文，经过CLOSE-WAIT阶段准备好释放连接之后，才能返回FIN释放连接报文。</p>
-                <span style="margin-left:35px">
-                  <strong class="fontIndet">为什么客户端在TIME-WAIT阶段要等2MSL?</strong>
-                </span>
-                <ul class="fontIndent">
-                  <li>为的是确认服务器端是否收到客户端发出的ACK确认报文,</li>
-                  <li>
-                    当客户端发出最后的ACK确认报文时，并不能确定服务器端能够收到该段报文。
-                    所以客户端在发送完ACK确认报文之后，会设置一个时长为2MSL的计时器。
-                    MSL指的是Maximum Segment Lifetime：一段TCP报文在传输过程中的最大生命周期。
-                    2MSL即是服务器端发出为FIN报文和客户端发出的ACK确认报文所能保持有效的最大时长。
-                  </li>
-                  <li>服务器端在1MSL内没有收到客户端发出的ACK确认报文，就会再次向客户端发出FIN报文。</li>
-                  <li>
-                    如果客户端在2MSL内，再次收到了来自服务器端的FIN报文，说明服务器端由于各种原因没有接收到客户端发出的ACK确认报文。
-                    客户端再次向服务器端发出ACK确认报文，计时器重置，重新开始2MSL的计时。
-                  </li>
-                  <li>否则客户端在2MSL内没有再次收到来自服务器端的FIN报文，说明服务器端正常接收了ACK确认报文，客户端可以进入CLOSED阶段，完成“四次挥手”.</li>
-                </ul>
-                <p></p>
               </div>
               <div id="c13">
                 <div style="display:flex">
                   <div style="margin-right:7px;">
                     <img src="../assets/light.png" />
                   </div>
-                  <h4>14.TCP和UDP区别</h4>
+                  <h4>14.===和==区别</h4>
                 </div>
-                <ul>
-                  <li>Tcp是面向连接的，Udp是无连接的，即发送数据前不需要建立连接；</li>
-                  <li>
-                    Tcp提供可靠性服务，即通过tcp连接传送的数据，无差错、不丢失、不重复，且按序到达；
-                    udp尽最大努力交付，不保证可靠性交付；因此，tcp适合大数据的交换；
-                  </li>
-                  <li>tcp是面向字节流的，udp是面向报文的；并且udp网络出现阻塞不会出现降速情况，因此会出现丢包操作；</li>
-                  <li>tcp只能1对1，udp允许1对多；</li>
-                  <li>tcp首部较大，有20个字节；udp首部只有8个字节；</li>
+                <ul class="fontIndent">
+                  <li>===称为等同符，当两边值的类型相同时，直接比较值，若类型不同，直接返回false</li>
+                  <li>==称为等值符，当两边类型相同时，直接比较值是否相等，若类型不同，先转化为类型相同的值，再比较</li>
                 </ul>
+                <div class="fontIndent">
+                  <p>针对==比较类型转换规则：</p>
+                  <ul>
+                    <li>若两边是boolean、string、number三者中任意两个进行比较，优先转换为数字进行比较；</li>
+                    <li>若两边出现null、undefined，null和undefined除了和自己相等，就彼此相等（一个为null一个为undefined）；</li>
+                    <li>NaN == NaN（也返回false）；</li>
+                    <li>若一个是对象，另一个是数值或者字符串，则把对象先转换为基础类型再比较，对象转基础类型利用toString或者valueOf方法（Date只能利用toString方法）</li>
+                  </ul>
+                </div>
               </div>
               <div id="c14">
                 <div style="display:flex">
                   <div style="margin-right:7px;">
                     <img src="../assets/light.png" />
                   </div>
-                  <h4>15.什么是BOM以及常用的BOM属性对象方法有哪些？</h4>
+                  <h4>15.日期和时间戳转换</h4>
                 </div>
                 <div class="fontIndent">
-                  <span>BOM:BOM是浏览器对象，常用的BOM有：</span>
-                  <div class="htmlImgStyle">
-                    <img src="../assets/bom.jpg" style="width:100%" />
-                  </div>
+                  <p>日期改为时间戳：</p>
+                  <ul>
+                    <li>
+                      <code>let date1 = date.getTime();//精确度到毫秒</code>
+                    </li>
+                    <li>
+                      <code>let date2 = date.valueOf();//精确度到毫秒</code>
+                    </li>
+                    <li>
+                      <code>let date3 = Date.parse(date);//精确度到秒</code>
+                    </li>
+                  </ul>
+                  <p>时间戳改为日期</p>
+                  <p>
+                    ①利用插件（
+                    <a href="http://momentjs.cn/" target="_blank">moment</a>）
+                  </p>
+                  <ul>
+                    <li>
+                      改为时间模式：
+                      <code>moment(time).format('YYYY-MM-DD HH:mm:ss')</code>
+                    </li>
+                    <li>
+                      改为日期模式：
+                      <code>moment(date).format('YYYY-MM-DD')</code>
+                    </li>
+                  </ul>
+                  <p>
+                    ②纯js代码
+                    <el-button
+                      @click="handleShowTimetoDate"
+                      type="text"
+                      style="margin-left:15px"
+                    >代码显示/隐藏</el-button>
+                  </p>
+                  <el-card v-if="isShowTimeToDate === true" shadow="hover">
+                    <pre>
+
+                    function timeConvert(timestamp,num){//num:0 YYYY-MM-DD  num:1  YYYY-MM-DD hh:mm:ss // timestamp:时间戳 
+                      timestamp = timestamp+'';
+                      timestamp = timestamp.length==10?timestamp*1000:timestamp;
+                      var date = new Date(timestamp);
+                      var y = date.getFullYear();
+                      var m = date.getMonth() + 1;
+                      m = m &lt; 10 ? ('0' + m) : m;
+                      var d = date.getDate();
+                      d = d &lt; 10 ? ('0' + d) : d;
+                      var h = date.getHours();
+                      h = h &lt; 10 ? ('0' + h) : h;
+                      var minute = date.getMinutes();
+                      var second = date.getSeconds();
+                      minute = minute &lt; 10 ? ('0' + minute) : minute; 
+                      second = second &lt; 10 ? ('0' + second) : second; 
+                      if(num==0){
+                          return y+'-'+m+'-'+d;
+                      }else{
+                          return y+'-'+m+'-'+d +' '+ h +':'+ minute +':' + second;
+                      }
+                    }
+                    </pre>
+                  </el-card>
                 </div>
               </div>
               <div id="c15">
@@ -411,12 +558,42 @@
                   <div style="margin-right:7px;">
                     <img src="../assets/light.png" />
                   </div>
-                  <h4>16.浏览器缓存</h4>
+                  <h4>16.new一个对象具体发生了什么</h4>
                 </div>
                 <div class="fontIndent">
-                  <p>浏览器缓存包括：强缓存和协商缓存，根据响应的header内容来决定的；</p>
-                  <p>强缓存返回的状态码为200；协商缓存返回的状态码是304，通过服务器来告知缓存是否可用。</p>
-                  <p>强缓存相关字段有：expires、cache-control；协商缓存相关字段有：Last-Modified/If-Modified-Since</p>
+                  <p>
+                    以
+                    <code>let person = new Person('耿', 'male')</code>为例：
+                  </p>
+                  <p>
+                    ①创建一个简单的空对象，
+                    <code>let obj = {};</code>
+                  </p>
+                  <p>
+                    ②将该对象的内置原型对象_proto_设置为构造函数的原型对象；
+                    <code>obj._proto_ = Person.prototype</code>
+                  </p>
+                  <p>
+                    ③将创建的简单对象作为this参数调用构造函数，完成初始化工作；
+                    <code>obj.name = name; obj.sex = sex;</code>
+                  </p>
+                  <p>
+                    ④如果函数有返回对象，则返回此对象；没有返回this。
+                    <code>return obj;</code>
+                  </p>
+                  <p>具体如下：</p>
+                  <pre>
+
+                  function Person(name, sex){
+                    let that = {
+                      _proto_: Person.prototype,
+                    };
+                    that.name = name;
+                    that.sex = sex;
+                    return that;
+                  }
+                  let person = new Person('耿', 'male')
+                  </pre>
                 </div>
               </div>
               <div id="c16">
@@ -424,82 +601,116 @@
                   <div style="margin-right:7px;">
                     <img src="../assets/light.png" />
                   </div>
-                  <h4>17.从地址栏输入一个url，到这个页面呈现出来，中间发生什么？</h4>
+                  <h4>17.自己定义一个new方法</h4>
                 </div>
-                <span class="fontIndent">
-                  <ul>
-                    <li>
-                      输入url后，首先需要找到这个url域名的服务器ip，浏览器首先会查找缓存，
-                      缓存查找方式：浏览器缓存->系统缓存查看host文件是否有记录->路由器缓存查看DNS服务器得到ip地址；
-                    </li>
-                    <li>
-                      根据ip地址以及相的端口号，构造一个http请求，请求报文包括请求信息（请求方法、请求说明、请求附带的数据），
-                      并将这个http请求封装一个tcp包；
-                    </li>
-                    <li>这个tcp数据包经过传输层、网络层、数据链路层、物理层最终达到服务器；</li>
-                    <li>服务器解析做出响应，返回响应的html给浏览器；</li>
-                    <li>
-                      由于html是一个树形结构，因此，浏览器会构造dom树，构建过程中如果遇到js脚本或外部链接则先下载响应js代码后再继续构建
-                      因此建议js代码写在html后面；
-                    </li>
-                    <li>接着构造样式树，根据外部样式、内部样式、内联样式进一步构建CSSOM样式规则树，并于构建好的dom树合并为渲染树；</li>
-                    <li>接着构造布局，确定各个元素的位置和尺寸；</li>
-                    <li>渲染页面，在解析树过程中遇到图片、视频、音频等资源，进行并行下载。</li>
-                  </ul>
-                </span>
+                <div class="fontIndent">
+                  <pre>
+
+                    // 构造器函数
+                    let Parent = function (name, age) {
+                        this.name = name;
+                        this.age = age;
+                    };
+                    Parent.prototype.sayName = function () {
+                        console.log(this.name);
+                    };
+                    //自己定义的new方法
+                    let newMethod = function (Parent, ...rest) {
+                        // 1.以构造器的prototype属性为原型，创建新对象；
+                        let child = Object.create(Parent.prototype);
+                        // 2.将this和调用参数传给构造器执行
+                        let result = Parent.apply(child, rest);
+                        // 3.如果构造器没有手动返回对象，则返回第一步的对象
+                        return typeof result === 'object' ? result : child;
+                    };
+                    //创建实例，将构造函数Parent与形参作为参数传入
+                    const child = newMethod(Parent, 'echo', 26);
+                    child.sayName() //'echo';
+                    //最后检验，与使用new的效果相同
+                    child instanceof Parent//true
+                    child.hasOwnProperty('name')//true
+                    child.hasOwnProperty('age')//true
+                    child.hasOwnProperty('sayName')//false
+                  </pre>
+                  <p>除此之外，可以利用arguments来进行创建，创建实例不变，构造函数不变只改变封装new方法</p>
+                  <pre>
+
+                  function newMethod(){
+                    var obj = {};
+                    //取得该方法的第一个参数(并删除第一个参数)，该参数是构造函数
+                    var Constructor = [].shift.apply(arguments);
+                    //将新对象的内部属性__proto__指向构造函数的原型，这样新对象就可以访问原型中的属性和方法
+                    obj.__proto__ = Constructor.prototype;
+                    //取得构造函数的返回值
+                    var ret = Constructor.apply(obj, arguments);
+                    //如果返回值是一个对象就返回该对象，否则返回构造函数的一个实例对象
+                    return typeof ret === "object" ? ret : obj;
+                  }
+                  </pre>
+                </div>
               </div>
               <div id="c17">
                 <div style="display:flex">
                   <div style="margin-right:7px;">
                     <img src="../assets/light.png" />
                   </div>
-                  <h4>18.post和get区别</h4>
+                  <h4>17.arguments详解</h4>
                 </div>
-                <span class="fontIndent">
+                <div class="fontIndent">
+                  <p>①首先介绍一下，形参和实参的概念</p>
                   <ul>
-                    <li>get的参数存放在url中，post的参数存放在request&nbsp;Body中，因此，post比get更安全；</li>
-                    <li>get传递参数有大小长度限制，post没有</li>
-                    <li>get只能进行url编码，post支持多种编码</li>
-                    <li>get请求参数会完整的保存在 浏览历史记录中，而post参数不会被保留</li>
-                    <li>get产生一个tcp数据包（header+data），post产生两个tcp数据包（header、data）</li>
+                    <li>形参是函数定义的参数；</li>
+                    <li>实参是函数调用的实际传的参数；</li>
+                    <li>形参的个数多于实参，那么，多余形参的参数值为undefined；</li>
+                    <li>实参的个数如果多于形参，那么，多余的参数值可以通过arguments访问。</li>
                   </ul>
-                </span>
-              </div>
-              <div id="c18">
-                <div style="display:flex">
-                  <div style="margin-right:7px;">
-                    <img src="../assets/light.png" />
-                  </div>
-                  <h4>19.web前端优化常见方法</h4>
-                </div>
-                <span class="fontIndent">
+                  <p>②前言</p>
                   <ul>
-                    <li>内容优化：减少http请求次数、减少DNS查找、避免重定向、减少使用iframe、避免404、懒加载、预加载；</li>
                     <li>
-                      服务器优化：使用内容分发网络（把网站内容分散到多个、处于不同地域位置的服务器上可加快下载速度）、避免空的图像src
-                      、提前刷新缓存区；
+                      js并没有重载函数的功能，但是arguments对象能够模拟重载，js中每个函数都会有一个Arguments对象实例的arguments，
+                      它引用着函数的实参，可以用数组下标的方式，引用arguments中的元素。
                     </li>
-                    <li>cookie优化：减少使用cookie</li>
-                    <li>css优化：css代码放在html头部、使用link标签导入css样式以代替@import导入、避免使用css表达式</li>
-                    <li>
-                      javascript优化：将js脚本写在页面底部、将js作为外部文件引用、优化代码避免重复js代码、减少dom
-                      访问；
-                    </li>
-                    <li>图像优化：优化图片大小</li>
+                    <li>arguments.length为函数实参个数，arguments.callee引用函数自身。</li>
                   </ul>
-                </span>
+                  <el-card>
+                    <p>实例如下：</p>
+                    <pre>
+
+                    (function Person(name, sex){
+                      console.log(arguments)
+                    })('geng', 'male') 
+                    </pre>
+                    <p>
+                      <code>arguments.callee与形参一一对应：</code>
+                    </p>
+                    <pre>
+
+                    (function Person(name, sex){
+                      arguments[0] = 'chen'
+                      console.log(arguments[0], name)
+                    })('geng', 'male') // 输出：chen chen
+                    </pre>
+                  </el-card>
+                  <p>③特点</p>
+                  <ul>
+                    <li>arguments对象和Function是分不开的；因此不能显式创建；</li>
+                    <li>arguments对象参数可以被设置；</li>
+                    <li>arguments对象的callee属性的初始值就是正被执行的Function对象；</li>
+                    <li>arguments对象并不是一个数组，而是一个类数组。但是对于每个参数的访问方式等同于数组访问参数；</li>
+                    <li>
+                      将arguments的类数组对象，转换为数组对象，
+                      <code>[].slice.call(arguments,params);</code>
+                      或者
+                      <code>Array.prototype.slice.call(arguments,params);</code>
+                      或者
+                      <code>Array.from(arguments);</code>
+                      或者使用扩展运算符
+                      <code>[...arguments]</code>
+                      其中params是可选参数，如果不填则表示将所有数据转换为数组，若存在，则表示从parmas起开始转换
+                    </li>
+                  </ul>
+                </div>
               </div>
-              <div id="c19">
-                <div style="display:flex">
-                  <div style="margin-right:7px;">
-                    <img src="../assets/light.png" />
-                  </div>
-                  <h4>20.状态码</h4>
-                </div>
-                <div class="htmlImgStyle1">
-                  <img src="../assets/statusNum.jpg" style="width:100%" />
-                </div>
-              </div> -->
             </div>
           </div>
           <div style="position:fixed; right:100px; width:20%; margin-top:-100px;">
@@ -536,50 +747,45 @@
 </template>
 
 <script>
+import { Message } from "element-ui";
 export default {
   data() {
     return {
       catalogHtmlData: [
-        { index: "c0", name: "html文件中，doctype有什么作用", i: "0" },
+        { index: "c0", name: "js数据类型有哪些", i: "0" },
         {
           index: "c1",
-          name: "Quirks是什么？他和Standards模式有什么区别？",
+          name: "js数据类型转换",
           i: "1",
         },
-        { index: "c2", name: "img标签的alt和title有何不同", i: "2" },
-        { index: "c3", name: "strong和em有何异同？", i: "3" },
-        { index: "c4", name: "渐进增强和优雅降级不同", i: "4" },
+        { index: "c2", name: "js判断数据类型", i: "2" },
+        { index: "c3", name: "js有哪些内置对象？", i: "3" },
+        { index: "c4", name: "null和undefined区别", i: "4" },
         {
           index: "c5",
-          name: "描述以下cookie、sessionStorage和localStorage区别",
+          name: "js创建对象的几种方式",
           i: "5",
         },
-        { index: "c6", name: "简述以下src和href的区别", i: "6" },
+        { index: "c6", name: "事件捕获", i: "6" },
         {
           index: "c7",
-          name: "从用户刷新页面开始，一次js请求会可以在哪些地方进行缓存处理",
+          name: "事件冒泡",
           i: "7",
         },
-        { index: "c8", name: "html语义化", i: "8" },
-        { index: "c9", name: "SEO的理解", i: "9" },
-        { index: "c10", name: "iframe优缺点", i: "10" },
-        { index: "c11", name: "TCP三次握手", i: "11" },
-        { index: "c12", name: "TCP四次挥手", i: "12" },
-        { index: "c13", name: "TCP和UDP区别", i: "13" },
+        { index: "c8", name: "var、let、const区别", i: "8" },
+        { index: "c9", name: "什么是对象解构", i: "9" },
+        { index: "c10", name: "模块化", i: "10" },
+        { index: "c11", name: "几种常见的模块规范", i: "11" },
+        { index: "c12", name: "什么是Set对象，它是如何工作的？", i: "12" },
+        { index: "c13", name: "===和==区别", i: "13" },
         {
           index: "c14",
-          name: "什么是BOM以及常用的BOM属性对象方法有哪些",
+          name: "日期和时间戳转换",
           i: "14",
         },
-        { index: "c15", name: "浏览器缓存", i: "15" },
-        {
-          index: "c16",
-          name: "从地址栏输入一个url，到这个页面呈现出来，中间发生什么",
-          i: "16",
-        },
-        { index: "c17", name: "post和get区别", i: "17" },
-        { index: "c18", name: "web前端优化常见方法", i: "18" },
-        { index: "c19", name: "状态码", i: "19" },
+        { index: "c15", name: "new一个对象具体发生了什么", i: "15" },
+        { index: "c16", name: "自己定义一个new方法", i: "16" },
+        { index: "c17", name: "arguments详解", i: "17" },
       ],
       itemIndex: "",
       typeofValue: "",
@@ -645,6 +851,7 @@ export default {
       ],
       prototypeCallGrammer: "Object.prototype.toString.call(***)",
       prototypeCallValue: "",
+      isShowTimeToDate: false,
     };
   },
   mounted() {
@@ -720,6 +927,46 @@ export default {
           : type === "o8"
           ? `Object.prototype.toString.call({})`
           : `Object.prototype.toString.call(${value})`;
+    },
+
+    //处理事件冒泡（捕获）父元素
+    handleFather(type) {
+      if (type === "true") {
+        Message.success("parent");
+      } else {
+        document.getElementById("parentId").addEventListener(
+          "click",
+          function () {
+            Message.success("parent");
+          },
+          true
+        );
+      }
+    },
+
+    //处理事件冒泡（捕获）子元素
+    handleChild(type) {
+      if (type === "true") {
+        Message.success("child");
+      } else {
+        document.getElementById("childId").addEventListener(
+          "click",
+          function () {
+            Message.success("child");
+          },
+          true
+        );
+      }
+    },
+
+    //
+    handleShowTimetoDate() {
+      this.isShowTimeToDate = !this.isShowTimeToDate;
+      // this.$notify({
+      //   title: "HTML 片段",
+      //   dangerouslyUseHTMLString: true,
+      //   message: "<strong>这是 <i>HTML</i> 片段</strong>",
+      // });
     },
   },
 };

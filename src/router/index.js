@@ -2,9 +2,12 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import homePage from '../views/homePage.vue';
 import LearnCSS from '../views/Learn.vue';
-import LearnhtmlAndCss from "../views/LearnhtmlAndCss.vue"
-import JsBasics from "../views/JsBasics.vue"
-import JsAdvanced from "../views/JsAdvanced/JsAdvanced.vue"
+import JsAdvanced from "../views/JsAdvanced/JsAdvanced.vue";
+import LearnhtmlAndCss from "../views/LearnhtmlAndCss.vue";
+import JsBasics from "../views/JsBasics.vue";
+import DesignPatterns from "../views/DesignPatterns.vue";
+import ExecutionMechanism from "../views/ExecutionMechanism.vue";
+import arrayMethods from "../views/arrayMethods.vue"
 
 Vue.use(VueRouter)
 
@@ -34,6 +37,21 @@ const routes = [
     name: 'jsAdvanced',
     component: JsAdvanced
   },
+  {
+    path: '/designPatterns',
+    name: 'designPatterns',
+    component: DesignPatterns
+  },
+  {
+    path: '/executionMechanism',
+    name: 'executionMechanism',
+    component: ExecutionMechanism
+  },
+  {
+    path: '/arrayMethods',
+    name: 'arrayMethods',
+    component: arrayMethods
+  }
 ]
 
 const router = new VueRouter({
