@@ -39,7 +39,12 @@
               </div>
               <el-divider></el-divider>
               <div id="c0" style="margin:20px 0px;">
-                <div class="fontTitle">第一章&nbsp;&nbsp;数组篇</div>
+                <div style="display:flex">
+                  <div style="margin: 2px 7px 0px 0px;">
+                    <img src="../assets/title_2.png" />
+                  </div>
+                  <div class="fontTitle">第一章&nbsp;&nbsp;数组篇</div>
+                </div>
               </div>
               <div id="c1" style="margin:20px 0px;">
                 <div style="display:flex">
@@ -235,7 +240,7 @@
                   <div style="margin: 6px 7px 0px 0px;">
                     <img src="../assets/light.png" />
                   </div>
-                  <h4>indexOf和lastindexOf</h4>
+                  <h4>indexOf和lastIndexOf</h4>
                 </div>
                 <div class="fontIndent">
                   <p>
@@ -256,7 +261,7 @@
                     <p>
                       <code>arr.indexOf(11);//-1</code>
                     </p>
-                    <p>lastindexOf同理</p>
+                    <p>lastIndexOf同理</p>
                   </el-card>
                 </div>
               </div>
@@ -642,6 +647,148 @@
                   </el-card>
                 </div>
               </div>
+              <div id="c19" style="margin:20px 0px;">
+                <div style="display:flex">
+                  <div style="margin: 3px 4px 0px 0px;">
+                    <img src="../assets/title_2.png" />
+                  </div>
+                  <div class="fontTitle">第二章&nbsp;&nbsp;字符串篇</div>
+                </div>
+              </div>
+              <div id="c20" style="margin:20px 0px;">
+                <div style="display:flex">
+                  <div style="margin: 6px 7px 0px 0px;">
+                    <img src="../assets/light.png" />
+                  </div>
+                  <h4>查找字符串中的字符串</h4>
+                </div>
+                <div class="fontIndent">
+                  <p>①indexOf/lastIndexOf</p>
+                  <p>
+                    用法和数组中indexOf/lastIndexOf用法相同，不过多写出来，同样存在两个参数第一个为目标值，第二个为检索起始位置。
+                    <code>str.indexOf('...')</code>
+                  </p>
+                  <p>②search</p>
+                  <p>search方法搜索特定值的字符串，并返回匹配的位置。</p>
+                  <p>
+                    语法：
+                    <code>str.search(str1)</code>
+                  </p>
+                  <p>search与indexOf不同点在于，search没有第二个参数，indexOf中第一个参数没办法设置正则表达式。</p>
+                </div>
+              </div>
+              <div id="c21" style="margin:20px 0px;">
+                <div style="display:flex">
+                  <div style="margin: 6px 7px 0px 0px;">
+                    <img src="../assets/light.png" />
+                  </div>
+                  <h4>提取部分字符串</h4>
+                </div>
+                <div class="fontIndent">
+                  <p>①slice</p>
+                  <p>
+                    字符串中的slice方法同数组中的用法相同，同样存在两个参数，具体可看数组
+                    <code>str.slice(start, end);</code>
+                  </p>
+                  <p>②substring</p>
+                  <p>
+                    substring方法类似于slice，不同点在于，substring不支持负数参数；
+                    <code>str.substring(start, end);</code>
+                  </p>
+                  <p>③substr</p>
+                  <p>同样，substr方法类似于slice，不同点在于，substr方法的第二个参数表示提取字符串的长度，而slice表示结束索引位置。</p>
+                  <p>
+                    <code>str.substr(start, length);</code>
+                  </p>
+                </div>
+              </div>
+              <div id="c22" style="margin:20px 0px;">
+                <div style="display:flex">
+                  <div style="margin: 6px 7px 0px 0px;">
+                    <img src="../assets/light.png" />
+                  </div>
+                  <h4>替换字符串内容（replace）</h4>
+                </div>
+                <div class="fontIndent">
+                  <p>
+                    replace方法不会改变调用他的字符串，它返回的是新字符串。
+                    <code>str.replace(target, value);</code>
+                  </p>
+                  <p>默认，replace()只替换首个匹配的字符串；</p>
+                  <p>
+                    如需执行对大小写不敏感匹配，需要利用正则表达式
+                    <code>str.replace(/target/i, value);</code>
+                  </p>
+                  <p>
+                    如需替换所有匹配信息，同样需要利用正则表达式
+                    <code>str.replace(/target/g, value);</code>
+                  </p>
+                </div>
+              </div>
+              <div id="c23" style="margin:20px 0px;">
+                <div style="display:flex">
+                  <div style="margin: 6px 7px 0px 0px;">
+                    <img src="../assets/light.png" />
+                  </div>
+                  <h4>字符串转换为大写/小写</h4>
+                </div>
+                <div class="fontIndent">
+                  <p>①字符串转换为大写(toUpperCase)</p>
+                  <p>
+                    <code>let str = "gengtian";</code>
+                  </p>
+                  <p>
+                    <code>let str1 = str.toUpperCase(); //"GENGTIAN"</code>
+                  </p>
+                  <p>②字符串转换为小写(toLowerCase)</p>
+                  <p>
+                    <code>let str = "GENGTIAN";</code>
+                  </p>
+                  <p>
+                    <code>let str1 = str.toLowerCase(); //"gengtian"</code>
+                  </p>
+                </div>
+              </div>
+              <div id="c24" style="margin:20px 0px;">
+                <div style="display:flex">
+                  <div style="margin: 6px 7px 0px 0px;">
+                    <img src="../assets/light.png" />
+                  </div>
+                  <h4>连接两个或多个字符串(concat)</h4>
+                </div>
+                <div class="fontIndent">
+                  <p>用法同数组</p>
+                  <p>
+                    <code>str.concat(str1, str2, str3, ...)</code>
+                  </p>
+                </div>
+              </div>
+              <div id="c25" style="margin:20px 0px;">
+                <div style="display:flex">
+                  <div style="margin: 6px 7px 0px 0px;">
+                    <img src="../assets/light.png" />
+                  </div>
+                  <h4>删除字符串两端的空白符(trim)</h4>
+                </div>
+                <div class="fontIndent">
+                  <p>
+                    <code>str.trim()</code>
+                  </p>
+                </div>
+              </div>
+              <div id="c26" style="margin:20px 0px;">
+                <div style="display:flex">
+                  <div style="margin: 6px 7px 0px 0px;">
+                    <img src="../assets/light.png" />
+                  </div>
+                  <h4>提取字符串字符</h4>
+                </div>
+                <div class="fontIndent">
+                  <p>
+                    <code>str.trim()</code>
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
           <div style="position:fixed; right:100px; width:20%; margin-top:-100px;">
@@ -718,6 +865,14 @@ export default {
         { index: "c16", name: "every、some", i: "16" },
         { index: "c17", name: "find、findIndex", i: "17" },
         { index: "c18", name: "reduce", i: "18" },
+        { index: "c19", name: "字符串篇", i: "19" },
+        { index: "c20", name: "查找字符串中的字符串", i: "20" },
+        { index: "c21", name: "提取部分字符串", i: "21" },
+        { index: "c22", name: "替换字符串内容", i: "22" },
+        { index: "c23", name: "字符串转换为大写/小写", i: "23" },
+        { index: "c24", name: "连接两个或多个字符串", i: "24" },
+        { index: "c25", name: "删除字符串两端的空白符", i: "25" },
+        { index: "c26", name: "提取字符串字符", i: "26" },
       ],
       itemIndex: "",
     };
