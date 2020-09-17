@@ -142,6 +142,12 @@ export default {
           cardRoute: "/jsBasicsInterview",
         },
         {
+          title: "js进阶",
+          columnNum: 1,
+          chapterNum: 20,
+          cardRoute: "/jsAdvanced",
+        },
+        {
           title: "前端常见的设计模式",
           columnNum: 1,
           chapterNum: 7,

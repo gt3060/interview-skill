@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import homePage from '../views/homePage.vue';
 import LearnCSS from '../views/Learn.vue';
+import JsAdvanced from "../views/JsAdvanced/JsAdvanced.vue";
 import LearnhtmlAndCss from "../views/LearnhtmlAndCss.vue";
 import JsBasics from "../views/JsBasics.vue";
 import DesignPatterns from "../views/DesignPatterns.vue";
@@ -30,6 +31,11 @@ const routes = [
     path: '/jsBasicsInterview',
     name: 'jsBasicsInterview',
     component: JsBasics
+  },
+  {
+    path: '/jsAdvanced',
+    name: 'jsAdvanced',
+    component: JsAdvanced
   },
   {
     path: '/designPatterns',
