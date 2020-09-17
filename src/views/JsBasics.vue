@@ -733,7 +733,7 @@
                     class="radiuStyle"
                     :class="itemIndex === item.index ? 'activeRadiuCatalog' : ''"
                   ></div>
-                  <el-tooltip placement="left-start" :content="item.name ">
+                  <el-tooltip placement="left-start" :content="item.name " :open-delay="400">
                     <div class="htmlItemName">{{item.name}}</div>
                   </el-tooltip>
                 </div>

@@ -723,6 +723,7 @@
                     如需替换所有匹配信息，同样需要利用正则表达式
                     <code>str.replace(/target/g, value);</code>
                   </p>
+                  <p>注：利用正则表达式处理字符串的方法还有match</p>
                 </div>
               </div>
               <div id="c23" style="margin:20px 0px;">
@@ -734,19 +735,23 @@
                 </div>
                 <div class="fontIndent">
                   <p>①字符串转换为大写(toUpperCase)</p>
-                  <p>
-                    <code>let str = "gengtian";</code>
-                  </p>
-                  <p>
-                    <code>let str1 = str.toUpperCase(); //"GENGTIAN"</code>
-                  </p>
+                  <el-card>
+                    <p>
+                      <code>let str = "gengtian";</code>
+                    </p>
+                    <p>
+                      <code>let str1 = str.toUpperCase(); //"GENGTIAN"</code>
+                    </p>
+                  </el-card>
                   <p>②字符串转换为小写(toLowerCase)</p>
-                  <p>
-                    <code>let str = "GENGTIAN";</code>
-                  </p>
-                  <p>
-                    <code>let str1 = str.toLowerCase(); //"gengtian"</code>
-                  </p>
+                  <el-card>
+                    <p>
+                      <code>let str = "GENGTIAN";</code>
+                    </p>
+                    <p>
+                      <code>let str1 = str.toLowerCase(); //"gengtian"</code>
+                    </p>
+                  </el-card>
                 </div>
               </div>
               <div id="c24" style="margin:20px 0px;">
@@ -784,8 +789,376 @@
                   <h4>提取字符串字符</h4>
                 </div>
                 <div class="fontIndent">
+                  <p>①charAt</p>
+                  <p>方法返回字符串中指定下标（位置）的字符串。</p>
+                  <el-card>
+                    <p>
+                      <code>let str = "Gengtian"</code>
+                    </p>
+                    <p>
+                      <code>str.charAt(0);//G</code>
+                    </p>
+                  </el-card>
+                  <p>②charCodeAt</p>
+                  <p>charCodeAt() 方法返回字符串中指定索引的字符 unicode 编码。</p>
+                </div>
+              </div>
+              <div id="c27" style="margin:20px 0px;">
+                <div style="display:flex">
+                  <div style="margin: 3px 4px 0px 0px;">
+                    <img src="../assets/title_2.png" />
+                  </div>
+                  <div class="fontTitle">第三章&nbsp;&nbsp;归纳</div>
+                </div>
+              </div>
+              <div id="c28" style="margin:20px 0px;">
+                <div style="display:flex">
+                  <div style="margin: 6px 7px 0px 0px;">
+                    <img src="../assets/light.png" />
+                  </div>
+                  <h4>字符串转数组</h4>
+                </div>
+                <div class="fontIndent">
+                  <p>①split</p>
+                  <el-button type="text" @click="toStringToArray">split详见</el-button>
+                  <el-card>
+                    <p>
+                      <code>let str = "gengtian";</code>
+                    </p>
+                    <p>
+                      <code>str.split(''); //["g", "e", "n", "g", "t", "i", "a", "n"]</code>
+                    </p>
+                  </el-card>
+                  <p>②Array.from</p>
+                  <el-button type="text" @click="toArrayFrom">Array.from详见</el-button>
+                </div>
+              </div>
+              <div id="c29" style="margin:20px 0px;">
+                <div style="display:flex">
+                  <div style="margin: 6px 7px 0px 0px;">
+                    <img src="../assets/light.png" />
+                  </div>
+                  <h4>对象或数组转字符串</h4>
+                </div>
+                <div class="fontIndent">
+                  <p>①toString</p>
+                  <p>toString方法能够把每个元素转换成字符串，然后以逗号相连</p>
+                  <el-card>
+                    <p>
+                      <code>let arr = [1,3,4,5,6];</code>
+                    </p>
+                    <p>
+                      <code>arr.toString(); //"1,3,4,5,6"</code>
+                    </p>
+                  </el-card>
+                  <p>②toLocalString()</p>
                   <p>
-                    <code>str.trim()</code>
+                    toLocalString() 方法与 toString() 方法用法基本相同，
+                    主要区别在于 toLocalString() 方法能够使用用户所在地区特定的分隔符把生成的字符串连接起来，形成一个字符串。
+                  </p>
+                  <p>
+                    <code>arr.toLocalString()</code>
+                  </p>
+                  <p>③join</p>
+                  <p class="code">
+                    <code>arr.join('-');//将数组中每个元素按照-进行连接形成一个字符串</code>
+                  </p>
+                  <p>④JSON.stringify</p>
+                  <p class="code">
+                    <code>JSON.stringify(arr);//此时注意，利用此方法数组转字符串会将[]同时转为字符串：JSON.stringify([1,2,3]); "[1,2,3]"</code>
+                  </p>
+                </div>
+              </div>
+              <div id="c30" style="margin:20px 0px;">
+                <div style="display:flex">
+                  <div style="margin: 6px 7px 0px 0px;">
+                    <img src="../assets/light.png" />
+                  </div>
+                  <h4>比较两个数组是否相等</h4>
+                </div>
+                <div class="fontIndent">
+                  <p>
+                    js不能直接使用
+                    <code>==</code>或者
+                    <code>===</code>来判断两个数组是否相等，以下两行代码均返回false。
+                  </p>
+                  <el-card>
+                    <p>
+                      <code>[1, 1, 1] == [1, 1, 1];//false</code>
+                    </p>
+                    <p>
+                      <code>[1, 1, 1] === [1, 1, 1];//false</code>
+                    </p>
+                  </el-card>
+                  <p>①toString</p>
+                  <el-card>
+                    <p>
+                      <code>[1, 1, 1].toString() == [1, 1, 1].toString();//true</code>
+                    </p>
+                    <p>
+                      <code>[1, 1, 1].toString() === [1, 1, 1].toString();//true</code>
+                    </p>
+                  </el-card>
+                  <p>如果两个数组的元素相同但是元素位置不同，单纯利用此方法就行不通：</p>
+                  <p class="code">
+                    <code>[1, 2, 3].toString() ===( || == ) [1, 3, 2].toString(); //false</code>
+                  </p>
+                  <p>此时只需先进行排序再进行转字符串判断</p>
+                  <p class="code">
+                    <code>[1, 2, 3].sort().toString() ===( || == ) [1, 3, 2].sort().toString();</code>
+                  </p>
+                  <p>②JSON.stringify</p>
+                  <p class="code">
+                    <code>JSON.stringfity([1,2,3]) === ( || == ) JSON.stringify([1,2,3]);</code>
+                  </p>
+                  <p>同样需要注意地是，如果数组元素相同，位置不同，也需要先用sort方法进行排序再进行转换比较。</p>
+                </div>
+              </div>
+              <div id="c31" style="margin:20px 0px;">
+                <div style="display:flex">
+                  <div style="margin: 6px 7px 0px 0px;">
+                    <img src="../assets/light.png" />
+                  </div>
+                  <h4>数组中交换两个元素的位置</h4>
+                </div>
+                <div class="fontIndent">
+                  <p>①借助第三方变量temp</p>
+                  <p>②splice</p>
+                  <p>其核心思想也都是借助temp实现替换只是利用js方法来实现，看的很高级。</p>
+                  <el-card>
+                    <pre>
+
+                    let arr = [1, 2, 3, 4, 5];
+                    arr.splice(2, 1, ...arr.splice(3, 1, arr[2]));
+                    console.log(arr);//[1, 2, 4, 3, 5]
+                    </pre>
+                  </el-card>
+                  <p>③利用es6解构赋值</p>
+                  <el-card>
+                    <p>
+                      <code>[arr[2], arr[3]] = [arr[3], arr[2]]</code>
+                    </p>
+                  </el-card>
+                </div>
+              </div>
+              <div id="c32" style="margin:20px 0px;">
+                <div style="display:flex">
+                  <div style="margin: 6px 7px 0px 0px;">
+                    <img src="../assets/light.png" />
+                  </div>
+                  <h4>数组中元素的删除</h4>
+                </div>
+                <div class="fontIndent">
+                  <p class="code">
+                    <code>let arr = [0, 1, 2, 3, 4, 5]</code>
+                  </p>
+                  <p>①delete</p>
+                  <p>
+                    <code>delete arr[0];//[empty, 1, 2, 3, 4, 5]</code>
+                  </p>
+                  <p>可发现，利用delete删除数组元素，只是单纯删除数组中该位置的元素，但是，长度仍保持不变。</p>
+                  <p>②pop删除数组中最后一个元素</p>
+                  <p>
+                    <code>arr.pop();//[0, 1, 2, 3, 4]</code>
+                  </p>
+                  <p>③shift删除数组中第一个元素</p>
+                  <p>
+                    <code>arr.shift();//[1, 2, 3, 4, 5]</code>
+                  </p>
+                  <p>④splice可删除数组中间指定位数指定个数元素</p>
+                  <p>
+                    <code>arr.splice(2,1);//[0, 1, 3, 4, 5]</code>
+                  </p>
+                  <p>⑤filter利用filter过滤掉出部分满足条件的元素，不改变原数组，产生新数组</p>
+                  <p>
+                    <code>let arr1 = arr.filter(item => item>3);//arr1:[4, 5] arr: [0, 1, 2, 3, 4, 5]</code>
+                  </p>
+                  <p>同样可以利用高级函数和splice结合进行根据条件进行删除。</p>
+                </div>
+              </div>
+              <div id="c33" style="margin:20px 0px;">
+                <div style="display:flex">
+                  <div style="margin: 6px 7px 0px 0px;">
+                    <img src="../assets/light.png" />
+                  </div>
+                  <h4>查询数组中最大元素</h4>
+                </div>
+                <div class="fontIndent">
+                  <p class="code">
+                    <code>Math.max.apply(null,arr)</code>
+                  </p>
+                </div>
+              </div>
+              <div id="c34" style="margin:20px 0px;">
+                <div style="display:flex">
+                  <div style="margin: 6px 7px 0px 0px;">
+                    <img src="../assets/light.png" />
+                  </div>
+                  <h4>多个数组合并</h4>
+                </div>
+                <div class="fontIndent">
+                  <p>①解构</p>
+                  <p class="code">
+                    <code>let arr = [...arr1, ...arr2, ...arr3]</code>
+                  </p>
+                  <p>②concat</p>
+                  <p class="code">
+                    <code>let arr = arr1.concat(arr2).concat(arr3);</code>
+                  </p>
+                </div>
+              </div>
+              <div id="c35" style="margin:20px 0px;">
+                <div style="display:flex; margin-bottom:25px">
+                  <div style="margin: 6px 7px 0px 0px;">
+                    <img src="../assets/light.png" />
+                  </div>
+                  <h4>数组去重</h4>
+                </div>
+                <p class="code">已知数组arr：[1, 2, 32, 2, "a", "b", "a", "2", 2, 10, 9]</p>
+                <el-card>
+                  <el-collapse v-model="activeName" accordion>
+                    <el-collapse-item name="1">
+                      <template slot="title">
+                        <i class="el-icon-scissors" style="margin-right:7px"></i>Es6 Set
+                      </template>
+                      <div style="line-height:40px;">
+                        <p>
+                          语法：
+                          <code>Array.from(new Set(arr))</code>
+                        </p>
+                        <p>
+                          同样，可以简写:
+                          <code>[...new Set(arr)]</code>
+                        </p>
+                        <el-divider></el-divider>
+                        <el-button type="text" @click="textArrayFromSet">测试</el-button>
+                        <p>测试结果:{{JSON.stringify(finalArrayFromSetData)}}</p>
+                      </div>
+                    </el-collapse-item>
+                    <el-collapse-item name="2">
+                      <template slot="title">
+                        <i class="el-icon-scissors" style="margin-right:7px"></i>for+for+splice
+                      </template>
+                      <div style="line-height:40px;">
+                        <p>这里说明一下，对数组的遍历同样可以使用，map、forEach</p>
+                        <el-card>
+                          <pre>
+
+                    for(let i = 0; i &lt; arr.length; i++ ){
+                      for(let j = i + 1; j &lt; arr.length; j++){
+                        if(arr[i] === arr[j]){
+                          arr.splice(j,1);
+                          j--;
+                        }
+                      }
+                    }
+                        </pre>
+                        </el-card>
+                        <el-divider></el-divider>
+                        <el-button type="text" @click="textForSplice">测试</el-button>
+                        <p>测试结果:{{JSON.stringify(finalForSpliceData)}}</p>
+                      </div>
+                    </el-collapse-item>
+                    <el-collapse-item name="3">
+                      <template slot="title">
+                        <i class="el-icon-scissors" style="margin-right:7px"></i>indexOf
+                      </template>
+                      <div style="line-height:40px;">
+                        <el-card>
+                          <pre>
+                      
+                      let arr1 = [];
+                      for(let i of arr){
+                        if(arr1.indexOf(i) === -1){
+                          arr1.push(i))
+                        }
+                      }
+                          </pre>
+                        </el-card>
+                        <el-divider></el-divider>
+                        <el-button type="text" @click="textForIndexOf">测试</el-button>
+                        <p>测试结果:{{JSON.stringify(finalForIndexOfData)}}</p>
+                      </div>
+                    </el-collapse-item>
+                    <el-collapse-item name="4">
+                      <template slot="title">
+                        <i class="el-icon-scissors" style="margin-right:7px"></i>sort
+                      </template>
+                      <div style="line-height:40px;">
+                        <el-card>
+                          <pre>
+                      
+                      arr.sort();
+                      let arr1 = [];
+                      for(let i = 0; i &lt; arr.length; i++){
+                        if(arr[i] !== arr[i+1]){
+                          arr1.push(arr[i])
+                        }
+                      }
+                          </pre>
+                        </el-card>
+                        <p>此种方式更适合于数组中每个元素都为数字，否则会出现排列后:[2, '2', 2]这种情况，需要进一步排序</p>
+                        <el-divider></el-divider>
+                        <el-button type="text" @click="textForSort">测试</el-button>
+                        <p>测试结果:{{JSON.stringify(finalForSortData)}}</p>
+                      </div>
+                    </el-collapse-item>
+                    <el-collapse-item name="5">
+                      <template slot="title">
+                        <i class="el-icon-scissors" style="margin-right:7px"></i>filter+indexOf
+                      </template>
+                      <div style="line-height:40px;">
+                        <el-card>
+                          <pre>
+                      
+                      let arr1 = arr.filter((item, index, array) => array.indexOf(item) === index)
+                          </pre>
+                        </el-card>
+                        <el-divider></el-divider>
+                        <el-button type="text" @click="textFilterIndexOf">测试</el-button>
+                        <p>测试结果:{{JSON.stringify(finalFilterIndexOfData)}}</p>
+                      </div>
+                    </el-collapse-item>
+                    <el-collapse-item name="6">
+                      <template slot="title">
+                        <i class="el-icon-scissors" style="margin-right:7px"></i>reduce+includes
+                      </template>
+                      <div style="line-height:40px;">
+                        <el-card>
+                          <pre>
+                      
+                      let arr1 = arr.reduce((pre, cur) => {
+                        !pre.includes(cur) &amp;&amp; pre.push(cur);
+                        return pre
+                      }, [])
+                          </pre>
+                        </el-card>
+                        <el-divider></el-divider>
+                        <el-button type="text" @click="textReduceIncludes">测试</el-button>
+                        <p>测试结果:{{JSON.stringify(finalReduceIncludesData)}}</p>
+                      </div>
+                    </el-collapse-item>
+                  </el-collapse>
+                </el-card>
+              </div>
+              <div id="c36" style="margin:20px 0px;">
+                <div style="display:flex">
+                  <div style="margin: 6px 7px 0px 0px;">
+                    <img src="../assets/light.png" />
+                  </div>
+                  <h4>数组深拷贝浅拷贝</h4>
+                </div>
+                <div class="fontIndent">
+                  <p>①什么是深拷贝和浅拷贝</p>
+                  <p>
+                    在js中，万物皆为对象，对象中分为原始类型和引用类型，原始类型保存在栈中引用类型保存在
+                    栈和堆中，其中指针保存在栈，指针指向的数据保存在堆中，故有：深拷贝不仅拷贝栈中数据还拷贝堆中数据；
+                    而浅拷贝只拷贝栈中数据，即指针。
+                  </p>
+                  <p>②如何实现深拷贝</p>
+                  <p class="code">
+                    深拷贝方法有：
+                    <code>slice、concat、map、es6扩展运算符实现、JOSN.stringify(JSON.parse(arr))</code>
                   </p>
                 </div>
               </div>
@@ -811,7 +1184,7 @@
                     class="radiuStyle"
                     :class="itemIndex === item.index ? 'activeRadiuCatalog' : ''"
                   ></div>
-                  <el-tooltip placement="left-start" :content="item.name ">
+                  <el-tooltip placement="left-start" :content="item.name " :open-delay="400">
                     <div class="htmlItemName">{{item.name}}</div>
                   </el-tooltip>
                 </div>
@@ -830,42 +1203,26 @@ export default {
   data() {
     return {
       catalogHtmlData: [
-        { index: "c0", name: "数组篇", i: "0" },
-        {
-          index: "c1",
-          name: "push和pop",
-          i: "1",
-        },
+        { index: "c0", name: "1.数组篇", i: "0" },
+        { index: "c1", name: "push和pop", i: "1" },
         { index: "c2", name: "shift和unshift", i: "2" },
         { index: "c3", name: "concat", i: "3" },
         { index: "c4", name: "splice", i: "4" },
-        {
-          index: "c5",
-          name: "slice",
-          i: "5",
-        },
+        { index: "c5", name: "slice", i: "5" },
         { index: "c6", name: "split", i: "6" },
-        {
-          index: "c7",
-          name: "reverse",
-          i: "7",
-        },
+        { index: "c7", name: "reverse", i: "7" },
         { index: "c8", name: "indexOf和lastindexOf", i: "8" },
         { index: "c9", name: "includes", i: "9" },
         { index: "c10", name: "fill", i: "10" },
         { index: "c11", name: "Array.from", i: "11" },
         { index: "c12", name: "keys、values、entries", i: "12" },
         { index: "c13", name: "map、forEach", i: "13" },
-        {
-          index: "c14",
-          name: "filter",
-          i: "14",
-        },
+        { index: "c14", name: "filter", i: "14" },
         { index: "c15", name: "sort", i: "15" },
         { index: "c16", name: "every、some", i: "16" },
         { index: "c17", name: "find、findIndex", i: "17" },
         { index: "c18", name: "reduce", i: "18" },
-        { index: "c19", name: "字符串篇", i: "19" },
+        { index: "c19", name: "2.字符串篇", i: "19" },
         { index: "c20", name: "查找字符串中的字符串", i: "20" },
         { index: "c21", name: "提取部分字符串", i: "21" },
         { index: "c22", name: "替换字符串内容", i: "22" },
@@ -873,8 +1230,27 @@ export default {
         { index: "c24", name: "连接两个或多个字符串", i: "24" },
         { index: "c25", name: "删除字符串两端的空白符", i: "25" },
         { index: "c26", name: "提取字符串字符", i: "26" },
+        { index: "c27", name: "3.归纳", i: "27" },
+        { index: "c28", name: "字符串转数组", i: "28" },
+        { index: "c29", name: "对象或数组转字符串", i: "29" },
+        { index: "c30", name: "比较两个数组是否相等", i: "30" },
+        { index: "c31", name: "数组中交换两个元素的位置", i: "31" },
+        { index: "c32", name: "数组中元素的删除", i: "32" },
+        { index: "c33", name: "查询数组中最大元素", i: "33" },
+        { index: "c34", name: "多个数组合并", i: "34" },
+        { index: "c35", name: "数组去重", i: "35" },
+        { index: "c36", name: "数组深拷贝浅拷贝", i: "36" },
       ],
       itemIndex: "",
+      tabPosition: "left",
+      activeName: ["1"],
+      textData: [1, 2, 32, 2, "a", "b", "a", "2", 2, 10, 9],
+      finalArrayFromSetData: [],
+      finalForSpliceData: [],
+      finalForIndexOfData: [],
+      finalForSortData: [],
+      finalFilterIndexOfData: [],
+      finalReduceIncludesData: [],
     };
   },
   mounted() {
@@ -916,12 +1292,77 @@ export default {
       window.open("https://juejin.im/post/6844904025587089416");
     },
 
-    btnTest() {
-      let arr = [1, 5, 8, 3, 23, 555];
-      let arr1 = arr.forEach((item, index, record) => {
-        record[index] = item + 1;
-      });
-      console.log(arr1, arr);
+    toStringToArray() {
+      this.itemIndex = "c6";
+      document.getElementById("c6").scrollIntoView();
+    },
+
+    toArrayFrom() {
+      this.itemIndex = "c11";
+      document.getElementById("c11").scrollIntoView();
+    },
+
+    //利用Set进行数组去重
+    textArrayFromSet() {
+      this.finalArrayFromSetData = Array.from(new Set(this.textData));
+    },
+
+    //利用for+for+splice进行数组去重
+    textForSplice() {
+      let arr = this.textData;
+      for (let i = 0; i < arr.length; i++) {
+        for (let j = i + 1; j < arr.length; j++) {
+          if (arr[i] === arr[j]) {
+            arr.splice(j, 1);
+            j--;
+          }
+        }
+      }
+      this.finalForSpliceData = arr;
+    },
+
+    //利用for+indexOf进行数组去重
+    textForIndexOf() {
+      let arr = this.textData;
+      let arr1 = [];
+      for (let i of arr) {
+        if (arr1.indexOf(i) === -1) {
+          arr1.push(i);
+        }
+      }
+      this.finalForIndexOfData = arr1;
+    },
+
+    //利用for+sort进行数组去重
+    textForSort() {
+      let arr = this.textData;
+      arr.sort((x, y) => x - y);
+      let arr1 = [];
+      for (let i = 0; i < arr.length; i++) {
+        if (arr[i] !== arr[i + 1]) {
+          arr1.push(arr[i]);
+        }
+      }
+      this.finalForSortData = arr1;
+    },
+
+    //利用filter+indexOf进行数组去重
+    textFilterIndexOf() {
+      let arr = this.textData;
+      let arr1 = arr.filter(
+        (item, index, array) => array.indexOf(item) === index
+      );
+      this.finalFilterIndexOfData = arr1;
+    },
+
+    // 利用reduce+includes进行数组去重
+    textReduceIncludes() {
+      let arr = this.textData;
+      let arr1 = arr.reduce((pre, cur) => {
+        !pre.includes(cur) && pre.push(cur);
+        return pre;
+      }, []);
+      this.finalReduceIncludesData = arr1;
     },
   },
 };
