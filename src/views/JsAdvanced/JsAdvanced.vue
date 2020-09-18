@@ -1,5 +1,5 @@
 <template>
-  <div class="learnhtml">
+  <div class="learnJsAdvanced">
     <el-backtop></el-backtop>
     <div class="learnCard">
       <div class="learnCardContain">
@@ -15,7 +15,7 @@
         </div>
         <div class="titleStyle">
           <div class="titleIconStyle">
-            <img src="@/components/picture/html.jpeg"
+            <img src="@/components/picture/javascript5.jpeg"
                  class="imgStyle" />
           </div>
           <div class="titleFontStyle">
@@ -408,8 +408,8 @@ export default {
 </script>
 
 <style>
-.learnhtml {
-  background-image: linear-gradient(#f3edff, white);
+.learnJsAdvanced {
+  background-image: linear-gradient(#feefe8, white);
 }
 
 .htmlFix {

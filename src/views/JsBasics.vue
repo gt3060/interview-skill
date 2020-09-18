@@ -1,5 +1,5 @@
 <template>
-  <div class="learnhtml">
+  <div class="learnJsBasic">
     <el-backtop></el-backtop>
     <div class="learnCard">
       <div class="learnCardContain">
@@ -973,7 +973,7 @@ export default {
 </script>
 
 <style>
-.learnhtml {
+.learnJsBasic {
   background-image: linear-gradient(#e8fbf2, white);
 }
 
