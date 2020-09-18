@@ -1,5 +1,5 @@
 <template>
-  <div class="learnhtml">
+  <div class="learnArrayMethod">
     <el-backtop></el-backtop>
     <div class="learnCard">
       <div class="learnCardContain">
@@ -1014,7 +1014,10 @@
                   </div>
                   <h4>数组去重</h4>
                 </div>
-                <p class="code">已知数组arr：[1, 2, 32, 2, "a", "b", "a", "2", 2, 10, 9]</p>
+                <p
+                  class="code"
+                  style="margin-bottom:25px;"
+                >已知数组arr：[1, 2, 32, 2, "a", "b", "a", "2", 2, 10, 9]</p>
                 <el-card>
                   <el-collapse v-model="activeName" accordion>
                     <el-collapse-item name="1">
@@ -1369,7 +1372,7 @@ export default {
 </script>
 
 <style>
-.learnhtml {
+.learnArrayMethod {
   background-image: linear-gradient(#f5e5f8, white);
 }
 

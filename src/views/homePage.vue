@@ -86,21 +86,21 @@
             </router-link>
           </div>
           <div class="main-mid-card1">
-            <router-link :to="cardData[2].cardRoute">
+            <router-link :to="cardData[6].cardRoute">
               <vueCard
-                img="./picture/javascript1.jpeg"
-                :columnNum="cardData[2].columnNum"
-                :chapterNum="cardData[2].chapterNum"
+                img="./picture/javascript5.jpeg"
+                :columnNum="cardData[6].columnNum"
+                :chapterNum="cardData[6].chapterNum"
               ></vueCard>
               <div>
-                <div class="main-mid-card-font">{{cardData[2].title}}</div>
+                <div class="main-mid-card-font">{{cardData[6].title}}</div>
               </div>
             </router-link>
           </div>
           <div class="main-mid-card1">
             <router-link :to="cardData[2].cardRoute">
               <vueCard
-                img="./picture/javascript1.jpeg"
+                img="./picture/javascript6.jpeg"
                 :columnNum="cardData[2].columnNum"
                 :chapterNum="cardData[2].chapterNum"
               ></vueCard>
@@ -141,12 +141,7 @@ export default {
           chapterNum: 17,
           cardRoute: "/jsBasicsInterview",
         },
-        {
-          title: "js进阶",
-          columnNum: 1,
-          chapterNum: 20,
-          cardRoute: "/jsAdvanced",
-        },
+
         {
           title: "前端常见的设计模式",
           columnNum: 1,
@@ -161,9 +156,15 @@ export default {
         },
         {
           title: "数组与字符串",
-          columnNum: 1,
-          chapterNum: 7,
+          columnNum: 3,
+          chapterNum: 33,
           cardRoute: "/arrayMethods",
+        },
+        {
+          title: "js进阶",
+          columnNum: 2,
+          chapterNum: 2,
+          cardRoute: "/jsAdvanced",
         },
       ],
     };
