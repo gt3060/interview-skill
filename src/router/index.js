@@ -7,7 +7,8 @@ import LearnhtmlAndCss from "../views/LearnhtmlAndCss.vue";
 import JsBasics from "../views/JsBasics.vue";
 import DesignPatterns from "../views/DesignPatterns.vue";
 import ExecutionMechanism from "../views/ExecutionMechanism.vue";
-import arrayMethods from "../views/arrayMethods.vue"
+import arrayMethods from "../views/arrayMethods.vue";
+import JsPrototype from "../views/JsPrototype/jsPrototype.vue";
 
 Vue.use(VueRouter)
 
@@ -51,6 +52,11 @@ const routes = [
     path: '/arrayMethods',
     name: 'arrayMethods',
     component: arrayMethods
+  },
+  {
+    path: '/jsPrototype',
+    name: 'jsPrototype',
+    component: JsPrototype
   }
 ]
 

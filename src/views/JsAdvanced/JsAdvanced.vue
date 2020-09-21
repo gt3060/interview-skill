@@ -19,7 +19,7 @@
                  class="imgStyle" />
           </div>
           <div class="titleFontStyle">
-            <span style="font-size:25px">JS篇(进阶)</span>
+            <span style="font-size:25px">JS篇(进阶四)</span>
             <el-divider></el-divider>
             <p>此篇主要包含，JS更深入或者更难的知识点的理解与总结</p>
           </div>

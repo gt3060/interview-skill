@@ -98,14 +98,14 @@
             </router-link>
           </div>
           <div class="main-mid-card1">
-            <router-link :to="cardData[2].cardRoute">
+            <router-link :to="cardData[7].cardRoute">
               <vueCard
                 img="./picture/javascript6.jpeg"
-                :columnNum="cardData[2].columnNum"
-                :chapterNum="cardData[2].chapterNum"
+                :columnNum="cardData[7].columnNum"
+                :chapterNum="cardData[7].chapterNum"
               ></vueCard>
               <div>
-                <div class="main-mid-card-font">{{cardData[2].title}}</div>
+                <div class="main-mid-card-font">{{cardData[7].title}}</div>
               </div>
             </router-link>
           </div>
@@ -165,6 +165,12 @@ export default {
           columnNum: 2,
           chapterNum: 2,
           cardRoute: "/jsAdvanced",
+        },
+        {
+          title: "原型及原型链",
+          columnNum: 2,
+          chapterNum: 2,
+          cardRoute: "/jsPrototype",
         },
       ],
     };
