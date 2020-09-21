@@ -711,6 +711,189 @@
                   </ul>
                 </div>
               </div>
+              <div id="c18">
+                <div style="display:flex">
+                  <div style="margin-right:7px;">
+                    <img src="../assets/light.png" />
+                  </div>
+                  <h4>18.for...of和for...in区别</h4>
+                </div>
+                <div class="fontIndent">
+                  <ul>
+                    <li>for...in是遍历数组的索引，for...of是遍历数组的每个元素值；</li>
+                    <li>for...of遍历的只是数组内元素，不包括原型方法和索引；for...in则全部遍历出来；</li>
+                    <li>for...in遍历数组的index为String类型（“0”，“1”，“2”），并不是数字（0，1，2）；</li>
+                    <li>因此，for...in更适合遍历对象，而for...of更适合遍历数组。</li>
+                  </ul>
+                  <el-card>
+                    <pre>
+                  
+                  //for...in
+                  //对象
+                  Object.prototype.method = function(){
+                    console.log(this);
+                  }
+                  let myObject = {
+                    a: 1,
+                    b: 2,
+                    c: 3
+                  }
+                  for(let key in myObject){
+                    console.log(key);//每次遍历出结果为: a, b, c, method
+                  }
+                  //数组
+                  Array.prototype.method = function(){
+                    console.log(this);
+                  }
+                  let arr = [1, 2, 4];
+                  arr.name = "数组";
+                  for(let key in arr){
+                    console.log(key);//每次遍历出结果为：0, 1, 2, name, method
+                  }
+                  //for...of
+                  //对象
+                  for(let key of myObject){
+                    console.log(key);//报错，因为for...of不允许遍历对象
+                  }
+                  //数组
+                  for(let key of arr){
+                    console.log(key);//1, 2, 4
+                  }
+                    </pre>
+                  </el-card>
+                </div>
+              </div>
+              <div id="c19">
+                <div style="display:flex">
+                  <div style="margin-right:7px;">
+                    <img src="../assets/light.png" />
+                  </div>
+                  <h4>19.JSON.stringify参数</h4>
+                </div>
+                <div class="fontIndent">
+                  <p>JSON.stringify一共有三个参数</p>
+                  <p>第一个参数data值，</p>
+                  <p>第二个参数可以为过滤函数，也可以是一个数组，</p>
+                  <p>第三个参数，用来控制结果字符串里面的间距。</p>
+                  <p>具体如下：</p>
+                  <p>①只传第一个参数data</p>
+                  <p class="code">
+                    <code>let data = {name:"gengtian", info:{age:18, sex:"male"}}</code>
+                  </p>
+                  <p class="code">
+                    <code>JSON.stringify(data);// {"name":"gengtian", "info":{"age":18, "sex":"male"}}</code>
+                  </p>
+                  <p>需要注意的是：stringify对data里的数据格式有一些要求：</p>
+                  <ul>
+                    <li>非数组对象的属性，不能保证以特定的顺序出现在序列化后的字符串中；</li>
+                    <li>布尔值、数字、字符串的包装对象在序列化过程中会自动转换成对应的原始值；</li>
+                    <li>
+                      undefined、任意的函数以及Symbol值，在序列化过程中会被忽略（出现在非数组对象的属性中）或者
+                      被转换成null（出现在数组中时候）。
+                    </li>
+                    <li>所有以 symbol 为属性键的属性都会被完全忽略掉，即便 replacer 参数中强制指定包含了它们;</li>
+                    <li>不可枚举的属性会被忽略。</li>
+                  </ul>
+                  <p>②传两个参数</p>
+                  <p>
+                    第二个参数可以为一个过滤函数，也可以为一个数组，当为数组时被序列化的值的每个属性都会经过该函数的转换和处理，
+                    当为数组时则只有包含在这个数组中的属性名才会被序列化到最终的 JSON 字符串中。
+                  </p>
+                  <p>过滤函数:</p>
+                  <el-card>
+                    <pre>
+                  var data = {
+                    name:"niuzai",
+                    info:{
+                      age:18,
+                      sex:"male"
+                    }
+                  };
+                  JSON.stringify(data, function(key, val){
+                    console.log("key is %s", key);
+                    console.log("val is %s", typeof(val));
+                    return val;
+                  });
+                  // key is 
+                  // val is object {name: "niuzai", info: {…}}
+                  // key is name
+                  // val is string niuzai
+                  // key is info
+                  // val is object {age: 18, sex: "male"}
+                  // key is age
+                  // val is number 18
+                  // key is sex
+                  // val is string male
+                    </pre>
+                  </el-card>
+                  <p>数组</p>
+                  <p>
+                    <code>JSON.stringify(data, ["name", "info", "sex"]);</code>
+                  </p>
+                  <p>
+                    <code>//age由于不在列表里，所以没被序列化</code>
+                  </p>
+                  <p>
+                    <code>//"{"name":"niuzai","info":{"sex":"male"}}</code>
+                  </p>
+                  <p>③三个参数</p>
+                  <p>
+                    第三参数space用来控制结果字符串里面的间距。如果是一个数字, 则在字符串化时每一级别会比上一级别缩进多这个数字值的空格（最多10个空格）；
+                    如果是一个字符串，则每一级别会比上一级别多缩进用该字符串（或该字符串的前十个字符）
+                  </p>
+                  <p>④toJSON</p>
+                  <p>如果转换对象中包含toJSON方法，那么返回的结果则由他决定</p>
+                  <el-card>
+                    <pre>
+
+                    let obj = {
+                      name:'zhangsan',
+                      toJSON:function(){
+                        return 'customize return value'
+                      }
+                    }
+                    console.log(JSON.stringify(obj))  // "customize return value"
+                    </pre>
+                  </el-card>
+                </div>
+              </div>
+              <div id="c20">
+                <div style="display:flex">
+                  <div style="margin-right:7px;">
+                    <img src="../assets/light.png" />
+                  </div>
+                  <h4>20.小数取整以及保留小数几位</h4>
+                </div>
+                <div class="fontIndent">
+                  <p>①小数取整</p>
+                  <p class="code">
+                    丢弃小数部分，保留整数部分：
+                    <code>parseInt(7/2);//3</code>
+                  </p>
+                  <p class="code">
+                    向上取整，有小数就向上加一：
+                    <code>Math.ceil(7/2);//4</code>
+                  </p>
+                  <p class="code">
+                    四舍五入：
+                    <code>Math.round(7/2);//4</code>
+                  </p>
+                  <p class="code">
+                    向下取整：
+                    <code>Math.floor(7/2);//3</code>
+                  </p>
+                  <p>②保留小数点后两位</p>
+                  <p class="code">
+                    <code>Math.round(num*100)/100;</code>
+                  </p>
+                  <p class="code">
+                    <code>num.toFixed(2);</code>
+                  </p>
+                  <p class="code">
+                    <code>num.replace(/([0-9]+\.[0-9]{2})[0-9]*/,"$1");</code>
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
           <div style="position:fixed; right:100px; width:20%; margin-top:-100px;">
@@ -753,39 +936,26 @@ export default {
     return {
       catalogHtmlData: [
         { index: "c0", name: "js数据类型有哪些", i: "0" },
-        {
-          index: "c1",
-          name: "js数据类型转换",
-          i: "1",
-        },
+        { index: "c1", name: "js数据类型转换", i: "1" },
         { index: "c2", name: "js判断数据类型", i: "2" },
         { index: "c3", name: "js有哪些内置对象？", i: "3" },
         { index: "c4", name: "null和undefined区别", i: "4" },
-        {
-          index: "c5",
-          name: "js创建对象的几种方式",
-          i: "5",
-        },
+        { index: "c5", name: "js创建对象的几种方式", i: "5" },
         { index: "c6", name: "事件捕获", i: "6" },
-        {
-          index: "c7",
-          name: "事件冒泡",
-          i: "7",
-        },
+        { index: "c7", name: "事件冒泡", i: "7" },
         { index: "c8", name: "var、let、const区别", i: "8" },
         { index: "c9", name: "什么是对象解构", i: "9" },
         { index: "c10", name: "模块化", i: "10" },
         { index: "c11", name: "几种常见的模块规范", i: "11" },
         { index: "c12", name: "什么是Set对象，它是如何工作的？", i: "12" },
         { index: "c13", name: "===和==区别", i: "13" },
-        {
-          index: "c14",
-          name: "日期和时间戳转换",
-          i: "14",
-        },
+        { index: "c14", name: "日期和时间戳转换", i: "14" },
         { index: "c15", name: "new一个对象具体发生了什么", i: "15" },
         { index: "c16", name: "自己定义一个new方法", i: "16" },
         { index: "c17", name: "arguments详解", i: "17" },
+        { index: "c18", name: "for...of和for...in区别", i: "18" },
+        { index: "c19", name: "JSON.stringify参数", i: "19" },
+        { index: "c20", name: "小数取整以及保留小数几位", i: "20" },
       ],
       itemIndex: "",
       typeofValue: "",
