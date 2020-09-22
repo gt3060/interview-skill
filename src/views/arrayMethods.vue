@@ -1163,6 +1163,24 @@
                     深拷贝方法有：
                     <code>slice、concat、map、es6扩展运算符实现、JOSN.stringify(JSON.parse(arr))</code>
                   </p>
+                  <p>③手写深拷贝</p>
+                  <el-card>
+                    <pre>
+
+                  function DeepClone(obj){
+                    //判断拷贝对象是，引用类数据类型还是基本数据类型
+                    if(typeof obj == 'object'){
+                      let result = obj.constructor == Array ? [] : {};
+                      for(let i in obj){
+                        result[i] = typeof obj[i] == 'object' ? DeepClone(obj[i]) : obj[i]
+                      }
+                    }else{
+                      let result = obj;
+                    }
+                    return result;
+                  }
+                    </pre>
+                  </el-card>
                 </div>
               </div>
             </div>

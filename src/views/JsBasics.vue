@@ -85,6 +85,12 @@
                     <p>语法：typeof {{typeOfInitValue}}</p>
                     <p>类型：{{typeofValue}}</p>
                   </el-card>
+                  <p>总结（typeof识别类型）：</p>
+                  <ul>
+                    <li>①识别所有值类型（基本数据类型除null）；</li>
+                    <li>②识别函数；</li>
+                    <li>③判断是否是引用类型，只能用来判断，无法识别是哪种引用类型（Object、Array、Math等）。</li>
+                  </ul>
                   <p>
                     因此，要想判断一个对象的正确类型，需要用到
                     <code>instanceof</code>
@@ -473,13 +479,21 @@
                   <li>==称为等值符，当两边类型相同时，直接比较值是否相等，若类型不同，先转化为类型相同的值，再比较</li>
                 </ul>
                 <div class="fontIndent">
-                  <p>针对==比较类型转换规则：</p>
+                  <p>
+                    <strong>针对==比较类型转换规则：</strong>
+                  </p>
                   <ul>
                     <li>若两边是boolean、string、number三者中任意两个进行比较，优先转换为数字进行比较；</li>
                     <li>若两边出现null、undefined，null和undefined除了和自己相等，就彼此相等（一个为null一个为undefined）；</li>
                     <li>NaN == NaN（也返回false）；</li>
                     <li>若一个是对象，另一个是数值或者字符串，则把对象先转换为基础类型再比较，对象转基础类型利用toString或者valueOf方法（Date只能利用toString方法）</li>
                   </ul>
+                  <p>
+                    <strong>何时使用===以及何时使用==</strong>
+                  </p>
+                  <p>①除了==null外其他情况都使用===；</p>
+                  <p>②if(obj.a == null)等同于if(obj.a === null || obj.a === undefined)</p>
+                  <p>③==会发生类型转换，转换规则如上。</p>
                 </div>
               </div>
               <div id="c14">
