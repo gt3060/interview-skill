@@ -146,6 +146,22 @@
                   </el-card>
                 </div>
               </div>
+              <div style="margin:20px 0px;">
+                <div style="display:flex">
+                  <div style="margin-right:7px; margin-top:4px;">
+                    <img src="@/assets/light.png" />
+                  </div>
+                  <h4>6.this的取值</h4>
+                </div>
+                <div class="fontIndent">
+                  <ul>
+                    <li>当作普通函数调用，返回window，this指向最后调用他的对象；</li>
+                    <li>使用call、bind、apply，传入什么，this绑定什么；</li>
+                    <li>作为对象方法调用，this指向这个上级对象；</li>
+                    <li>构造函数调用，通过构造函数创建的对象，this指向这个新对象。</li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         </div>
