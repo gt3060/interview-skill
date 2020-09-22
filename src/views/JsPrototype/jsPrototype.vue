@@ -15,7 +15,7 @@
         </div>
         <div class="titleStyle">
           <div class="titleIconStyle">
-            <img src="@/components/picture/javascript3.jpeg" class="imgStyle" />
+            <img src="@/components/picture/javascript6.jpeg" class="imgStyle" />
           </div>
           <div class="titleFontStyle">
             <span style="font-size:25px">Javascript进阶篇五</span>
