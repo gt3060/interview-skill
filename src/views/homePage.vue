@@ -109,6 +109,30 @@
               </div>
             </router-link>
           </div>
+          <div class="main-mid-card1">
+            <router-link :to="cardData[8].cardRoute">
+              <vueCard
+                img="./picture/javascript7.jpeg"
+                :columnNum="cardData[8].columnNum"
+                :chapterNum="cardData[8].chapterNum"
+              ></vueCard>
+              <div>
+                <div class="main-mid-card-font">{{cardData[8].title}}</div>
+              </div>
+            </router-link>
+          </div>
+          <div class="main-mid-card1">
+            <router-link :to="cardData[9].cardRoute">
+              <vueCard
+                img="./picture/javascript8.jpeg"
+                :columnNum="cardData[9].columnNum"
+                :chapterNum="cardData[9].chapterNum"
+              ></vueCard>
+              <div>
+                <div class="main-mid-card-font">{{cardData[9].title}}</div>
+              </div>
+            </router-link>
+          </div>
         </div>
       </div>
     </div>
@@ -168,8 +192,20 @@ export default {
         },
         {
           title: "原型及原型链",
-          columnNum: 2,
-          chapterNum: 2,
+          columnNum: 1,
+          chapterNum: 6,
+          cardRoute: "/jsPrototype",
+        },
+        {
+          title: "作用域及闭包",
+          columnNum: 1,
+          chapterNum: 6,
+          cardRoute: "/jsClosure",
+        },
+        {
+          title: "原型及原型链",
+          columnNum: 1,
+          chapterNum: 6,
           cardRoute: "/jsPrototype",
         },
       ],

@@ -9,6 +9,7 @@ import DesignPatterns from "../views/DesignPatterns.vue";
 import ExecutionMechanism from "../views/ExecutionMechanism.vue";
 import arrayMethods from "../views/arrayMethods.vue";
 import JsPrototype from "../views/JsPrototype/jsPrototype.vue";
+import JsClosure from "../views/JsClosure/JsClosure.vue";
 
 Vue.use(VueRouter)
 
@@ -57,6 +58,11 @@ const routes = [
     path: '/jsPrototype',
     name: 'jsPrototype',
     component: JsPrototype
+  },
+  {
+    path: '/jsClosure',
+    name: 'jsClosure',
+    component: JsClosure
   }
 ]
 
