@@ -203,10 +203,10 @@ export default {
           cardRoute: "/jsClosure",
         },
         {
-          title: "原型及原型链",
+          title: "继承",
           columnNum: 1,
           chapterNum: 6,
-          cardRoute: "/jsPrototype",
+          cardRoute: "/jsInherit",
         },
       ],
     };
