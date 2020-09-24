@@ -11,6 +11,7 @@ import arrayMethods from "../views/arrayMethods.vue";
 import JsPrototype from "../views/JsPrototype/jsPrototype.vue";
 import JsClosure from "../views/JsClosure/JsClosure.vue";
 import jsInherit from "../views/jsInherit/jsInherit.vue";
+import vueInterview from "../views/vueInterview/vueInterview.vue"
 
 Vue.use(VueRouter)
 
@@ -69,6 +70,11 @@ const routes = [
     path: '/jsInherit',
     name: 'jsInherit',
     component: jsInherit
+  },
+  {
+    path: '/vueInterview',
+    name: 'vueInterview',
+    component: vueInterview
   }
 ]
 
