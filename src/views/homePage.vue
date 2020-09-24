@@ -20,7 +20,7 @@
                 :chapterNum="cardData[0].chapterNum"
               ></vueCard>
               <div>
-                <div class="main-mid-card-font">{{cardData[0].title}}</div>
+                <div class="main-mid-card-font">{{ cardData[0].title }}</div>
               </div>
             </router-link>
           </div>
@@ -33,7 +33,7 @@
                 :chapterNum="cardData[1].chapterNum"
               ></vueCard>
               <div class="width:100%">
-                <div class="main-mid-card-font">{{cardData[1].title}}</div>
+                <div class="main-mid-card-font">{{ cardData[1].title }}</div>
               </div>
             </router-link>
           </div>
@@ -45,7 +45,7 @@
                 :chapterNum="cardData[2].chapterNum"
               ></vueCard>
               <div>
-                <div class="main-mid-card-font">{{cardData[2].title}}</div>
+                <div class="main-mid-card-font">{{ cardData[2].title }}</div>
               </div>
             </router-link>
           </div>
@@ -57,7 +57,7 @@
                 :chapterNum="cardData[3].chapterNum"
               ></vueCard>
               <div>
-                <div class="main-mid-card-font">{{cardData[3].title}}</div>
+                <div class="main-mid-card-font">{{ cardData[3].title }}</div>
               </div>
             </router-link>
           </div>
@@ -69,7 +69,7 @@
                 :chapterNum="cardData[4].chapterNum"
               ></vueCard>
               <div>
-                <div class="main-mid-card-font">{{cardData[4].title}}</div>
+                <div class="main-mid-card-font">{{ cardData[4].title }}</div>
               </div>
             </router-link>
           </div>
@@ -81,7 +81,7 @@
                 :chapterNum="cardData[5].chapterNum"
               ></vueCard>
               <div>
-                <div class="main-mid-card-font">{{cardData[5].title}}</div>
+                <div class="main-mid-card-font">{{ cardData[5].title }}</div>
               </div>
             </router-link>
           </div>
@@ -93,7 +93,7 @@
                 :chapterNum="cardData[6].chapterNum"
               ></vueCard>
               <div>
-                <div class="main-mid-card-font">{{cardData[6].title}}</div>
+                <div class="main-mid-card-font">{{ cardData[6].title }}</div>
               </div>
             </router-link>
           </div>
@@ -105,7 +105,7 @@
                 :chapterNum="cardData[7].chapterNum"
               ></vueCard>
               <div>
-                <div class="main-mid-card-font">{{cardData[7].title}}</div>
+                <div class="main-mid-card-font">{{ cardData[7].title }}</div>
               </div>
             </router-link>
           </div>
@@ -117,7 +117,7 @@
                 :chapterNum="cardData[8].chapterNum"
               ></vueCard>
               <div>
-                <div class="main-mid-card-font">{{cardData[8].title}}</div>
+                <div class="main-mid-card-font">{{ cardData[8].title }}</div>
               </div>
             </router-link>
           </div>
@@ -129,7 +129,43 @@
                 :chapterNum="cardData[9].chapterNum"
               ></vueCard>
               <div>
-                <div class="main-mid-card-font">{{cardData[9].title}}</div>
+                <div class="main-mid-card-font">{{ cardData[9].title }}</div>
+              </div>
+            </router-link>
+          </div>
+          <div class="main-mid-card1">
+            <router-link :to="cardData[10].cardRoute">
+              <vueCard
+                img="./picture/vue.jpeg"
+                :columnNum="cardData[10].columnNum"
+                :chapterNum="cardData[10].chapterNum"
+              ></vueCard>
+              <div>
+                <div class="main-mid-card-font">{{ cardData[10].title }}</div>
+              </div>
+            </router-link>
+          </div>
+          <div class="main-mid-card1">
+            <router-link :to="cardData[11].cardRoute">
+              <vueCard
+                img="./picture/test.jpeg"
+                :columnNum="cardData[11].columnNum"
+                :chapterNum="cardData[11].chapterNum"
+              ></vueCard>
+              <div>
+                <div class="main-mid-card-font">{{ cardData[11].title }}</div>
+              </div>
+            </router-link>
+          </div>
+          <div class="main-mid-card1">
+            <router-link :to="cardData[12].cardRoute">
+              <vueCard
+                img="./picture/test_two.jpeg"
+                :columnNum="cardData[12].columnNum"
+                :chapterNum="cardData[12].chapterNum"
+              ></vueCard>
+              <div>
+                <div class="main-mid-card-font">{{ cardData[12].title }}</div>
               </div>
             </router-link>
           </div>
@@ -201,6 +237,24 @@ export default {
           columnNum: 1,
           chapterNum: 6,
           cardRoute: "/jsClosure",
+        },
+        {
+          title: "继承",
+          columnNum: 1,
+          chapterNum: 6,
+          cardRoute: "/jsInherit",
+        },
+        {
+          title: "vue",
+          columnNum: 1,
+          chapterNum: 6,
+          cardRoute: "/vueInterview",
+        },
+        {
+          title: "继承",
+          columnNum: 1,
+          chapterNum: 6,
+          cardRoute: "/jsInherit",
         },
         {
           title: "继承",
