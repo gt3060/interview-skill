@@ -247,14 +247,14 @@ export default {
         {
           title: "vue",
           columnNum: 1,
-          chapterNum: 6,
+          chapterNum: 19,
           cardRoute: "/vueInterview",
         },
         {
-          title: "继承",
+          title: "react",
           columnNum: 1,
           chapterNum: 6,
-          cardRoute: "/jsInherit",
+          cardRoute: "/reactInterview",
         },
         {
           title: "继承",
