@@ -262,14 +262,14 @@
                     let thisPromiseCount = ++promiseCount;<br /><br />
 
                     let log = document.getElementById('log');<br />
-                    log.insertAdjacentHTML('beforeend', thisPromiseCount +<br />
+                    log.insertAdjacentHTML('beforeEnd', thisPromiseCount +<br />
                     ') 开始 (&lt;small&gt;同步代码开始&lt;/small&gt;)&lt;br /&gt;');<br /><br />
 
                     // 新构建一个 Promise 实例：使用Promise实现每过一段时间给计数器加一的过程，每段时间间隔为1~3秒不等<br />
                     let p1 = new Promise(<br />
                     // resolver 函数在 Promise 成功或失败时都可能被调用<br />
                     (resolve, reject) => {<br />
-                    log.insertAdjacentHTML('beforeend', thisPromiseCount +<br />
+                    log.insertAdjacentHTML('beforeEnd', thisPromiseCount +<br />
                     ') Promise 开始 (&lt;small&gt;异步代码开始&lt;/small&gt;)&lt;br /&gt;');<br />
                     // 创建一个异步调用<br />
                     window.setTimeout(<br />
@@ -285,7 +285,7 @@
                     p1.then(<br />
                     // 记录填充值<br />
                     function(val) {<br />
-                    log.insertAdjacentHTML('beforeend', val +<br />
+                    log.insertAdjacentHTML('beforeEnd', val +<br />
                     ') Promise 已填充完毕 (&lt;small&gt;异步代码结束&lt;/small&gt;)&lt;br /&gt;');<br />
                     })<br />
                     .catch(<br />
@@ -294,10 +294,32 @@
                     console.log('处理失败的 promise ('+reason+')');<br />
                     });<br /><br />
 
-                    log.insertAdjacentHTML('beforeend', thisPromiseCount +<br />
+                    log.insertAdjacentHTML('beforeEnd', thisPromiseCount +<br />
                     ') Promise made (&lt;small&gt;同步代码结束&lt;/small&gt;)&lt;br /&gt; ');<br />
                     }
                   </p>
+
+                  <div class="reminder">
+                    添加HTML内容与文本内容除了innerHTML与innerText方法，
+                    还有insertAdjacentHTML和 insertAdjacentText方法，<br />
+                    这两个方法更灵活，可以在指定的地方插入html内容和文本内容。
+                    insertAdjacentText方法与 insertAdjacentHTML方法类似，只不过只能插入纯文本，参数相同<br />
+                    方法名称：insertHtml(where,el,html)<br />
+                    参数介绍：<br />
+                    where：插入位置。包括beforeBegin,beforeEnd,afterBegin,afterEnd。<br />
+                    el：用于参照插入位置的html元素对象<br />
+                    html：要插入的html代码<br />
+                    insertAdjacentHTML 方法：在指定的地方插入html标签语句<br />
+                    原型：insertAdajcentHTML(swhere,stext)<br />
+                    参数：<br />
+                    swhere: 指定插入html标签语句的地方，<br />
+                    stext:要插入的内容<br />
+                    有四种值可用：<br />
+                    1. beforeBegin: 插入到标签开始前<br />
+                    2. afterBegin:插入到标签开始标记之后<br />
+                    3. beforeEnd:插入到标签结束标记前<br />
+                    4. afterEnd:插入到标签结束标记后
+                  </div>
                 </div>
               </div>
             </div>
