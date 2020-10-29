@@ -24,7 +24,6 @@
               </div>
             </router-link>
           </div>
-
           <div class="main-mid-card1">
             <router-link :to="cardData[1].cardRoute">
               <vueCard
@@ -257,10 +256,10 @@ export default {
           cardRoute: "/reactInterview",
         },
         {
-          title: "继承",
+          title: "十大排序算法",
           columnNum: 1,
-          chapterNum: 6,
-          cardRoute: "/jsInherit",
+          chapterNum: 10,
+          cardRoute: "/jsSort",
         },
       ],
     };

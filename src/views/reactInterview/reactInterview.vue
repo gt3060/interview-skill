@@ -164,7 +164,16 @@
                   </div>
                   <h4>react之diff算法</h4>
                 </div>
-                <div class="fontIndent"></div>
+                <div class="fontIndent">
+                  <p>react-diff基于三种策略</p>
+                  <ul>
+                    <li>Webui中dom节点跨层级移动操作特别少，可以忽略不计；</li>
+                    <li>
+                      拥有相同类型组件生成相似的树形结构，拥有不同类型组件生成不同的树形结构；
+                    </li>
+                    <li>同一层级的节点通过唯一id值区分。</li>
+                  </ul>
+                </div>
               </div>
               <div id="c7" style="margin: 20px 0px">
                 <div style="display: flex">

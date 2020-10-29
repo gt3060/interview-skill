@@ -15,40 +15,48 @@
         </div>
         <div class="titleStyle">
           <div class="titleIconStyle">
-            <img src="../components/picture/javascript4.jpeg" class="imgStyle" />
+            <img
+              src="../components/picture/javascript4.jpeg"
+              class="imgStyle"
+            />
           </div>
           <div class="titleFontStyle">
-            <span style="font-size:25px">Javascript进阶篇三</span>
+            <span style="font-size: 25px">Javascript进阶篇三</span>
             <el-divider></el-divider>
             <p>此篇主要讲述javascript相关的数组和字符串相关操作。</p>
             <p>
               数组中常用方法亦可点击：
-              <el-button type="text" @click="btnToArrayMethodUrl">点击此处</el-button>
+              <el-button type="text" @click="btnToArrayMethodUrl"
+                >点击此处</el-button
+              >
             </p>
           </div>
         </div>
-        <div style="display:flex">
-          <div style="width:75%;">
+        <div style="display: flex">
+          <div style="width: 75%">
             <div class="catalogStyle fontStyle">
-              <div style="display:flex;">
+              <div style="display: flex">
                 <img
                   src="../assets/CONTENT DELIVERY.png"
-                  style="width:24px;height:24px; margin-top:6px"
+                  style="width: 24px; height: 24px; margin-top: 6px"
                 />
-                <span style="font-size:22px; font-weight: bold; margin-left:10px">内容</span>
+                <span
+                  style="font-size: 22px; font-weight: bold; margin-left: 10px"
+                  >内容</span
+                >
               </div>
               <el-divider></el-divider>
-              <div id="c0" style="margin:20px 0px;">
-                <div style="display:flex">
-                  <div style="margin: 2px 7px 0px 0px;">
+              <div id="c0" style="margin: 20px 0px">
+                <div style="display: flex">
+                  <div style="margin: 2px 7px 0px 0px">
                     <img src="../assets/title_2.png" />
                   </div>
                   <div class="fontTitle">第一章&nbsp;&nbsp;数组篇</div>
                 </div>
               </div>
-              <div id="c1" style="margin:20px 0px;">
-                <div style="display:flex">
-                  <div style="margin: 6px 7px 0px 0px;">
+              <div id="c1" style="margin: 20px 0px">
+                <div style="display: flex">
+                  <div style="margin: 6px 7px 0px 0px">
                     <img src="../assets/light.png" />
                   </div>
                   <h4>push和pop</h4>
@@ -75,15 +83,17 @@
                   </el-card>
                 </div>
               </div>
-              <div id="c2" style="margin:20px 0px;">
-                <div style="display:flex">
-                  <div style="margin: 6px 7px 0px 0px;">
+              <div id="c2" style="margin: 20px 0px">
+                <div style="display: flex">
+                  <div style="margin: 6px 7px 0px 0px">
                     <img src="../assets/light.png" />
                   </div>
                   <h4>shift和unshift</h4>
                 </div>
                 <div class="fontIndent">
-                  <p>shift是获取数组第一个元素，unshift是在数组第一个元素前添加元素</p>
+                  <p>
+                    shift是获取数组第一个元素，unshift是在数组第一个元素前添加元素
+                  </p>
                   <p>
                     语法：
                     <code>arr.shift()/arr.unshift()</code>
@@ -101,9 +111,9 @@
                   </el-card>
                 </div>
               </div>
-              <div id="c3" style="margin:20px 0px;">
-                <div style="display:flex">
-                  <div style="margin: 6px 7px 0px 0px;">
+              <div id="c3" style="margin: 20px 0px">
+                <div style="display: flex">
+                  <div style="margin: 6px 7px 0px 0px">
                     <img src="../assets/light.png" />
                   </div>
                   <h4>concat</h4>
@@ -122,23 +132,30 @@
                       <code>const arr1 = [9, 8, 7, 6];</code>
                     </p>
                     <p>
-                      <code>arr.concat(arr1);//[1, 8, 10, 22, 5, 9, 8, 7, 6]</code>
+                      <code
+                        >arr.concat(arr1);//[1, 8, 10, 22, 5, 9, 8, 7, 6]</code
+                      >
                     </p>
                   </el-card>
                 </div>
               </div>
-              <div id="c4" style="margin:20px 0px;">
-                <div style="display:flex">
-                  <div style="margin: 6px 7px 0px 0px;">
+              <div id="c4" style="margin: 20px 0px">
+                <div style="display: flex">
+                  <div style="margin: 6px 7px 0px 0px">
                     <img src="../assets/light.png" />
                   </div>
                   <h4>splice</h4>
                 </div>
                 <div class="fontIndent">
-                  <p>splice方法：从数组中指定位置删除若干元素/向数组中指定位置添加若干元素</p>
+                  <p>
+                    splice方法：从数组中指定位置删除若干元素/向数组中指定位置添加若干元素
+                  </p>
                   <p>
                     语法：
-                    <code>arr.splice(index, num, item, item1, ... );//前两个元素必需，后面元素可选。</code>
+                    <code
+                      >arr.splice(index, num, item, item1, ...
+                      );//前两个元素必需，后面元素可选。</code
+                    >
                   </p>
                   <el-card>
                     <p>
@@ -151,14 +168,17 @@
                       <code>arr.splice(1, 0, 88);//[1, 88, 8, 10, 22, 5]</code>
                     </p>
                     <p>
-                      <code>arr.splice(1, 2, 99, 98, 97);//[1, 99, 98, 97, 22, 5]</code>
+                      <code
+                        >arr.splice(1, 2, 99, 98, 97);//[1, 99, 98, 97, 22,
+                        5]</code
+                      >
                     </p>
                   </el-card>
                 </div>
               </div>
-              <div id="c5" style="margin:20px 0px;">
-                <div style="display:flex">
-                  <div style="margin: 6px 7px 0px 0px;">
+              <div id="c5" style="margin: 20px 0px">
+                <div style="display: flex">
+                  <div style="margin: 6px 7px 0px 0px">
                     <img src="../assets/light.png" />
                   </div>
                   <h4>slice</h4>
@@ -178,14 +198,17 @@
                       <code>const arr = [1, 8, 10, 22, 5];</code>
                     </p>
                     <p>
-                      <code>arr.slice(1, 2);//[8]算头不算尾，从index为1开始，到index为2为止前的元素</code>
+                      <code
+                        >arr.slice(1,
+                        2);//[8]算头不算尾，从index为1开始，到index为2为止前的元素</code
+                      >
                     </p>
                   </el-card>
                 </div>
               </div>
-              <div id="c6" style="margin:20px 0px;">
-                <div style="display:flex">
-                  <div style="margin: 6px 7px 0px 0px;">
+              <div id="c6" style="margin: 20px 0px">
+                <div style="display: flex">
+                  <div style="margin: 6px 7px 0px 0px">
                     <img src="../assets/light.png" />
                   </div>
                   <h4>split</h4>
@@ -204,7 +227,10 @@
                       <code>let str = "gengtian";</code>
                     </p>
                     <p>
-                      <code>str.split('');//["g", "e", "n", "g", "t", "i", "a", "n"]</code>
+                      <code
+                        >str.split('');//["g", "e", "n", "g", "t", "i", "a",
+                        "n"]</code
+                      >
                     </p>
                     <p>
                       <code>str.split('', 4);//["g", "e", "n", "g"]</code>
@@ -212,9 +238,9 @@
                   </el-card>
                 </div>
               </div>
-              <div id="c7" style="margin:20px 0px;">
-                <div style="display:flex">
-                  <div style="margin: 6px 7px 0px 0px;">
+              <div id="c7" style="margin: 20px 0px">
+                <div style="display: flex">
+                  <div style="margin: 6px 7px 0px 0px">
                     <img src="../assets/light.png" />
                   </div>
                   <h4>reverse</h4>
@@ -235,9 +261,9 @@
                   </el-card>
                 </div>
               </div>
-              <div id="c8" style="margin:20px 0px;">
-                <div style="display:flex">
-                  <div style="margin: 6px 7px 0px 0px;">
+              <div id="c8" style="margin: 20px 0px">
+                <div style="display: flex">
+                  <div style="margin: 6px 7px 0px 0px">
                     <img src="../assets/light.png" />
                   </div>
                   <h4>indexOf和lastIndexOf</h4>
@@ -265,9 +291,9 @@
                   </el-card>
                 </div>
               </div>
-              <div id="c9" style="margin:20px 0px;">
-                <div style="display:flex">
-                  <div style="margin: 6px 7px 0px 0px;">
+              <div id="c9" style="margin: 20px 0px">
+                <div style="display: flex">
+                  <div style="margin: 6px 7px 0px 0px">
                     <img src="../assets/light.png" />
                   </div>
                   <h4>includes</h4>
@@ -305,9 +331,9 @@
                   </el-card>
                 </div>
               </div>
-              <div id="c10" style="margin:20px 0px;">
-                <div style="display:flex">
-                  <div style="margin: 6px 7px 0px 0px;">
+              <div id="c10" style="margin: 20px 0px">
+                <div style="display: flex">
+                  <div style="margin: 6px 7px 0px 0px">
                     <img src="../assets/light.png" />
                   </div>
                   <h4>fill</h4>
@@ -334,9 +360,9 @@
                   </el-card>
                 </div>
               </div>
-              <div id="c11" style="margin:20px 0px;">
-                <div style="display:flex">
-                  <div style="margin: 6px 7px 0px 0px;">
+              <div id="c11" style="margin: 20px 0px">
+                <div style="display: flex">
+                  <div style="margin: 6px 7px 0px 0px">
                     <img src="../assets/light.png" />
                   </div>
                   <h4>Array.from</h4>
@@ -354,7 +380,10 @@
                   <p>①将类数组转为真正的数组</p>
                   <el-card>
                     <p>
-                      <code>let arrayLike = {0:"1", 1:"2", 2:"3", 'length':'3'};</code>
+                      <code
+                        >let arrayLike = {0:"1", 1:"2", 2:"3",
+                        'length':'3'};</code
+                      >
                     </p>
                     <p>
                       <code>Array.from(arrayLike);//['1', '2', '3']</code>
@@ -362,7 +391,9 @@
                   </el-card>
                   <p>用此方法将类数组转为数组必需具备以下条件：</p>
                   <ul>
-                    <li>该类数组对象必须具有length属性，用于指定数组的长度。如果没有length属性，那么转换后的数组是一个空数组;</li>
+                    <li>
+                      该类数组对象必须具有length属性，用于指定数组的长度。如果没有length属性，那么转换后的数组是一个空数组;
+                    </li>
                     <li>该类数组对象的属性名必须为数值型或字符串型的数字.</li>
                   </ul>
                   <p>②利用Set+Array.from进行数组去重</p>
@@ -373,7 +404,9 @@
                     <p>
                       <code>Array.from(set);//[1,2,3,4,5]</code>
                     </p>
-                    <p>Array.from还可以接受第二个参数，作用类似于数组的map方法，用来对每个元素进行处理，将处理后的值放入返回的数组:</p>
+                    <p>
+                      Array.from还可以接受第二个参数，作用类似于数组的map方法，用来对每个元素进行处理，将处理后的值放入返回的数组:
+                    </p>
                     <p>
                       <code>Array.from(set, item=>item+1);//[2,3,4,5,6]</code>
                     </p>
@@ -385,7 +418,10 @@
                       <code>let str = "gengtian";</code>
                     </p>
                     <p>
-                      <code>Array.from(str);//["g", "e", "n", "g", "t", "i", "a", "n"]</code>
+                      <code
+                        >Array.from(str);//["g", "e", "n", "g", "t", "i", "a",
+                        "n"]</code
+                      >
                     </p>
                   </el-card>
                   <!-- <p>④数组浅拷贝</p>
@@ -408,9 +444,9 @@
                   </el-card>-->
                 </div>
               </div>
-              <div id="c12" style="margin:20px 0px;">
-                <div style="display:flex">
-                  <div style="margin: 6px 7px 0px 0px;">
+              <div id="c12" style="margin: 20px 0px">
+                <div style="display: flex">
+                  <div style="margin: 6px 7px 0px 0px">
                     <img src="../assets/light.png" />
                   </div>
                   <h4>keys、values、entries</h4>
@@ -441,20 +477,29 @@
                       <code>let arr1 = arr.keys();</code>
                     </p>
                     <p>
-                      <code>for(let index of arr1){ console.log(index); //0, 1, 2, 3, 4 }</code>
+                      <code
+                        >for(let index of arr1){ console.log(index); //0, 1, 2,
+                        3, 4 }</code
+                      >
                     </p>
                     <p>
-                      <code>for(let index of arr.values()){ console.log(elm); //1, 8, 10, 22, 5 }</code>
+                      <code
+                        >for(let index of arr.values()){ console.log(elm); //1,
+                        8, 10, 22, 5 }</code
+                      >
                     </p>
                     <p>
-                      <code>for(let index of arr.entries()){ console.log(item); //[0, 1], [1, 8], [2, 10], [3, 22], [4, 5] }</code>
+                      <code
+                        >for(let index of arr.entries()){ console.log(item);
+                        //[0, 1], [1, 8], [2, 10], [3, 22], [4, 5] }</code
+                      >
                     </p>
                   </el-card>
                 </div>
               </div>
-              <div id="c13" style="margin:20px 0px;">
-                <div style="display:flex">
-                  <div style="margin: 6px 7px 0px 0px;">
+              <div id="c13" style="margin: 20px 0px">
+                <div style="display: flex">
+                  <div style="margin: 6px 7px 0px 0px">
                     <img src="../assets/light.png" />
                   </div>
                   <h4>map、forEach</h4>
@@ -462,7 +507,9 @@
                 <div class="fontIndent">
                   <p>①forEach和map的相同点</p>
                   <ul>
-                    <li>里面每一次执行的匿名函数都有三个参数：item（当前项）、index（索引值）、input（原始数组）;</li>
+                    <li>
+                      里面每一次执行的匿名函数都有三个参数：item（当前项）、index（索引值）、input（原始数组）;
+                    </li>
                     <li>map和forEach都是对数组进行遍历，也只能遍历数组；</li>
                     <li>匿名函数的this都指向window；</li>
                   </ul>
@@ -472,47 +519,64 @@
                   </ul>
                   <p>
                     语法：
-                    <code>arr.map/forEach((item, index, record)=>{console.log(item, index, record)});</code>
+                    <code
+                      >arr.map/forEach((item, index, record)=>{console.log(item,
+                      index, record)});</code
+                    >
                   </p>
                   <el-card>
                     <p>
                       <code>let arr = [1, 8, 10, 22, 5];</code>
                     </p>
                     <p>
-                      <code>let arr1 = arr.map(item=> item = item+1); //arr:[1, 8, 10, 22, 5]、arr1:[2, 9, 11, 23, 6]</code>
+                      <code
+                        >let arr1 = arr.map(item=> item = item+1); //arr:[1, 8,
+                        10, 22, 5]、arr1:[2, 9, 11, 23, 6]</code
+                      >
                     </p>
                     <p>
-                      <code>let arr1 = arr.forEach((item, index, record)=> record[index] = item+1); //arr:[2, 9, 11, 23, 6]、arr1:undefined</code>
+                      <code
+                        >let arr1 = arr.forEach((item, index, record)=>
+                        record[index] = item+1); //arr:[2, 9, 11, 23,
+                        6]、arr1:undefined</code
+                      >
                     </p>
                   </el-card>
                 </div>
               </div>
-              <div id="c14" style="margin:20px 0px;">
-                <div style="display:flex">
-                  <div style="margin: 6px 7px 0px 0px;">
+              <div id="c14" style="margin: 20px 0px">
+                <div style="display: flex">
+                  <div style="margin: 6px 7px 0px 0px">
                     <img src="../assets/light.png" />
                   </div>
                   <h4>filter</h4>
                 </div>
                 <div class="fontIndent">
-                  <p>filter()和map()类似，参数都用来接收一个函数，与map不同的是：filter把传入的函数作用于每个数值，并通过返回值为true或false决定筛选去留，</p>
+                  <p>
+                    filter()和map()类似，参数都用来接收一个函数，与map不同的是：filter把传入的函数作用于每个数值，并通过返回值为true或false决定筛选去留，
+                  </p>
                   <p>
                     语法：
-                    <code>arr.filter((item, index, record)=>{console.log(item, index, record)});</code>
+                    <code
+                      >arr.filter((item, index, record)=>{console.log(item,
+                      index, record)});</code
+                    >
                   </p>
                   <el-card>
                     <p>
                       <code>let arr = [1, 8, 10, 22, 5];</code>
                     </p>
                     <p>
-                      <code>let arr1 = arr.filter(item=> item > 10); //[22]</code>
+                      <code
+                        >let arr1 = arr.filter(item=> item > 10); //[22]</code
+                      >
                     </p>
                   </el-card>
                 </div>
               </div>
-              <div id="c15" style="margin:20px 0px;">
-                <div style="display:flex">
-                  <div style="margin: 6px 7px 0px 0px;">
+              <div id="c15" style="margin: 20px 0px">
+                <div style="display: flex">
+                  <div style="margin: 6px 7px 0px 0px">
                     <img src="../assets/light.png" />
                   </div>
                   <h4>sort</h4>
@@ -540,7 +604,10 @@
                       <code>arr.sort(); //[1, 10, 22, 5, 8]</code>
                     </p>
                     <p>
-                      <code>之所以会有上述输出：是因为默认先将里面的元素转化为string类型，也就是字符串之间的比较，也就有了10 &lt; 22&lt; 5&lt; 8的结果</code>
+                      <code
+                        >之所以会有上述输出：是因为默认先将里面的元素转化为string类型，也就是字符串之间的比较，也就有了10
+                        &lt; 22&lt; 5&lt; 8的结果</code
+                      >
                     </p>
                     <p>
                       <code>解决办法如下：</code>
@@ -554,9 +621,9 @@
                   </el-card>
                 </div>
               </div>
-              <div id="c16" style="margin:20px 0px;">
-                <div style="display:flex">
-                  <div style="margin: 6px 7px 0px 0px;">
+              <div id="c16" style="margin: 20px 0px">
+                <div style="display: flex">
+                  <div style="margin: 6px 7px 0px 0px">
                     <img src="../assets/light.png" />
                   </div>
                   <h4>every、some</h4>
@@ -564,53 +631,72 @@
                 <div class="fontIndent">
                   <p>every、some用来判断数组中元素是否满足条件，具体如下：</p>
                   <ul>
-                    <li>every判断数组中每个元素是否全部符合条件，返回true/false；</li>
-                    <li>some判断数组中是否存在一个元素满足符合条件，返回true/false。</li>
+                    <li>
+                      every判断数组中每个元素是否全部符合条件，返回true/false；
+                    </li>
+                    <li>
+                      some判断数组中是否存在一个元素满足符合条件，返回true/false。
+                    </li>
                   </ul>
                   <el-card>
                     <p>
                       <code>let arr = [1, 8, 10, 22, 5];</code>
                     </p>
                     <p>
-                      <code>console.log(arr.every(function(s){ return s> 1 })) //结果为false</code>
+                      <code
+                        >console.log(arr.every(function(s){ return s> 1 }))
+                        //结果为false</code
+                      >
                     </p>
                     <p>
-                      <code>arr.some( (value, index) =>value &lt; 2) //true</code>
+                      <code
+                        >arr.some( (value, index) =>value &lt; 2) //true</code
+                      >
                     </p>
                   </el-card>
                 </div>
               </div>
-              <div id="c17" style="margin:20px 0px;">
-                <div style="display:flex">
-                  <div style="margin: 6px 7px 0px 0px;">
+              <div id="c17" style="margin: 20px 0px">
+                <div style="display: flex">
+                  <div style="margin: 6px 7px 0px 0px">
                     <img src="../assets/light.png" />
                   </div>
                   <h4>find、findIndex</h4>
                 </div>
                 <div class="fontIndent">
                   <ul>
-                    <li>find此方法用于判断数组中是否有符合条件的元素，如有，则返回第一个与之匹配元素，否则返回undefined：</li>
-                    <li>findIndex作用同find，只是findIndex返回这个元素的索引。</li>
+                    <li>
+                      find此方法用于判断数组中是否有符合条件的元素，如有，则返回第一个与之匹配元素，否则返回undefined：
+                    </li>
+                    <li>
+                      findIndex作用同find，只是findIndex返回这个元素的索引。
+                    </li>
                   </ul>
                   <el-card>
                     <p>
                       <code>let arr = [1, 8, 10, 22, 5];</code>
                     </p>
                     <p>
-                      <code>arr.find(function(s){ return s==12 }); // undefined</code>
+                      <code
+                        >arr.find(function(s){ return s==12 }); //
+                        undefined</code
+                      >
                     </p>
                     <p>
                       <code>arr.find(function(s){ return s==8 }); // 8</code>
                     </p>
                     <p>
-                      <code>arr.findIndex(function(s){ return s === 22 }) // 3</code>
+                      <code
+                        >arr.findIndex(function(s){ return s === 22 }) //
+                        3</code
+                      >
                     </p>
                   </el-card>
                 </div>
               </div>
-              <div id="c18" style="margin:20px 0px;">
-                <div style="display:flex">
-                  <div style="margin: 6px 7px 0px 0px;">
+              <div id="c18" style="margin: 20px 0px">
+                <div style="display: flex">
+                  <div style="margin: 6px 7px 0px 0px">
                     <img src="../assets/light.png" />
                   </div>
                   <h4>reduce</h4>
@@ -618,13 +704,17 @@
                 <div class="fontIndent">
                   <p>
                     语法：
-                    <code>arr.reduce((prev, cur, index, arr) => {...}, init)</code>
+                    <code
+                      >arr.reduce((prev, cur, index, arr) => {...}, init)</code
+                    >
                   </p>
                   <ul>
                     <li>arr表示原数组；</li>
                     <li>prev表示上一次调用回调时的返回值，或者初始值init；</li>
                     <li>cur表示当前正在处理的数组元素</li>
-                    <li>index表示当前正在处理元素的索引，若提供init则索引为0，否则索引为1。</li>
+                    <li>
+                      index表示当前正在处理元素的索引，若提供init则索引为0，否则索引为1。
+                    </li>
                     <li>init表示初始值</li>
                   </ul>
                   <p>实例一：求数组元素之和</p>
@@ -641,23 +731,24 @@
                     <pre>
 
                     let subRepeat = arr.reduce((pre,cur)=>{
-                      pre.indexOf(cur) === -1 &amp;&amp; pre.push(cur)
+                      pre.indexOf(cur) === -1 &amp;&amp; pre.push(cur);
+                      return pre;
                     },[])
                     </pre>
                   </el-card>
                 </div>
               </div>
-              <div id="c19" style="margin:20px 0px;">
-                <div style="display:flex">
-                  <div style="margin: 3px 4px 0px 0px;">
+              <div id="c19" style="margin: 20px 0px">
+                <div style="display: flex">
+                  <div style="margin: 3px 4px 0px 0px">
                     <img src="../assets/title_2.png" />
                   </div>
                   <div class="fontTitle">第二章&nbsp;&nbsp;字符串篇</div>
                 </div>
               </div>
-              <div id="c20" style="margin:20px 0px;">
-                <div style="display:flex">
-                  <div style="margin: 6px 7px 0px 0px;">
+              <div id="c20" style="margin: 20px 0px">
+                <div style="display: flex">
+                  <div style="margin: 6px 7px 0px 0px">
                     <img src="../assets/light.png" />
                   </div>
                   <h4>查找字符串中的字符串</h4>
@@ -674,12 +765,14 @@
                     语法：
                     <code>str.search(str1)</code>
                   </p>
-                  <p>search与indexOf不同点在于，search没有第二个参数，indexOf中第一个参数没办法设置正则表达式。</p>
+                  <p>
+                    search与indexOf不同点在于，search没有第二个参数，indexOf中第一个参数没办法设置正则表达式。
+                  </p>
                 </div>
               </div>
-              <div id="c21" style="margin:20px 0px;">
-                <div style="display:flex">
-                  <div style="margin: 6px 7px 0px 0px;">
+              <div id="c21" style="margin: 20px 0px">
+                <div style="display: flex">
+                  <div style="margin: 6px 7px 0px 0px">
                     <img src="../assets/light.png" />
                   </div>
                   <h4>提取部分字符串</h4>
@@ -696,15 +789,17 @@
                     <code>str.substring(start, end);</code>
                   </p>
                   <p>③substr</p>
-                  <p>同样，substr方法类似于slice，不同点在于，substr方法的第二个参数表示提取字符串的长度，而slice表示结束索引位置。</p>
+                  <p>
+                    同样，substr方法类似于slice，不同点在于，substr方法的第二个参数表示提取字符串的长度，而slice表示结束索引位置。
+                  </p>
                   <p>
                     <code>str.substr(start, length);</code>
                   </p>
                 </div>
               </div>
-              <div id="c22" style="margin:20px 0px;">
-                <div style="display:flex">
-                  <div style="margin: 6px 7px 0px 0px;">
+              <div id="c22" style="margin: 20px 0px">
+                <div style="display: flex">
+                  <div style="margin: 6px 7px 0px 0px">
                     <img src="../assets/light.png" />
                   </div>
                   <h4>替换字符串内容（replace）</h4>
@@ -726,9 +821,9 @@
                   <p>注：利用正则表达式处理字符串的方法还有match</p>
                 </div>
               </div>
-              <div id="c23" style="margin:20px 0px;">
-                <div style="display:flex">
-                  <div style="margin: 6px 7px 0px 0px;">
+              <div id="c23" style="margin: 20px 0px">
+                <div style="display: flex">
+                  <div style="margin: 6px 7px 0px 0px">
                     <img src="../assets/light.png" />
                   </div>
                   <h4>字符串转换为大写/小写</h4>
@@ -754,9 +849,9 @@
                   </el-card>
                 </div>
               </div>
-              <div id="c24" style="margin:20px 0px;">
-                <div style="display:flex">
-                  <div style="margin: 6px 7px 0px 0px;">
+              <div id="c24" style="margin: 20px 0px">
+                <div style="display: flex">
+                  <div style="margin: 6px 7px 0px 0px">
                     <img src="../assets/light.png" />
                   </div>
                   <h4>连接两个或多个字符串(concat)</h4>
@@ -768,9 +863,9 @@
                   </p>
                 </div>
               </div>
-              <div id="c25" style="margin:20px 0px;">
-                <div style="display:flex">
-                  <div style="margin: 6px 7px 0px 0px;">
+              <div id="c25" style="margin: 20px 0px">
+                <div style="display: flex">
+                  <div style="margin: 6px 7px 0px 0px">
                     <img src="../assets/light.png" />
                   </div>
                   <h4>删除字符串两端的空白符(trim)</h4>
@@ -781,9 +876,9 @@
                   </p>
                 </div>
               </div>
-              <div id="c26" style="margin:20px 0px;">
-                <div style="display:flex">
-                  <div style="margin: 6px 7px 0px 0px;">
+              <div id="c26" style="margin: 20px 0px">
+                <div style="display: flex">
+                  <div style="margin: 6px 7px 0px 0px">
                     <img src="../assets/light.png" />
                   </div>
                   <h4>提取字符串字符</h4>
@@ -800,42 +895,51 @@
                     </p>
                   </el-card>
                   <p>②charCodeAt</p>
-                  <p>charCodeAt() 方法返回字符串中指定索引的字符 unicode 编码。</p>
+                  <p>
+                    charCodeAt() 方法返回字符串中指定索引的字符 unicode 编码。
+                  </p>
                 </div>
               </div>
-              <div id="c27" style="margin:20px 0px;">
-                <div style="display:flex">
-                  <div style="margin: 3px 4px 0px 0px;">
+              <div id="c27" style="margin: 20px 0px">
+                <div style="display: flex">
+                  <div style="margin: 3px 4px 0px 0px">
                     <img src="../assets/title_2.png" />
                   </div>
                   <div class="fontTitle">第三章&nbsp;&nbsp;归纳</div>
                 </div>
               </div>
-              <div id="c28" style="margin:20px 0px;">
-                <div style="display:flex">
-                  <div style="margin: 6px 7px 0px 0px;">
+              <div id="c28" style="margin: 20px 0px">
+                <div style="display: flex">
+                  <div style="margin: 6px 7px 0px 0px">
                     <img src="../assets/light.png" />
                   </div>
                   <h4>字符串转数组</h4>
                 </div>
                 <div class="fontIndent">
                   <p>①split</p>
-                  <el-button type="text" @click="toStringToArray">split详见</el-button>
+                  <el-button type="text" @click="toStringToArray"
+                    >split详见</el-button
+                  >
                   <el-card>
                     <p>
                       <code>let str = "gengtian";</code>
                     </p>
                     <p>
-                      <code>str.split(''); //["g", "e", "n", "g", "t", "i", "a", "n"]</code>
+                      <code
+                        >str.split(''); //["g", "e", "n", "g", "t", "i", "a",
+                        "n"]</code
+                      >
                     </p>
                   </el-card>
                   <p>②Array.from</p>
-                  <el-button type="text" @click="toArrayFrom">Array.from详见</el-button>
+                  <el-button type="text" @click="toArrayFrom"
+                    >Array.from详见</el-button
+                  >
                 </div>
               </div>
-              <div id="c29" style="margin:20px 0px;">
-                <div style="display:flex">
-                  <div style="margin: 6px 7px 0px 0px;">
+              <div id="c29" style="margin: 20px 0px">
+                <div style="display: flex">
+                  <div style="margin: 6px 7px 0px 0px">
                     <img src="../assets/light.png" />
                   </div>
                   <h4>对象或数组转字符串</h4>
@@ -854,24 +958,30 @@
                   <p>②toLocalString()</p>
                   <p>
                     toLocalString() 方法与 toString() 方法用法基本相同，
-                    主要区别在于 toLocalString() 方法能够使用用户所在地区特定的分隔符把生成的字符串连接起来，形成一个字符串。
+                    主要区别在于 toLocalString()
+                    方法能够使用用户所在地区特定的分隔符把生成的字符串连接起来，形成一个字符串。
                   </p>
                   <p>
                     <code>arr.toLocalString()</code>
                   </p>
                   <p>③join</p>
                   <p class="code">
-                    <code>arr.join('-');//将数组中每个元素按照-进行连接形成一个字符串</code>
+                    <code
+                      >arr.join('-');//将数组中每个元素按照-进行连接形成一个字符串</code
+                    >
                   </p>
                   <p>④JSON.stringify</p>
                   <p class="code">
-                    <code>JSON.stringify(arr);//此时注意，利用此方法数组转字符串会将[]同时转为字符串：JSON.stringify([1,2,3]); "[1,2,3]"</code>
+                    <code
+                      >JSON.stringify(arr);//此时注意，利用此方法数组转字符串会将[]同时转为字符串：JSON.stringify([1,2,3]);
+                      "[1,2,3]"</code
+                    >
                   </p>
                 </div>
               </div>
-              <div id="c30" style="margin:20px 0px;">
-                <div style="display:flex">
-                  <div style="margin: 6px 7px 0px 0px;">
+              <div id="c30" style="margin: 20px 0px">
+                <div style="display: flex">
+                  <div style="margin: 6px 7px 0px 0px">
                     <img src="../assets/light.png" />
                   </div>
                   <h4>比较两个数组是否相等</h4>
@@ -880,7 +990,8 @@
                   <p>
                     js不能直接使用
                     <code>==</code>或者
-                    <code>===</code>来判断两个数组是否相等，以下两行代码均返回false。
+                    <code>===</code
+                    >来判断两个数组是否相等，以下两行代码均返回false。
                   </p>
                   <el-card>
                     <p>
@@ -893,30 +1004,49 @@
                   <p>①toString</p>
                   <el-card>
                     <p>
-                      <code>[1, 1, 1].toString() == [1, 1, 1].toString();//true</code>
+                      <code
+                        >[1, 1, 1].toString() == [1, 1,
+                        1].toString();//true</code
+                      >
                     </p>
                     <p>
-                      <code>[1, 1, 1].toString() === [1, 1, 1].toString();//true</code>
+                      <code
+                        >[1, 1, 1].toString() === [1, 1,
+                        1].toString();//true</code
+                      >
                     </p>
                   </el-card>
-                  <p>如果两个数组的元素相同但是元素位置不同，单纯利用此方法就行不通：</p>
+                  <p>
+                    如果两个数组的元素相同但是元素位置不同，单纯利用此方法就行不通：
+                  </p>
                   <p class="code">
-                    <code>[1, 2, 3].toString() ===( || == ) [1, 3, 2].toString(); //false</code>
+                    <code
+                      >[1, 2, 3].toString() ===( || == ) [1, 3, 2].toString();
+                      //false</code
+                    >
                   </p>
                   <p>此时只需先进行排序再进行转字符串判断</p>
                   <p class="code">
-                    <code>[1, 2, 3].sort().toString() ===( || == ) [1, 3, 2].sort().toString();</code>
+                    <code
+                      >[1, 2, 3].sort().toString() ===( || == ) [1, 3,
+                      2].sort().toString();</code
+                    >
                   </p>
                   <p>②JSON.stringify</p>
                   <p class="code">
-                    <code>JSON.stringfity([1,2,3]) === ( || == ) JSON.stringify([1,2,3]);</code>
+                    <code
+                      >JSON.stringfity([1,2,3]) === ( || == )
+                      JSON.stringify([1,2,3]);</code
+                    >
                   </p>
-                  <p>同样需要注意地是，如果数组元素相同，位置不同，也需要先用sort方法进行排序再进行转换比较。</p>
+                  <p>
+                    同样需要注意地是，如果数组元素相同，位置不同，也需要先用sort方法进行排序再进行转换比较。
+                  </p>
                 </div>
               </div>
-              <div id="c31" style="margin:20px 0px;">
-                <div style="display:flex">
-                  <div style="margin: 6px 7px 0px 0px;">
+              <div id="c31" style="margin: 20px 0px">
+                <div style="display: flex">
+                  <div style="margin: 6px 7px 0px 0px">
                     <img src="../assets/light.png" />
                   </div>
                   <h4>数组中交换两个元素的位置</h4>
@@ -924,7 +1054,9 @@
                 <div class="fontIndent">
                   <p>①借助第三方变量temp</p>
                   <p>②splice</p>
-                  <p>其核心思想也都是借助temp实现替换只是利用js方法来实现，看的很高级。</p>
+                  <p>
+                    其核心思想也都是借助temp实现替换只是利用js方法来实现，看的很高级。
+                  </p>
                   <el-card>
                     <pre>
 
@@ -941,9 +1073,9 @@
                   </el-card>
                 </div>
               </div>
-              <div id="c32" style="margin:20px 0px;">
-                <div style="display:flex">
-                  <div style="margin: 6px 7px 0px 0px;">
+              <div id="c32" style="margin: 20px 0px">
+                <div style="display: flex">
+                  <div style="margin: 6px 7px 0px 0px">
                     <img src="../assets/light.png" />
                   </div>
                   <h4>数组中元素的删除</h4>
@@ -956,7 +1088,9 @@
                   <p>
                     <code>delete arr[0];//[empty, 1, 2, 3, 4, 5]</code>
                   </p>
-                  <p>可发现，利用delete删除数组元素，只是单纯删除数组中该位置的元素，但是，长度仍保持不变。</p>
+                  <p>
+                    可发现，利用delete删除数组元素，只是单纯删除数组中该位置的元素，但是，长度仍保持不变。
+                  </p>
                   <p>②pop删除数组中最后一个元素</p>
                   <p>
                     <code>arr.pop();//[0, 1, 2, 3, 4]</code>
@@ -969,16 +1103,21 @@
                   <p>
                     <code>arr.splice(2,1);//[0, 1, 3, 4, 5]</code>
                   </p>
-                  <p>⑤filter利用filter过滤掉出部分满足条件的元素，不改变原数组，产生新数组</p>
                   <p>
-                    <code>let arr1 = arr.filter(item => item>3);//arr1:[4, 5] arr: [0, 1, 2, 3, 4, 5]</code>
+                    ⑤filter利用filter过滤掉出部分满足条件的元素，不改变原数组，产生新数组
+                  </p>
+                  <p>
+                    <code
+                      >let arr1 = arr.filter(item => item>3);//arr1:[4, 5] arr:
+                      [0, 1, 2, 3, 4, 5]</code
+                    >
                   </p>
                   <p>同样可以利用高级函数和splice结合进行根据条件进行删除。</p>
                 </div>
               </div>
-              <div id="c33" style="margin:20px 0px;">
-                <div style="display:flex">
-                  <div style="margin: 6px 7px 0px 0px;">
+              <div id="c33" style="margin: 20px 0px">
+                <div style="display: flex">
+                  <div style="margin: 6px 7px 0px 0px">
                     <img src="../assets/light.png" />
                   </div>
                   <h4>查询数组中最大元素</h4>
@@ -989,9 +1128,9 @@
                   </p>
                 </div>
               </div>
-              <div id="c34" style="margin:20px 0px;">
-                <div style="display:flex">
-                  <div style="margin: 6px 7px 0px 0px;">
+              <div id="c34" style="margin: 20px 0px">
+                <div style="display: flex">
+                  <div style="margin: 6px 7px 0px 0px">
                     <img src="../assets/light.png" />
                   </div>
                   <h4>多个数组合并</h4>
@@ -1007,24 +1146,27 @@
                   </p>
                 </div>
               </div>
-              <div id="c35" style="margin:20px 0px;">
-                <div style="display:flex; margin-bottom:25px">
-                  <div style="margin: 6px 7px 0px 0px;">
+              <div id="c35" style="margin: 20px 0px">
+                <div style="display: flex; margin-bottom: 25px">
+                  <div style="margin: 6px 7px 0px 0px">
                     <img src="../assets/light.png" />
                   </div>
                   <h4>数组去重</h4>
                 </div>
-                <p
-                  class="code"
-                  style="margin-bottom:25px;"
-                >已知数组arr：[1, 2, 32, 2, "a", "b", "a", "2", 2, 10, 9]</p>
+                <p class="code" style="margin-bottom: 25px">
+                  已知数组arr：[1, 2, 32, 2, "a", "b", "a", "2", 2, 10, 9]
+                </p>
                 <el-card>
                   <el-collapse v-model="activeName" accordion>
                     <el-collapse-item name="1">
                       <template slot="title">
-                        <i class="el-icon-scissors" style="margin-right:7px"></i>Es6 Set
+                        <i
+                          class="el-icon-scissors"
+                          style="margin-right: 7px"
+                        ></i
+                        >Es6 Set
                       </template>
-                      <div style="line-height:40px;">
+                      <div style="line-height: 40px">
                         <p>
                           语法：
                           <code>Array.from(new Set(arr))</code>
@@ -1034,16 +1176,26 @@
                           <code>[...new Set(arr)]</code>
                         </p>
                         <el-divider></el-divider>
-                        <el-button type="text" @click="textArrayFromSet">测试</el-button>
-                        <p>测试结果:{{JSON.stringify(finalArrayFromSetData)}}</p>
+                        <el-button type="text" @click="textArrayFromSet"
+                          >测试</el-button
+                        >
+                        <p>
+                          测试结果:{{ JSON.stringify(finalArrayFromSetData) }}
+                        </p>
                       </div>
                     </el-collapse-item>
                     <el-collapse-item name="2">
                       <template slot="title">
-                        <i class="el-icon-scissors" style="margin-right:7px"></i>for+for+splice
+                        <i
+                          class="el-icon-scissors"
+                          style="margin-right: 7px"
+                        ></i
+                        >for+for+splice
                       </template>
-                      <div style="line-height:40px;">
-                        <p>这里说明一下，对数组的遍历同样可以使用，map、forEach</p>
+                      <div style="line-height: 40px">
+                        <p>
+                          这里说明一下，对数组的遍历同样可以使用，map、forEach
+                        </p>
                         <el-card>
                           <pre>
 
@@ -1055,18 +1207,25 @@
                         }
                       }
                     }
-                        </pre>
+                        </pre
+                          >
                         </el-card>
                         <el-divider></el-divider>
-                        <el-button type="text" @click="textForSplice">测试</el-button>
-                        <p>测试结果:{{JSON.stringify(finalForSpliceData)}}</p>
+                        <el-button type="text" @click="textForSplice"
+                          >测试</el-button
+                        >
+                        <p>测试结果:{{ JSON.stringify(finalForSpliceData) }}</p>
                       </div>
                     </el-collapse-item>
                     <el-collapse-item name="3">
                       <template slot="title">
-                        <i class="el-icon-scissors" style="margin-right:7px"></i>indexOf
+                        <i
+                          class="el-icon-scissors"
+                          style="margin-right: 7px"
+                        ></i
+                        >indexOf
                       </template>
-                      <div style="line-height:40px;">
+                      <div style="line-height: 40px">
                         <el-card>
                           <pre>
                       
@@ -1079,15 +1238,23 @@
                           </pre>
                         </el-card>
                         <el-divider></el-divider>
-                        <el-button type="text" @click="textForIndexOf">测试</el-button>
-                        <p>测试结果:{{JSON.stringify(finalForIndexOfData)}}</p>
+                        <el-button type="text" @click="textForIndexOf"
+                          >测试</el-button
+                        >
+                        <p>
+                          测试结果:{{ JSON.stringify(finalForIndexOfData) }}
+                        </p>
                       </div>
                     </el-collapse-item>
                     <el-collapse-item name="4">
                       <template slot="title">
-                        <i class="el-icon-scissors" style="margin-right:7px"></i>sort
+                        <i
+                          class="el-icon-scissors"
+                          style="margin-right: 7px"
+                        ></i
+                        >sort
                       </template>
-                      <div style="line-height:40px;">
+                      <div style="line-height: 40px">
                         <el-card>
                           <pre>
                       
@@ -1100,17 +1267,26 @@
                       }
                           </pre>
                         </el-card>
-                        <p>此种方式更适合于数组中每个元素都为数字，否则会出现排列后:[2, '2', 2]这种情况，需要进一步排序</p>
+                        <p>
+                          此种方式更适合于数组中每个元素都为数字，否则会出现排列后:[2,
+                          '2', 2]这种情况，需要进一步排序
+                        </p>
                         <el-divider></el-divider>
-                        <el-button type="text" @click="textForSort">测试</el-button>
-                        <p>测试结果:{{JSON.stringify(finalForSortData)}}</p>
+                        <el-button type="text" @click="textForSort"
+                          >测试</el-button
+                        >
+                        <p>测试结果:{{ JSON.stringify(finalForSortData) }}</p>
                       </div>
                     </el-collapse-item>
                     <el-collapse-item name="5">
                       <template slot="title">
-                        <i class="el-icon-scissors" style="margin-right:7px"></i>filter+indexOf
+                        <i
+                          class="el-icon-scissors"
+                          style="margin-right: 7px"
+                        ></i
+                        >filter+indexOf
                       </template>
-                      <div style="line-height:40px;">
+                      <div style="line-height: 40px">
                         <el-card>
                           <pre>
                       
@@ -1118,15 +1294,23 @@
                           </pre>
                         </el-card>
                         <el-divider></el-divider>
-                        <el-button type="text" @click="textFilterIndexOf">测试</el-button>
-                        <p>测试结果:{{JSON.stringify(finalFilterIndexOfData)}}</p>
+                        <el-button type="text" @click="textFilterIndexOf"
+                          >测试</el-button
+                        >
+                        <p>
+                          测试结果:{{ JSON.stringify(finalFilterIndexOfData) }}
+                        </p>
                       </div>
                     </el-collapse-item>
                     <el-collapse-item name="6">
                       <template slot="title">
-                        <i class="el-icon-scissors" style="margin-right:7px"></i>reduce+includes
+                        <i
+                          class="el-icon-scissors"
+                          style="margin-right: 7px"
+                        ></i
+                        >reduce+includes
                       </template>
-                      <div style="line-height:40px;">
+                      <div style="line-height: 40px">
                         <el-card>
                           <pre>
                       
@@ -1137,16 +1321,20 @@
                           </pre>
                         </el-card>
                         <el-divider></el-divider>
-                        <el-button type="text" @click="textReduceIncludes">测试</el-button>
-                        <p>测试结果:{{JSON.stringify(finalReduceIncludesData)}}</p>
+                        <el-button type="text" @click="textReduceIncludes"
+                          >测试</el-button
+                        >
+                        <p>
+                          测试结果:{{ JSON.stringify(finalReduceIncludesData) }}
+                        </p>
                       </div>
                     </el-collapse-item>
                   </el-collapse>
                 </el-card>
               </div>
-              <div id="c36" style="margin:20px 0px;">
-                <div style="display:flex">
-                  <div style="margin: 6px 7px 0px 0px;">
+              <div id="c36" style="margin: 20px 0px">
+                <div style="display: flex">
+                  <div style="margin: 6px 7px 0px 0px">
                     <img src="../assets/light.png" />
                   </div>
                   <h4>数组深拷贝浅拷贝</h4>
@@ -1161,10 +1349,16 @@
                   <p>②如何实现深拷贝</p>
                   <p class="code">
                     深拷贝方法有：
-                    <code>slice、concat、map、es6扩展运算符实现、JOSN.stringify(JSON.parse(arr))</code>
+                    <code
+                      >slice、concat、map、es6扩展运算符实现、JOSN.stringify(JSON.parse(arr))</code
+                    >
+                  </p>
+                  <p class="code">
+                    除此之外还包括Object.assign()，但此方法只拷贝一级属性，二级属性仍然是浅拷贝。
                   </p>
                   <p>③手写深拷贝</p>
                   <el-card>
+                    <p>方法一：</p>
                     <pre>
 
                   function DeepClone(obj){
@@ -1180,16 +1374,46 @@
                     return result;
                   }
                     </pre>
+                    <p>方法二：</p>
+                    <pre>
+
+                  function deepClone(obj){
+                    let objClone = Array.isArray(obj) ? [] : {};
+                    if(obj &amp;&amp; typeof obj === 'object'){
+                      for(let i in obj){
+                        if(obj[i] &amp;&amp; typeof obj[i] === 'object'){
+                          objClone[i] = deepClone(obj[i]);
+                        }else{
+                          objClone[i] = obj[i];
+                        }
+                      }
+                    }
+                    return objClone
+                  }
+                    </pre>
                   </el-card>
                 </div>
               </div>
             </div>
           </div>
-          <div style="position:fixed; right:100px; width:20%; margin-top:-100px;">
+          <div
+            style="
+              position: fixed;
+              right: 100px;
+              width: 20%;
+              margin-top: -100px;
+            "
+          >
             <div class="catalogStyle">
-              <div style="display:flex;">
-                <img src="../assets/catalog.png" style="width:24px;height:24px; margin-top:3px" />
-                <span style="font-size:22px; font-weight: bold; margin-left:10px">目录</span>
+              <div style="display: flex">
+                <img
+                  src="../assets/catalog.png"
+                  style="width: 24px; height: 24px; margin-top: 3px"
+                />
+                <span
+                  style="font-size: 22px; font-weight: bold; margin-left: 10px"
+                  >目录</span
+                >
               </div>
               <el-divider></el-divider>
               <div class="htmlFix">
@@ -1203,10 +1427,16 @@
                 >
                   <div
                     class="radiuStyle"
-                    :class="itemIndex === item.index ? 'activeRadiuCatalog' : ''"
+                    :class="
+                      itemIndex === item.index ? 'activeRadiuCatalog' : ''
+                    "
                   ></div>
-                  <el-tooltip placement="left-start" :content="item.name " :open-delay="400">
-                    <div class="htmlItemName">{{item.name}}</div>
+                  <el-tooltip
+                    placement="left-start"
+                    :content="item.name"
+                    :open-delay="400"
+                  >
+                    <div class="htmlItemName">{{ item.name }}</div>
                   </el-tooltip>
                 </div>
               </div>
