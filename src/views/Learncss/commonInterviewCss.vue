@@ -336,7 +336,7 @@
         </pre>
       </el-card>
       <div>②额外标签法</div>
-      <div style="margin-left:20px">原理：添加一个空div，利用css提高的clear:both清除浮动，让父级div能自动获取到子盒子最高高度。</div>
+      <div style="margin-left:20px">原理：添加一个空div，利用css提供的clear:both清除浮动，让父级div能自动获取到子盒子最高高度。</div>
       <el-card>
         <pre>
         &lt;div class="parentFloat"&gt;

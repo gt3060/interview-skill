@@ -15,58 +15,75 @@
         </div>
         <div class="titleStyle">
           <div class="titleIconStyle">
-            <img src="../components/picture/javascript1.jpeg" class="imgStyle" />
+            <img
+              src="../components/picture/javascript1.jpeg"
+              class="imgStyle"
+            />
           </div>
           <div class="titleFontStyle">
-            <span style="font-size:25px">Javascript基础篇</span>
+            <span style="font-size: 25px">Javascript基础篇</span>
             <el-divider></el-divider>
-            <p>此篇主要包含，javascript基础考点，字符串的替换、数组的查找使用、数据类型等使用</p>
+            <p>
+              此篇主要包含，javascript基础考点，字符串的替换、数组的查找使用、数据类型等使用
+            </p>
           </div>
         </div>
-        <div style="display:flex">
-          <div style="width:75%;">
+        <div style="display: flex">
+          <div style="width: 75%">
             <div class="catalogStyle fontStyle">
-              <div style="display:flex;">
+              <div style="display: flex">
                 <img
                   src="../assets/CONTENT DELIVERY.png"
-                  style="width:24px;height:24px; margin-top:6px"
+                  style="width: 24px; height: 24px; margin-top: 6px"
                 />
-                <span style="font-size:22px; font-weight: bold; margin-left:10px">内容</span>
+                <span
+                  style="font-size: 22px; font-weight: bold; margin-left: 10px"
+                  >内容</span
+                >
               </div>
               <el-divider></el-divider>
-              <div id="c0" style="margin:20px 0px;">
-                <div style="display:flex">
-                  <div style="margin-right:7px;">
+              <div id="c0" style="margin: 20px 0px">
+                <div style="display: flex">
+                  <div style="margin-right: 7px">
                     <img src="../assets/light.png" />
                   </div>
                   <h4>1.js数据类型有哪些</h4>
                 </div>
                 <div class="fontIndent">
-                  <code>基本数据类型包括：Number、String、Boolean、Undefined、null、Symbol（es6新增）</code>
+                  <code
+                    >基本数据类型包括：Number、String、Boolean、Undefined、null、Symbol（es6新增）</code
+                  >
                 </div>
                 <div class="fontIndent">
-                  <code>除此之外，还包括一种引用类数据类型：Object；里面包含function、array、date等</code>
+                  <code
+                    >除此之外，还包括一种引用类数据类型：Object；里面包含function、array、date等</code
+                  >
                 </div>
                 <div class="fontIndent">
                   <code>原始数据类型保存在栈中，占据空间小使用频繁；</code>
                   <br />
-                  <code>引用数据类型保存在栈和堆中，占据空间大，在栈中存放指针，指针指向堆中的该实体的起始位置。</code>
+                  <code
+                    >引用数据类型保存在栈和堆中，占据空间大，在栈中存放指针，指针指向堆中的该实体的起始位置。</code
+                  >
                 </div>
               </div>
               <div id="c1">
-                <div style="display:flex">
-                  <div style="margin-right:7px;">
+                <div style="display: flex">
+                  <div style="margin-right: 7px">
                     <img src="../assets/light.png" />
                   </div>
                   <h4>2.js数据类型转换</h4>
                 </div>
                 <div class="htmlImgStyle">
-                  <img src="../assets/jsTypeTranslate.jpg" style="width:100%" />
+                  <img
+                    src="../assets/jsTypeTranslate.jpg"
+                    style="width: 100%"
+                  />
                 </div>
               </div>
               <div id="c2">
-                <div style="display:flex">
-                  <div style="margin-right:7px;">
+                <div style="display: flex">
+                  <div style="margin-right: 7px">
                     <img src="../assets/light.png" />
                   </div>
                   <h4>3.js判断数据类型</h4>
@@ -79,37 +96,48 @@
                     @click="btnTypeof(item)"
                     type="primary"
                     size="small"
-                    style="margin-left:30px"
-                  >{{item === undefined ? "undefined" : (item === null ? 'null' : item)}}</el-button>
-                  <el-card style="margin:15px 0px 0px 30px" shadow="hover">
-                    <p>语法：typeof {{typeOfInitValue}}</p>
-                    <p>类型：{{typeofValue}}</p>
+                    style="margin-left: 30px"
+                    >{{
+                      item === undefined
+                        ? "undefined"
+                        : item === null
+                        ? "null"
+                        : item
+                    }}</el-button
+                  >
+                  <el-card style="margin: 15px 0px 0px 30px" shadow="hover">
+                    <p>语法：typeof {{ typeOfInitValue }}</p>
+                    <p>类型：{{ typeofValue }}</p>
                   </el-card>
                   <p>总结（typeof识别类型）：</p>
                   <ul>
                     <li>①识别所有值类型（基本数据类型除null）；</li>
                     <li>②识别函数；</li>
-                    <li>③判断是否是引用类型，只能用来判断，无法识别是哪种引用类型（Object、Array、Math等）。</li>
+                    <li>
+                      ③判断是否是引用类型，只能用来判断，无法识别是哪种引用类型（Object、Array、Math等）。
+                    </li>
                   </ul>
                   <p>
                     因此，要想判断一个对象的正确类型，需要用到
                     <code>instanceof</code>
-                    运算符用来测试一个对象在其原型链中是否存在一个构造函数的 prototype 属性。
+                    运算符用来测试一个对象在其原型链中是否存在一个构造函数的
+                    prototype 属性。
                   </p>
                   <el-button
-                    v-for="(item) in instanceofData"
+                    v-for="item in instanceofData"
                     :key="item.type"
                     @click="btnInstanceof(item.name, item.type)"
                     type="primary"
                     size="small"
-                    style="margin-left:30px"
-                  >{{item.name}}</el-button>
-                  <el-card style="margin:15px 0px 0px 30px" shadow="hover">
+                    style="margin-left: 30px"
+                    >{{ item.name }}</el-button
+                  >
+                  <el-card style="margin: 15px 0px 0px 30px" shadow="hover">
                     <p>
                       语法：
-                      <code>{{instanceofGrammer}}</code>
+                      <code>{{ instanceofGrammer }}</code>
                     </p>
-                    <p>类型：{{instanceofValue}}</p>
+                    <p>类型：{{ instanceofValue }}</p>
                   </el-card>
                   <p>
                     除此之外，还可以用
@@ -121,20 +149,27 @@
                     @click="btnPrototypeCall(item.name, item.type)"
                     type="primary"
                     size="small"
-                    style="margin-left:30px"
-                  >{{item.name === undefined ? "undefined" : (item.name === null ? 'null' : item.name)}}</el-button>
+                    style="margin-left: 30px"
+                    >{{
+                      item.name === undefined
+                        ? "undefined"
+                        : item.name === null
+                        ? "null"
+                        : item.name
+                    }}</el-button
+                  >
                 </div>
-                <el-card style="margin:15px 0px 0px 30px" shadow="hover">
+                <el-card style="margin: 15px 0px 0px 30px" shadow="hover">
                   <p>
                     语法：
-                    <code>{{prototypeCallGrammer}}</code>
+                    <code>{{ prototypeCallGrammer }}</code>
                   </p>
-                  <p>类型：{{prototypeCallValue}}</p>
+                  <p>类型：{{ prototypeCallValue }}</p>
                 </el-card>
               </div>
               <div id="c3">
-                <div style="display:flex">
-                  <div style="margin-right:7px;">
+                <div style="display: flex">
+                  <div style="margin-right: 7px">
                     <img src="../assets/light.png" />
                   </div>
                   <h4>4.js有哪些内置对象？</h4>
@@ -143,18 +178,29 @@
                   js的内置对象主要指的是在程序执行前存在全局作用域里的由js定义的全局值属性、函数和用来实例化其他对象的构造函数对象。
                   一般我们常用到的全局值属性有：
                   <code>NaN、undefined</code>，全局函数如
-                  <code>parseInt()、parseFloat()</code>，用来实例化对象的构造函数对象包括
+                  <code>parseInt()、parseFloat()</code
+                  >，用来实例化对象的构造函数对象包括
                   <code>Date、Object、Math</code>等。
                 </p>
                 <span class="fontIndent">
                   <ul>
-                    <li>值属性（返回一个简单的值，没有自己的属性和方法）：NaN、null、undefined</li>
-                    <li>函数属性（全局函数可以直接调用）：eval()、parseInt()、parseFloat()</li>
-                    <li>基本对象（基本对象是定义或使用其他对象的基础，主要包括一般对象、函数对象、错误对象）：Object、Function、Boolean、Symbol、Error</li>
+                    <li>
+                      值属性（返回一个简单的值，没有自己的属性和方法）：NaN、null、undefined
+                    </li>
+                    <li>
+                      函数属性（全局函数可以直接调用）：eval()、parseInt()、parseFloat()
+                    </li>
+                    <li>
+                      基本对象（基本对象是定义或使用其他对象的基础，主要包括一般对象、函数对象、错误对象）：Object、Function、Boolean、Symbol、Error
+                    </li>
                     <li>数字和日期对象：Number、Date、Math</li>
                     <li>字符串：String、RegExp</li>
-                    <li>可索引的集合对象（这些对象表示按照索引值来排序的数据集合，包括数组及类型数组）:Array</li>
-                    <li>使用键的集合对象，这些集合对象在存储数据时会使用到键，支持按照插入顺序来迭代元素：Map、Set、WeakMap、WeakSet</li>
+                    <li>
+                      可索引的集合对象（这些对象表示按照索引值来排序的数据集合，包括数组及类型数组）:Array
+                    </li>
+                    <li>
+                      使用键的集合对象，这些集合对象在存储数据时会使用到键，支持按照插入顺序来迭代元素：Map、Set、WeakMap、WeakSet
+                    </li>
                     <li>结构化数据：JSON</li>
                     <li>控制抽象对象：Promise、Generator</li>
                     <li>反射:Reflect、Proxy</li>
@@ -163,8 +209,8 @@
                 </span>
               </div>
               <div id="c4">
-                <div style="display:flex">
-                  <div style="margin-right:7px;">
+                <div style="display: flex">
+                  <div style="margin-right: 7px">
                     <img src="../assets/light.png" />
                   </div>
                   <h4>5.null和undefined区别</h4>
@@ -176,8 +222,8 @@
                 </span>
               </div>
               <div id="c5">
-                <div style="display:flex">
-                  <div style="margin-right:7px;">
+                <div style="display: flex">
+                  <div style="margin-right: 7px">
                     <img src="../assets/light.png" />
                   </div>
                   <h4>6.js创建对象的几种方式</h4>
@@ -233,14 +279,16 @@
                 let person1 = new Person("耿", "male");
                 let person2 = new Person("陈", "male");
                 console.log(person1 instanceof Object);//true
-                console.log(person1 instanceof Person);//false
+                console.log(person1 instanceof Person);//true
                 </pre>
                 <span>构造函数和工厂模式区别：</span>
                 <ul>
                   <li>没有显示的创建对象p;</li>
                   <li>没有return语句;</li>
                   <li>直接将属性和方法赋值给this对象;</li>
-                  <li>通过构造函数创建的对象，既可以判断出是Object的实例，也可以判断（instanceof）出是Person的实例。</li>
+                  <li>
+                    通过构造函数创建的对象，既可以判断出是Object的实例，也可以判断（instanceof）出是Person的实例。
+                  </li>
                 </ul>
                 <span>⑤原型模式</span>
                 <pre>
@@ -280,8 +328,8 @@
                 </pre>
               </div>
               <div id="c6">
-                <div style="display:flex">
-                  <div style="margin-right:7px;">
+                <div style="display: flex">
+                  <div style="margin-right: 7px">
                     <img src="@/assets/light.png" />
                   </div>
                   <h4>7.事件捕获</h4>
@@ -290,40 +338,54 @@
                   当事件发生在dom元素上，该事件并不完全发生在该dom元素上，在捕获阶段，事件从window开始一直到触发事件的元素,例如当点击子div时，
                   父div的click函数同时响应。
                 </p>
-                <el-card style="margin:15px 0px 0px 30px" shadow="hover">
+                <el-card style="margin: 15px 0px 0px 30px" shadow="hover">
                   <div
                     @click="handleFather"
-                    style="width:150px; height:120px; border:1px solid black;"
+                    style="width: 150px; height: 120px; border: 1px solid black"
                     id="parentId"
                   >
                     <div
-                      style="width:70px; height:70px; border:1px solid black;margin:20px 0px 0px  20px"
+                      style="
+                        width: 70px;
+                        height: 70px;
+                        border: 1px solid black;
+                        margin: 20px 0px 0px 20px;
+                      "
                       @click="handleChild"
                       id="childId"
                     ></div>
                   </div>
-                  <p>addEventListener方法具有第三个可选参数useCapture，其默认值为false，事件将在冒泡阶段中发生，如果为true，则事件将在捕获阶段中发生</p>
+                  <p>
+                    addEventListener方法具有第三个可选参数useCapture，其默认值为false，事件将在冒泡阶段中发生，如果为true，则事件将在捕获阶段中发生
+                  </p>
                 </el-card>
               </div>
               <div id="c7">
-                <div style="display:flex">
-                  <div style="margin-right:7px;">
+                <div style="display: flex">
+                  <div style="margin-right: 7px">
                     <img src="../assets/light.png" />
                   </div>
                   <h4>8.事件冒泡</h4>
                 </div>
                 <p class="fontIndent">
-                  事件冒泡刚好与事件捕获相反，当前元素---->body ----> html---->document ---->window。当事件发生在DOM元素上时，该事件并不完全发生在那个元素上。
+                  事件冒泡刚好与事件捕获相反，当前元素---->body ---->
+                  html---->document
+                  ---->window。当事件发生在DOM元素上时，该事件并不完全发生在那个元素上。
                   在冒泡阶段，事件冒泡，或者事件发生在它的父代，祖父母，祖父母的父代，直到到达window为止。例如：当点击子div时，先触发子div的click再触发父div的click
                 </p>
-                <el-card style="margin:15px 0px 0px 30px" shadow="hover">
+                <el-card style="margin: 15px 0px 0px 30px" shadow="hover">
                   <div
                     @click="handleFather('true')"
-                    style="width:150px; height:120px; border:1px solid black;"
+                    style="width: 150px; height: 120px; border: 1px solid black"
                     id="parentId"
                   >
                     <div
-                      style="width:70px; height:70px; border:1px solid black;margin:20px 0px 0px  20px"
+                      style="
+                        width: 70px;
+                        height: 70px;
+                        border: 1px solid black;
+                        margin: 20px 0px 0px 20px;
+                      "
                       @click="handleChild('true')"
                       id="childId"
                     ></div>
@@ -331,33 +393,41 @@
                 </el-card>
               </div>
               <div id="c8">
-                <div style="display:flex">
-                  <div style="margin-right:7px;">
+                <div style="display: flex">
+                  <div style="margin-right: 7px">
                     <img src="../assets/light.png" />
                   </div>
                   <h4>9.var、let、const区别</h4>
                 </div>
-                <p class="fontIndent">①var声明的变量会挂载在window上，let和const声明的变量不会；</p>
+                <p class="fontIndent">
+                  ①var声明的变量会挂载在window上，let和const声明的变量不会；
+                </p>
                 <span class="fontIndent">
                   <ul>
                     <li>
                       const定义的变量不可被修改，而且必须初始化；
                       <code>const a = 200;</code>
                     </li>
-                    <li>var和let定义的变量可被修改，如果不初始化，则输出undefined；</li>
-                    <li>let是块级作用域，函数内部使用后，对函数外部无影响；var存在变量提升。</li>
+                    <li>
+                      var和let定义的变量可被修改，如果不初始化，则输出undefined；
+                    </li>
+                    <li>
+                      let是块级作用域，函数内部使用后，对函数外部无影响；var存在变量提升。
+                    </li>
                   </ul>
                 </span>
               </div>
               <div id="c9">
-                <div style="display:flex">
-                  <div style="margin-right:7px;">
+                <div style="display: flex">
+                  <div style="margin-right: 7px">
                     <img src="../assets/light.png" />
                   </div>
                   <h4>10.什么是对象解构</h4>
                 </div>
                 <div class="fontIndent">
-                  <span>对象析构是从对象或数组中获取或提取值的一种新的、更简洁的方法，如下面的对象：</span>
+                  <span
+                    >对象析构是从对象或数组中获取或提取值的一种新的、更简洁的方法，如下面的对象：</span
+                  >
                   <pre>
                   const Person = {
                     name: "陈",
@@ -375,8 +445,8 @@
                 </div>
               </div>
               <div id="c10">
-                <div style="display:flex">
-                  <div style="margin-right:7px;">
+                <div style="display: flex">
+                  <div style="margin-right: 7px">
                     <img src="../assets/light.png" />
                   </div>
                   <h4>11.模块化</h4>
@@ -389,8 +459,8 @@
                 </div>
               </div>
               <div id="c11">
-                <div style="display:flex">
-                  <div style="margin-right:7px;">
+                <div style="display: flex">
+                  <div style="margin-right: 7px">
                     <img src="../assets/light.png" />
                   </div>
                   <h4>12.几种常见的模块规范</h4>
@@ -398,14 +468,18 @@
                 <div class="fontIndent">
                   <p>①CommonJS方案：</p>
                   <p>
-                    该规范的核心思想是允许模块通过 require 方法来同步加载所要依赖的其他模块，通过module.export定义模块的输出接口，
+                    该规范的核心思想是允许模块通过 require
+                    方法来同步加载所要依赖的其他模块，通过module.export定义模块的输出接口，
                     缺点是:同步的模块加载方式不适合在浏览器环境中，同步意味着阻塞加载，浏览器资源是异步加载的。
                   </p>
                   <p>②AMD</p>
-                  <p>这种方案采用异步加载的方式来加载模块，模块的加载不影响后面语句的执行，所有依赖这个模块的语句都定义在一个回调函数里，等到加载完成后再执行回调函数。</p>
+                  <p>
+                    这种方案采用异步加载的方式来加载模块，模块的加载不影响后面语句的执行，所有依赖这个模块的语句都定义在一个回调函数里，等到加载完成后再执行回调函数。
+                  </p>
                   <p>③CMD</p>
                   <p>
-                    这种方案和 AMD 方案都是为了解决异步模块加载的问题，sea.js 实现了 CMD 规范。
+                    这种方案和 AMD 方案都是为了解决异步模块加载的问题，sea.js
+                    实现了 CMD 规范。
                     它和require.js的区别在于模块定义时对依赖的处理不同和对依赖模块的执行时机的处理不同。
                   </p>
                   <p>④ES6</p>
@@ -414,14 +488,20 @@
                     <strong>总结</strong>
                   </p>
                   <ul>
-                    <li>AMD和CMD：RequireJS是AMD规范的实现，SeaJS是CMD规范的实现， 一个主张提前加载依赖，一个主张延迟加载依赖</li>
-                    <li>无论是node应用模块，还是webpack 配置 ，均是采用CommonJS模块化规范</li>
+                    <li>
+                      AMD和CMD：RequireJS是AMD规范的实现，SeaJS是CMD规范的实现，
+                      一个主张提前加载依赖，一个主张延迟加载依赖
+                    </li>
+                    <li>
+                      无论是node应用模块，还是webpack 配置
+                      ，均是采用CommonJS模块化规范
+                    </li>
                   </ul>
                 </div>
               </div>
               <div id="c12">
-                <div style="display:flex">
-                  <div style="margin-right:7px;">
+                <div style="display: flex">
+                  <div style="margin-right: 7px">
                     <img src="../assets/light.png" />
                   </div>
                   <h4>13.什么是Set对象，它是如何工作的？</h4>
@@ -430,14 +510,23 @@
                   <p>Set对象允许存储任何类型的唯一值。</p>
                   <p>①Set对象构造函数创建实例</p>
                   <p>
-                    <code>const set1 = new Set(); const set2 = new Set(['a','b','c','d'])</code>
+                    <code
+                      >const set1 = new Set(); const set2 = new
+                      Set(['a','b','c','d'])</code
+                    >
                   </p>
                   <p>②Set对象中增加元素</p>
                   <p>
-                    <code>set1.add('a');//向Set对象set1中增加值为'a',结果:Set {"a"}</code>
+                    <code
+                      >set1.add('a');//向Set对象set1中增加值为'a',结果:Set
+                      {"a"}</code
+                    >
                   </p>
                   <p>
-                    <code>set2.add('a').add('e');//向Set对象set2中增加值为e，值为a不会添加，因为已经存在,结果:Set {"a", "b", "c", "d", "e"}</code>
+                    <code
+                      >set2.add('a').add('e');//向Set对象set2中增加值为e，值为a不会添加，因为已经存在,结果:Set
+                      {"a", "b", "c", "d", "e"}</code
+                    >
                   </p>
                   <p>③Set对象中删除元素</p>
                   <p>
@@ -458,47 +547,65 @@
                     <code>set2.size();</code>
                   </p>
                   <p>我们可以利用set存储的唯一值的特性来进行数组去重：</p>
-                  <code>let arr = [11,2,3,4,2,3]; let set3 = [...new Set(arr)];</code>
+                  <code
+                    >let arr = [11,2,3,4,2,3]; let set3 = [...new
+                    Set(arr)];</code
+                  >
                   <p>
                     <strong>
-                      另外还有WeakSet， 与 Set 类似，也是不重复的值的集合。但是 WeakSet 的成员只能是对象，而不能是其他类型的值。
-                      WeakSet 中的对象都是弱引用，即垃圾回收机制不考虑 WeakSet对该对象的引用。
+                      另外还有WeakSet， 与 Set 类似，也是不重复的值的集合。但是
+                      WeakSet 的成员只能是对象，而不能是其他类型的值。 WeakSet
+                      中的对象都是弱引用，即垃圾回收机制不考虑
+                      WeakSet对该对象的引用。
                     </strong>
                   </p>
                 </div>
               </div>
               <div id="c13">
-                <div style="display:flex">
-                  <div style="margin-right:7px;">
+                <div style="display: flex">
+                  <div style="margin-right: 7px">
                     <img src="../assets/light.png" />
                   </div>
                   <h4>14.===和==区别</h4>
                 </div>
                 <ul class="fontIndent">
-                  <li>===称为等同符，当两边值的类型相同时，直接比较值，若类型不同，直接返回false</li>
-                  <li>==称为等值符，当两边类型相同时，直接比较值是否相等，若类型不同，先转化为类型相同的值，再比较</li>
+                  <li>
+                    ===称为等同符，当两边值的类型相同时，直接比较值，若类型不同，直接返回false
+                  </li>
+                  <li>
+                    ==称为等值符，当两边类型相同时，直接比较值是否相等，若类型不同，先转化为类型相同的值，再比较
+                  </li>
                 </ul>
                 <div class="fontIndent">
                   <p>
                     <strong>针对==比较类型转换规则：</strong>
                   </p>
                   <ul>
-                    <li>若两边是boolean、string、number三者中任意两个进行比较，优先转换为数字进行比较；</li>
-                    <li>若两边出现null、undefined，null和undefined除了和自己相等，就彼此相等（一个为null一个为undefined）；</li>
+                    <li>
+                      若两边是boolean、string、number三者中任意两个进行比较，优先转换为数字进行比较；
+                    </li>
+                    <li>
+                      若两边出现null、undefined，null和undefined除了和自己相等，就彼此相等（一个为null一个为undefined）；
+                    </li>
                     <li>NaN == NaN（也返回false）；</li>
-                    <li>若一个是对象，另一个是数值或者字符串，则把对象先转换为基础类型再比较，对象转基础类型利用toString或者valueOf方法（Date只能利用toString方法）</li>
+                    <li>
+                      若一个是对象，另一个是数值或者字符串，则把对象先转换为基础类型再比较，对象转基础类型利用toString或者valueOf方法（Date只能利用toString方法）
+                    </li>
                   </ul>
                   <p>
                     <strong>何时使用===以及何时使用==</strong>
                   </p>
                   <p>①除了==null外其他情况都使用===；</p>
-                  <p>②if(obj.a == null)等同于if(obj.a === null || obj.a === undefined)</p>
+                  <p>
+                    ②if(obj.a == null)等同于if(obj.a === null || obj.a ===
+                    undefined)
+                  </p>
                   <p>③==会发生类型转换，转换规则如上。</p>
                 </div>
               </div>
               <div id="c14">
-                <div style="display:flex">
-                  <div style="margin-right:7px;">
+                <div style="display: flex">
+                  <div style="margin-right: 7px">
                     <img src="../assets/light.png" />
                   </div>
                   <h4>15.日期和时间戳转换</h4>
@@ -536,8 +643,9 @@
                     <el-button
                       @click="handleShowTimetoDate"
                       type="text"
-                      style="margin-left:15px"
-                    >代码显示/隐藏</el-button>
+                      style="margin-left: 15px"
+                      >代码显示/隐藏</el-button
+                    >
                   </p>
                   <el-card v-if="isShowTimeToDate === true" shadow="hover">
                     <pre>
@@ -568,8 +676,8 @@
                 </div>
               </div>
               <div id="c15">
-                <div style="display:flex">
-                  <div style="margin-right:7px;">
+                <div style="display: flex">
+                  <div style="margin-right: 7px">
                     <img src="../assets/light.png" />
                   </div>
                   <h4>16.new一个对象具体发生了什么</h4>
@@ -611,8 +719,8 @@
                 </div>
               </div>
               <div id="c16">
-                <div style="display:flex">
-                  <div style="margin-right:7px;">
+                <div style="display: flex">
+                  <div style="margin-right: 7px">
                     <img src="../assets/light.png" />
                   </div>
                   <h4>17.自己定义一个new方法</h4>
@@ -646,7 +754,9 @@
                     child.hasOwnProperty('age')//true
                     child.hasOwnProperty('sayName')//false
                   </pre>
-                  <p>除此之外，可以利用arguments来进行创建，创建实例不变，构造函数不变只改变封装new方法</p>
+                  <p>
+                    除此之外，可以利用arguments来进行创建，创建实例不变，构造函数不变只改变封装new方法
+                  </p>
                   <pre>
 
                   function newMethod(){
@@ -664,19 +774,23 @@
                 </div>
               </div>
               <div id="c17">
-                <div style="display:flex">
-                  <div style="margin-right:7px;">
+                <div style="display: flex">
+                  <div style="margin-right: 7px">
                     <img src="../assets/light.png" />
                   </div>
-                  <h4>17.arguments详解</h4>
+                  <h4>18.arguments详解</h4>
                 </div>
                 <div class="fontIndent">
                   <p>①首先介绍一下，形参和实参的概念</p>
                   <ul>
                     <li>形参是函数定义的参数；</li>
                     <li>实参是函数调用的实际传的参数；</li>
-                    <li>形参的个数多于实参，那么，多余形参的参数值为undefined；</li>
-                    <li>实参的个数如果多于形参，那么，多余的参数值可以通过arguments访问。</li>
+                    <li>
+                      形参的个数多于实参，那么，多余形参的参数值为undefined；
+                    </li>
+                    <li>
+                      实参的个数如果多于形参，那么，多余的参数值可以通过arguments访问。
+                    </li>
                   </ul>
                   <p>②前言</p>
                   <ul>
@@ -684,7 +798,9 @@
                       js并没有重载函数的功能，但是arguments对象能够模拟重载，js中每个函数都会有一个Arguments对象实例的arguments，
                       它引用着函数的实参，可以用数组下标的方式，引用arguments中的元素。
                     </li>
-                    <li>arguments.length为函数实参个数，arguments.callee引用函数自身。</li>
+                    <li>
+                      arguments.length为函数实参个数，arguments.callee引用函数自身。
+                    </li>
                   </ul>
                   <el-card>
                     <p>实例如下：</p>
@@ -707,10 +823,16 @@
                   </el-card>
                   <p>③特点</p>
                   <ul>
-                    <li>arguments对象和Function是分不开的；因此不能显式创建；</li>
+                    <li>
+                      arguments对象和Function是分不开的；因此不能显式创建；
+                    </li>
                     <li>arguments对象参数可以被设置；</li>
-                    <li>arguments对象的callee属性的初始值就是正被执行的Function对象；</li>
-                    <li>arguments对象并不是一个数组，而是一个类数组。但是对于每个参数的访问方式等同于数组访问参数；</li>
+                    <li>
+                      arguments对象的callee属性的初始值就是正被执行的Function对象；
+                    </li>
+                    <li>
+                      arguments对象并不是一个数组，而是一个类数组。但是对于每个参数的访问方式等同于数组访问参数；
+                    </li>
                     <li>
                       将arguments的类数组对象，转换为数组对象，
                       <code>[].slice.call(arguments,params);</code>
@@ -726,18 +848,26 @@
                 </div>
               </div>
               <div id="c18">
-                <div style="display:flex">
-                  <div style="margin-right:7px;">
+                <div style="display: flex">
+                  <div style="margin-right: 7px">
                     <img src="../assets/light.png" />
                   </div>
-                  <h4>18.for...of和for...in区别</h4>
+                  <h4>19.for...of和for...in区别</h4>
                 </div>
                 <div class="fontIndent">
                   <ul>
-                    <li>for...in是遍历数组的索引，for...of是遍历数组的每个元素值；</li>
-                    <li>for...of遍历的只是数组内元素，不包括原型方法和索引；for...in则全部遍历出来；</li>
-                    <li>for...in遍历数组的index为String类型（“0”，“1”，“2”），并不是数字（0，1，2）；</li>
-                    <li>因此，for...in更适合遍历对象，而for...of更适合遍历数组。</li>
+                    <li>
+                      for...in是遍历数组的索引，for...of是遍历数组的每个元素值；
+                    </li>
+                    <li>
+                      for...of遍历的只是数组内元素，不包括原型方法和索引；for...in则全部遍历出来；
+                    </li>
+                    <li>
+                      for...in遍历数组的index为String类型（“0”，“1”，“2”），并不是数字（0，1，2）；
+                    </li>
+                    <li>
+                      因此，for...in更适合遍历对象，而for...of更适合遍历数组。
+                    </li>
                   </ul>
                   <el-card>
                     <pre>
@@ -778,11 +908,11 @@
                 </div>
               </div>
               <div id="c19">
-                <div style="display:flex">
-                  <div style="margin-right:7px;">
+                <div style="display: flex">
+                  <div style="margin-right: 7px">
                     <img src="../assets/light.png" />
                   </div>
-                  <h4>19.JSON.stringify参数</h4>
+                  <h4>20.JSON.stringify参数</h4>
                 </div>
                 <div class="fontIndent">
                   <p>JSON.stringify一共有三个参数</p>
@@ -792,26 +922,40 @@
                   <p>具体如下：</p>
                   <p>①只传第一个参数data</p>
                   <p class="code">
-                    <code>let data = {name:"gengtian", info:{age:18, sex:"male"}}</code>
+                    <code
+                      >let data = {name:"gengtian", info:{age:18,
+                      sex:"male"}}</code
+                    >
                   </p>
                   <p class="code">
-                    <code>JSON.stringify(data);// {"name":"gengtian", "info":{"age":18, "sex":"male"}}</code>
+                    <code
+                      >JSON.stringify(data);// {"name":"gengtian",
+                      "info":{"age":18, "sex":"male"}}</code
+                    >
                   </p>
                   <p>需要注意的是：stringify对data里的数据格式有一些要求：</p>
                   <ul>
-                    <li>非数组对象的属性，不能保证以特定的顺序出现在序列化后的字符串中；</li>
-                    <li>布尔值、数字、字符串的包装对象在序列化过程中会自动转换成对应的原始值；</li>
+                    <li>
+                      非数组对象的属性，不能保证以特定的顺序出现在序列化后的字符串中；
+                    </li>
+                    <li>
+                      布尔值、数字、字符串的包装对象在序列化过程中会自动转换成对应的原始值；
+                    </li>
                     <li>
                       undefined、任意的函数以及Symbol值，在序列化过程中会被忽略（出现在非数组对象的属性中）或者
                       被转换成null（出现在数组中时候）。
                     </li>
-                    <li>所有以 symbol 为属性键的属性都会被完全忽略掉，即便 replacer 参数中强制指定包含了它们;</li>
+                    <li>
+                      所有以 symbol 为属性键的属性都会被完全忽略掉，即便
+                      replacer 参数中强制指定包含了它们;
+                    </li>
                     <li>不可枚举的属性会被忽略。</li>
                   </ul>
                   <p>②传两个参数</p>
                   <p>
                     第二个参数可以为一个过滤函数，也可以为一个数组，当为数组时被序列化的值的每个属性都会经过该函数的转换和处理，
-                    当为数组时则只有包含在这个数组中的属性名才会被序列化到最终的 JSON 字符串中。
+                    当为数组时则只有包含在这个数组中的属性名才会被序列化到最终的
+                    JSON 字符串中。
                   </p>
                   <p>过滤函数:</p>
                   <el-card>
@@ -852,7 +996,8 @@
                   </p>
                   <p>③三个参数</p>
                   <p>
-                    第三参数space用来控制结果字符串里面的间距。如果是一个数字, 则在字符串化时每一级别会比上一级别缩进多这个数字值的空格（最多10个空格）；
+                    第三参数space用来控制结果字符串里面的间距。如果是一个数字,
+                    则在字符串化时每一级别会比上一级别缩进多这个数字值的空格（最多10个空格）；
                     如果是一个字符串，则每一级别会比上一级别多缩进用该字符串（或该字符串的前十个字符）
                   </p>
                   <p>④toJSON</p>
@@ -872,11 +1017,11 @@
                 </div>
               </div>
               <div id="c20">
-                <div style="display:flex">
-                  <div style="margin-right:7px;">
+                <div style="display: flex">
+                  <div style="margin-right: 7px">
                     <img src="../assets/light.png" />
                   </div>
-                  <h4>20.小数取整以及保留小数几位</h4>
+                  <h4>21.小数取整以及保留小数几位</h4>
                 </div>
                 <div class="fontIndent">
                   <p>①小数取整</p>
@@ -908,13 +1053,63 @@
                   </p>
                 </div>
               </div>
+              <div id="c21">
+                <div style="display: flex">
+                  <div style="margin-right: 7px">
+                    <img src="../assets/light.png" />
+                  </div>
+                  <h4>22.组件化和模块化</h4>
+                </div>
+                <div class="fontIndent">
+                  <p>组件和模块：</p>
+                  <p>组件：把重复的代码提取合并成一个个组件；</p>
+                  <p>模块：把同一个功能的代码进行分离，可以独立运行。</p>
+                  <p>组件化和模块化功能：</p>
+                  <p>开发和调试效率高；</p>
+                  <p>可维护性强；</p>
+                  <p>避免阻断；</p>
+                  <p>版本管理更容易。</p>
+                </div>
+              </div>
+              <div id="c22">
+                <div style="display: flex">
+                  <div style="margin-right: 7px">
+                    <img src="../assets/light.png" />
+                  </div>
+                  <h4>23.es6新增</h4>
+                </div>
+                <div class="fontIndent">
+                  <ul>
+                    <li>let/const</li>
+                    <li>Map/Set</li>
+                    <li>箭头函数</li>
+                    <li>Class/extends</li>
+                    <li>解构赋值</li>
+                    <li>对象扩展：key/values/entries</li>
+                    <li>数组新属性map/reduce</li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
-          <div style="position:fixed; right:100px; width:20%; margin-top:-100px;">
+          <div
+            style="
+              position: fixed;
+              right: 100px;
+              width: 20%;
+              margin-top: -100px;
+            "
+          >
             <div class="catalogStyle">
-              <div style="display:flex;">
-                <img src="../assets/catalog.png" style="width:24px;height:24px; margin-top:3px" />
-                <span style="font-size:22px; font-weight: bold; margin-left:10px">目录</span>
+              <div style="display: flex">
+                <img
+                  src="../assets/catalog.png"
+                  style="width: 24px; height: 24px; margin-top: 3px"
+                />
+                <span
+                  style="font-size: 22px; font-weight: bold; margin-left: 10px"
+                  >目录</span
+                >
               </div>
               <el-divider></el-divider>
               <div class="htmlFix">
@@ -928,10 +1123,16 @@
                 >
                   <div
                     class="radiuStyle"
-                    :class="itemIndex === item.index ? 'activeRadiuCatalog' : ''"
+                    :class="
+                      itemIndex === item.index ? 'activeRadiuCatalog' : ''
+                    "
                   ></div>
-                  <el-tooltip placement="left-start" :content="item.name " :open-delay="400">
-                    <div class="htmlItemName">{{item.name}}</div>
+                  <el-tooltip
+                    placement="left-start"
+                    :content="item.name"
+                    :open-delay="400"
+                  >
+                    <div class="htmlItemName">{{ item.name }}</div>
                   </el-tooltip>
                 </div>
               </div>
@@ -970,6 +1171,7 @@ export default {
         { index: "c18", name: "for...of和for...in区别", i: "18" },
         { index: "c19", name: "JSON.stringify参数", i: "19" },
         { index: "c20", name: "小数取整以及保留小数几位", i: "20" },
+        { index: "c21", name: "组件化和模块化", i: "22" },
       ],
       itemIndex: "",
       typeofValue: "",

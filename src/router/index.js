@@ -13,6 +13,7 @@ import JsClosure from "../views/JsClosure/JsClosure.vue";
 import jsInherit from "../views/jsInherit/jsInherit.vue";
 import vueInterview from "../views/vueInterview/vueInterview.vue";
 import reactInterview from "../views/reactInterview/reactInterview.vue"
+import jsSort from "../views/jsSort.vue";
 
 Vue.use(VueRouter)
 
@@ -81,6 +82,11 @@ const routes = [
     path: '/reactInterview',
     name: 'reactInterview',
     component: reactInterview
+  },
+  {
+    path: '/jsSort',
+    name: 'jsSort',
+    component: jsSort
   }
 ]
 
