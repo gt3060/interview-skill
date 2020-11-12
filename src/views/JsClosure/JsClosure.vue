@@ -179,7 +179,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .learnClosure {
   background-image: linear-gradient(#fee9ee, white);
 }

@@ -21,6 +21,11 @@
             <span style="font-size: 25px">Vue</span>
             <el-divider></el-divider>
             <p>此篇主要讲述vue常见的考点。</p>
+            <router-link to="/vueDetail">
+              <el-button type="text" @click="btnVueDetail">
+                vue的详解传送门
+              </el-button>
+            </router-link>
           </div>
         </div>
         <div style="display: flex">
@@ -608,6 +613,7 @@ export default {
         { index: "c18", name: "19.组件中的data为什么是函数", i: "18" },
       ],
       itemIndex: "",
+      isShowVueDetail: false,
     };
   },
   mounted() {
@@ -643,6 +649,10 @@ export default {
         }
       }
       selectData !== "" && this.handleCatalog(selectData);
+    },
+
+    btnVueDetail() {
+      this.isShowVueDetail = true;
     },
   },
 };

@@ -544,7 +544,7 @@
                   <p>
                     浏览器内核：浏览器所采用的渲染引擎，决定了浏览器如何显示网页内容以及页面格式信息。
                   </p>
-                  <p> 
+                  <p>
                     现如今的几大浏览器分别为：Google
                     chrome、FireFox、Safari、IE、Opera
                   </p>
@@ -556,6 +556,30 @@
                     <li>Opera: Presto/Webkit/Blink</li>
                     <li>Safari: Webkit</li>
                   </ul>
+                </div>
+              </div>
+              <div id="c21">
+                <div style="display: flex">
+                  <div style="margin-right: 7px">
+                    <img src="../assets/light.png" />
+                  </div>
+                  <h4>22.html5新增属性</h4>
+                </div>
+                <div class="htmlImgStyle1">
+                  <ul>
+                    <li>语义化标签</li>
+                    <li>
+                      增加表单元素和属性：&lt;output&gt;、min、max、step、autofocus；
+                    </li>
+                    <li>视频和音频&lt;auto&gt;、&lt;video&gt;</li>
+                    <li>Canvas容器</li>
+                    <li>拖放API</li>
+                    <li>Web Storage(localStorage/sessionStorage)</li>
+                    <li>Web Socket</li>
+                  </ul>
+                  <el-button type="text" @click="handleHtml5Detail"
+                    >详见：</el-button
+                  >
                 </div>
               </div>
             </div>
@@ -658,6 +682,7 @@ export default {
         { index: "c18", name: "web前端优化常见方法", i: "18" },
         { index: "c19", name: "状态码", i: "19" },
         { index: "c20", name: "浏览器内核", i: "20" },
+        { index: "c21", name: "html5新增属性", i: "21" },
       ],
       itemIndex: "",
     };
@@ -716,6 +741,10 @@ export default {
       // document.documentElement.scrollTop;
       // 浏览器某个div距离顶部距离
       // document.getElementById("c1").offsetTop
+    },
+
+    handleHtml5Detail() {
+      window.open("https://www.cnblogs.com/sarah-wen/p/10767178.html");
     },
   },
 };
