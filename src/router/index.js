@@ -14,6 +14,8 @@ import jsInherit from "../views/jsInherit/jsInherit.vue";
 import vueInterview from "../views/vueInterview/vueInterview.vue";
 import reactInterview from "../views/reactInterview/reactInterview.vue"
 import jsSort from "../views/jsSort.vue";
+import vueDetail from "../views/vueInterview/vueDetail.vue";
+import vueDirective from "../views/vueInterview/vueDirective.vue"
 
 Vue.use(VueRouter)
 
@@ -77,6 +79,13 @@ const routes = [
     path: '/vueInterview',
     name: 'vueInterview',
     component: vueInterview
+    // children: [
+    //   {
+    //     path: '/vueInterview/vueDetail',
+    //     name: 'vueDetail',
+    //     component: vueDetail
+    //   }
+    // ]
   },
   {
     path: '/reactInterview',
@@ -87,7 +96,26 @@ const routes = [
     path: '/jsSort',
     name: 'jsSort',
     component: jsSort
+  },
+  // // vue进阶详解
+  {
+    path: '/vueDetail',
+    name: 'vueDetail',
+    component: vueDetail,
+    children: [
+      {
+        path: '/vueDetail',
+        name: 'vueDirective',
+        component: vueDirective
+      },
+      {
+        path: '/vueDetail/demo1',
+        name: 'demo1',
+        component: vueDirective
+      }
+    ]
   }
+
 ]
 
 const router = new VueRouter({

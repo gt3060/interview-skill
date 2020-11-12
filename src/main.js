@@ -9,6 +9,11 @@ import './main.less'
 
 Vue.config.productionTip = false
 Vue.use(ElementUI);
+Vue.directive("gtColor", function (el, binding) {
+  console.log(el);
+  el.style = "color:" + binding.value
+
+})
 
 new Vue({
   router,
