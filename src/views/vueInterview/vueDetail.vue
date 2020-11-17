@@ -15,15 +15,11 @@
             <span>全局API</span>
           </template>
           <router-link to="/vueDetail">
-            <el-menu-item index="1-1">自定义指令</el-menu-item>
+            <el-menu-item index="1-1">自定义指令(Vue.directive)</el-menu-item>
           </router-link>
-          <el-menu-item index="1-2">选项2</el-menu-item>
-          <!-- <el-menu-item-group>
-            <router-link to="/vueDetail">
-              <el-menu-item index="1-1">自定义指令</el-menu-item>
-            </router-link>
-            <el-menu-item index="1-2">选项2</el-menu-item>
-          </el-menu-item-group> -->
+          <router-link to="/vueDetail/VueExtend">
+            <el-menu-item index="1-2">Vue.extend构造器的延伸</el-menu-item>
+          </router-link>
           <el-menu-item index="1-3">选项3</el-menu-item>
           <el-menu-item index="1-4">选项4</el-menu-item>
         </el-submenu>
