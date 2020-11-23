@@ -16,7 +16,8 @@ import reactInterview from "../views/reactInterview/reactInterview.vue"
 import jsSort from "../views/jsSort.vue";
 import vueDetail from "../views/vueInterview/vueDetail.vue";
 import vueDirective from "../views/vueInterview/vueDirective.vue";
-import vueExtend from "../views/vueInterview/vueExtend.vue"
+import vueExtend from "../views/vueInterview/vueExtend.vue";
+import VueSet from "../views/vueInterview/VueSet.vue"
 
 Vue.use(VueRouter)
 
@@ -113,6 +114,11 @@ const routes = [
         path: '/vueDetail/VueExtend',
         name: 'VueExtend',
         component: vueExtend
+      },
+      {
+        path: '/vueDetail/VueSet',
+        name: 'VueSet',
+        component: VueSet
       }
     ]
   }

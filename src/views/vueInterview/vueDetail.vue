@@ -20,7 +20,9 @@
           <router-link to="/vueDetail/VueExtend">
             <el-menu-item index="1-2">Vue.extend构造器的延伸</el-menu-item>
           </router-link>
-          <el-menu-item index="1-3">选项3</el-menu-item>
+          <router-link to="/vueDetail/VueSet">
+            <el-menu-item index="1-3">Vue.Set</el-menu-item>
+          </router-link>
           <el-menu-item index="1-4">选项4</el-menu-item>
         </el-submenu>
         <el-menu-item index="2">

@@ -64,7 +64,7 @@
                   <div style="margin: 6px 7px 0px 0px">
                     <img src="@/assets/light.png" />
                   </div>
-                  <h4>vue生命周期</h4>
+                  <h4>vue生命周期(钩子函数)</h4>
                 </div>
                 <div class="fontIndent">
                   <p>所有生命周期如下：</p>
@@ -105,6 +105,10 @@
                   <el-card>
                     <img src="@/assets/VueLifeCircle.jpg" />
                   </el-card>
+                  <p>
+                    除了上述的基本八个生命周期外，还有在路由或高级组件时候涉及到（activated、deactivated），一般配合keep-alive使用
+                    在vue-detail章节keep-alive中会详细讲解
+                  </p>
                   <p><strong>总结:</strong></p>
                   <p>①什么是vue生命周期？</p>
                   <p>
