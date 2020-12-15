@@ -17,118 +17,124 @@ import jsSort from "../views/jsSort.vue";
 import vueDetail from "../views/vueInterview/vueDetail.vue";
 import vueDirective from "../views/vueInterview/vueDirective.vue";
 import vueExtend from "../views/vueInterview/vueExtend.vue";
-import VueSet from "../views/vueInterview/VueSet.vue"
+import VueSet from "../views/vueInterview/VueSet.vue";
+import VueWatch from "../views/vueInterview/VueWatch.vue"
 
 Vue.use(VueRouter)
 
 const routes = [
-  {
-    path: '/',
-    name: 'Home',
-    component: homePage
-  },
-  {
-    path: '/learncss',
-    name: 'LearnCSS',
-    component: LearnCSS,
-  },
-  {
-    path: '/htmlAndCssInterview',
-    name: 'htmlAndCssInterview',
-    component: LearnhtmlAndCss
-  },
-  {
-    path: '/jsBasicsInterview',
-    name: 'jsBasicsInterview',
-    component: JsBasics
-  },
-  {
-    path: '/jsAdvanced',
-    name: 'jsAdvanced',
-    component: JsAdvanced
-  },
-  {
-    path: '/designPatterns',
-    name: 'designPatterns',
-    component: DesignPatterns
-  },
-  {
-    path: '/executionMechanism',
-    name: 'executionMechanism',
-    component: ExecutionMechanism
-  },
-  {
-    path: '/arrayMethods',
-    name: 'arrayMethods',
-    component: arrayMethods
-  },
-  {
-    path: '/jsPrototype',
-    name: 'jsPrototype',
-    component: JsPrototype
-  },
-  {
-    path: '/jsClosure',
-    name: 'jsClosure',
-    component: JsClosure
-  },
-  {
-    path: '/jsInherit',
-    name: 'jsInherit',
-    component: jsInherit
-  },
-  {
-    path: '/vueInterview',
-    name: 'vueInterview',
-    component: vueInterview
-    // children: [
-    //   {
-    //     path: '/vueInterview/vueDetail',
-    //     name: 'vueDetail',
-    //     component: vueDetail
-    //   }
-    // ]
-  },
-  {
-    path: '/reactInterview',
-    name: 'reactInterview',
-    component: reactInterview
-  },
-  {
-    path: '/jsSort',
-    name: 'jsSort',
-    component: jsSort
-  },
-  // // vue进阶详解
-  {
-    path: '/vueDetail',
-    name: 'vueDetail',
-    component: vueDetail,
-    children: [
-      {
+    {
+        path: '/',
+        name: 'Home',
+        component: homePage
+    },
+    {
+        path: '/learncss',
+        name: 'LearnCSS',
+        component: LearnCSS,
+    },
+    {
+        path: '/htmlAndCssInterview',
+        name: 'htmlAndCssInterview',
+        component: LearnhtmlAndCss
+    },
+    {
+        path: '/jsBasicsInterview',
+        name: 'jsBasicsInterview',
+        component: JsBasics
+    },
+    {
+        path: '/jsAdvanced',
+        name: 'jsAdvanced',
+        component: JsAdvanced
+    },
+    {
+        path: '/designPatterns',
+        name: 'designPatterns',
+        component: DesignPatterns
+    },
+    {
+        path: '/executionMechanism',
+        name: 'executionMechanism',
+        component: ExecutionMechanism
+    },
+    {
+        path: '/arrayMethods',
+        name: 'arrayMethods',
+        component: arrayMethods
+    },
+    {
+        path: '/jsPrototype',
+        name: 'jsPrototype',
+        component: JsPrototype
+    },
+    {
+        path: '/jsClosure',
+        name: 'jsClosure',
+        component: JsClosure
+    },
+    {
+        path: '/jsInherit',
+        name: 'jsInherit',
+        component: jsInherit
+    },
+    {
+        path: '/vueInterview',
+        name: 'vueInterview',
+        component: vueInterview
+        // children: [
+        //   {
+        //     path: '/vueInterview/vueDetail',
+        //     name: 'vueDetail',
+        //     component: vueDetail
+        //   }
+        // ]
+    },
+    {
+        path: '/reactInterview',
+        name: 'reactInterview',
+        component: reactInterview
+    },
+    {
+        path: '/jsSort',
+        name: 'jsSort',
+        component: jsSort
+    },
+    // // vue进阶详解
+    {
         path: '/vueDetail',
-        name: 'vueDirective',
-        component: vueDirective
-      },
-      {
-        path: '/vueDetail/VueExtend',
-        name: 'VueExtend',
-        component: vueExtend
-      },
-      {
-        path: '/vueDetail/VueSet',
-        name: 'VueSet',
-        component: VueSet
-      }
-    ]
-  }
+        name: 'vueDetail',
+        component: vueDetail,
+        children: [
+            {
+                path: '/vueDetail',
+                name: 'vueDirective',
+                component: vueDirective
+            },
+            {
+                path: '/vueDetail/VueExtend',
+                name: 'VueExtend',
+                component: vueExtend
+            },
+            {
+                path: '/vueDetail/VueSet',
+                name: 'VueSet',
+                component: VueSet
+            },
+            {
+                path: '/vueDetail/VueWatch',
+                name: 'VueWatch',
+                component: VueWatch
+            }
+        ]
+    }
 
 ]
 
 const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes
+    mode: 'history',
+    base: process.env.BASE_URL,
+    routes
 })
 
 export default router
