@@ -93,17 +93,8 @@
 </template>
 
 <script>
-import hljs from 'highlight.js';
-import 'highlight.js/styles/tomorrow-night-eighties.css';
 import TextField from '../../components/textField.vue';
-
-const highlightCode = () => {
-    const block = document.querySelectorAll('pre');
-    hljs.configure({ useBR: true });
-    block.forEach((el) => {
-        hljs.highlightBlock(el);
-    });
-};
+import { highlightCode } from '../../assets/js/common';
 
 export default {
     data() {

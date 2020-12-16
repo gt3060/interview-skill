@@ -18,7 +18,7 @@ import vueDetail from "../views/vueInterview/vueDetail.vue";
 import vueDirective from "../views/vueInterview/vueDirective.vue";
 import vueExtend from "../views/vueInterview/vueExtend.vue";
 import VueSet from "../views/vueInterview/VueSet.vue";
-import VueWatch from "../views/vueInterview/VueWatch.vue"
+import VueWatch from "../views/vueInterview/VueWatch.vue";
 
 Vue.use(VueRouter)
 
@@ -82,13 +82,6 @@ const routes = [
         path: '/vueInterview',
         name: 'vueInterview',
         component: vueInterview
-        // children: [
-        //   {
-        //     path: '/vueInterview/vueDetail',
-        //     name: 'vueDetail',
-        //     component: vueDetail
-        //   }
-        // ]
     },
     {
         path: '/reactInterview',
@@ -125,6 +118,16 @@ const routes = [
                 path: '/vueDetail/VueWatch',
                 name: 'VueWatch',
                 component: VueWatch
+            },
+            {
+                path: '/vueDetail/VueComponentLabel',
+                name: 'VueComponentLabel',
+                component: () =>
+                    import(
+                        '../views/vueInterview/VueComponentLabel.vue'
+                    ).catch(err => {
+                        console.log('视图加载错误', err)
+                    })
             }
         ]
     }

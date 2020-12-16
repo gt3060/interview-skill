@@ -24,6 +24,9 @@
                     <router-link to="/vueDetail/VueWatch">
                         <el-menu-item index="1-4">Vue-watch</el-menu-item>
                     </router-link>
+                    <router-link to="/vueDetail/VueComponentLabel">
+                        <el-menu-item index="1-5">Component标签</el-menu-item>
+                    </router-link>
                 </el-submenu>
                 <el-menu-item index="2">
                     <i class="el-icon-menu"></i>
