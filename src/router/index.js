@@ -128,9 +128,20 @@ const routes = [
                     ).catch(err => {
                         console.log('视图加载错误', err)
                     })
+            },
+            {
+                path: '/vueDetail/VueComputed',
+                name: 'VueComputed',
+                component: () =>
+                    import(
+                        '../views/vueInterview/VueComputed.vue'
+                    ).catch(err => {
+                        console.log("VueComputed视图加载错误", err)
+                    })
             }
         ]
-    }
+    },
+
 
 ]
 
