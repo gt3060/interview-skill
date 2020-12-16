@@ -1,11 +1,15 @@
 <template>
     <div class="fontStyle">
-        <p class="fontSize"
-           v-if="title">{{title}}</p>
-        <p class="fontIndent"
-           v-if="content">
-            {{content}}
-        </p>
+        <template v-if="title">
+            <p class="fontSize">{{title}}</p>
+            <p class="fontIndent">
+                {{content}}
+            </p>
+        </template>
+        <template v-else-if="onlyContent">
+            <p class="fontIndent">{{onlyContent}}</p>
+        </template>
+
     </div>
 </template>
 
@@ -14,7 +18,17 @@ export default {
     props: {
         title: String,
         content: String,
+        onlyContent: String,
     },
+    watch: {
+        title: {
+            handler(newVal, oldVal) {
+                console.log(newVal, oldVal);
+            },
+            deep: true,
+        },
+    },
+    mounted() {},
 };
 </script>
 
