@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="tabStyle">
-            <el-menu default-active="2"
+            <el-menu default-active="1-1"
                      class="el-menu-vertical-demo"
                      @open="handleOpen"
                      @close="handleClose"
