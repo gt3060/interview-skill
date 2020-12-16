@@ -28,10 +28,15 @@
                         <el-menu-item index="1-5">Component标签</el-menu-item>
                     </router-link>
                 </el-submenu>
-                <el-menu-item index="2">
-                    <i class="el-icon-menu"></i>
-                    <span slot="title">导航二</span>
-                </el-menu-item>
+                <el-submenu index="2">
+                    <template slot="title">
+                        <i class="el-icon-menu"></i>
+                        <span>选项</span>
+                    </template>
+                    <router-link to="/vueDetail/VueComputed">
+                        <el-menu-item index="2-1">Computed属性</el-menu-item>
+                    </router-link>
+                </el-submenu>
                 <el-menu-item index="3"
                               disabled>
                     <i class="el-icon-document"></i>
