@@ -11,7 +11,7 @@
             methods:{<br/>
                 getMixinsMethods(){<br/>
                     console.log("-----Mixins")<br/>
-                }<br/>>
+                }<br/>
             }<br/>
         }<br/>
         // 组件中调用myMixins<br/>
@@ -37,7 +37,7 @@
         }<br/>
         // 组件数据<br/>
         data(){<br/>
-            return{<br/>>
+            return{<br/>
                 b: 3,<br/>
                 c: 4<br/>
             }<br/>

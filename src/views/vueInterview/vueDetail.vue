@@ -40,11 +40,12 @@
                         <el-menu-item index="2-2">Mixin/Extends</el-menu-item>
                     </router-link>
                 </el-submenu>
-                <el-menu-item index="3"
-                              disabled>
-                    <i class="el-icon-document"></i>
-                    <span slot="title">导航三</span>
-                </el-menu-item>
+                <router-link to="/vueDetail/vueRouter">
+                    <el-menu-item index="3">
+                        <i class="el-icon-document"></i>
+                        <span slot="title">vue-Router</span>
+                    </el-menu-item>
+                </router-link>
                 <el-menu-item index="4">
                     <i class="el-icon-setting"></i>
                     <span slot="title">导航四</span>
