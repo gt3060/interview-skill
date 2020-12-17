@@ -41,6 +41,9 @@
         }
             </pre>
         </div>
+        <text-field onlyContent="在这里顺便提一下methods中的$event参数：可以在控制台查看$event打印内容"></text-field>
+        <el-button @click="btnClick(2,$event)"
+                   type="primary">$event</el-button>
     </div>
 </template>
 
@@ -53,7 +56,6 @@ export default {
     },
     mounted() {
         highlightCode();
-        console.log('测试：', this);
     },
     data() {
         return {
@@ -87,6 +89,11 @@ export default {
             return dateStr;
         },
     },
+    methods: {
+        btnClick(data, dataTwo) {
+            console.log('----', data, dataTwo);
+        },
+    },
 };
 </script>
 
@@ -103,14 +110,5 @@ export default {
 
 .fontCodeStyle {
     line-height: 24px;
-}
-
-.labelMarginLeft {
-    margin-left: 50px;
-}
-
-.vueDirective {
-    padding: 50px;
-    background-color: #ecfafe;
 }
 </style>

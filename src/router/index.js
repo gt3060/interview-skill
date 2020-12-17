@@ -138,6 +138,16 @@ const routes = [
                     ).catch(err => {
                         console.log("VueComputed视图加载错误", err)
                     })
+            },
+            {
+                path: '/vueDetail/VueMixins',
+                name: 'VueMixins',
+                component: () =>
+                    import(
+                        '../views/vueInterview/VueMixins.vue'
+                    ).catch(err => {
+                        console.log("VueMixins视图加载错误", err)
+                    })
             }
         ]
     },
