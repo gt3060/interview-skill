@@ -148,6 +148,39 @@ const routes = [
                     ).catch(err => {
                         console.log("VueMixins视图加载错误", err)
                     })
+            },
+            {
+                path: '/vueDetail/vueRouter',
+                name: 'VueRouter',
+                redirect: '/vueDetail/vueRouter/routerSecond',
+                component: () =>
+                    import(
+                        '../views/vueInterview/vueRouter.vue'
+                    ).catch(err => {
+                        console.log("vueRouter视图加载错误", err)
+                    }),
+                children: [
+                    {
+                        path: '/vueDetail/vueRouter/routerFirst/:dataFirst/:dataSecond',
+                        name: 'routerFirst',
+                        component: () =>
+                            import(
+                                '../views/vueInterview/routerTest/routerFirst.vue'
+                            ).catch(err => {
+                                console.log('routerFirst视图加载错误', err)
+                            })
+                    },
+                    {
+                        path: '/vueDetail/vueRouter/routerSecond',
+                        name: 'routerSecond',
+                        component: () =>
+                            import(
+                                '../views/vueInterview/routerTest/routerSecond.vue'
+                            ).catch(err => {
+                                console.log('routerSecond加载错误', err)
+                            })
+                    }
+                ]
             }
         ]
     },
