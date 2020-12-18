@@ -69,6 +69,7 @@ export default {
 }
 
 .fontLineHeight {
+    margin-top: 10px;
     line-height: 24px;
 }
 </style>

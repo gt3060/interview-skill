@@ -102,6 +102,32 @@
         <text-field :title="titleContent[9].title"
                     :content="titleContent[9].content" />
         <text-field :list="programList"></text-field>
+        <text-field :content="navigationContent"></text-field>
+        <div class="codeBorder fontCodeStyle">
+            <pre class="codeBorder">
+        // 参数为字符串<br/>
+        this.$router.push('/path');<br/>
+        // 参数为对象<br/>
+        this.$router.push({<br/>
+            path: '/path',<br/>
+        })<br/>
+        // 命名的路由并提供传参<br/>
+        this.$router.push({<br/>
+            name: 'pathName',<br/>
+            params: {<br/>
+                paramsData: 'data',<br/>
+            }<br/>
+        })<br/>
+        // 带查询参数, 路径变成：'/path?plan=primary'<br/>
+        this.$router.push({<br/>
+            path: '/path',<br/>
+            query: {<br/>
+                plan: 'primary',<br/>
+            }<br/>
+        })
+            </pre>
+        </div>
+        <text-field :list="navigationList"></text-field>
     </div>
 </template>
 
@@ -186,11 +212,28 @@ export default {
                         data: 'this.$router.go(1):前进一级',
                     },
                     {
-                        data: 'this.$router.push(‘/xxx’)：用于跳转',
+                        data: 'this.$router.push(‘/xxx’):用于跳转',
+                    },
+                ],
+            },
+            navigationList: {
+                listTitle:
+                    '如果提供了path，params会被忽略，也就是说利用编程路由传参主要有一下几种方式：',
+                routeList: [
+                    {
+                        data: 'router.push({name:"user", params:{ userId }})',
+                    },
+                    {
+                        data: 'router.push({ path: `/user/${userId}` })',
+                    },
+                    {
+                        data:
+                            'router.push({ path: "register", query: { plan: "private" }})',
                     },
                 ],
             },
             onlyContent: `对于beforeRouteUpdate和beforeRouteLeave不支持next回调（就是生成vm），因为此时已经有this，故只可写next()/next(false)/next('/')/next(error)`,
+            navigationContent: `这里着重讲一下编程式导航中router.push()，该方法参数可以是一个字符串，也可以是一个对象，例如：`,
         };
     },
 };
