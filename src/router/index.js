@@ -181,6 +181,15 @@ const routes = [
                             })
                     }
                 ]
+            }, {
+                path: '/vueDetail/vueCli',
+                name: 'vueCli',
+                component: () =>
+                    import(
+                        "../views/vueInterview/vueCli.vue"
+                    ).catch(err => {
+                        console.log("vuecli模块加载错误", err)
+                    })
             }
         ]
     },

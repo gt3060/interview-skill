@@ -46,10 +46,12 @@
                         <span slot="title">vue-Router</span>
                     </el-menu-item>
                 </router-link>
-                <el-menu-item index="4">
-                    <i class="el-icon-setting"></i>
-                    <span slot="title">导航四</span>
-                </el-menu-item>
+                <router-link to="/vueDetail/vueCli">
+                    <el-menu-item index="4">
+                        <i class="el-icon-setting"></i>
+                        <span slot="title">vue-cli</span>
+                    </el-menu-item>
+                </router-link>
             </el-menu>
         </div>
         <div class="tabRightStyle">
@@ -74,13 +76,13 @@ export default {
 <style scoped>
 .tabStyle {
     padding-top: 50px;
-    width: 400px;
+    width: 20%;
     position: fixed;
     height: 100%;
     background-color: #d9eaf8;
 }
 
 .tabRightStyle {
-    margin-left: 400px;
+    margin-left: 20%;
 }
 </style>
