@@ -111,6 +111,7 @@ export default {
 }
 
 .codeBorder {
+    width: 80%;
     border-radius: 10px;
 }
 
