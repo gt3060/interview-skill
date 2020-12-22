@@ -42,7 +42,7 @@
                 </el-submenu>
                 <router-link to="/vueDetail/vueRouter">
                     <el-menu-item index="3">
-                        <i class="el-icon-document"></i>
+                        <i class="el-icon-link"></i>
                         <span slot="title">vue-Router</span>
                     </el-menu-item>
                 </router-link>
@@ -50,6 +50,12 @@
                     <el-menu-item index="4">
                         <i class="el-icon-setting"></i>
                         <span slot="title">vue-cli</span>
+                    </el-menu-item>
+                </router-link>
+                <router-link to="/vueDetail/vuex">
+                    <el-menu-item index="5">
+                        <i class="el-icon-document"></i>
+                        <span slot="title">vuex</span>
                     </el-menu-item>
                 </router-link>
             </el-menu>
