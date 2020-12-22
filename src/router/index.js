@@ -181,7 +181,8 @@ const routes = [
                             })
                     }
                 ]
-            }, {
+            },
+            {
                 path: '/vueDetail/vueCli',
                 name: 'vueCli',
                 component: () =>
@@ -189,6 +190,16 @@ const routes = [
                         "../views/vueInterview/vueCli.vue"
                     ).catch(err => {
                         console.log("vuecli模块加载错误", err)
+                    })
+            },
+            {
+                path: '/vueDetail/vuex',
+                name: 'vuex',
+                component: () =>
+                    import(
+                        '../views/vueInterview/vuex.vue'
+                    ).catch(err => {
+                        console.log("vuex模块加载错误", err)
                     })
             }
         ]
