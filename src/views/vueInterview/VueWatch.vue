@@ -94,7 +94,7 @@
 
 <script>
 import TextField from '../../components/textField.vue';
-import { highlightCode } from '../../assets/js/common';
+import { highlightCode } from '../../utils/common';
 
 export default {
     data() {

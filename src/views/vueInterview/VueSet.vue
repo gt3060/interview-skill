@@ -80,7 +80,7 @@
 </template>
 
 <script>
-import { highlightCode } from '../../assets/js/common';
+import { highlightCode } from '../../utils/common';
 import Vue from 'vue';
 
 let outData = {
