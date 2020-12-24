@@ -5,7 +5,8 @@
         margin-top: -100px;">
         <div class="catalogStyle">
             <div style="display: flex">
-                <img src="@/assets/catalog.png"
+                <img alt="目录logo"
+                     src="@/assets/catalog.png"
                      style="width: 24px; height: 24px; margin-top: 3px" />
                 <span style="font-size: 22px; font-weight: bold; margin-left: 10px">目录</span>
             </div>
@@ -15,10 +16,10 @@
                      :key="item.index"
                      class="htmlcatalogItem"
                      :id="item.i"
-                     :class="itemIndex === item.index ? 'activeCatalog' : ''"
+                     :class="childIndex === item.index ? 'activeCatalog' : ''"
                      @click="handlehtmlCatalog(item)">
                     <div class="radiuStyle"
-                         :class="itemIndex === item.index ? 'activeRadiuCatalog' : ''">
+                         :class="childIndex === item.index ? 'activeRadiuCatalog' : ''">
                     </div>
                     <el-tooltip placement="left-start"
                                 :content="item.name"
@@ -37,9 +38,21 @@ export default {
         catalogData: Array,
         itemIndex: String,
     },
+    data() {
+        return {
+            childIndex: this.itemIndex || '',
+        };
+    },
+    watch: {
+        itemIndex: {
+            handler(newVal) {
+                this.childIndex = newVal;
+            },
+        },
+    },
     methods: {
         handlehtmlCatalog(item) {
-            this.itemIndex = item.index;
+            this.childIndex = item.index;
             document.getElementById(item.index).scrollIntoView();
         },
     },

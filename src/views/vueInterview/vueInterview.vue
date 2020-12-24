@@ -474,40 +474,8 @@
                                         会影响到所有的实例，所以为了保证组件不同的实例之间的data不冲突，data必需是函数。"></text-field>
                         </div>
                     </div>
-                    <div style="
-                            position: fixed;
-                            right: 100px;
-                            width: 20%;
-                            margin-top: -100px;
-                            ">
-                        <div class="catalogStyle">
-                            <div style="display: flex">
-                                <img src="@/assets/catalog.png"
-                                     style="width: 24px; height: 24px; margin-top: 3px" />
-                                <span style="font-size: 22px; font-weight: bold; margin-left: 10px">目录</span>
-                            </div>
-                            <el-divider></el-divider>
-                            <div class="htmlFix">
-                                <div v-for="item in catalogHtmlData"
-                                     :key="item.index"
-                                     class="htmlcatalogItem"
-                                     :id="item.i"
-                                     :class="itemIndex === item.index ? 'activeCatalog' : ''"
-                                     @click="handlehtmlCatalog(item)">
-                                    <div class="radiuStyle"
-                                         :class="itemIndex === item.index ? 'activeRadiuCatalog' : ''">
-                                    </div>
-                                    <el-tooltip placement="left-start"
-                                                :content="item.name"
-                                                :open-delay="400">
-                                        <div class="htmlItemName">{{ item.name }}</div>
-                                    </el-tooltip>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- <catalog :catalogData="catalogHtmlData"
-                             :itemIndex="itemIndex"></catalog> -->
+                    <catalog :catalogData="catalogHtmlData"
+                             :itemIndex.sync="itemIndex"></catalog>
                 </div>
             </div>
         </div>
@@ -515,16 +483,13 @@
 </template>
 
 <script>
-import {
-    highlightCode,
-    // btnoffsetHeight
-} from '../../utils/common';
+import { highlightCode } from '../../utils/common';
 import TextField from '../../components/textField.vue';
-// import catalog from '../../components/catalog.vue';
+import catalog from '../../components/catalog.vue';
 export default {
     components: {
         TextField,
-        // catalog
+        catalog,
     },
     data() {
         return {
@@ -565,6 +530,12 @@ export default {
         // this.itemIndex = btnoffsetHeight(this.catalogHtmlData);
         highlightCode();
         console.log('this.itemIndex', this.itemIndex);
+        // window.addEventListener(
+        //     'mousewheel',
+        //     // btnoffsetHeight(this.catalogHtmlData),
+        //     this.btnoffsetHeight(),
+        //     false
+        // );
         window.addEventListener('mousewheel', this.btnoffsetHeight, false);
     },
     methods: {

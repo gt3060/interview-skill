@@ -31,4 +31,5 @@ const handleCatalog = (data) => {
     return data;
 };
 
+
 export { highlightCode, btnoffsetHeight, handleCatalog };
