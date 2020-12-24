@@ -4,5 +4,8 @@ export default {
     },
     sub(state) {
         state.count--;
+    },
+    sum(state, data) {
+        state.count += data
     }
 }

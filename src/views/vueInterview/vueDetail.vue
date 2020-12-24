@@ -7,6 +7,13 @@
                      @close="handleClose"
                      background-color="#d9eaf8"
                      active-text-color="#ffd04b">
+                <el-button type="text"
+                           style="margin-left:15%"
+                           plain
+                           @click="handleJumpHomePage">
+                    <i class="el-icon-back"></i>
+                    返回至首页
+                </el-button>
                 <el-submenu index="1">
                     <template slot="title">
                         <i class="el-icon-location"></i>
@@ -74,6 +81,11 @@ export default {
         },
         handleClose(key, keyPath) {
             console.log(key, keyPath);
+        },
+        handleJumpHomePage() {
+            this.$router.push({
+                name: 'Home',
+            });
         },
     },
 };
