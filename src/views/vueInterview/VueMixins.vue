@@ -82,7 +82,7 @@
 </template>
 
 <script>
-import { highlightCode } from '../../assets/js/common';
+import { highlightCode } from '../../utils/common';
 import TextField from '../../components/textField.vue';
 export default {
     components: {

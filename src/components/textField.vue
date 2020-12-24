@@ -1,22 +1,44 @@
 <template>
     <div class="fontStyle">
-        <template>
-            <p :class="fontSize"
-               v-if="title">{{title}}</p>
-            <p class="fontIndent"
-               v-if="content">
-                {{content}}
-            </p>
-            <div v-if="list">
-                <div class="fontLineHeight">{{list.listTitle}}</div>
-                <ul>
-                    <li v-for="(item, index) in list.routeList"
-                        :key="index">{{item.data}}</li>
-                </ul>
+        <template v-if="catalog">
+            <div :id="id"
+                 style="margin: 20px 0px">
+                <template v-if="title">
+                    <div style="display: flex">
+                        <div style="margin: 6px 7px 0px 0px">
+                            <img src="@/assets/light.png" />
+                        </div>
+                        <h4>{{title}}</h4>
+                    </div>
+                </template>
+                <template v-if="content">
+                    <div class="fontIndent">
+                        <p>
+                            {{content}}
+                        </p>
+                    </div>
+                </template>
             </div>
         </template>
-        <template v-if="onlyContent">
-            <p class="fontIndent">{{onlyContent}}</p>
+        <template v-else>
+            <template>
+                <p :class="fontSize"
+                   v-if="title">{{title}}</p>
+                <p class="fontIndent"
+                   v-if="content">
+                    {{content}}
+                </p>
+                <div v-if="list">
+                    <div class="fontLineHeight">{{list.listTitle}}</div>
+                    <ul>
+                        <li v-for="(item, index) in list.routeList"
+                            :key="index">{{item.data}}</li>
+                    </ul>
+                </div>
+            </template>
+            <template v-if="onlyContent">
+                <p class="fontIndent">{{onlyContent}}</p>
+            </template>
         </template>
     </div>
 </template>
@@ -29,6 +51,8 @@ export default {
         onlyContent: String, // 用于没有标题的内容
         fontSizeType: String, // 用于定义不同字体的标题（middle、small、nomall），默认nomall
         list: Object, // 用于生成列表，其中listTitle为介绍列表信息，routeList为具体列表
+        catalog: Boolean,
+        id: String,
     },
     watch: {
         title: {

@@ -139,12 +139,19 @@
         }
             </pre>
         </div>
+        <text-field :title="titleContent[11].title"
+                    fontSizeType="middle"></text-field>
+        <text-field :title="titleContent[12].title"
+                    :content="titleContent[12].content"
+                    fontSizeType="small"></text-field>
+        <text-field :list="actionsList"></text-field>
+        <text-field :list="mutationsList"></text-field>
     </div>
 </template>
 
 <script>
 import { mapActions, mapMutations, mapState } from 'vuex';
-import { highlightCode } from '../../assets/js/common';
+import { highlightCode } from '../../utils/common';
 import TextField from '../../components/textField.vue';
 import store from '@/store/index';
 export default {
@@ -206,8 +213,44 @@ export default {
                                 正如module翻译过来的模板所译，其实就是将store/actions/....按照不同功能分组；其中每个模块项都包括一组
                                 actions/store/....，在使用时，和对象一样，moduleName.moduleValue，具体使用如下：`,
                 },
+                {
+                    title: '7.总结',
+                },
+                {
+                    title: '①actions和mutations区别',
+                    content:
+                        'Mutations里面必需是同步函数，是因为当Mutations函数触发时候，回调函数还没有被调用，因此为了解决异步问题，提出了Actions概念；',
+                },
             ],
             count: 0,
+            actionsList: {
+                istTitle: 'actions',
+                routeList: [
+                    {
+                        data: '用于通过提交mutation改变数据',
+                    },
+                    {
+                        data: '会默认自身封装一个Promise',
+                    },
+                    {
+                        data: '可以包含任意的异步操作',
+                    },
+                ],
+            },
+            mutationsList: {
+                istTitle: 'mutations',
+                routeList: [
+                    {
+                        data: '通过提交commit改变数据',
+                    },
+                    {
+                        data: '只是一个单纯的函数',
+                    },
+                    {
+                        data: '不要使用异步操作，异步操作会导致变量无法追踪',
+                    },
+                ],
+            },
         };
     },
     methods: {
