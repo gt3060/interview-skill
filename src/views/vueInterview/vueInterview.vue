@@ -472,10 +472,32 @@
                                         title="组件中的data为什么是函数"
                                         content="一个组件被复用多次的话，也就会创建多个实例。本质上，这些实例都是用一个构造函数，如果data是对象的话，对象属于引用类型，
                                         会影响到所有的实例，所以为了保证组件不同的实例之间的data不冲突，data必需是函数。"></text-field>
+                            <text-field catalog
+                                        id="19"
+                                        title="Vue-nextTick"
+                                        content="在下次dom更新循环结束后执行回调（官方所述），先看一个例子"></text-field>
+                            <div ref="msgRef">直接更改this.msg = 'Hello GT'-----{{msg}}</div>
+                            <div>通过获取dom元素赋值this.msg1 = this.$refs.msgRef.innerHTML-----{{msg1}}</div>
+                            <div>通过获取dom元素加上nextTick：this.$nextTick(() => {this.msg2 = this.$refs.msgRef.innerHTML})-----{{msg2}}</div>
+                            <div>通过获取dom元素赋值this.msg3 = this.$refs.msgRef.innerHTML-----{{msg3}}</div>
+                            <el-button type="primary"
+                                       @click="handleMsg">按钮</el-button>
+                            <text-field content="可以看到，msg已经改变，但是通过dom元素获取值还是获取到改变之前值，这是
+                                                因为：vue响应式改变了一个值后，此时dom并不会立刻更新，如果需要立刻获取改变后
+                                                的dom值，需要用到this.$nextTick()"></text-field>
+                            <text-field title="在Vue生命周期的create钩子函数中如果操作dom节点，一定要放在this.$nextTick的回调函数中"
+                                        content="原因：在create钩子函数中dom节点并没有渲染，故进行dom操作无反应，所以一定要放在this.$nextTick回调函数中，
+                                        与之对应的就是同样可以直接将操作dom的语句放在mounted生命周期中"
+                                        fontSizeType="small"></text-field>
+                            <text-field title="详解在nextTick下的Vue种的事件循环，仍然以上面代码为例"
+                                        fontSizeType="small"></text-field>
+                            <text-field :list='eventLoopList'></text-field>
+
                         </div>
                     </div>
                     <catalog :catalogData="catalogHtmlData"
                              :itemIndex.sync="itemIndex"></catalog>
+
                 </div>
             </div>
         </div>
@@ -521,9 +543,30 @@ export default {
                 { index: 'c16', name: '17.vue-computed', i: '16' },
                 { index: 'c17', name: '18.说一下computed和watch', i: '17' },
                 { index: 'c18', name: '19.组件中的data为什么是函数', i: '18' },
+                { index: 'c19', name: '20.Vue-nextTick', i: '19' },
             ],
             itemIndex: '',
             isShowVueDetail: false,
+            msg: 'Hello World',
+            msg1: '',
+            msg2: '',
+            msg3: '',
+            eventLoopList: {
+                istTitle: '',
+                routeList: [
+                    {
+                        data: `第一个tick：首先修改数据，这是同步任务，同一事件循环的所有同步任务都在主线程上执行，此时还未
+                            涉及到dom更新操作；`,
+                    },
+                    {
+                        data: `第二个tick：Vue开启一个异步队列，等待同步任务完成后，执行异步watcher队列里的任务，更新 DOM。`,
+                    },
+                    {
+                        data: `第三个tick：此时就是官方文档所介绍的：下次 DOM 更新循环结束之后。
+                                此时通过 Vue.nextTick 获取到改变后的 DOM ，通过 setTimeout(fn, 0) 也可以同样获取到。`,
+                    },
+                ],
+            },
         };
     },
     mounted() {
@@ -572,6 +615,14 @@ export default {
 
         btnVueDetail() {
             this.isShowVueDetail = true;
+        },
+        handleMsg() {
+            this.msg = 'Hello Gt';
+            this.msg1 = this.$refs.msgRef.innerHTML;
+            this.$nextTick(() => {
+                this.msg2 = this.$refs.msgRef.innerHTML;
+            });
+            this.msg3 = this.$refs.msgRef.innerHTML;
         },
     },
 };
