@@ -492,7 +492,66 @@
                             <text-field title="详解在nextTick下的Vue种的事件循环，仍然以上面代码为例"
                                         fontSizeType="small"></text-field>
                             <text-field :list='eventLoopList'></text-field>
-
+                            <text-field catalog
+                                        id="20"
+                                        title="vue-$forceUpdate"
+                                        content="按照字面意思，是用来强制更新状态数据的，使得页面dom重新渲染，例如下面这种情况：">
+                            </text-field>
+                            <text-field content="当data种某个属性是对象数组的时候，如果想给这个对象数组某个元素增加某个属性，
+                                                或者直接将数组长度改为0，则都可以发现视图并没有发生变化，如下面这个代码"></text-field>
+                            <div class="codeBorder fontCodeStyle">
+                                <pre class="codeBorder">
+        ```vue<br/>
+        &lt;ul&gt;<br/>
+            &lt;li v-for="(item, index) in testList" :key="index"&gt;<br/>
+                { {JSON.stringify(item)} }<br/>
+                &lt;el-button @click="handleAddSex(index)">按钮{ {index} }&lt;/el-button><br/>
+            &lt;/li><br/>
+        &lt;ul><br/>
+        ```javascript<br/>
+        testList: [<br/>
+            {name: '张三',age: '12'},<br/>
+            {name: '李四',age: '34'},<br/>
+            {name: '王五',age: '56'},<br/>
+        ],<br/>
+        methods: {<br/>
+            handleAddSex(index) {<br/>
+                this.testList[index].sex = '男';<br/>
+                console.log(this.testList);<br/>
+            },<br/>
+        },
+                                        </pre>
+                            </div>
+                            <text-field content="测试案例如下："></text-field>
+                            <ul>
+                                <li v-for="(item, index) in testList"
+                                    :key="index">{{JSON.stringify(item)}}
+                                    <el-button type="text"
+                                               @click="handleAddSex(index)">按钮{{index}}</el-button>
+                                    <el-button type="text"
+                                               @click="handleAddSexForceUpdate(index)">强制更新{{index}}</el-button>
+                                </li>
+                            </ul>
+                            <text-field content="可以发现，点击按钮视图并未更新，此时如果想视图同样产生变化，有两种解决方案;
+                                                一种是利用官方文档所介绍通过set进行深层数组对象赋值，测试案例：点击按钮强制更新0，如下代码："></text-field>
+                            <div class="codeBorder fontCodeStyle">
+                                <pre class="codeBorder">
+        handleAddSex(index) {<br/>
+            this.$set(this.testList[index],'sex', "男")<br/>
+            console.log(this.testList);<br/>
+        },
+                                        </pre>
+                            </div>
+                            <text-field content="另一种是采取强制更新进行试图重新渲染，测试案例：点击按钮强制更新1/2，代码如下："></text-field>
+                            <div class="codeBorder fontCodeStyle">
+                                <pre class="codeBorder">
+        handleAddSex(index) {<br/>
+            this.testList[index].sex = '男';<br/>
+            console.log(this.testList);<br/>
+                this.$forceUpdate();<br/>
+        },
+                                        </pre>
+                            </div>
                         </div>
                     </div>
                     <catalog :catalogData="catalogHtmlData"
@@ -544,6 +603,11 @@ export default {
                 { index: 'c17', name: '18.说一下computed和watch', i: '17' },
                 { index: 'c18', name: '19.组件中的data为什么是函数', i: '18' },
                 { index: 'c19', name: '20.Vue-nextTick', i: '19' },
+                {
+                    index: 'c20',
+                    name: '21.Vue-forceUpdate',
+                    i: '20',
+                },
             ],
             itemIndex: '',
             isShowVueDetail: false,
@@ -567,6 +631,20 @@ export default {
                     },
                 ],
             },
+            testList: [
+                {
+                    name: '张三',
+                    age: '12',
+                },
+                {
+                    name: '李四',
+                    age: '34',
+                },
+                {
+                    name: '王五',
+                    age: '56',
+                },
+            ],
         };
     },
     mounted() {
@@ -583,9 +661,7 @@ export default {
     },
     methods: {
         handlehtmlCatalog(item) {
-            console.log(item.index, item.name);
             this.itemIndex = item.index;
-
             document.getElementById(item.index).scrollIntoView();
         },
 
@@ -601,7 +677,6 @@ export default {
                 let height =
                     document.getElementById(this.catalogHtmlData[k].index)
                         .offsetTop - document.documentElement.scrollTop;
-                // console.log(height, this.catalogHtmlData[k].index);
                 if (height < 0) {
                     selectData = this.catalogHtmlData[k].index;
                 }
@@ -623,6 +698,18 @@ export default {
                 this.msg2 = this.$refs.msgRef.innerHTML;
             });
             this.msg3 = this.$refs.msgRef.innerHTML;
+        },
+        handleAddSex(index) {
+            this.testList[index].sex = '男';
+            console.log(this.testList);
+        },
+        handleAddSexForceUpdate(index) {
+            if (index === 0) {
+                this.$set(this.testList[index], 'sex', '男');
+            } else {
+                this.testList[index].sex = '男';
+                this.$forceUpdate();
+            }
         },
     },
 };
