@@ -473,7 +473,7 @@
                                         content="一个组件被复用多次的话，也就会创建多个实例。本质上，这些实例都是用一个构造函数，如果data是对象的话，对象属于引用类型，
                                         会影响到所有的实例，所以为了保证组件不同的实例之间的data不冲突，data必需是函数。"></text-field>
                             <text-field catalog
-                                        id="19"
+                                        id="c19"
                                         title="Vue-nextTick"
                                         content="在下次dom更新循环结束后执行回调（官方所述），先看一个例子"></text-field>
                             <div ref="msgRef">直接更改this.msg = 'Hello GT'-----{{msg}}</div>
@@ -493,7 +493,7 @@
                                         fontSizeType="small"></text-field>
                             <text-field :list='eventLoopList'></text-field>
                             <text-field catalog
-                                        id="20"
+                                        id="c20"
                                         title="vue-$forceUpdate"
                                         content="按照字面意思，是用来强制更新状态数据的，使得页面dom重新渲染，例如下面这种情况：">
                             </text-field>
@@ -552,11 +552,37 @@
         },
                                         </pre>
                             </div>
+                            <text-field id="c21"
+                                        catalog
+                                        title="Vue-template"
+                                        content="template的作用是模板占位符，可帮助我们包裹元素，但是在实际渲染时并不会解析
+                                                渲染到页面上，一般用于for遍历，这样可以减少一层div的使用，有益于浏览器渲染">
+                            </text-field>
+                            <text-field id="c22"
+                                        title="Vue-.sync修饰符"
+                                        content=".sync修饰符在编译过程中会自动扩展为一个自动更新父组件属性的v-on监听器，
+                                                例如下面这两段代码等价"
+                                        catalog>
+                            </text-field>
+                            <div class="codeBorder fontCodeStyle">
+                                <pre class="codeBorder">
+        // 使用sync修饰符：<br/>
+        &lt;Child :foo.sync = 'updateVal'/><br/>
+        // 不适用sync修饰符<br/>
+        &lt;Child :foo="updateVal" @updateValMehthod="val => updateVal = val"
+                                        </pre>
+                            </div>
+                            <text-field content="下面是具体实现效果，点击按钮一是采用sync修饰符，按钮二是不采用sync修饰符"></text-field>
+                            <text-field :content="updateVal"></text-field>
+                            <Child :defaultVal.sync="updateVal"
+                                   type="sync" />
+                            <Child :defaultVal='updateVal'
+                                   @updateValMethod="updateValMethod"
+                                   type="isnotsync" />
                         </div>
                     </div>
                     <catalog :catalogData="catalogHtmlData"
                              :itemIndex.sync="itemIndex"></catalog>
-
                 </div>
             </div>
         </div>
@@ -567,10 +593,12 @@
 import { highlightCode } from '../../utils/common';
 import TextField from '../../components/textField.vue';
 import catalog from '../../components/catalog.vue';
+import Child from '../../components/Child.vue';
 export default {
     components: {
         TextField,
         catalog,
+        Child,
     },
     data() {
         return {
@@ -607,6 +635,16 @@ export default {
                     index: 'c20',
                     name: '21.Vue-forceUpdate',
                     i: '20',
+                },
+                {
+                    index: 'c21',
+                    name: '22.Vue-template',
+                    i: '21',
+                },
+                {
+                    index: 'c22',
+                    name: 'Vue-.sync修饰符',
+                    i: '22',
                 },
             ],
             itemIndex: '',
@@ -645,6 +683,7 @@ export default {
                     age: '56',
                 },
             ],
+            updateVal: '嘀嘀嘀！我是初始值',
         };
     },
     mounted() {
@@ -710,6 +749,9 @@ export default {
                 this.testList[index].sex = '男';
                 this.$forceUpdate();
             }
+        },
+        updateValMethod(data) {
+            this.updateVal = data;
         },
     },
 };

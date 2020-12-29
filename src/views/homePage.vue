@@ -224,7 +224,7 @@ export default {
                 {
                     title: 'vue',
                     columnNum: 1,
-                    chapterNum: 19,
+                    chapterNum: 22,
                     cardRoute: '/vueInterview',
                 },
                 {
