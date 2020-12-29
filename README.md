@@ -53,4 +53,5 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 ### 参考链接：
 
 vue官方文档；
-技术胖关于vue2.x的教程
+技术胖关于vue2.x的教程；
+时间复杂度/空间复杂度：https://zhuanlan.zhihu.com/p/50479555
