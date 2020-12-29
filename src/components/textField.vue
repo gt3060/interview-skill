@@ -22,7 +22,7 @@
         </template>
         <template v-else>
             <template>
-                <p :class="fontSize"
+                <p :class="bold?`${fontSize} fontBold`:fontSize"
                    v-if="title">{{title}}</p>
                 <p class="fontIndent"
                    v-if="content">
@@ -53,6 +53,7 @@ export default {
         list: Object, // 用于生成列表，其中listTitle为介绍列表信息，routeList为具体列表
         catalog: Boolean,
         id: String,
+        bold: Boolean,
     },
     watch: {
         title: {
@@ -95,5 +96,9 @@ export default {
 .fontLineHeight {
     margin-top: 10px;
     line-height: 24px;
+}
+
+.fontBold {
+    font-weight: bold;
 }
 </style>

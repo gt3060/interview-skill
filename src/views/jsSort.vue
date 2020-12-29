@@ -1,342 +1,487 @@
 <template>
-  <div class="learnVue">
-    <el-backtop></el-backtop>
-    <div class="learnCard">
-      <div class="learnCardContain">
-        <div>
-          <router-link to="/">
-            <div class="learn-back">
-              <div>
-                <i class="el-icon-arrow-left arrow-leftStyle"></i>
-              </div>
-              <div class="goBack">&nbsp;&nbsp;&nbsp;返回主页</div>
+    <div class="learnVue">
+        <el-backtop></el-backtop>
+        <div class="learnCard">
+            <div class="learnCardContain">
+                <div>
+                    <router-link to="/">
+                        <div class="learn-back">
+                            <div>
+                                <i class="el-icon-arrow-left arrow-leftStyle"></i>
+                            </div>
+                            <div class="goBack">&nbsp;&nbsp;&nbsp;返回主页</div>
+                        </div>
+                    </router-link>
+                </div>
+                <div class="titleStyle">
+                    <div class="titleIconStyle">
+                        <img src="@/components/picture/test_two.jpeg"
+                             alt=""
+                             class="imgStyle" />
+                    </div>
+                    <div class="titleFontStyle">
+                        <span style="font-size: 25px">js经典十大排序算法</span>
+                        <el-divider></el-divider>
+                        <p>此篇主要讲述十大排序算法（编写语言利用javascript）。</p>
+                    </div>
+                </div>
+                <div style="display: flex">
+                    <div style="width: 75%">
+                        <div class="catalogStyle fontStyle">
+                            <div style="display: flex">
+                                <img src="@/assets/CONTENT DELIVERY.png"
+                                     alt=""
+                                     style="width: 24px; height: 24px; margin-top: 6px" />
+                                <span style="font-size: 22px; font-weight: bold; margin-left: 10px">简介</span>
+                            </div>
+                            <text-field content="下面先上一张图，简单说一下十大排序的种类和时间空间复杂度，以及他的稳定性"></text-field>
+                            <img src="@/assets/sortImg.png"
+                                 style="width:70%"
+                                 alt="" />
+                            <text-field catalog
+                                        title="时间复杂度"
+                                        id="c4"
+                                        content="字面意思，时间复杂度就是一段算法程序在运行环境下运行一遍所需要的时间，
+                                                但是，不同性能的机器跑的算法运行时间不同，故统一采用一种通用的大O符号表示法（T(n)=O(f(n))),
+                                                大O表示法并不是计算真实执行时间，而是用来表示代码执行时间的增长趋势，
+                                                其中f(n)指的是每行代码执行次数之和，而O表示正比例关系。举个例子，以下面代码为例："
+                                        fontSizeType="small">
+                            </text-field>
+                            <div class="codeBorder fontCodeStyle">
+                                <pre class="codeBorder">
+        for(let i=1; i&lt;10; i++){<br/>
+            j=i;<br/>
+            j++;<br/>
+        }
+                                </pre>
+                            </div>
+                            <text-field content="上面这个代码中，执行单位按1单元时间（unit_time）表示，那么，第一行执行时间是1单元时间，
+                                                第二行是n单元时间，第三行是n单元时间；最后执行整个程序的时间为：Tn=(1+2n)*，
+                                                按照代码执行增长趋势来看，当n趋于无穷大时，常量1和倍数2就无足轻重，故可以简化为O(n)。"></text-field>
+                            <text-field :list="timeComplex"></text-field>
+                            <text-field content="再来看一张图片，更能直观看出每种时间复杂度的影响"></text-field>
+                            <img src="@/assets/timeImg.jpg"
+                                 style="width:70%"
+                                 alt="" />
+                            <text-field content="具体如下："></text-field>
+                            <text-field title="常数阶O(1)；"
+                                        fontSizeType="small"
+                                        content="当某一块代码的执行不随某个变量增长而增长，即代码块中不存在循环等复杂操作，都用O(1)表示">
+                            </text-field>
+                            <div class="codeBorder fontCodeStyle">
+                                <pre class="codeBorder">
+        let i = 10;<br/>
+        i = i+1;<br/>
+        j = i;<br/>
+        j++;
+                                </pre>
+                            </div>
+                            <text-field title="对数阶O(logN)"
+                                        fontSizeType="small"
+                                        content="结果来源：循环体最终执行x遍结果才大于等于n，假设就是等于n，那么i就需要乘以2^x = n，所以才有x = log2^n，所以时间复杂度为O(logN)">
+                            </text-field>
+                            <div class="codeBorder fontCodeStyle">
+                                <pre class="codeBorder">
+        let i = 1;<br/>
+        while(i&lt;n){<br/>
+            i = i*2;<br/>
+        }
+                                </pre>
+                            </div>
+                            <text-field title="线性阶O(n)"
+                                        fontSizeType="small"
+                                        content="这个很常见于一层循环体，循环体内每行代码都执行n次(1)表示，就像上面的例子所描述。">
+                            </text-field>
+                            <div class="codeBorder fontCodeStyle">
+                                <pre class="codeBorder">
+        for(let i=1; i&lt;n; i++){<br/>
+            j=i;<br/>
+            j++;<br/>
+        }
+                                </pre>
+                            </div>
+                            <text-field title="线性对数阶O(nlogN)"
+                                        fontSizeType="small"
+                                        content="这里，就是将线性阶和对数阶结合在一起，例如下面代码，每个while的时间复杂度为logN，每个for内的循环体为n，故最终为O(nlogN)">
+                            </text-field>
+                            <div class="codeBorder fontCodeStyle">
+                                <pre class="codeBorder">
+        for(let i=1; i&lt;n; i++){<br/>
+            let j = 1;<br/>
+            while(j&lt;n){<br/>
+                j = j*2;<br/>
+            }<br/>
+        }
+                                </pre>
+                            </div>
+                            <text-field title="指数阶(2^n)"
+                                        fontSizeType="small"
+                                        content="指数阶的案例可以通过斐波那契数列来呈现(数列从第3项开始，每一项都等于前两项之和),
+                                                举例：0，1，1，2，3，5，8，13，21，34...，如果把流程图画出来可以清晰发现是一个二叉树，
+                                                那么节点数就是：2^(n-1)，故最坏的情况下时间复杂度为O(2^n)">
+                            </text-field>
+                            <div class="codeBorder fontCodeStyle">
+                                <pre class="codeBorder">
+        funtion fib(n){<br/>
+            if(n&lt;2){<br/>
+                return;<br/>
+            }<br/>
+            return fib(n-1)+fib(n-2)<br/>
+        }
+                                </pre>
+                            </div>
+                            <text-field title="其余量级"
+                                        fontSizeType="small"
+                                        content="理解了上面的时间复杂度，那么其余的O(n*2)/O(n*3)/O(n*k)就很好理解了。就相当于2/3/个循环体，每个循环体的时间复杂度都为O(n)"></text-field>
+                            <div class="codeBorder fontCodeStyle">
+                                <pre class="codeBorder">
+        for(let i=1; i&lt;n; i++){<br/>
+            for(let j =1; j&lt;n; j++){<br/>
+                for(let k = 1; k&lt;n; k++){<br/>
+                    for(...)...<br/>
+                }<br/>
+            }<br/>
+        }
+                                </pre>
+                            </div>
+                            <text-field catalog
+                                        title="空间复杂度"
+                                        id="c5"
+                                        content="空间复杂度是对一个算法在运行过程中临时占用存储空间大小的一个量度，
+                                                同样反映的是一个趋势，我们用 S(n) 来定义（S(n) = O(f(n)))，具体看几个例子：。"
+                                        fontSizeType="small">
+                            </text-field>
+                            <div class="codeBorder fontCodeStyle">
+                                <pre class="codeBorder">
+        let i = 10;<br/>
+        i = i+1;<br/>
+        j = i;<br/>
+        j++;
+                                </pre>
+                            </div>
+                            <text-field content="如果算法所需要的临时空间，不随某个变量n的变化而变化，
+                                                即算法空间复杂度为O(1)，例如排序算法中选择排序，插入排序，冒泡排序；
+                                                但如果算法如下：">
+                            </text-field>
+                            <div class="codeBorder fontCodeStyle">
+                                <pre class="codeBorder">
+        let arr = [];<br/>
+        for(let i = 1; i&lt;n; i++){<br/>
+            arr.push(i);<br/>
+        }
+                                </pre>
+                            </div>
+                            <text-field content="上面代码中，数组的length会随着n的变化而变化，数据占用的大小为n，故此时他的
+                                                空间复杂度为O(n)"></text-field>
+                            <text-field content="还是以上面那个斐波那契例子为例，此时空间复杂度也为O(n)，因为递归的深度为n。"></text-field>
+                            <div style="display: flex">
+                                <img src="@/assets/CONTENT DELIVERY.png"
+                                     alt=""
+                                     style="width: 24px; height: 24px; margin-top: 6px" />
+                                <span style="font-size: 22px; font-weight: bold; margin-left: 10px">内容</span>
+                            </div>
+                            <el-divider></el-divider>
+                            <div style="margin: 20px 0px">
+                                <div>以下所有示例均根据[3, 1, 5, 7, 2, 4, 9, 6, 10, 8]</div>
+                            </div>
+                            <div id="c0"
+                                 style="margin: 20px 0px">
+                                <div style="display: flex">
+                                    <div style="margin: 6px 7px 0px 0px">
+                                        <img src="@/assets/light.png"
+                                             alt="" />
+                                    </div>
+                                    <h4>冒泡排序</h4>
+                                </div>
+                                <div class="fontIndent">
+                                    <div>
+                                        <el-button type="text"
+                                                   @click="btnBubbleSort">冒泡排序测试</el-button>
+                                    </div>
+                                    <div>
+                                        <p>测试结果：{{ newData }}</p>
+                                    </div>
+                                    <div>
+                                        <p>测试代码：</p>
+                                    </div>
+                                    <img src="@/assets/bubble_res.jpg"
+                                         alt=""
+                                         width="90%" />
+                                </div>
+                            </div>
+                            <div id="c1"
+                                 style="margin: 20px 0px">
+                                <div style="display: flex">
+                                    <div style="margin: 6px 7px 0px 0px">
+                                        <img src="@/assets/light.png"
+                                             alt="" />
+                                    </div>
+                                    <h4>快速排序</h4>
+                                </div>
+                                <div class="fontIndent">
+                                    <div>
+                                        <el-button type="text"
+                                                   @click="btnQuickSort">快速排序测试</el-button>
+                                    </div>
+                                    <div>
+                                        <p>测试结果：{{ newQuickData }}</p>
+                                    </div>
+                                    <div>
+                                        <p>
+                                            首先找到一个中间值，然后遍历第一次将所有小于中间值放在left数组，将所有大于中间值放到right数组，最后利用递归思想循环。
+                                        </p>
+                                        <p>测试代码：</p>
+                                    </div>
+                                    <img src="@/assets/quick_res.jpg"
+                                         width="90%"
+                                         alt="" />
+                                </div>
+                            </div>
+                            <div id="c2"
+                                 style="margin: 20px 0px">
+                                <div style="display: flex">
+                                    <div style="margin: 6px 7px 0px 0px">
+                                        <img src="@/assets/light.png"
+                                             alt="" />
+                                    </div>
+                                    <h4>插入排序</h4>
+                                </div>
+                                <div class="fontIndent">
+                                    <div>
+                                        <el-button type="text"
+                                                   @click="btnInsertSort">插入排序测试</el-button>
+                                    </div>
+                                    <div>
+                                        <p>从第二个元素开始，直接插入到前面有序数组中</p>
+                                        <p>测试结果：{{ newInsertData }}</p>
+                                    </div>
+                                    <div>
+                                        <p>测试代码：</p>
+                                    </div>
+                                    <img src="@/assets/insert_res.jpg"
+                                         alt=""
+                                         width="90%" />
+                                </div>
+                            </div>
+                            <div id="c3"
+                                 style="margin: 20px 0px">
+                                <div style="display: flex">
+                                    <div style="margin: 6px 7px 0px 0px">
+                                        <img src="@/assets/light.png"
+                                             alt="" />
+                                    </div>
+                                    <h4>选择排序</h4>
+                                </div>
+                                <div class="fontIndent">
+                                    <div>
+                                        <el-button type="text"
+                                                   @click="btnSelectSort">选择排序测试</el-button>
+                                    </div>
+                                    <div>
+                                        <p>
+                                            首先在未排序序列中找到最小（大）元素，存放到排序序列的起始位置，
+                                            然后，再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾
+                                        </p>
+                                        <p>测试结果：{{ newSelectData }}</p>
+                                    </div>
+                                    <div>
+                                        <p>测试代码：</p>
+                                    </div>
+                                    <img src="@/assets/insert_res.jpg"
+                                         alt=""
+                                         width="90%" />
+                                    <div>
+                                        <p>选择排序和冒泡排序区别：</p>
+                                        <ul>
+                                            <li>
+                                                冒泡排序:从左到右，数组中相邻的两个元素进行比较，将较大的放到后面。
+                                            </li>
+                                            <li>
+                                                选择排序：从第一个位置开始比较，找出最小的，和第一个位置互换，开始下一轮。
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <catalog :catalogData="catalogHtmlData"
+                             :itemIndex.sync="itemIndex"></catalog>
+                </div>
             </div>
-          </router-link>
         </div>
-        <div class="titleStyle">
-          <div class="titleIconStyle">
-            <img src="@/components/picture/test_two.jpeg" class="imgStyle" />
-          </div>
-          <div class="titleFontStyle">
-            <span style="font-size: 25px">js经典十大排序算法</span>
-            <el-divider></el-divider>
-            <p>此篇主要讲述十大排序算法（编写语言利用javascript）。</p>
-          </div>
-        </div>
-        <div style="display: flex">
-          <div style="width: 75%">
-            <div class="catalogStyle fontStyle">
-              <div style="display: flex">
-                <img
-                  src="@/assets/CONTENT DELIVERY.png"
-                  style="width: 24px; height: 24px; margin-top: 6px"
-                />
-                <span
-                  style="font-size: 22px; font-weight: bold; margin-left: 10px"
-                  >内容</span
-                >
-              </div>
-              <el-divider></el-divider>
-              <div style="margin: 20px 0px">
-                <div>以下所有示例均根据[3, 1, 5, 7, 2, 4, 9, 6, 10, 8]</div>
-              </div>
-              <div id="c0" style="margin: 20px 0px">
-                <div style="display: flex">
-                  <div style="margin: 6px 7px 0px 0px">
-                    <img src="@/assets/light.png" />
-                  </div>
-                  <h4>冒泡排序</h4>
-                </div>
-                <div class="fontIndent">
-                  <div>
-                    <el-button type="text" @click="btnBubbleSort"
-                      >冒泡排序测试</el-button
-                    >
-                  </div>
-                  <div>
-                    <p>测试结果：{{ newData }}</p>
-                  </div>
-                  <div>
-                    <p>测试代码：</p>
-                  </div>
-                  <img src="@/assets/bubble_res.jpg" width="90%" />
-                </div>
-              </div>
-              <div id="c1" style="margin: 20px 0px">
-                <div style="display: flex">
-                  <div style="margin: 6px 7px 0px 0px">
-                    <img src="@/assets/light.png" />
-                  </div>
-                  <h4>快速排序</h4>
-                </div>
-                <div class="fontIndent">
-                  <div>
-                    <el-button type="text" @click="btnQuickSort"
-                      >快速排序测试</el-button
-                    >
-                  </div>
-                  <div>
-                    <p>测试结果：{{ newQuickData }}</p>
-                  </div>
-                  <div>
-                    <p>
-                      首先找到一个中间值，然后遍历第一次将所有小于中间值放在left数组，将所有大于中间值放到right数组，最后利用递归思想循环。
-                    </p>
-                    <p>测试代码：</p>
-                  </div>
-                  <img src="@/assets/quick_res.jpg" width="90%" />
-                </div>
-              </div>
-              <div id="c2" style="margin: 20px 0px">
-                <div style="display: flex">
-                  <div style="margin: 6px 7px 0px 0px">
-                    <img src="@/assets/light.png" />
-                  </div>
-                  <h4>插入排序</h4>
-                </div>
-                <div class="fontIndent">
-                  <div>
-                    <el-button type="text" @click="btnInsertSort"
-                      >插入排序测试</el-button
-                    >
-                  </div>
-                  <div>
-                    <p>从第二个元素开始，直接插入到前面有序数组中</p>
-                    <p>测试结果：{{ newInsertData }}</p>
-                  </div>
-                  <div>
-                    <p>测试代码：</p>
-                  </div>
-                  <img src="@/assets/insert_res.jpg" width="90%" />
-                </div>
-              </div>
-              <div id="c3" style="margin: 20px 0px">
-                <div style="display: flex">
-                  <div style="margin: 6px 7px 0px 0px">
-                    <img src="@/assets/light.png" />
-                  </div>
-                  <h4>选择排序</h4>
-                </div>
-                <div class="fontIndent">
-                  <div>
-                    <el-button type="text" @click="btnSelectSort"
-                      >选择排序测试</el-button
-                    >
-                  </div>
-                  <div>
-                    <p>
-                      首先在未排序序列中找到最小（大）元素，存放到排序序列的起始位置，
-                      然后，再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾
-                    </p>
-                    <p>测试结果：{{ newSelectData }}</p>
-                  </div>
-                  <div>
-                    <p>测试代码：</p>
-                  </div>
-                  <img src="@/assets/insert_res.jpg" width="90%" />
-                  <div>
-                    <p>选择排序和冒泡排序区别：</p>
-                    <ul>
-                      <li>
-                        冒泡排序:从左到右，数组中相邻的两个元素进行比较，将较大的放到后面。
-                      </li>
-                      <li>
-                        选择排序：从第一个位置开始比较，找出最小的，和第一个位置互换，开始下一轮。
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            style="
-              position: fixed;
-              right: 100px;
-              width: 20%;
-              margin-top: -100px;
-            "
-          >
-            <div class="catalogStyle">
-              <div style="display: flex">
-                <img
-                  src="@/assets/catalog.png"
-                  style="width: 24px; height: 24px; margin-top: 3px"
-                />
-                <span
-                  style="font-size: 22px; font-weight: bold; margin-left: 10px"
-                  >目录</span
-                >
-              </div>
-              <el-divider></el-divider>
-              <div class="htmlFix">
-                <div
-                  v-for="item in catalogHtmlData"
-                  :key="item.index"
-                  class="htmlcatalogItem"
-                  :id="item.i"
-                  :class="itemIndex === item.index ? 'activeCatalog' : ''"
-                  @click="handlehtmlCatalog(item)"
-                >
-                  <div
-                    class="radiuStyle"
-                    :class="
-                      itemIndex === item.index ? 'activeRadiuCatalog' : ''
-                    "
-                  ></div>
-                  <el-tooltip
-                    placement="left-start"
-                    :content="item.name"
-                    :open-delay="400"
-                  >
-                    <div class="htmlItemName">{{ item.name }}</div>
-                  </el-tooltip>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
 </template>
 
 <script>
+import { highlightCode } from '../utils/common';
+import TextField from '../components/textField.vue';
+import catalog from '../components/catalog';
 export default {
-  data() {
-    return {
-      catalogHtmlData: [
-        { index: "c0", name: "1.冒泡排序", i: "0" },
-        { index: "c1", name: "2.快速排序", i: "1" },
-        { index: "c2", name: "3.插入排序", i: "2" },
-        { index: "c3", name: "4.选择排序", i: "3" },
-        // { index: "c4", name: "5.react生命周期", i: "4" },
-        // { index: "c5", name: "6.为什么虚拟dom会提高性能", i: "5" },
-        // { index: "c6", name: "7.react之diff算法", i: "6" },
-        // { index: "c7", name: "8.react之refs", i: "7" },
-        // { index: "c8", name: "9.类组件和函数式组件", i: "8" },
-        // { index: "c9", name: "10.组件的状态和属性之间有什么不同", i: "9" },
-        // { index: "c10", name: "11.受控组件和非受控组件", i: "10" },
-        // { index: "c11", name: "12.react组件何处发起ajax", i: "11" },
-        // { index: "c12", name: "13.React 中有三种构建组件的方式", i: "12" },
-        // { index: "c13", name: "14.简单说一下redux", i: "13" },
-      ],
-      itemIndex: "",
-      oldData: [3, 1, 5, 7, 2, 4, 9, 6, 10, 8],
-      newData: [],
-      newQuickData: [],
-      newInsertData: [],
-      newSelectData: [],
-    };
-  },
-  mounted() {
-    window.addEventListener("mousewheel", this.btnoffsetHeight, false);
-  },
-  methods: {
-    handlehtmlCatalog(item) {
-      console.log(item.index, item.name);
-      this.itemIndex = item.index;
-
-      document.getElementById(item.index).scrollIntoView();
+    components: {
+        TextField,
+        catalog,
     },
-
-    handleCatalog(data) {
-      this.itemIndex = data;
-      // data.substring(1)作用就是防止id重复
-      document.getElementById(data.substring(1)).scrollIntoView();
+    data() {
+        return {
+            catalogHtmlData: [
+                { index: 'c4', name: '时间复杂度', i: '4' },
+                { index: 'c5', name: '空间复杂度', i: '5' },
+                { index: 'c0', name: '1.冒泡排序', i: '0' },
+                { index: 'c1', name: '2.快速排序', i: '1' },
+                { index: 'c2', name: '3.插入排序', i: '2' },
+                { index: 'c3', name: '4.选择排序', i: '3' },
+            ],
+            itemIndex: '',
+            oldData: [3, 1, 5, 7, 2, 4, 9, 6, 10, 8],
+            newData: [],
+            newQuickData: [],
+            newInsertData: [],
+            newSelectData: [],
+            timeComplex: {
+                istTitle:
+                    '常见的时间复杂度量级有（按时间复杂度从小到大排序）：',
+                routeList: [
+                    {
+                        data: `常数阶O(1)；`,
+                    },
+                    {
+                        data: `对数阶O(logN)；`,
+                    },
+                    {
+                        data: `线性阶O(n)；`,
+                    },
+                    {
+                        data: `线性对数阶O(nlogN)；`,
+                    },
+                    {
+                        data: `平方阶O(n²)`,
+                    },
+                    {
+                        data: `立方阶O(n³)`,
+                    },
+                    {
+                        data: `K次方阶O(n^k)`,
+                    },
+                    {
+                        data: `指数阶(2^n)`,
+                    },
+                ],
+            },
+        };
     },
-
-    btnoffsetHeight() {
-      let selectData = "";
-      for (let k in this.catalogHtmlData) {
-        let height =
-          document.getElementById(this.catalogHtmlData[k].index).offsetTop -
-          document.documentElement.scrollTop;
-        // console.log(height, this.catalogHtmlData[k].index);
-        if (height < 0) {
-          selectData = this.catalogHtmlData[k].index;
-        }
-        if (height >= 0 && height < 40) {
-          selectData = this.catalogHtmlData[k].index;
-          break;
-        }
-      }
-      selectData !== "" && this.handleCatalog(selectData);
+    mounted() {
+        highlightCode();
+        window.addEventListener('mousewheel', this.btnoffsetHeight, false);
     },
+    methods: {
+        handlehtmlCatalog(item) {
+            console.log(item.index, item.name);
+            this.itemIndex = item.index;
 
-    //冒泡排序
-    btnBubbleSort() {
-      let oldData = this.oldData;
-      for (let i = 0; i < oldData.length; i++) {
-        for (let j = 0; j < oldData.length - i - 1; j++) {
-          if (oldData[j] > oldData[j + 1]) {
-            [oldData[j], oldData[j + 1]] = [oldData[j + 1], oldData[j]];
-          }
-        }
-      }
-      this.newData = oldData;
+            document.getElementById(item.index).scrollIntoView();
+        },
+
+        handleCatalog(data) {
+            this.itemIndex = data;
+            // data.substring(1)作用就是防止id重复
+            document.getElementById(data.substring(1)).scrollIntoView();
+        },
+
+        btnoffsetHeight() {
+            let selectData = '';
+            for (let k in this.catalogHtmlData) {
+                let height =
+                    document.getElementById(this.catalogHtmlData[k].index)
+                        .offsetTop - document.documentElement.scrollTop;
+                // console.log(height, this.catalogHtmlData[k].index);
+                if (height < 0) {
+                    selectData = this.catalogHtmlData[k].index;
+                }
+                if (height >= 0 && height < 40) {
+                    selectData = this.catalogHtmlData[k].index;
+                    break;
+                }
+            }
+            selectData !== '' && this.handleCatalog(selectData);
+        },
+
+        //冒泡排序
+        btnBubbleSort() {
+            let oldData = this.oldData;
+            for (let i = 0; i < oldData.length; i++) {
+                for (let j = 0; j < oldData.length - i - 1; j++) {
+                    if (oldData[j] > oldData[j + 1]) {
+                        [oldData[j], oldData[j + 1]] = [
+                            oldData[j + 1],
+                            oldData[j],
+                        ];
+                    }
+                }
+            }
+            this.newData = oldData;
+        },
+
+        //快速排序
+        btnQuickSort() {
+            let oldData = this.oldData;
+            this.newQuickData = this.quickSort(oldData);
+        },
+
+        quickSort(ele) {
+            if (ele.length <= 1) {
+                return ele;
+            }
+            let pivotIndex = Math.floor(ele.length / 2);
+            let pivot = ele.splice(pivotIndex, 1)[0];
+
+            let left = [];
+            let right = [];
+            for (let i = 0; i < ele.length; i++) {
+                if (ele[i] < pivot) {
+                    left.push(ele[i]);
+                } else {
+                    right.push(ele[i]);
+                }
+            }
+            return this.quickSort(left).concat([pivot], this.quickSort(right));
+        },
+
+        //插入排序
+        btnInsertSort() {
+            let oldData = this.oldData;
+            for (let i = 1; i < oldData.length; i++) {
+                if (oldData[i] < oldData[i - 1]) {
+                    let temp = oldData[i];
+                    let j = i - 1;
+                    while (j >= 0 && temp < oldData[j]) {
+                        oldData[j + 1] = oldData[j];
+                        j--;
+                    }
+                    oldData[j + 1] = temp;
+                }
+            }
+            this.newInsertData = oldData;
+        },
+
+        //选择排序
+        btnSelectSort() {
+            let oldData = this.oldData;
+            for (let i = 0; i < oldData.length; i++) {
+                for (let j = i + 1; j < oldData.length; j++) {
+                    if (oldData[j] < oldData[i]) {
+                        [oldData[i], oldData[j]] = [oldData[j], oldData[i]];
+                    }
+                }
+            }
+            this.newSelectData = oldData;
+        },
     },
-
-    //快速排序
-    btnQuickSort() {
-      let oldData = this.oldData;
-      this.newQuickData = this.quickSort(oldData);
-    },
-
-    quickSort(ele) {
-      if (ele.length <= 1) {
-        return ele;
-      }
-      let pivotIndex = Math.floor(ele.length / 2);
-      let pivot = ele.splice(pivotIndex, 1)[0];
-
-      let left = [];
-      let right = [];
-      for (let i = 0; i < ele.length; i++) {
-        if (ele[i] < pivot) {
-          left.push(ele[i]);
-        } else {
-          right.push(ele[i]);
-        }
-      }
-      return this.quickSort(left).concat([pivot], this.quickSort(right));
-    },
-
-    //插入排序
-    btnInsertSort() {
-      let oldData = this.oldData;
-      for (let i = 1; i < oldData.length; i++) {
-        if (oldData[i] < oldData[i - 1]) {
-          let temp = oldData[i];
-          let j = i - 1;
-          while (j >= 0 && temp < oldData[j]) {
-            oldData[j + 1] = oldData[j];
-            j--;
-          }
-          oldData[j + 1] = temp;
-        }
-      }
-      this.newInsertData = oldData;
-    },
-
-    //选择排序
-    btnSelectSort() {
-      let oldData = this.oldData;
-      for (let i = 0; i < oldData.length; i++) {
-        for (let j = i + 1; j < oldData.length; j++) {
-          if (oldData[j] < oldData[i]) {
-            [oldData[i], oldData[j]] = [oldData[j], oldData[i]];
-          }
-        }
-      }
-      this.newSelectData = oldData;
-    },
-  },
 };
 </script>
 
 <style scoped>
 .learnVue {
-  background-image: linear-gradient(#faedf9, white);
+    background-image: linear-gradient(#faedf9, white);
 }
 </style>

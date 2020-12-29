@@ -643,7 +643,7 @@ export default {
                 },
                 {
                     index: 'c22',
-                    name: 'Vue-.sync修饰符',
+                    name: '23.Vue-.sync修饰符',
                     i: '22',
                 },
             ],
