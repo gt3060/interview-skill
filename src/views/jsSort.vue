@@ -43,21 +43,22 @@
                                         id="c4"
                                         content="字面意思，时间复杂度就是一段算法程序在运行环境下运行一遍所需要的时间，
                                                 但是，不同性能的机器跑的算法运行时间不同，故统一采用一种通用的大O符号表示法（T(n)=O(f(n))),
-                                                大O表示法并不是计算真实执行时间，而是用来表示代码执行时间的增长趋势，
+                                                大O表示法并不是计算真实执行时间，而是用来表示代码执行时间的增长趋势，也叫做渐进时间复杂度。
                                                 其中f(n)指的是每行代码执行次数之和，而O表示正比例关系。举个例子，以下面代码为例："
                                         fontSizeType="small">
                             </text-field>
                             <div class="codeBorder fontCodeStyle">
                                 <pre class="codeBorder">
-        for(let i=1; i&lt;10; i++){<br/>
-            j=i;<br/>
-            j++;<br/>
+        let sum = 0;<br/>
+        for(let i = 1; i&lt;10; i++){<br/>
+            sum = sum + 1;<br/>
         }
                                 </pre>
                             </div>
                             <text-field content="上面这个代码中，执行单位按1单元时间（unit_time）表示，那么，第一行执行时间是1单元时间，
                                                 第二行是n单元时间，第三行是n单元时间；最后执行整个程序的时间为：Tn=(1+2n)*，
-                                                按照代码执行增长趋势来看，当n趋于无穷大时，常量1和倍数2就无足轻重，故可以简化为O(n)。"></text-field>
+                                                按照代码执行增长趋势来看，当n趋于无穷大时，常量1和倍数2就无足轻重
+                                                （低阶/常量/系数并不左右增长趋势，所以只记录一个最大量级就可以），故可以简化为O(n)。"></text-field>
                             <text-field :list="timeComplex"></text-field>
                             <text-field content="再来看一张图片，更能直观看出每种时间复杂度的影响"></text-field>
                             <img src="@/assets/timeImg.jpg"
@@ -78,7 +79,9 @@
                             </div>
                             <text-field title="对数阶O(logN)"
                                         fontSizeType="small"
-                                        content="结果来源：循环体最终执行x遍结果才大于等于n，假设就是等于n，那么i就需要乘以2^x = n，所以才有x = log2^n，所以时间复杂度为O(logN)">
+                                        content="结果来源：循环体最终执行x遍结果才大于等于n，假设就是等于n，
+                                        那么i就需要乘以2^x = n，所以才有x = log2^n，所以时间复杂度为O(log2N)，但是我们知道无论是以
+                                        2为底还是3/10，他们之间是可以相互转化的，log(a)b*log(b)n = log(a)n，故最终可简化位O(logN)">
                             </text-field>
                             <div class="codeBorder fontCodeStyle">
                                 <pre class="codeBorder">
@@ -94,9 +97,9 @@
                             </text-field>
                             <div class="codeBorder fontCodeStyle">
                                 <pre class="codeBorder">
-        for(let i=1; i&lt;n; i++){<br/>
-            j=i;<br/>
-            j++;<br/>
+        let sum = 0;<br/>
+        for(let i = 1; i&lt;10; i++){<br/>
+            sum = sum + 1;<br/>
         }
                                 </pre>
                             </div>
@@ -144,6 +147,26 @@
         }
                                 </pre>
                             </div>
+                            <text-field title="O(m+n)"
+                                        fontSizeType="small"
+                                        content="这种数据复杂度由两个数据的规模来决定，看如下代码">
+                            </text-field>
+                            <div class="codeBorder fontCodeStyle">
+                                <pre class="codeBorder">
+        let sum = 0;<br/>
+        for(let i = 1; i&lt;m; i++){<br/>
+            sum = sum + 1;<br/>
+        }<br/>
+        let sum1 = 0;<br/>
+        for(let i = 1; i&lt;n; i++){<br/>
+            sum1 = sum1 + 1;<br/>
+        }<br/>
+        return sum + sum1;
+                                </pre>
+                            </div>
+                            <text-field content="上面这个代码中可以看到，是由两个变量构成，而这两个变量是分不出哪个量级大，
+                                                所以在判断时间复杂度时候就应该都写上，O(m+n)；乘法亦然。"></text-field>
+                            <text-field :list="timeComplexSumUpList"></text-field>
                             <text-field catalog
                                         title="空间复杂度"
                                         id="c5"
@@ -165,15 +188,59 @@
                             </text-field>
                             <div class="codeBorder fontCodeStyle">
                                 <pre class="codeBorder">
+        let i = 0;<br/>
         let arr = [];<br/>
         for(let i = 1; i&lt;n; i++){<br/>
             arr.push(i);<br/>
         }
                                 </pre>
                             </div>
-                            <text-field content="上面代码中，数组的length会随着n的变化而变化，数据占用的大小为n，故此时他的
+                            <text-field content="上面代码中，第一行申请了一个空间存储变量 i，但是它是常量阶的，跟数据规模 n 没有关系，所以我们可以忽略。
+                                                数组的length会随着n的变化而变化，数据占用的大小为n，故此时他的
                                                 空间复杂度为O(n)"></text-field>
                             <text-field content="还是以上面那个斐波那契例子为例，此时空间复杂度也为O(n)，因为递归的深度为n。"></text-field>
+                            <text-field catalog
+                                        title="平均情况时间复杂度"
+                                        id="c6"
+                                        content="理论上来讲，最好情况时间复杂度和最坏情况时间复杂度对应的都是极端情况下的代码复杂度，发生的概率其实并不大。
+                                        为了更好地表示平均情况下的时间复杂度，需要进入一个新的概念：平均情况时间复杂度。"
+                                        fontSizeType="small">
+                            </text-field>
+                            <text-field content="分析最简单的查找某个元素的算法，最好情况就是第一个位置就是要查的元素，最坏的就是最后一个位置，那么分系平均情况时间复杂度，
+                                                一共出现的情况有n+1种（其中如果存在有n种，还有一种是不存在数组中。）。把每种情况累加除以n+1就是需要遍历元素个数的平均值，
+                                                所以最终结果就是：(1+2+3+...+n+n)/(n+1) = n(n+3)/2(n+1)；所以这个算法的平均情况时间复杂度也为O(n)；
+                                                不过此时有点问题:没有将各种情况发生的概率考虑进去。如果我们把每种情况发生的概率也考虑进去，那平均时间复杂度的计算过程就变成了这样:
+                                                (1+2+3+...+n)1/2n+n*1/2（其中数组中与不在数组中的概率都为 1/2。另外，要查找的数据出现在 0～n-1 这 n 个位置的概率也是一样的，为 1/n）"></text-field>
+                            <text-field content="再看一个例子："></text-field>
+                            <div class="codeBorder fontCodeStyle">
+                                <pre class="codeBorder">
+        int[] array = new int[n];<br/>
+        int count = 0;<br/>
+        public void insert(int value) {<br/>
+            // 数组已经存满，进行扩容操作，然后将之前的元素拷贝到新数组中<br/>
+            if (count >= arr.length) {<br/>
+                // 新建一个大小为之前数组2倍的新数组<br/>
+                int[] arr2 = new int[2*arr.length];<br/>
+                // 将之前数组中元素copy到新数组中<br/>
+                for (int i = 0;i&lt;arr.length;i++) {<br/>
+                    arr2[i] = arr[i];<br/>
+                }<br/>
+                // 将新数组赋值给原数组（扩容后的数组代替原来的数组）<br/>
+                arr = arr2;<br/>
+            }<br/>
+            // 数组没满，直接将值插入到数组中即可<br/>
+            arr[count] = value;<br/>
+            count++;<br/>
+        }
+                                </pre>
+                            </div>
+                            <text-field content="这个代码作用就是，首先判断数组是否已经满了，
+                                                如果没满直接插入，如果已经满了，需要先将数组中所有元素放到新数组，再进行插入。"></text-field>
+                            <text-field content="具体分析：理想情况，没有满，直接插入，时间复杂度位O(1)；
+                                                最坏情况，数组中没有空闲空间了，我们需要先做一次数组的遍历放到新数组，然后再将数据插入，所以最坏情况时间复杂度为 O(n);
+                                                细心观察可以发现，每当经历n次时间复杂度为O(1)的操作时，便经历1次时间复杂度为O(n)的操作，有一定的时序规律，并且出现高级别复杂度的情况极少。我们将出现高级别的情况均摊到低级别复杂度的情况中，整个插入操作的时间复杂度就变为O(1)了
+                                                这就是摊还分析的大致思想，也就是均摊时间复杂度。"></text-field>
+                            <text-field conten="代码在绝大多数情况下是低级别复杂度，只有极少数情况是高级别复杂度，并且具有一定的时序规律，则用均摊时间复杂度分析。"></text-field>
                             <div style="display: flex">
                                 <img src="@/assets/CONTENT DELIVERY.png"
                                      alt=""
@@ -327,6 +394,7 @@ export default {
             catalogHtmlData: [
                 { index: 'c4', name: '时间复杂度', i: '4' },
                 { index: 'c5', name: '空间复杂度', i: '5' },
+                { index: 'c6', name: '平均情况时间复杂度', i: '6' },
                 { index: 'c0', name: '1.冒泡排序', i: '0' },
                 { index: 'c1', name: '2.快速排序', i: '1' },
                 { index: 'c2', name: '3.插入排序', i: '2' },
@@ -365,6 +433,17 @@ export default {
                     },
                     {
                         data: `指数阶(2^n)`,
+                    },
+                ],
+            },
+            timeComplexSumUpList: {
+                istTitle: '总结：如何分系一段代码的时间复杂度',
+                routeList: [
+                    {
+                        data: `只关注循环执行次数最多的一段代码：因为我们通常会忽略低阶/常数/系数，只记录最大阶的量级；`,
+                    },
+                    {
+                        data: `乘法法则：嵌套代码的复杂度等于嵌套内外代码的复杂度的乘积，类似嵌套循环。`,
                     },
                 ],
             },

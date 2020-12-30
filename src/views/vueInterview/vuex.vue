@@ -267,7 +267,8 @@ export default {
         },
 
         btnTest() {
-            this.promiseTestData()
+            // this.$store.dispatch('promiseTestData', '');
+            this.promiseTestData('params')
                 .then((res) => {
                     console.log(res);
                 })
