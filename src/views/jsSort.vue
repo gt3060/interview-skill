@@ -261,49 +261,84 @@
                                     <h4>冒泡排序</h4>
                                 </div>
                                 <div class="fontIndent">
+                                    <el-button type="text"
+                                               @click="btnBubbleSort">普通冒泡排序测试</el-button>
+                                    <el-button type="text"
+                                               @click="btnBubbleSortOptimization">优化冒泡排序测试1</el-button>
                                     <div>
                                         <el-button type="text"
-                                                   @click="btnBubbleSort">冒泡排序测试</el-button>
+                                                   @click="btnBubbleSort('nomal')">普通冒泡排序测试</el-button>
+                                        <el-button type="text"
+                                                   @click="bubbleSortOptimization">优化冒泡排序测试2</el-button>
                                     </div>
-                                    <div>
-                                        <p>测试结果：{{ newData }}</p>
-                                    </div>
-                                    <div>
-                                        <p>测试代码：</p>
-                                    </div>
+                                    <p>测试结果：{{ newData }}----执行几次{{newDataIndex}}</p>
+                                    <p>测试代码：</p>
                                     <img src="@/assets/bubble_res.jpg"
                                          alt=""
                                          width="90%" />
+                                    <text-field content="那么，冒泡排序方法可以优化么，答案当然是可以的，
+                                                        如果在遍历第i遍就已经排好序，则不需要在进行i+1的遍历，那么优化算法是
+                                                        利用一个标志位flag，加以实现，如优化代码一
+                                                        (这种优化仅仅适用于连片有序而整体无序的数据(例如：1， 2，3 ，4 ，7，6，5))。"></text-field>
+                                    <p>优化代码一</p>
+                                    <img src="@/assets/sortOptimization.png"
+                                         alt=""
+                                         width="90%" />
+                                    <text-field content="除了上面这个待优化问题外，还有一种情况，对于前面大部分是无序而后边小半部分有序的数据
+                                                        (1，2，5，7，4，3，6，8，9，10)排序效率也不可观，这种情况，我们可以
+                                                        记下本次遍历最后一次交换的位置，仍然利用标记位，标记位后面的没有交换必然是有序的。"></text-field>
+                                    <p>优化代码二</p>
+                                    <img alt=""
+                                         src="@/assets/optimizationTwo.jpg"
+                                         width="90%" />
                                 </div>
                             </div>
-                            <div id="c1"
+                            <text-field fontSizeType="small"
+                                        title="应用场景"
+                                        content="若待排序的序列基本有序，则可以选择冒泡排序，稳定性良好，但不适合大规模无序序列的排序。"></text-field>
+                            <div id="c3"
                                  style="margin: 20px 0px">
                                 <div style="display: flex">
                                     <div style="margin: 6px 7px 0px 0px">
                                         <img src="@/assets/light.png"
                                              alt="" />
                                     </div>
-                                    <h4>快速排序</h4>
+                                    <h4>选择排序</h4>
                                 </div>
                                 <div class="fontIndent">
                                     <div>
                                         <el-button type="text"
-                                                   @click="btnQuickSort">快速排序测试</el-button>
-                                    </div>
-                                    <div>
-                                        <p>测试结果：{{ newQuickData }}</p>
+                                                   @click="btnSelectSort">选择排序测试</el-button>
                                     </div>
                                     <div>
                                         <p>
-                                            首先找到一个中间值，然后遍历第一次将所有小于中间值放在left数组，将所有大于中间值放到right数组，最后利用递归思想循环。
+                                            首先在未排序序列中找到最小（大）元素，存放到排序序列的起始位置，
+                                            然后，再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾
                                         </p>
+                                        <p>测试结果：{{ newSelectData }}</p>
+                                    </div>
+                                    <div>
                                         <p>测试代码：</p>
                                     </div>
-                                    <img src="@/assets/quick_res.jpg"
-                                         width="90%"
-                                         alt="" />
+                                    <img src="@/assets/select_res.jpg"
+                                         alt=""
+                                         width="90%" />
+                                    <div>
+                                        <p>选择排序和冒泡排序区别：</p>
+                                        <ul>
+                                            <li>
+                                                冒泡排序:从左到右，数组中相邻的两个元素进行比较，将较大的放到后面。
+                                            </li>
+                                            <li>
+                                                选择排序：从第一个位置开始比较，找出最小的，和第一个位置互换，开始下一轮。
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
+                            <text-field fontSizeType="small"
+                                        title="应用场景"
+                                        content="数据规模较小时，性能较好。"></text-field>
                             <div id="c2"
                                  style="margin: 20px 0px">
                                 <div style="display: flex">
@@ -330,44 +365,42 @@
                                          width="90%" />
                                 </div>
                             </div>
-                            <div id="c3"
+                            <text-field content="相等的两个元素 A[i] = A[j]，无论从那边开始，与当前元素相等的都放在当前元素的后边，
+                                                即保证了 i < j，所以是稳定排序。"></text-field>
+                            <text-field fontSizeType="small"
+                                        title="应用场景"
+                                        content="数据规模较小且基本有序，选用插入排序。"></text-field>
+                            <text-field catalog
+                                        title="希尔排序"
+                                        id="c7"
+                                        content="在插入排序的算法的基础上作出改进，将序列按照增量分割成多个子数组，然后分别对这些子数组进行插入排序。"
+                                        fontSizeType="small">
+                            </text-field>
+                            <text-field></text-field>
+                            <div id="c1"
                                  style="margin: 20px 0px">
                                 <div style="display: flex">
                                     <div style="margin: 6px 7px 0px 0px">
                                         <img src="@/assets/light.png"
                                              alt="" />
                                     </div>
-                                    <h4>选择排序</h4>
+                                    <h4>快速排序</h4>
                                 </div>
                                 <div class="fontIndent">
                                     <div>
                                         <el-button type="text"
-                                                   @click="btnSelectSort">选择排序测试</el-button>
+                                                   @click="btnQuickSort">快速排序测试</el-button>
                                     </div>
+                                    <p>测试结果：{{ newQuickData }}</p>
                                     <div>
                                         <p>
-                                            首先在未排序序列中找到最小（大）元素，存放到排序序列的起始位置，
-                                            然后，再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾
+                                            首先找到一个中间值，然后遍历第一次将所有小于中间值放在left数组，将所有大于中间值放到right数组，最后利用递归思想循环。
                                         </p>
-                                        <p>测试结果：{{ newSelectData }}</p>
-                                    </div>
-                                    <div>
                                         <p>测试代码：</p>
                                     </div>
-                                    <img src="@/assets/insert_res.jpg"
-                                         alt=""
-                                         width="90%" />
-                                    <div>
-                                        <p>选择排序和冒泡排序区别：</p>
-                                        <ul>
-                                            <li>
-                                                冒泡排序:从左到右，数组中相邻的两个元素进行比较，将较大的放到后面。
-                                            </li>
-                                            <li>
-                                                选择排序：从第一个位置开始比较，找出最小的，和第一个位置互换，开始下一轮。
-                                            </li>
-                                        </ul>
-                                    </div>
+                                    <img src="@/assets/quick_res.jpg"
+                                         width="90%"
+                                         alt="" />
                                 </div>
                             </div>
                         </div>
@@ -396,13 +429,15 @@ export default {
                 { index: 'c5', name: '空间复杂度', i: '5' },
                 { index: 'c6', name: '平均情况时间复杂度', i: '6' },
                 { index: 'c0', name: '1.冒泡排序', i: '0' },
-                { index: 'c1', name: '2.快速排序', i: '1' },
+                { index: 'c3', name: '2.选择排序', i: '3' },
                 { index: 'c2', name: '3.插入排序', i: '2' },
-                { index: 'c3', name: '4.选择排序', i: '3' },
+                { index: 'c7', name: '4.希尔排序', i: '7' },
+                { index: 'c1', name: '4.快速排序', i: '1' },
             ],
             itemIndex: '',
             oldData: [3, 1, 5, 7, 2, 4, 9, 6, 10, 8],
             newData: [],
+            newDataIndex: 0,
             newQuickData: [],
             newInsertData: [],
             newSelectData: [],
@@ -486,16 +521,71 @@ export default {
         },
 
         //冒泡排序
-        btnBubbleSort() {
-            let oldData = this.oldData;
+        btnBubbleSort(type) {
+            let oldData = type ? [1, 2, 5, 7, 4, 3, 6, 8, 9, 10] : this.oldData;
+            this.newDataIndex = 0;
             for (let i = 0; i < oldData.length; i++) {
-                for (let j = 0; j < oldData.length - i - 1; j++) {
-                    if (oldData[j] > oldData[j + 1]) {
-                        [oldData[j], oldData[j + 1]] = [
-                            oldData[j + 1],
+                for (let j = oldData.length - 1; j > i; j--) {
+                    if (oldData[j] > oldData[j - 1]) {
+                        [oldData[j - 1], oldData[j]] = [
                             oldData[j],
+                            oldData[j - 1],
                         ];
+                        this.newDataIndex++;
                     }
+                }
+            }
+            this.newData = oldData;
+        },
+
+        // 优化冒泡算法一：
+        btnBubbleSortOptimization() {
+            let oldData = [10, 9, 8, 7, 6, 5, 4, 3, 1, 2];
+            this.newDataIndex = 0;
+            for (let i = 0; i < oldData.length; i++) {
+                let flag = 1;
+                for (let j = oldData.length - 1; j > i; j--) {
+                    if (oldData[j] < oldData[j - 1]) {
+                        [oldData[j - 1], oldData[j]] = [
+                            oldData[j],
+                            oldData[j - 1],
+                        ];
+                        flag = 0;
+                        this.newDataIndex++;
+                    }
+                }
+                if (flag === 1) {
+                    this.newData = oldData;
+                    return;
+                }
+            }
+            this.newData = oldData;
+        },
+
+        // 优化冒泡算法二：
+        bubbleSortOptimization() {
+            let oldData = [1, 2, 5, 7, 4, 3, 6, 8, 9, 10];
+            this.newDataIndex = 0;
+            let pos = 0;
+            let k = oldData.length - 1;
+            for (let i = 0; i < oldData.length; i++) {
+                let flag = 1;
+                pos = 0;
+                for (let j = 0; j < k; j++) {
+                    if (oldData[j] > oldData[j + 1]) {
+                        [oldData[j + 1], oldData[j]] = [
+                            oldData[j],
+                            oldData[j + 1],
+                        ];
+                        flag = 0;
+                        pos = j;
+                        this.newDataIndex++;
+                    }
+                }
+                k = pos;
+                if (flag === 1) {
+                    this.newData = oldData;
+                    return;
                 }
             }
             this.newData = oldData;
@@ -531,13 +621,13 @@ export default {
             let oldData = this.oldData;
             for (let i = 1; i < oldData.length; i++) {
                 if (oldData[i] < oldData[i - 1]) {
-                    let temp = oldData[i];
                     let j = i - 1;
-                    while (j >= 0 && temp < oldData[j]) {
+                    let cur = oldData[i];
+                    while (j >= 0 && cur < oldData[j]) {
                         oldData[j + 1] = oldData[j];
                         j--;
                     }
-                    oldData[j + 1] = temp;
+                    oldData[j + 1] = cur;
                 }
             }
             this.newInsertData = oldData;
