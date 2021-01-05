@@ -646,12 +646,12 @@ export default {
             this.newData = oldData;
         },
 
-        //快速排序
         btnQuickSort() {
-            let oldData = this.oldData;
+            let [...oldData] = this.oldData;
             this.newQuickData = this.quickSort(oldData);
         },
 
+        //快速排序
         quickSort(ele) {
             if (ele.length <= 1) {
                 return ele;
@@ -724,19 +724,6 @@ export default {
         guiBingSort() {
             let oldData = this.oldData;
             this.newMergeSortData = this.mergeSort(oldData);
-        },
-
-        test() {
-            // let oldData = this.oldData;
-            // let newDataLength = oldData.length;
-            // for (
-            //     newDataLength;
-            //     newDataLength > 0;
-            //     newDataLength = Math.floor(newDataLength / 2)
-            // ) {
-            //     let left = oldData.slice(0, newDataLength);
-            //     let right = oldData.slice(newDataLength);
-            // }
         },
 
         // 归并排序之分解
