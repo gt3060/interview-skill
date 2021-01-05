@@ -35,6 +35,13 @@
                             :key="index">{{item.data}}</li>
                     </ul>
                 </div>
+                <div v-if="isBtn"
+                     class="fontIndent">
+                    <el-button type="text"
+                               @click="btnMethod">
+                        {{btnText}}
+                    </el-button>
+                </div>
             </template>
             <template v-if="onlyContent">
                 <p class="fontIndent">{{onlyContent}}</p>
@@ -54,6 +61,12 @@ export default {
         catalog: Boolean,
         id: String,
         bold: Boolean,
+        isBtn: Boolean,
+        btnText: String,
+        btnMethod: {
+            type: Function,
+            default: () => {},
+        },
     },
     watch: {
         title: {
