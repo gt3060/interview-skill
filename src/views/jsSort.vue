@@ -387,9 +387,21 @@
                             <text-field catalog
                                         title="归并排序"
                                         id="c8"
-                                        content="lalala"
+                                        content="归并排序是用分治思想，分治模式主要有：分解、合并"
                                         fontSizeType="small">
                             </text-field>
+                            <text-field content="分解：利用递归将当前数组分割成两半"></text-field>
+                            <text-field content="集成合并：从最小数组开始，两两按大小顺序合并，直到并为原始数组大小"></text-field>
+                            <text-field isBtn
+                                        btnText="归并排序"
+                                        :btnMethod="guiBingSort"></text-field>
+                            <text-field :content="mergeSortData"></text-field>
+                            <img alt=""
+                                 src="@/assets/mregeSort.jpg"
+                                 width="90%" />
+                            <text-field fontSizeType="small"
+                                        title="应用场景"
+                                        content="数据量较大且要求排序稳定"></text-field>
                             <div id="c1"
                                  style="margin: 20px 0px">
                                 <div style="display: flex">
@@ -446,7 +458,7 @@ export default {
                 { index: 'c2', name: '3.插入排序', i: '2' },
                 { index: 'c7', name: '4.希尔排序', i: '7' },
                 { index: 'c8', name: '5.归并排序', i: '8' },
-                { index: 'c1', name: '4.快速排序', i: '1' },
+                { index: 'c1', name: '6.快速排序', i: '1' },
             ],
             itemIndex: '',
             oldData: [3, 1, 5, 7, 2, 4, 9, 6, 10, 8],
@@ -456,6 +468,7 @@ export default {
             newInsertData: [],
             newSelectData: [],
             newXierSortData: [],
+            newMergeSortData: [],
             timeComplex: {
                 istTitle:
                     '常见的时间复杂度量级有（按时间复杂度从小到大排序）：',
@@ -521,6 +534,9 @@ export default {
     computed: {
         xierSortData: function () {
             return `测试结果${this.newXierSortData}`;
+        },
+        mergeSortData: function () {
+            return `测试结果${this.newMergeSortData}`;
         },
     },
     mounted() {
@@ -704,6 +720,47 @@ export default {
                 }
             }
             this.newXierSortData = oldData;
+        },
+        guiBingSort() {
+            let oldData = this.oldData;
+            this.newMergeSortData = this.mergeSort(oldData);
+        },
+
+        test() {
+            // let oldData = this.oldData;
+            // let newDataLength = oldData.length;
+            // for (
+            //     newDataLength;
+            //     newDataLength > 0;
+            //     newDataLength = Math.floor(newDataLength / 2)
+            // ) {
+            //     let left = oldData.slice(0, newDataLength);
+            //     let right = oldData.slice(newDataLength);
+            // }
+        },
+
+        // 归并排序之分解
+        mergeSort(arr) {
+            if (arr.length <= 1) {
+                return arr;
+            }
+            let middle = Math.floor(arr.length / 2);
+            let left = arr.slice(0, middle);
+            let right = arr.slice(middle);
+            return this.merge(this.mergeSort(left), this.mergeSort(right));
+        },
+
+        // 归并排序之合并
+        merge(leftArr, rightArr) {
+            let res = [];
+            while (leftArr.length > 0 && rightArr.length > 0) {
+                if (leftArr[0] < rightArr[0]) {
+                    res.push(leftArr.shift());
+                } else {
+                    res.push(rightArr.shift());
+                }
+            }
+            return res.concat(leftArr, rightArr);
         },
     },
 };
