@@ -349,17 +349,11 @@
                                     <h4>插入排序</h4>
                                 </div>
                                 <div class="fontIndent">
-                                    <div>
-                                        <el-button type="text"
-                                                   @click="btnInsertSort">插入排序测试</el-button>
-                                    </div>
-                                    <div>
-                                        <p>从第二个元素开始，直接插入到前面有序数组中</p>
-                                        <p>测试结果：{{ newInsertData }}</p>
-                                    </div>
-                                    <div>
-                                        <p>测试代码：</p>
-                                    </div>
+                                    <el-button type="text"
+                                               @click="btnInsertSort">插入排序测试</el-button>
+                                    <p>从第二个元素开始，直接插入到前面有序数组中</p>
+                                    <p>测试结果：{{ newInsertData }}</p>
+                                    <p>测试代码：</p>
                                     <img src="@/assets/insert_res.jpg"
                                          alt=""
                                          width="90%" />
@@ -373,10 +367,29 @@
                             <text-field catalog
                                         title="希尔排序"
                                         id="c7"
-                                        content="在插入排序的算法的基础上作出改进，将序列按照增量分割成多个子数组，然后分别对这些子数组进行插入排序。"
+                                        content="在插入排序的算法的基础上作出改进，将序列按照增量分割成多个子数组，然后分别对这些子数组进行插入排序。看下面这个图更能直观理解希尔排序"
                                         fontSizeType="small">
                             </text-field>
-                            <text-field></text-field>
+                            <img src="@/assets/xierSortImg.jpg"
+                                 alt=""
+                                 width="90%" />
+                            <text-field :list="xierList"></text-field>
+                            <text-field isBtn
+                                        btnText="希尔排序"
+                                        :btnMethod="xierSort"></text-field>
+                            <text-field :content="xierSortData"></text-field>
+                            <img src="@/assets/xierSort.jpg"
+                                 alt=""
+                                 width="90%" />
+                            <text-field fontSizeType="small"
+                                        title="应用场景"
+                                        content="数据量较小且基本有序时"></text-field>
+                            <text-field catalog
+                                        title="归并排序"
+                                        id="c8"
+                                        content="lalala"
+                                        fontSizeType="small">
+                            </text-field>
                             <div id="c1"
                                  style="margin: 20px 0px">
                                 <div style="display: flex">
@@ -432,6 +445,7 @@ export default {
                 { index: 'c3', name: '2.选择排序', i: '3' },
                 { index: 'c2', name: '3.插入排序', i: '2' },
                 { index: 'c7', name: '4.希尔排序', i: '7' },
+                { index: 'c8', name: '5.归并排序', i: '8' },
                 { index: 'c1', name: '4.快速排序', i: '1' },
             ],
             itemIndex: '',
@@ -441,6 +455,7 @@ export default {
             newQuickData: [],
             newInsertData: [],
             newSelectData: [],
+            newXierSortData: [],
             timeComplex: {
                 istTitle:
                     '常见的时间复杂度量级有（按时间复杂度从小到大排序）：',
@@ -482,7 +497,31 @@ export default {
                     },
                 ],
             },
+            xierList: {
+                istTitle: '下面代码按照js进行实现，先加以说明：',
+                routeList: [
+                    {
+                        data: `希尔排序本质上是一种插入排序算法；`,
+                    },
+                    {
+                        data: `希尔排序是对直接插入排序的一种优化，对于一些不太友好的数据，先大体按照gap进行分组；
+                                （直接插入排序是按照1的分组进行插入排序）；`,
+                    },
+                    {
+                        data: `gap是一个变化的量，gap的取值有很多，通常认为gap的取值位3*i+1，也就是说当G = [1，4，13，40...]
+                                等数据时候，时候会使得时间复杂度降到O(N^1.25)，为最佳。`,
+                    },
+                    {
+                        data: `稳定性描述：分组的本身可能会影响到两个相等元素的排序变化，所以为不稳定排序。`,
+                    },
+                ],
+            },
         };
+    },
+    computed: {
+        xierSortData: function () {
+            return `测试结果${this.newXierSortData}`;
+        },
     },
     mounted() {
         highlightCode();
@@ -644,6 +683,27 @@ export default {
                 }
             }
             this.newSelectData = oldData;
+        },
+
+        // 希尔排序
+        xierSort() {
+            let oldData = this.oldData;
+            let len = oldData.length;
+            let gap = 1;
+            while (gap < len / 3) {
+                gap = gap * 3 + 1;
+            }
+            for (gap; gap > 0; gap = Math.floor(gap / 3)) {
+                for (let i = gap; i < len; i++) {
+                    let j = i - gap;
+                    let temp = oldData[i];
+                    for (j; j >= 0 && oldData[j] > temp; j -= gap) {
+                        oldData[j + gap] = oldData[j];
+                    }
+                    oldData[j + gap] = temp;
+                }
+            }
+            this.newXierSortData = oldData;
         },
     },
 };

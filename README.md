@@ -50,8 +50,13 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 |-- README.md                        // 项目说明
 |-- package.json                     // 项目基本信息
 |-- package-lock.json                // 项目依赖详细信息
+
 ### 参考链接：
 
 vue官方文档；
+
 技术胖关于vue2.x的教程；
+
 时间复杂度/空间复杂度：https://zhuanlan.zhihu.com/p/50479555
+
+希尔排序图片来源：https://www.cnblogs.com/cc-freiheit/p/10983821.html
