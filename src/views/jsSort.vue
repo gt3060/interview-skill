@@ -450,6 +450,21 @@
                             <img alt=""
                                  src="@/assets/heapSortCode.jpg"
                                  width="90%" />
+                            <text-field catalog
+                                        title="计数排序"
+                                        id="c10"
+                                        content="计数排序是一种非比较类排序 它的时间复杂度为O(n+k), k是最大值与最小值的差值；
+                                                计数排序快于任何一种比较排序算法，但是它为此牺牲了空间"
+                                        fontSizeType="small"></text-field>
+                            <text-field isBtn
+                                        btnText="计数排序"
+                                        :btnMethod="countSort"></text-field>
+                            <text-field content="以 [ 1, 3, 8, 1, 4, 2, 1, 3, 6, 8, 9, 2 ] 数组为例："></text-field>
+                            <text-field :content="countNewData"></text-field>
+                            <text-field :list="countList"></text-field>
+                            <img src="@/assets/countCode.png"
+                                 alt=""
+                                 width="90%" />
                         </div>
                     </div>
                     <catalog :catalogData="catalogHtmlData"
@@ -482,6 +497,7 @@ export default {
                 { index: 'c8', name: '5.归并排序', i: '8' },
                 { index: 'c1', name: '6.快速排序', i: '1' },
                 { index: 'c9', name: '7.堆排序', i: '9' },
+                { index: 'c10', name: '8.计数排序', i: '10' },
             ],
             itemIndex: '',
             oldData: [3, 1, 5, 7, 2, 4, 9, 6, 10, 8],
@@ -494,6 +510,7 @@ export default {
             newMergeSortData: [],
             initHeapData: [],
             newHeapData: [],
+            newCountData: [],
             timeComplex: {
                 listTitle:
                     '常见的时间复杂度量级有（按时间复杂度从小到大排序）：',
@@ -568,6 +585,20 @@ export default {
                     },
                 ],
             },
+            countList: {
+                listTitle: '归纳计数排序',
+                routeList: [
+                    {
+                        data: `当输入的元素是n个0到k之间的整数时,时间复杂度是O(n+k),空间复杂度也是O(n+k),其排序速度快于任何比较排序算法.`,
+                    },
+                    {
+                        data: `当k不是很大并且序列比较集中时,计数排序是一个很有效的排序算法`,
+                    },
+                    {
+                        data: `计数排序的缺点是当最大值最小值差距过大时,不适用计数排序,当元素不是整数值,不适用计数排序.`,
+                    },
+                ],
+            },
         };
     },
     computed: {
@@ -582,6 +613,9 @@ export default {
         },
         mergeNewData() {
             return `测试结果：[ ${this.newHeapData} ]`;
+        },
+        countNewData() {
+            return `测试结果：[ ${this.newCountData} ]`;
         },
     },
     mounted() {
@@ -829,6 +863,28 @@ export default {
                 this.heapShift(oldData, 0, i);
             }
             [...this.newHeapData] = oldData; // 次行记录最终排序结果
+        },
+
+        // 计数排序
+        countSort() {
+            let oldData = [1, 3, 8, 1, 4, 2, 1, 3, 6, 8, 9, 2];
+            let max = Math.max(...oldData);
+            let min = Math.min(...oldData);
+            let arr = []; // 定义一个空数组
+            // 将待排序数组按照所出现的频率进行重装---计数
+            for (let i = 0; i < oldData.length; i++) {
+                let temp = oldData[i];
+                arr[temp] = arr[temp] + 1 || 1;
+            }
+            let index = 0;
+            for (let i = min; i <= max; i++) {
+                while (arr[i] > 0) {
+                    oldData[index] = i;
+                    index++;
+                    arr[i]--;
+                }
+            }
+            this.newCountData = oldData;
         },
     },
 };
