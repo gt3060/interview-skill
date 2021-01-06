@@ -428,6 +428,28 @@
                                          alt="" />
                                 </div>
                             </div>
+                            <text-field fontSizeType="small"
+                                        title="应用场景"
+                                        content="快速排序适合处理大量数据排序时的场景。"></text-field>
+                            <text-field catalog
+                                        title="堆排序"
+                                        id="c9"
+                                        content="堆排序是利用堆这种数据结构而设计的排序算法，堆排序是一种选择排序，下面先简单介绍一下堆的概念："
+                                        fontSizeType="small"></text-field>
+                            <text-field content="堆是完全二叉树，每个节点的值都大于或等于其左右孩子节点的值，称为大顶堆；
+                                                    或者每个节点的值都小于或者等于其左右孩子节点的值，这种情况称为小顶堆。"></text-field>
+                            <text-field :list="heapSortList"></text-field>
+                            <text-field isBtn
+                                        btnText="堆排序"
+                                        :btnMethod="heapSort"></text-field>
+                            <text-field :content="mergeHeapData"></text-field>
+                            <text-field :content="mergeNewData"></text-field>
+                            <text-field content="复杂度分析:因为具有n个结点的完全二叉树的深度为[log2n]+1，
+                                                所以 shiftDown的复杂度为 O(logn)，而外层循环共有 f(n) 次，
+                                                所以最终的复杂度为 O(nlogn)。"></text-field>
+                            <img alt=""
+                                 src="@/assets/heapSortCode.jpg"
+                                 width="90%" />
                         </div>
                     </div>
                     <catalog :catalogData="catalogHtmlData"
@@ -459,6 +481,7 @@ export default {
                 { index: 'c7', name: '4.希尔排序', i: '7' },
                 { index: 'c8', name: '5.归并排序', i: '8' },
                 { index: 'c1', name: '6.快速排序', i: '1' },
+                { index: 'c9', name: '7.堆排序', i: '9' },
             ],
             itemIndex: '',
             oldData: [3, 1, 5, 7, 2, 4, 9, 6, 10, 8],
@@ -469,8 +492,10 @@ export default {
             newSelectData: [],
             newXierSortData: [],
             newMergeSortData: [],
+            initHeapData: [],
+            newHeapData: [],
             timeComplex: {
-                istTitle:
+                listTitle:
                     '常见的时间复杂度量级有（按时间复杂度从小到大排序）：',
                 routeList: [
                     {
@@ -500,7 +525,7 @@ export default {
                 ],
             },
             timeComplexSumUpList: {
-                istTitle: '总结：如何分系一段代码的时间复杂度',
+                listTitle: '总结：如何分析一段代码的时间复杂度',
                 routeList: [
                     {
                         data: `只关注循环执行次数最多的一段代码：因为我们通常会忽略低阶/常数/系数，只记录最大阶的量级；`,
@@ -511,7 +536,7 @@ export default {
                 ],
             },
             xierList: {
-                istTitle: '下面代码按照js进行实现，先加以说明：',
+                listTitle: '下面代码按照js进行实现，先加以说明：',
                 routeList: [
                     {
                         data: `希尔排序本质上是一种插入排序算法；`,
@@ -529,14 +554,34 @@ export default {
                     },
                 ],
             },
+            heapSortList: {
+                listTitle: '总结堆排序的具体方法',
+                routeList: [
+                    {
+                        data: `先将无序数组按照升序/降序的条件调整为大顶堆/小顶堆；`,
+                    },
+                    {
+                        data: `将堆顶元素与末尾元素互换，将最大/小的元素沉底到数组末端；`,
+                    },
+                    {
+                        data: `重新调整解构，使其满足堆定义，继续重复前两个步骤，直至整个序列有序。`,
+                    },
+                ],
+            },
         };
     },
     computed: {
         xierSortData: function () {
-            return `测试结果${this.newXierSortData}`;
+            return `测试结果：[ ${this.newXierSortData} ]`;
         },
         mergeSortData: function () {
-            return `测试结果${this.newMergeSortData}`;
+            return `测试结果：[ ${this.newMergeSortData} ]`;
+        },
+        mergeHeapData() {
+            return `初始化为大顶堆的结果：[ ${this.initHeapData} ]`;
+        },
+        mergeNewData() {
+            return `测试结果：[ ${this.newHeapData} ]`;
         },
     },
     mounted() {
@@ -748,6 +793,42 @@ export default {
                 }
             }
             return res.concat(leftArr, rightArr);
+        },
+
+        // 堆处理
+        heapShift(arr, len, length) {
+            // 三个参数分别代表 arr：排序数组，length：待排序数组长度，len：表示从根节点开始调整
+            for (let j = 2 * len + 1; j < length; j = j * 2 + 1) {
+                if (j + 1 < length && arr[j] < arr[j + 1]) {
+                    j++; // 用来判断子节点中数据较大的那个节点
+                }
+                if (arr[len] < arr[j]) {
+                    [arr[len], arr[j]] = [arr[j], arr[len]];
+                    len = j;
+                } else {
+                    break;
+                }
+            }
+        },
+
+        // 堆排序
+        heapSort() {
+            let [...oldData] = this.oldData;
+            let length = oldData.length;
+            let len = Math.floor(length / 2) - 1; // 找到第一个非叶子节点
+
+            // 初始化大顶堆
+            for (len; len >= 0; len--) {
+                this.heapShift(oldData, len, length);
+            }
+            [...this.initHeapData] = oldData; // 此行只用来记录首次初始化结果
+
+            // 排序，这里的i表示数组的长度，故循环了n次
+            for (let i = oldData.length - 1; i > 0; i--) {
+                [oldData[0], oldData[i]] = [oldData[i], oldData[0]]; // 先将大顶堆最大值（最上面值）和最后一个值交换
+                this.heapShift(oldData, 0, i);
+            }
+            [...this.newHeapData] = oldData; // 次行记录最终排序结果
         },
     },
 };
