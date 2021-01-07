@@ -465,6 +465,25 @@
                             <img src="@/assets/countCode.png"
                                  alt=""
                                  width="90%" />
+                            <text-field catalog
+                                        title="桶排序"
+                                        id="c11"
+                                        content="桶排序是将待排数组按照是否在同一值域的前提进行分配，也就是根据元素值特性将集合
+                                                拆分为多个区域，拆分后形成多个桶，从桶的值域排序上来看，是处于有序状态的，因此接着
+                                                堆每个桶进行排序，则所有桶中元素构成的集合也是有序的。"
+                                        fontSizeType="small">
+                            </text-field>
+                            <text-field content="桶排序是对计数排序的一种改进，计数排序申请的空间是从最小值到最大值，如果待排序列并不是依次递增，则很明显会造成资源浪费；
+                                                桶排序则是在最小值和最大值期间每一个固定区间申请空间，尽量减少元素值大小不连续情况所造成的空间浪费。"></text-field>
+                            <text-field :list="bucketData"></text-field>
+                            <text-field isBtn
+                                        btnText="桶排序"
+                                        :btnMethod="bucketSort"></text-field>
+                            <text-field content="以 [ 29, 25, 3, 49, 9, 37, 21, 43 ]  数组为例："></text-field>
+                            <text-field :content="bucketNewData"></text-field>
+                            <img alt=""
+                                 src="@/assets/bucketSortCode.png"
+                                 width="90%" />
                         </div>
                     </div>
                     <catalog :catalogData="catalogHtmlData"
@@ -498,6 +517,7 @@ export default {
                 { index: 'c1', name: '6.快速排序', i: '1' },
                 { index: 'c9', name: '7.堆排序', i: '9' },
                 { index: 'c10', name: '8.计数排序', i: '10' },
+                { index: 'c11', name: '9.桶排序', i: '11' },
             ],
             itemIndex: '',
             oldData: [3, 1, 5, 7, 2, 4, 9, 6, 10, 8],
@@ -511,6 +531,7 @@ export default {
             initHeapData: [],
             newHeapData: [],
             newCountData: [],
+            newBucketData: [],
             timeComplex: {
                 listTitle:
                     '常见的时间复杂度量级有（按时间复杂度从小到大排序）：',
@@ -599,6 +620,17 @@ export default {
                     },
                 ],
             },
+            bucketData: {
+                listTitle: '桶排序过程中存在的两个步骤：',
+                routeList: [
+                    {
+                        data: `元素值域的划分：需要根据待排序的特性进行选择，既不能出现所有元素都映射在同一个桶上，也不能出现每个元素都映射在不同桶上的极端情况。`,
+                    },
+                    {
+                        data: `排序算法的选择：在对每个桶内元素进行排序时候，可以自主选择合适的排序算法，故桶排序算法的复杂度和稳定性都根据具体排序算法而定。`,
+                    },
+                ],
+            },
         };
     },
     computed: {
@@ -616,6 +648,9 @@ export default {
         },
         countNewData() {
             return `测试结果：[ ${this.newCountData} ]`;
+        },
+        bucketNewData() {
+            return `测试结果：[ ${this.newBucketData} ] `;
         },
     },
     mounted() {
@@ -885,6 +920,45 @@ export default {
                 }
             }
             this.newCountData = oldData;
+        },
+
+        // 桶排序(bucketNumber为桶的数量)
+        bucketSort(e, bucketNumber = 5) {
+            let oldData = [29, 25, 3, 49, 9, 37, 21, 43];
+            let max = Math.max(...oldData);
+            let min = Math.min(...oldData);
+            let bucketCount = Math.floor((max - min) / bucketNumber) + 1; // 用来定义每个桶的取值范围
+            let arr = []; //定义一个空数组
+            for (let i = 0; i < bucketNumber; i++) {
+                arr[i] = []; // 初始化每个桶
+            }
+            for (let i = 0; i < oldData.length; i++) {
+                arr[Math.floor((oldData[i] - min) / bucketCount)].push(
+                    oldData[i]
+                ); // 把数组中每个元素分别放入对应的桶中
+            }
+            let newData = [];
+            for (let i = 0; i < arr.length; i++) {
+                let temp = this.sort(arr[i]); // 根据当前性能酌情考虑使用哪种排序算法；
+                for (let j = 0; j < temp.length; j++) {
+                    newData.push(temp[j]); // 将每个桶中的数据依次取出
+                }
+            }
+            this.newBucketData = newData;
+        },
+
+        sort(oldData) {
+            for (let i = 0; i < oldData.length; i++) {
+                for (let j = oldData.length - 1; j > i; j--) {
+                    if (oldData[j] < oldData[j - 1]) {
+                        [oldData[j - 1], oldData[j]] = [
+                            oldData[j],
+                            oldData[j - 1],
+                        ];
+                    }
+                }
+            }
+            return oldData;
         },
     },
 };
