@@ -484,6 +484,21 @@
                             <img alt=""
                                  src="@/assets/bucketSortCode.png"
                                  width="90%" />
+                            <text-field catalog
+                                        title="基数排序"
+                                        id="c12"
+                                        content="基数排序是一种非比较型的整数排序算法。其基本原理是，按照整数的每个位数分组。在分组过程中，对于不足位的数据用0补位。"
+                                        fontSizeType="small">
+                            </text-field>
+                            <text-field :list="radixData"></text-field>
+                            <text-field isBtn
+                                        btnText="基数排序"
+                                        :btnMethod="radixSort"></text-field>
+                            <text-field content="以 [ 170, 45, 75, 90, 802, 2, 24, 66 ]  数组为例："></text-field>
+                            <text-field :content="radixNewData"></text-field>
+                            <img alt=""
+                                 src="@/assets/radixSortCode.jpg"
+                                 width="90%" />
                         </div>
                     </div>
                     <catalog :catalogData="catalogHtmlData"
@@ -518,6 +533,7 @@ export default {
                 { index: 'c9', name: '7.堆排序', i: '9' },
                 { index: 'c10', name: '8.计数排序', i: '10' },
                 { index: 'c11', name: '9.桶排序', i: '11' },
+                { index: 'c12', name: '10.基数排序', i: '12' },
             ],
             itemIndex: '',
             oldData: [3, 1, 5, 7, 2, 4, 9, 6, 10, 8],
@@ -532,6 +548,7 @@ export default {
             newHeapData: [],
             newCountData: [],
             newBucketData: [],
+            newRadixData: [],
             timeComplex: {
                 listTitle:
                     '常见的时间复杂度量级有（按时间复杂度从小到大排序）：',
@@ -631,6 +648,23 @@ export default {
                     },
                 ],
             },
+            radixData: {
+                listTitle: '实现过程如下：',
+                routeList: [
+                    {
+                        data: `首先找到最大值，然后获取最大值的位数，这个决定最终循环几次；`,
+                    },
+                    {
+                        data: `接着，初始化10个桶，分别代表每一位中0-9的10种可能性；`,
+                    },
+                    {
+                        data: `第一次遍历，个位，个位数字是几，就将这个数据放到几号桶种；遍历结束后，再将元素从桶中取出覆盖原有数组，`,
+                    },
+                    {
+                        data: `接着进行第二次、第三次、第n次遍历，直至循环结束；`,
+                    },
+                ],
+            },
         };
     },
     computed: {
@@ -652,6 +686,9 @@ export default {
         bucketNewData() {
             return `测试结果：[ ${this.newBucketData} ] `;
         },
+        radixNewData() {
+            return `测试结果：[ ${this.newRadixData} ]`;
+        },
     },
     mounted() {
         highlightCode();
@@ -659,7 +696,6 @@ export default {
     },
     methods: {
         handlehtmlCatalog(item) {
-            console.log(item.index, item.name);
             this.itemIndex = item.index;
 
             document.getElementById(item.index).scrollIntoView();
@@ -959,6 +995,46 @@ export default {
                 }
             }
             return oldData;
+        },
+
+        // 基数排序
+        radixSort() {
+            let oldData = [170, 45, 75, 90, 802, 2, 24, 66];
+            // 获取数组中最大的元素
+            let max = Math.max(...oldData);
+            // 获取最大元素的位数
+            let times = 0;
+            while (max >= 1) {
+                max = max / 10;
+                times++;
+            }
+            // 初始化十个桶
+            let arr = [];
+            for (let i = 0; i < 10; i++) {
+                arr[i] = [];
+            }
+            // 进行每一位的遍历
+            for (let i = 0; i < times; i++) {
+                // i是每次遍历
+                for (let j = 0; j < oldData.length; j++) {
+                    // j指向每次遍历的oldData的每个元素
+                    arr[Math.floor((oldData[j] / Math.pow(10, i)) % 10)].push(
+                        oldData[j]
+                    ); // 入桶
+                }
+                let m = 0; // m指向取值重新赋给oldData的位置
+                for (let j = 0; j < 10; j++) {
+                    // j指向遍历每个桶
+                    let bucket = arr[j];
+                    for (let k = 0; k < bucket.length; k++) {
+                        // k指向每个桶遍历出的每个元素
+                        oldData[m] = bucket[k];
+                        m++;
+                    }
+                    bucket.length = 0;
+                }
+            }
+            this.newRadixData = oldData;
         },
     },
 };
