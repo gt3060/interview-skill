@@ -414,24 +414,6 @@
                                                 "n"]</code>
                                         </p>
                                     </el-card>
-                                    <!-- <p>④数组浅拷贝</p>
-                  <el-card>
-                    <p>
-                      <code>let arr = [1, 2, 3, 4];</code>
-                    </p>
-                    <p>
-                      <code>let arr1 = Array.from(arr);//[1, 2, 3, 4];</code>
-                    </p>
-                    <p>
-                      <code>arr1[1] = 8;</code>
-                    </p>
-                    <p>
-                      <code>console.log(arr);</code>
-                    </p>
-                    <p>
-                      <code>console.log(arr1);</code>
-                    </p>
-                  </el-card>-->
                                 </div>
                             </div>
                             <div id="c12"
@@ -875,20 +857,112 @@
                                     </p>
                                 </div>
                             </div>
+                            <div id="c37"
+                                 style="margin: 20px 0px">
+                                <div style="display: flex">
+                                    <div style="margin: 3px 4px 0px 0px">
+                                        <img src="../assets/title_2.png"
+                                             alt="" />
+                                    </div>
+                                    <div class="fontTitle">第三章&nbsp;&nbsp;对象</div>
+                                </div>
+                            </div>
+                            <text-field catalog
+                                        title="Object.assign"
+                                        id="c38"
+                                        content="assign方法用于对象的合并，将原对象的所有可枚举属性，
+                                        复制到目标对象，如果目标对象与源对象有同名属性，或多个源对象有同名属性，那么出现在后面的属性会覆盖前面的属性。
+                                        看下面这个实例："
+                                        fontSizeType="small">
+                            </text-field>
+                            <p class="code"><code>const target = { a: 0, b: 0 };</code></p>
+                            <p class="code"><code>const source1 = { a:1, b: 1, c:1 };</code></p>
+                            <p class="code"><code>const source2 = { c: 2 };</code></p>
+                            <p class="code"><code>Object.assign(target, source1, source2);</code></p>
+                            <p class="code"><code>console.log("target",target);//{a:1, b:1, c:2}</code></p>
+                            <text-field content="如果assign参数只传一个，那么就直接返回这个参数，就是浅拷贝；
+                                                如果方法中参数不是对象，则需要先转化为对象再返回；看下面这个实例："></text-field>
+                            <p class="code"><code>Object.assign(2);//[[PrimitiveValue]]: 2</code> </p>
+                            <text-field content="可以看到它的原始值都在包装对象的内部属性 `[[PrimitiveValue]]`上面，这个属性是不会被`Object.assign`拷贝的，
+                                                只有字符串的包装对象，会产生可枚举的实义属性，那些属性则会被拷贝。
+                                                但是有一些基本数据类型无法转化对象，例如：undefined、null，转化之后会报错"></text-field>
+                            <p class="code"><code>Object.assign(undefined); // 报错</code></p>
+                            <p class="code"><code>Object.assign(null); // Cannot convert undefined or null to object</code></p>
+                            <text-field content="不过，如果这些无法转化对象的基本数据类型放在源对象位置，则不会报错，直接跳过，基本数据类型也一样（除了字符串），
+                                                会直接跳过，字符串转换会以数组形式（类似先split）展现"></text-field>
+                            <p class="code"><code>Object.assign(obj, undefined); // obj</code></p>
+                            <p class="code"><code>Object.assign({}, 'abc'); // {0:a, 1:b, 2:c}</code></p>
+                            <p class="code"><code>Object.assign({}, true); // {}</code></p>
+                            <text-field content="主要应用在对象的浅拷贝以及数组替换某个位置元素"></text-field>
+                            <p class="code"><code>let obj = {b:{a:1}};</code></p>
+                            <p class="code"><code>let obj1 = Object.assign({}, obj);// {b:{a:1}}</code></p>
+                            <p class="code"><code>----------------------------------</code></p>
+                            <p class="code"><code>let arr = [1, 2, 3];</code></p>
+                            <p class="code"><code>let arr1 = Object.assign(arr, [4, 5]);//[4, 5, 3]</code></p>
+                            <text-field catalog
+                                        title="Object.create"
+                                        id="c39"
+                                        content="此方法使现有对象作为新对象的原型来创建对象，例如："
+                                        fontSizeType="small">
+                            </text-field>
+                            <div class="codeBorder fontCodeStyle">
+                                <pre class="codeBorder">
+        let obj = {<br/>
+            sex: 'female',<br/>
+            info: function(){<br/>
+                console.log(`${name}的性别是：${sex}`);<br/>
+            }<br/>
+        }<br/>
+        let xiaoming = Object.create(obj); // 创建新对象--图①<br/>
+        xiaoming.name = '小明'; // 赋新的属性--图②<br/>
+        xiaoming.sex = 'male'; // 重写--图③
+                                </pre>
+                            </div>
+                            <text-field content="上述代码实现的结果如下图："></text-field>
+                            <img alt=""
+                                 src="@/assets/objectCreateRes.jpg"
+                                 width="90%" />
+                            <text-field content="下面分析一下Object.create方法的两个参数。
+                                                第一个参数必需，为新对象的原型对象；
+                                                第二个参视可选，可添加新属性到新对象上，是一个对象，对象的属性等同于
+                                                Object.defineProperties()的第二个参数。举例如下："></text-field>
+                            <div class="codeBorder fontCodeStyle">
+                                <pre class="codeBorder">
+       let person = {<br/>
+        sex: 'male',<br/>
+        info: function(){}<br/>
+        }<br/>
+        let proDesc = {<br/>
+            age:{<br/>
+                value: 24, // 属性默认值<br/>
+                congigurable: false, // 设置false之后将不能不删除，默认false<br/>
+                writable: false,  // 设置false之后将不能修改，默认false<br/>
+                enumerable: true, // 设置false之后将无法被枚举，默认false<br/>
+            }<br/>
+        }<br/>
+        let person1 = Object.create(person, proDesc);
+                                </pre>
+                            </div>
+                            <text-field content="最后需要注意的是：使用Object.create()方法创建空对象，是没有原型属性的"></text-field>
+                            <p class="code"><code>let obj = Object.create(null);//{}</code></p>
+                            <p class="code"><code>obj.__proto__;//undefined</code></p>
+                            <text-field :list="createList"></text-field>
                             <div id="c27"
                                  style="margin: 20px 0px">
                                 <div style="display: flex">
                                     <div style="margin: 3px 4px 0px 0px">
-                                        <img src="../assets/title_2.png" />
+                                        <img src="../assets/title_2.png"
+                                             alt="" />
                                     </div>
-                                    <div class="fontTitle">第三章&nbsp;&nbsp;归纳</div>
+                                    <div class="fontTitle">第四章&nbsp;&nbsp;归纳</div>
                                 </div>
                             </div>
                             <div id="c28"
                                  style="margin: 20px 0px">
                                 <div style="display: flex">
                                     <div style="margin: 6px 7px 0px 0px">
-                                        <img src="../assets/light.png" />
+                                        <img src="../assets/light.png"
+                                             alt="" />
                                     </div>
                                     <h4>字符串转数组</h4>
                                 </div>
@@ -1327,6 +1401,7 @@
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                     <catalog :catalogData="catalogHtmlData"
@@ -1350,7 +1425,7 @@ export default {
     data() {
         return {
             catalogHtmlData: [
-                { index: 'c0', name: '1.数组篇', i: '0' },
+                { index: 'c0', name: '1.数组篇', i: '0', title: true },
                 { index: 'c1', name: 'push和pop', i: '1' },
                 { index: 'c2', name: 'shift和unshift', i: '2' },
                 { index: 'c3', name: 'concat', i: '3' },
@@ -1369,7 +1444,7 @@ export default {
                 { index: 'c16', name: 'every、some', i: '16' },
                 { index: 'c17', name: 'find、findIndex', i: '17' },
                 { index: 'c18', name: 'reduce', i: '18' },
-                { index: 'c19', name: '2.字符串篇', i: '19' },
+                { index: 'c19', name: '2.字符串篇', i: '19', title: true },
                 { index: 'c20', name: '查找字符串中的字符串', i: '20' },
                 { index: 'c21', name: '提取部分字符串', i: '21' },
                 { index: 'c22', name: '替换字符串内容', i: '22' },
@@ -1377,7 +1452,10 @@ export default {
                 { index: 'c24', name: '连接两个或多个字符串', i: '24' },
                 { index: 'c25', name: '删除字符串两端的空白符', i: '25' },
                 { index: 'c26', name: '提取字符串字符', i: '26' },
-                { index: 'c27', name: '3.归纳', i: '27' },
+                { index: 'c37', name: '3.对象', i: '37', title: true },
+                { index: 'c38', name: 'Object.assign', i: '38' },
+                { index: 'c39', name: 'Object.create', i: '39' },
+                { index: 'c27', name: '4.归纳', i: '27', title: true },
                 { index: 'c28', name: '字符串转数组', i: '28' },
                 { index: 'c29', name: '对象或数组转字符串', i: '29' },
                 { index: 'c30', name: '比较两个数组是否相等', i: '30' },
@@ -1398,6 +1476,23 @@ export default {
             finalForSortData: [],
             finalFilterIndexOfData: [],
             finalReduceIncludesData: [],
+            createList: {
+                listTitle: '总结设置原型属性的方法：',
+                routeList: [
+                    {
+                        data: `通过Object.create();`,
+                    },
+                    {
+                        data: `直接利用__proto__设置：obj.__proto__.age = 12;`,
+                    },
+                    {
+                        data: `直接利用构造函数设置：Object.prototype.age = 12;`,
+                    },
+                    {
+                        data: `利用Es6的setPrototypeOf：Object.setPrototypeOf(obj, prototype)；此外与设置原型属性对应的获取原型属性方法：getPrototypeOf`,
+                    },
+                ],
+            },
         };
     },
     mounted() {
