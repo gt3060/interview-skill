@@ -192,7 +192,7 @@ export default {
                     cardRoute: '/executionMechanism',
                 },
                 {
-                    title: '数组与字符串',
+                    title: '数组与字符串及对象',
                     columnNum: 3,
                     chapterNum: 33,
                     cardRoute: '/arrayMethods',
