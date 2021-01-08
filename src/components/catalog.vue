@@ -16,15 +16,16 @@
                      :key="item.index"
                      class="htmlcatalogItem"
                      :id="item.i"
-                     :class="childIndex === item.index ? 'activeCatalog' : ''"
+                     :class="`${childIndex === item.index ? 'activeCatalog' : ''} ${item.title?'fontTitle':''}`"
                      @click="handlehtmlCatalog(item)">
-                    <div class="radiuStyle"
-                         :class="childIndex === item.index ? 'activeRadiuCatalog' : ''">
+                    <div class="radiuComStyle"
+                         :class="`${childIndex === item.index ? 'activeRadiuCatalog' : ''} ${item.title?'dotPosition':'radioMargin'}`">
                     </div>
                     <el-tooltip placement="left-start"
                                 :content="item.name"
                                 :open-delay="400">
-                        <div class="htmlItemName">{{ item.name }}</div>
+                        <div class="htmlItemName"
+                             :class="item.title?'':'itemChildMargin'">{{ item.name }}</div>
                     </el-tooltip>
                 </div>
             </div>
@@ -59,5 +60,18 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.radiuComStyle {
+    width: 6px;
+    height: 6px;
+    background-color: black;
+    border-radius: 3px;
+    margin: 8px;
+}
+.radioMargin {
+    margin-left: 7%;
+}
+.dotPosition {
+    margin-top: 4%;
+}
 </style>
