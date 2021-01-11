@@ -19,6 +19,7 @@ import vueDirective from "../views/vueInterview/vueDirective.vue";
 import vueExtend from "../views/vueInterview/vueExtend.vue";
 import VueSet from "../views/vueInterview/VueSet.vue";
 import VueWatch from "../views/vueInterview/VueWatch.vue";
+import webpack from "../views/webpack/webpack"
 
 Vue.use(VueRouter)
 
@@ -204,6 +205,11 @@ const routes = [
             }
         ]
     },
+    {
+        path: '/webpack',
+        name: 'webpack',
+        component: webpack
+    }
 
 
 ]

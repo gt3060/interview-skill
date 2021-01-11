@@ -146,6 +146,16 @@
                             </div>
                         </router-link>
                     </div>
+                    <div class="main-mid-card1">
+                        <router-link :to="cardData[13].cardRoute">
+                            <vueCard img="./picture/webpackBg.jpg"
+                                     :columnNum="cardData[13].columnNum"
+                                     :chapterNum="cardData[13].chapterNum"></vueCard>
+                            <div>
+                                <div class="main-mid-card-font">{{ cardData[13].title }}</div>
+                            </div>
+                        </router-link>
+                    </div>
                 </div>
             </div>
         </div>
@@ -238,6 +248,12 @@ export default {
                     columnNum: 1,
                     chapterNum: 10,
                     cardRoute: '/jsSort',
+                },
+                {
+                    title: 'webpack详解',
+                    columnNum: 1,
+                    chapterNum: 10,
+                    cardRoute: '/webpack',
                 },
             ],
         };
