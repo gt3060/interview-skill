@@ -579,6 +579,23 @@
                             <Child :defaultVal='updateVal'
                                    @updateValMethod="updateValMethod"
                                    type="isnotsync" />
+                            <text-field id="c23"
+                                        title="v-for下的ref"
+                                        content="首先看下面这个例子，当利用v-for遍历一组数据[ 1, 2, 3, 4, 5 ]时，通过ref获取dom元素，"
+                                        catalog>
+                            </text-field>
+                            <el-button type="text"
+                                       @click="handleRef">获取ref</el-button>
+                            <ul>
+                                <li v-for="(item, index) in mapData"
+                                    :key="index"
+                                    ref="scrollView">{{item}}</li>
+                            </ul>
+                            <text-field :content="mapDataIntroduce"></text-field>
+                            <text-field content="有时候，你会发现一个问题，那就是获取ref为undefined，其原因就是获取ref这个步骤在dom元素生成之前，
+                                                所以切记：获取ref一定要注意是在dom元素生成之后，解决办法：使用$nextTick"></text-field>
+                            <text-field content="除此之外：没必要给循环列表的每一个元素加上不一样的ref，而只用给他们都加上一样的ref，
+                                                根据此ref获取到的是一个数组列表，然后根据index即可定位该元素"></text-field>
                         </div>
                     </div>
                     <catalog :catalogData="catalogHtmlData"
@@ -646,6 +663,7 @@ export default {
                     name: '23.Vue-.sync修饰符',
                     i: '22',
                 },
+                { index: 'c23', name: '24.v-for下的ref', i: '23' },
             ],
             itemIndex: '',
             isShowVueDetail: false,
@@ -684,7 +702,15 @@ export default {
                 },
             ],
             updateVal: '嘀嘀嘀！我是初始值',
+            mapData: [1, 2, 3, 4, 5],
+            mapDataIntroduce: '',
         };
+    },
+    created() {
+        // this.$nextTick(() => {
+        //     this.handleRef();
+        // });
+        this.handleRef();
     },
     mounted() {
         // this.itemIndex = btnoffsetHeight(this.catalogHtmlData);
@@ -752,6 +778,10 @@ export default {
         },
         updateValMethod(data) {
             this.updateVal = data;
+        },
+        handleRef() {
+            console.log('this.$refs', this.$refs);
+            this.mapDataIntroduce = JSON.stringify(this.$refs);
         },
     },
 };
