@@ -143,7 +143,7 @@
                     <text-field content="[name]的意思是根据入口文件的名称打包成相同的名称，即：有几个入口文件就有几个出口文件。"></text-field>
                     <text-field catalog
                                 title="服务及热更新"
-                                content="首先需要配置webpack.config.js文件，这个文件的作用是配置webpack的，是需要自己手动创建的，下面这个就是webpack.cofig.js文件初始化的结构："
+                                content="先说下，热更新：即所见即所得，怎么实现呢，通过配置webpack.config.js文件，这个文件的作用是配置webpack的，是需要自己手动创建的，下面这个就是webpack.cofig.js文件初始化的结构："
                                 fontSizeType="small">
                     </text-field>
                     <text-field content="首先安装webpack服务，npm install webpack-dev-server --save-dev，下载好后，需要进行配置，
@@ -151,7 +151,7 @@
                     <div class="codeBorder fontCodeStyle">
                         <pre class="codeBorder">
             devServer: {<br/>
-                // 设置基本目录结构<br/>
+                // 设置基本目录结构，配置服务器基本运行路径，用于找到程序打包地址<br/>
                 contentBase: path.resolve(__dirname, 'dist'),<br/>
                 // 服务器的ip地址，可以使用ip也可以使用localhost<br/>
                 host: '0.0.0.0',<br/>
@@ -162,7 +162,29 @@
             }
                         </pre>
                     </div>
-
+                    <text-field content="此外需要在package.json字段下要配置，引入webpack-dev-server，如下："></text-field>
+                    <div class="codeBorder fontCodeStyle">
+                        <pre class="codeBorder">
+            'scripts':{<br/>
+                'server':"webpack-dev-server"<br/>
+            }
+                        </pre>
+                    </div>
+                    <text-field content="因此，只需要使用npm run server命令，即可打开服务器，然后用已经配置好的http://ip:host打开，
+                                        这里说一个在执行时候或者是安装时候出现一个问题，就是会出现webpack-dev-server不是内部命令或者外部命令这类问题，
+                                        当你重新卸载再安装发现无法解决时，应该关注一下，wepack、webpack-cli、webpack-dev-server三个插件的版本，
+                                        这对版本号要求十分重要，会产生不兼容问题，在本项目中就是因为最开始安装webpack-cli时4.x版本而webpack-dev-server是3.x版本导致。"></text-field>
+                    <text-field content="下面我来记录一个小知识点：就是ip中0.0.0.0和localhost区别："></text-field>
+                    <text-field content="首先知道localhost是127.0.0.1的别名，127.0.0.1是回送地址（环回地址），协议立即返回不进行任何网络传输。在服务器中，0.0.0.0指的是本机上的所有IPV4地址，如果我绑定的端口指定了0.0.0.0，那么通过内网地址或外网地址都可以访问我的应用。
+                                        但是如果我只绑定了内网地址，那么通过外网地址就不能访问，所以如果绑定0.0.0.0,也有一定安全隐患，
+                                        对于只需要内网访问的服务，可以只绑定内网地址；在服务器中，0.0.0.0指的是本机上的所有IPV4地址，，如果我绑定的端口指定了0.0.0.0，那么通过内网地址或外网地址都可以访问我的应用。
+                                        但是如果我只绑定了内网地址，那么通过外网地址就不能访问，所以如果绑定0.0.0.0,也有一定安全隐患，对于只需要内网访问的服务，可以只绑定内网地址。"></text-field>
+                    <text-field content="好吧，既然说了这么多，那么还是展开记录一下ip地址相关知识点吧：
+                                        一般我们会将网络划分公网（连Internet的）与内网，网中的IP地址为公有地址。公有地址的注册申请由Inter NIC（因特网信息中心）负责。公有地址是全球唯一的。
+                                        内网（即局域网）中的IP地址为私有地址。私有地址是非注册地址，用于组织机构内部使用。私有地址的范围有三类：A类（10.0.0.0--10.255.255.255），B类（172.16.0.0--172.31.255.255），C类（192.168.0.0--192.168.255.255）；
+                                        那么，回到上文所说，凡是以127开头的IP地址，都是回环地址，本机IP通常仅指在同一个局域网内，能同时被外部设备访问和本机访问的那些IP地址；
+                                        本机IP是与具体的网络接口绑定的，比如以太网卡、无线网卡或者PPP/PPPoE拨号网络的虚拟网卡，想要正常工作都要绑定一个地址，否则其他设备就不知道如何访问它；
+                                        "></text-field>
                 </div>
             </div>
         </div>
