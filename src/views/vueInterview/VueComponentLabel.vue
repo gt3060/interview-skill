@@ -1,7 +1,7 @@
 <template>
     <div class="vueDirective">
         <text-field :title="titleContent[0].title"></text-field>
-        <text-field onlyContent="首先，先构建三个组件并导入注册"></text-field>
+        <text-field content="首先，先构建三个组件并导入注册"></text-field>
         <div class="codeBorder fontCodeStyle">
             <pre class="codeBorder">
         import ComponentA from '../../components/ComponentA.vue';<br/>
@@ -15,7 +15,7 @@
         },
             </pre>
         </div>
-        <text-field onlyContent="接着，利用component标签的is属性，绑定标签数据"></text-field>
+        <text-field content="接着，利用component标签的is属性，绑定标签数据"></text-field>
         <div class="codeBorder fontCodeStyle">
             <pre class="codeBorder">
         &lt;components :is="componentData" /&gt;<br/>
@@ -26,7 +26,7 @@
         }
             </pre>
         </div>
-        <text-field onlyContent="最后我们通过点击按钮实现渲染不同的组件："></text-field>
+        <text-field content="最后我们通过点击按钮实现渲染不同的组件："></text-field>
         <div class="codeBorder fontCodeStyle">
             <pre class="codeBorder">
         &lt;el-button @click="handleClick"&gt;改变&lt;/el-button&gt;<br/>

@@ -2,9 +2,9 @@
     <div class="vueDirective">
         <text-field :title="titleContent[0].title"
                     :content="titleContent[0].content"></text-field>
-        <text-field onlyContent="看下面这个例子：点击按钮触发数据data的改变，与此同时再watch中监听数据的变化："></text-field>
-        <text-field :onlyContent="dataA" />
-        <text-field onlyContent="初始数据如下：" />
+        <text-field content="看下面这个例子：点击按钮触发数据data的改变，与此同时再watch中监听数据的变化："></text-field>
+        <text-field :content="dataA" />
+        <text-field content="初始数据如下：" />
         <div class="codeBorder fontCodeStyle">
             <pre class="codeBorder">
         data(){<br/>
@@ -34,8 +34,8 @@
         &lt;/script&gt;
             </pre>
         </div>
-        <text-field onlyContent="下面看看更改对象b中的属性c的值来看看效果"></text-field>
-        <text-field :onlyContent="dataC" />
+        <text-field content="下面看看更改对象b中的属性c的值来看看效果"></text-field>
+        <text-field :content="dataC" />
         <el-button @click="handleChangeDataC"
                    type="text">改变c</el-button>
         <el-button type="text"
@@ -53,7 +53,7 @@
         &lt;/script&gt;
             </pre>
         </div>
-        <text-field onlyContent="可以看到并没有监听到b的数据，原因是：普通的watch监听无法监听到对象或数组的变化，需要用到deep属性："></text-field>
+        <text-field content="可以看到并没有监听到b的数据，原因是：普通的watch监听无法监听到对象或数组的变化，需要用到deep属性："></text-field>
         <div class="codeBorder fontCodeStyle">
             <pre class="codeBorder">
         &lt;script&gt;<br/>
