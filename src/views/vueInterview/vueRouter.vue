@@ -5,7 +5,7 @@
         <router-link to="/">
             <el-button type="text">跳转到home</el-button>
         </router-link>
-        <text-field onlyContent="在当前页面下面建两个子页面，分别是routerFirst和routerSecond，下面例子是子路由：" />
+        <text-field content="在当前页面下面建两个子页面，分别是routerFirst和routerSecond，下面例子是子路由：" />
         <router-link to="/vueDetail/vueRouter/routerFirst/23/male">
             <el-button type="text">跳转子路由一</el-button>
         </router-link>
@@ -23,16 +23,16 @@
         <text-field :title="titleContent[1].title"></text-field>
         <text-field :title="titleContent[2].title"
                     fontSizeType="middle"></text-field>
-        <text-field onlyContent="利用$route.name的方法接受route/index.js里配置的属性。"></text-field>
+        <text-field content="利用$route.name的方法接受route/index.js里配置的属性。"></text-field>
         <text-field :title="titleContent[3].title"
                     fontSizeType="middle" />
-        <text-field onlyContent="利用route-link中to属性，语法：" />
+        <text-field content="利用route-link中to属性，语法：" />
         <p class="code widthSetting">
             <code>&lt;route-link :to="{name:'routerFirst', params:{date:'2020/12/17'}}" /&gt;</code>
         </p>
         <text-field :title="titleContent[4].title"
                     fontSizeType="middle" />
-        <text-field onlyContent="在router/index.js中用冒号形式配置url参数属性，如下："></text-field>
+        <text-field content="在router/index.js中用冒号形式配置url参数属性，如下："></text-field>
         <div class="codeBorder fontCodeStyle">
             <pre class="codeBorder">
         {<br/>
@@ -41,7 +41,7 @@
         }
             </pre>
         </div>
-        <text-field onlyContent="在使用时候直接在to属性内写，如下："></text-field>
+        <text-field content="在使用时候直接在to属性内写，如下："></text-field>
         <div class="codeBorder fontCodeStyle">
             <pre class="codeBorder">
         &lt;router-link to="/vueDetail/vueRouter/routerFirst/23/male" /&gt;
@@ -98,7 +98,7 @@
             </pre>
         </div>
         <text-field :list="list"></text-field>
-        <text-field :onlyContent="onlyContent"></text-field>
+        <text-field :content="onlyContent"></text-field>
         <text-field :title="titleContent[9].title"
                     :content="titleContent[9].content" />
         <text-field :list="programList"></text-field>

@@ -4,7 +4,7 @@
                     :content="titleContent[0].content"></text-field>
         <text-field :title="titleContent[1].title"
                     :content="titleContent[1].content"></text-field>
-        <text-field onlyContent="具体使用如下："></text-field>
+        <text-field content="具体使用如下："></text-field>
         <div>原值：{{oldDate}}&nbsp;&nbsp;&nbsp;&nbsp;新值：{{newDate}}</div>
         <div class="codeBorder fontCodeStyle">
             <pre class="codeBorder">
@@ -25,7 +25,7 @@
         }
             </pre>
         </div>
-        <text-field onlyContent="这里值得注意的是：如果当模板中并没有使用计算属性，即使依赖的属性值发生变化，不会走computed"></text-field>
+        <text-field content="这里值得注意的是：如果当模板中并没有使用计算属性，即使依赖的属性值发生变化，不会走computed"></text-field>
         <text-field :title="titleContent[2].title"
                     :content="titleContent[2].content"></text-field>
         <div class="codeBorder fontCodeStyle">
@@ -41,7 +41,7 @@
         }
             </pre>
         </div>
-        <text-field onlyContent="在这里顺便提一下methods中的$event参数：可以在控制台查看$event打印内容"></text-field>
+        <text-field content="在这里顺便提一下methods中的$event参数：可以在控制台查看$event打印内容"></text-field>
         <el-button @click="btnClick(2,$event)"
                    type="primary">$event</el-button>
     </div>

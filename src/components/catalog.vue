@@ -1,3 +1,6 @@
+// 此组件封装每个页面右边的目录，具体参数如下：
+// catalogData：目录的所有数据
+// itemIndex：当前选中的数据索引值
 <template>
     <div style="position: fixed;
         right: 100px;

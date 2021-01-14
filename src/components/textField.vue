@@ -1,3 +1,19 @@
+// 此组件用于封装段落，其中具体参数如下：
+// catalog：判断是否是含有标题（主要包含一个img）
+    // ----title：标题
+    // ----content：内容
+    // ----id：此标题的id，用于和右边有模块时的联动
+// 在没有catalog属性时：
+    //----bold：是否加粗
+    // ----fontSize：定义标题字体大小，取值有：nomall、middle、small，默认值nomall
+    // ----title：标题
+    // ----content：内容
+    // ----list：列表：
+        // ----listTitle：列表标题
+        // ----routeList：列表数据
+    // ----isBtn：判断是否有button
+        //----btnMethod：按钮click
+        //----btnText：按钮文字
 <template>
     <div class="fontStyle">
         <template v-if="catalog">
@@ -43,9 +59,6 @@
                     </el-button>
                 </div>
             </template>
-            <template v-if="onlyContent">
-                <p class="fontIndent">{{onlyContent}}</p>
-            </template>
         </template>
     </div>
 </template>
@@ -55,7 +68,6 @@ export default {
     props: {
         title: String, // 标题
         content: String, // 内容
-        onlyContent: String, // 用于没有标题的内容
         fontSizeType: String, // 用于定义不同字体的标题（middle、small、nomall），默认nomall
         list: Object, // 用于生成列表，其中listTitle为介绍列表信息，routeList为具体列表
         catalog: Boolean,

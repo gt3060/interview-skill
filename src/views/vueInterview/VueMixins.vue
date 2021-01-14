@@ -49,7 +49,7 @@
         // data：a:1, b: 3, c: 4; components: componentsA, componentsB
             </pre>
         </div>
-        <text-field onlyContent="而针对钩子函数的合并，如果遇到冲突，因此都将被调用，在执行顺序上，先执行混入对象的钩子函数再执行组件自身的方法，例如："></text-field>
+        <text-field content="而针对钩子函数的合并，如果遇到冲突，因此都将被调用，在执行顺序上，先执行混入对象的钩子函数再执行组件自身的方法，例如："></text-field>
         <div class="codeBorder fontCodeStyle">
             <pre class="codeBorder">
         // mixins<br/>
