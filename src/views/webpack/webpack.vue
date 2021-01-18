@@ -188,6 +188,118 @@
                                         我查了资料手利用vueCli3.x版本内嵌了webpack基本配置，只需要新建一个vue.config.js文件，依旧可以对我们的webpack进行配置。"></text-field>
                     <el-button @click="jumpVueConfigJS"
                                type="text">具体配置参数详见：</el-button>
+                    <text-field catalog
+                                title="loader"
+                                content="webpack自身只支持加载js和json模块，不同的loader可以对不同文件有不同的处理；例如:
+                                        可以把sass文件的写法转为css；可以把es6或者es7语法转化成大多数浏览器兼容的js代码；
+                                        可以把react中的jsx语法转化为js代码；值得注意的是所有的loader都需要独立安装，
+                                        并在webpack.config.js里面配置，如下："
+                                fontSizeType="small">
+                    </text-field>
+                    <div class="codeBorder fontCodeStyle"
+                         style="width:100%">
+                        <pre class="codeBorder">
+        module: {<br/>
+            rules: [{<br/>
+                // 用于匹配处理文件的扩展名的表达式，这个选项是必须进行配置的<br/>
+                test: /\.css$/, <br/>
+                // loader名称，就是你要使用模块的名称，这个选项也必须进行配置<br/>
+                use: ['style-loader', 'css-loader'], <br/>
+                include: [<br/>
+                    path.resolve(__dirname, '../src/svgFolder')<br/>
+                ], // 手动添加必须处理的文件（文件夹）<br/>
+                exclude: [<br/>
+                    path.resolve(__dirname, '../src/svgFolder')<br/>
+                ], // 屏蔽不需要处理的文件（文件夹）,<br/>
+                query: [] //为loaders提供额外的设置选项（可选）<br/>
+            }]<br/>
+        },
+                        </pre>
+                    </div>
+                    <text-field content="下面我们以打包css为例，首先定义一个css文件，包含一些样式，然后在js文件去引入，
+                                        接着我们配置webpack，将所有css文件用style-loader/css-loader模板进行处理，
+                                        最后执行webpack打包命令，你就可以发现css文件已经进行打包到js文件中，运行index.html即可发现："></text-field>
+                    <div class="codeBorder fontCodeStyle"
+                         style="width:100%">
+                        <pre class="codeBorder">
+        webpack.config.js<br/>
+            module: {<br/>
+                rules: [{<br/>
+                    test: /\.css$/, <br/>
+                    use: ['style-loader', 'css-loader'], <br/>
+                }]<br/>
+            },<br/>
+        entry.js <br/>
+            import './static/css/index.css'<br/>
+        index.css<br/>
+            body{<br/>
+                background-color: red;<br/>
+                color: white;<br/>
+            }<br/>
+        cmd<br/>
+            node_modules\.bin\webpack
+                        </pre>
+                    </div>
+                    <text-field content="loader一共有三种写法，其实就是use可以直接用loader替换，或者use+loader也不错，如下："></text-field>
+                    <div class="codeBorder fontCodeStyle"
+                         style="width:100%">
+                        <pre class="codeBorder">
+        module: {<br/>
+            rules: [{<br/>
+                test: /\.css$/, <br/>
+                // 第一种只用use<br/>
+                use: ['style-loader', 'css-loader'], <br/>
+                // 第二种只用loader<br/>
+                loader: ['style-loader', 'css-loader'], <br/>
+                // 第三种use+loader<br/>
+                use: [{<br/>
+                    loader:"style-loader"<br/>
+                }, {<br/>
+                    loader:"css-loader"<br/>
+                }], <br/>
+            }]<br/>
+        }
+                        </pre>
+                    </div>
+                    <text-field catalog
+                                title="plugins"
+                                content="如果要使用插件，只需要两步，引入和声明："
+                                fontSizeType="small">
+                    </text-field>
+                    <div class="codeBorder fontCodeStyle"
+                         style="width:100%">
+                        <pre class="codeBorder">
+        const VueLoaderPlugin = require('vue-loader/lib/plugin');<br/>
+        module: {<br/>
+            rules: [{<br/>
+                test: /\.css$/, <br/>
+                use: ['style-loader', 'css-loader'], <br/>
+                plugins:[new VueLoaderPlugin(),...]<br/>
+            }]<br/>
+        }
+                        </pre>
+                    </div>
+                    <text-field content="我们在最初的项目结构中先创建了dist文件夹，然后手动创建了index.html文件，那么这个在
+                                        实际项目中是不存在的，我们希望的是，通过webpack直接打包将index.html打包到dist文件中，
+                                        我们只需要引入一个插件（html-webpack-plugin'）"></text-field>
+                    <div class="codeBorder fontCodeStyle"
+                         style="width:100%">
+                        <pre class="codeBorder">
+        const htmlPlugin= `require`('html-webpack-plugin');<br/>
+        plugins: [<br/>
+            new htmlPlugin({<br/>
+                minify: {<br/>
+                    removeAttributeQuotes: true<br/>
+                },// minify是对html文件进行压缩<br/>
+                hash: true,// hash：为了开发中js有缓存效果<br/>
+                // template：是要打包的html模版路径和文件名称<br/>
+                template: './src/index.html'<br/>
+            })<br/>
+        ],
+                        </pre>
+                    </div>
+                    <el-button @click="toHtmlWebpackPlugin"
+                               type="text">跳转到html-webpack-plugin详解</el-button>
                 </div>
             </div>
         </div>
@@ -223,6 +335,9 @@ export default {
     methods: {
         jumpVueConfigJS() {
             window.open('https://cli.vuejs.org/zh/config/#vue-config-js');
+        },
+        toHtmlWebpackPlugin() {
+            window.open('https://www.cnblogs.com/wonyun/p/6030090.html');
         },
     },
     components: {
