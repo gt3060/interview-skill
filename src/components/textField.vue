@@ -11,7 +11,7 @@
     // ----list：列表：
         // ----listTitle：列表标题
         // ----routeList：列表数据
-    // ----isBtn：判断是否有button
+    // ----isBtn：判断是否是按钮，若是则类型为tet
         //----btnMethod：按钮click
         //----btnText：按钮文字
 <template>
