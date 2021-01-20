@@ -58,8 +58,8 @@
                                         但是建议的是采用本地安装，可以使我们在引入破坏式变更(breaking change)的依赖时，
                                         更容易分别升级项目，代码：npm install webpack webpack-cli --save--dev，其中webpack是核心模块，webpack-cli是命令行工具"></text-field>
                     <text-field content="安装好之后可以通过webpack -v进行查看安装好的webpack版本，这里需要注意的是:
-                                        如果安装webpack并灭有采用全局安装，则在终端使用此命令时，需要额外指定其在node_modules
-                                        中的地址，例如本项目，需要这么写：node_modules/.bin/webpack -v"></text-field>
+                                        如果安装webpack并没有采用全局安装，则在终端使用此命令时，需要额外指定其在node_modules
+                                        中的地址，例如本项目，需要这么写：node_modules/.bin/webpack -v，在webpack4.x中也可以直接写npx webpack进行打包"></text-field>
                     <text-field catalog
                                 title="快速上手一个webpack的小demo"
                                 content="首先，创建两个文件夹src(用来存放编写的javascript代码)、dist(用来存放供浏览器读取的文件，也就是通过webpack打包成的文件)"
@@ -300,6 +300,28 @@
                     </div>
                     <el-button @click="toHtmlWebpackPlugin"
                                type="text">跳转到html-webpack-plugin详解</el-button>
+                    <text-field catalog
+                                title="mode"
+                                fontSizeType="small">
+                    </text-field>
+                    <text-field content="模式：默认有两种，一种是production（生产模式）一种是development（开发模式），代码：mode: 'development'"></text-field>
+                    <text-field catalog
+                                title="更改webpack.config.js文件的名字"
+                                content="之所以会命名webpack.config.js这个名字，我们可以通过在node_modules->webpack-cli->.bin->config-yargs.js看到
+                                        有一个属性：options->defaultDescription的值为:webpack.config.js/webpackfile.js。"
+                                fontSizeType="small">
+                    </text-field>
+                    <text-field content="那么如果改变这个文件的名字，又如何进行打包？首先可以通过命令：webpack --config webpackNewFile.js"></text-field>
+                    <text-field content="当然，如果觉得执行命令过长，其实可以通过在package.json文件的脚本中进行配置："></text-field>
+                    <div class="codeBorder fontCodeStyle"
+                         style="width:100%">
+                        <pre class="codeBorder">
+        scripts:{<br/>
+            "build":'webpack --config webpackNewFile.js'<br/>
+        }
+                        </pre>
+                    </div>
+                    <text-field content="接着，我们直接执行npm打包命令：npm run build就可以执行webpack命令。"></text-field>
                 </div>
             </div>
         </div>
