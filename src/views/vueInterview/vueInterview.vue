@@ -608,6 +608,7 @@
 
 <script>
 import { highlightCode } from '../../utils/common';
+import { handlePreLoader } from '../../utils/imgPreLoader';
 import TextField from '../../components/textField.vue';
 import catalog from '../../components/catalog.vue';
 import Child from '../../components/Child.vue';
@@ -705,6 +706,13 @@ export default {
             mapData: [1, 2, 3, 4, 5],
             mapDataIntroduce: '',
         };
+    },
+    beforeCreate() {
+        let imgs = [
+            require('../../assets/MVC_MVVM.png'),
+            require('../../assets/VueLifeCircle.jpg'),
+        ];
+        handlePreLoader(imgs);
     },
     created() {
         // this.$nextTick(() => {

@@ -2,6 +2,7 @@ const path = require('path')
 const htmlPlugin = require('html-webpack-plugin');
 
 module.exports = {
+    mode: 'development',//模式：默认有两种，一种是production（生产模式）一种是development（开发模式）
 
     // 入口文件的配置项
     entry: {
@@ -10,7 +11,8 @@ module.exports = {
 
     // 出口文件的配置项
     output: {
-        path: path.resolve(__dirname, 'dist')
+        filename: 'bundle.js',//打包后的文件名
+        path: path.resolve(__dirname, 'dist'), //__dirname是表示以当前文件目录进行解析打包，dist为文件夹
     },
 
     // 模块，例如解读css，图片如何转换/压缩
