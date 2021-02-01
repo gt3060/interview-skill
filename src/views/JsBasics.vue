@@ -16,6 +16,7 @@
                 <div class="titleStyle">
                     <div class="titleIconStyle">
                         <img src="../components/picture/javascript1.jpeg"
+                             alt=""
                              class="imgStyle" />
                     </div>
                     <div class="titleFontStyle">
@@ -31,6 +32,7 @@
                         <div class="catalogStyle fontStyle">
                             <div style="display: flex">
                                 <img src="../assets/CONTENT DELIVERY.png"
+                                     alt=""
                                      style="width: 24px; height: 24px; margin-top: 6px" />
                                 <span style="font-size: 22px; font-weight: bold; margin-left: 10px">内容</span>
                             </div>
@@ -39,7 +41,8 @@
                                  style="margin: 20px 0px">
                                 <div style="display: flex">
                                     <div style="margin-right: 7px">
-                                        <img src="../assets/light.png" />
+                                        <img src="../assets/light.png"
+                                             alt="" />
                                     </div>
                                     <h4>1.js数据类型有哪些</h4>
                                 </div>
@@ -58,19 +61,22 @@
                             <div id="c1">
                                 <div style="display: flex">
                                     <div style="margin-right: 7px">
-                                        <img src="../assets/light.png" />
+                                        <img src="../assets/light.png"
+                                             alt="" />
                                     </div>
                                     <h4>2.js数据类型转换</h4>
                                 </div>
                                 <div class="htmlImgStyle">
                                     <img src="../assets/jsTypeTranslate.jpg"
-                                         style="width: 100%" />
+                                         style="width: 100%"
+                                         alt="" />
                                 </div>
                             </div>
                             <div id="c2">
                                 <div style="display: flex">
                                     <div style="margin-right: 7px">
-                                        <img src="../assets/light.png" />
+                                        <img src="../assets/light.png"
+                                             alt="" />
                                     </div>
                                     <h4>3.js判断数据类型</h4>
                                 </div>
@@ -150,7 +156,8 @@
                             <div id="c3">
                                 <div style="display: flex">
                                     <div style="margin-right: 7px">
-                                        <img src="../assets/light.png" />
+                                        <img src="../assets/light.png"
+                                             alt="" />
                                     </div>
                                     <h4>4.js有哪些内置对象？</h4>
                                 </div>
@@ -190,7 +197,8 @@
                             <div id="c4">
                                 <div style="display: flex">
                                     <div style="margin-right: 7px">
-                                        <img src="../assets/light.png" />
+                                        <img src="../assets/light.png"
+                                             alt="" />
                                     </div>
                                     <h4>5.null和undefined区别</h4>
                                 </div>
@@ -203,7 +211,8 @@
                             <div id="c5">
                                 <div style="display: flex">
                                     <div style="margin-right: 7px">
-                                        <img src="../assets/light.png" />
+                                        <img src="../assets/light.png"
+                                             alt="" />
                                     </div>
                                     <h4>6.js创建对象的几种方式</h4>
                                 </div>
@@ -288,7 +297,8 @@
                 console.log(person2, person2.name);
                 </pre>
                                 <p>运行结果：</p>
-                                <img src="@/assets/createObjRunResult.png" />
+                                <img src="@/assets/createObjRunResult.png"
+                                     alt="" />
                                 <p>⑥混合模式（构造函数模式+原型模式）</p>
                                 <pre>
 
@@ -309,7 +319,8 @@
                             <div id="c6">
                                 <div style="display: flex">
                                     <div style="margin-right: 7px">
-                                        <img src="@/assets/light.png" />
+                                        <img src="@/assets/light.png"
+                                             alt="" />
                                     </div>
                                     <h4>7.事件捕获</h4>
                                 </div>
@@ -339,7 +350,8 @@
                             <div id="c7">
                                 <div style="display: flex">
                                     <div style="margin-right: 7px">
-                                        <img src="../assets/light.png" />
+                                        <img src="../assets/light.png"
+                                             alt="" />
                                     </div>
                                     <h4>8.事件冒泡</h4>
                                 </div>
@@ -368,7 +380,8 @@
                             <div id="c8">
                                 <div style="display: flex">
                                     <div style="margin-right: 7px">
-                                        <img src="../assets/light.png" />
+                                        <img src="../assets/light.png"
+                                             alt="" />
                                     </div>
                                     <h4>9.var、let、const区别</h4>
                                 </div>
@@ -393,7 +406,8 @@
                             <div id="c9">
                                 <div style="display: flex">
                                     <div style="margin-right: 7px">
-                                        <img src="../assets/light.png" />
+                                        <img src="../assets/light.png"
+                                             alt="" />
                                     </div>
                                     <h4>10.什么是对象解构</h4>
                                 </div>
@@ -418,7 +432,8 @@
                             <div id="c10">
                                 <div style="display: flex">
                                     <div style="margin-right: 7px">
-                                        <img src="../assets/light.png" />
+                                        <img src="../assets/light.png"
+                                             alt="" />
                                     </div>
                                     <h4>11.模块化</h4>
                                 </div>
@@ -432,7 +447,8 @@
                             <div id="c11">
                                 <div style="display: flex">
                                     <div style="margin-right: 7px">
-                                        <img src="../assets/light.png" />
+                                        <img src="../assets/light.png"
+                                             alt="" />
                                     </div>
                                     <h4>12.几种常见的模块规范</h4>
                                 </div>
@@ -473,7 +489,8 @@
                             <div id="c12">
                                 <div style="display: flex">
                                     <div style="margin-right: 7px">
-                                        <img src="../assets/light.png" />
+                                        <img src="../assets/light.png"
+                                             alt="" />
                                     </div>
                                     <h4>13.什么是Set对象，它是如何工作的？</h4>
                                 </div>
@@ -527,7 +544,8 @@
                             <div id="c13">
                                 <div style="display: flex">
                                     <div style="margin-right: 7px">
-                                        <img src="../assets/light.png" />
+                                        <img src="../assets/light.png"
+                                             alt="" />
                                     </div>
                                     <h4>14.===和==区别</h4>
                                 </div>
@@ -569,7 +587,8 @@
                             <div id="c14">
                                 <div style="display: flex">
                                     <div style="margin-right: 7px">
-                                        <img src="../assets/light.png" />
+                                        <img src="../assets/light.png"
+                                             alt="" />
                                     </div>
                                     <h4>15.日期和时间戳转换</h4>
                                 </div>
@@ -640,7 +659,8 @@
                             <div id="c15">
                                 <div style="display: flex">
                                     <div style="margin-right: 7px">
-                                        <img src="../assets/light.png" />
+                                        <img src="../assets/light.png"
+                                             alt="" />
                                     </div>
                                     <h4>16.new一个对象具体发生了什么</h4>
                                 </div>
@@ -683,7 +703,8 @@
                             <div id="c16">
                                 <div style="display: flex">
                                     <div style="margin-right: 7px">
-                                        <img src="../assets/light.png" />
+                                        <img src="../assets/light.png"
+                                             alt="" />
                                     </div>
                                     <h4>17.自己定义一个new方法</h4>
                                 </div>
@@ -738,7 +759,8 @@
                             <div id="c17">
                                 <div style="display: flex">
                                     <div style="margin-right: 7px">
-                                        <img src="../assets/light.png" />
+                                        <img src="../assets/light.png"
+                                             alt="" />
                                     </div>
                                     <h4>18.arguments详解</h4>
                                 </div>
@@ -812,7 +834,8 @@
                             <div id="c18">
                                 <div style="display: flex">
                                     <div style="margin-right: 7px">
-                                        <img src="../assets/light.png" />
+                                        <img src="../assets/light.png"
+                                             alt="" />
                                     </div>
                                     <h4>19.for...of和for...in区别</h4>
                                 </div>
@@ -872,7 +895,8 @@
                             <div id="c19">
                                 <div style="display: flex">
                                     <div style="margin-right: 7px">
-                                        <img src="../assets/light.png" />
+                                        <img src="../assets/light.png"
+                                             alt="" />
                                     </div>
                                     <h4>20.JSON.stringify参数</h4>
                                 </div>
@@ -977,7 +1001,8 @@
                             <div id="c20">
                                 <div style="display: flex">
                                     <div style="margin-right: 7px">
-                                        <img src="../assets/light.png" />
+                                        <img src="../assets/light.png"
+                                             alt="" />
                                     </div>
                                     <h4>21.小数取整以及保留小数几位</h4>
                                 </div>
@@ -1014,7 +1039,8 @@
                             <div id="c21">
                                 <div style="display: flex">
                                     <div style="margin-right: 7px">
-                                        <img src="../assets/light.png" />
+                                        <img src="../assets/light.png"
+                                             alt="" />
                                     </div>
                                     <h4>22.组件化和模块化</h4>
                                 </div>
@@ -1032,7 +1058,8 @@
                             <div id="c22">
                                 <div style="display: flex">
                                     <div style="margin-right: 7px">
-                                        <img src="../assets/light.png" />
+                                        <img src="../assets/light.png"
+                                             alt="" />
                                     </div>
                                     <h4>23.es6新增</h4>
                                 </div>
@@ -1048,41 +1075,29 @@
                                     </ul>
                                 </div>
                             </div>
+                            <text-field id="c23"
+                                        title="javascript实现预加载"
+                                        content="这里主要介绍两种方法，第一种方法写在vue的beforeCreate的钩子函数中，第二种方法，是利用Promise实现，具体如下："
+                                        catalog>
+                            </text-field>
+                            <text-field content="第一种："></text-field>
+                            <img alt=""
+                                 src="../assets/imgPreLoaderhook.png"
+                                 width="80%" />
+                            <text-field content="第二种："></text-field>
+                            <img alt=""
+                                 src="../assets/imgpreLoader_main.jpg"
+                                 width="80%" />
+                            <img alt=""
+                                 src="../assets/imgPreLoader_url.jpg"
+                                 width="80%" />
+                            <img alt=""
+                                 src="../assets/imgPreLoader_load.jpg"
+                                 width="80%" />
                         </div>
                     </div>
-                    <div style="
-              position: fixed;
-              right: 100px;
-              width: 20%;
-              margin-top: -100px;
-            ">
-                        <div class="catalogStyle">
-                            <div style="display: flex">
-                                <img src="../assets/catalog.png"
-                                     style="width: 24px; height: 24px; margin-top: 3px" />
-                                <span style="font-size: 22px; font-weight: bold; margin-left: 10px">目录</span>
-                            </div>
-                            <el-divider></el-divider>
-                            <div class="htmlFix">
-                                <div v-for="item in catalogHtmlData"
-                                     :key="item.index"
-                                     class="htmlcatalogItem"
-                                     :id="item.i"
-                                     :class="itemIndex === item.index ? 'activeCatalog' : ''"
-                                     @click="handlehtmlCatalog(item)">
-                                    <div class="radiuStyle"
-                                         :class="
-                      itemIndex === item.index ? 'activeRadiuCatalog' : ''
-                    "></div>
-                                    <el-tooltip placement="left-start"
-                                                :content="item.name"
-                                                :open-delay="400">
-                                        <div class="htmlItemName">{{ item.name }}</div>
-                                    </el-tooltip>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <catalog :catalogData="catalogHtmlData"
+                             :itemIndex.sync="itemIndex"></catalog>
                 </div>
             </div>
         </div>
@@ -1091,7 +1106,13 @@
 
 <script>
 import { Message } from 'element-ui';
+import catalog from '../components/catalog.vue';
+import TextField from '../components/textField.vue';
 export default {
+    components: {
+        catalog,
+        TextField,
+    },
     data() {
         return {
             catalogHtmlData: [
@@ -1122,6 +1143,7 @@ export default {
                 { index: 'c20', name: '小数取整以及保留小数几位', i: '20' },
                 { index: 'c21', name: '组件化和模块化', i: '21' },
                 { index: 'c22', name: 'es6新增属性', i: '22' },
+                { index: 'c23', name: 'javascript实现预加载', i: '23' },
             ],
             itemIndex: '',
             typeofValue: '',
@@ -1306,7 +1328,6 @@ export default {
             }
         },
 
-        //
         handleShowTimetoDate() {
             this.isShowTimeToDate = !this.isShowTimeToDate;
             // this.$notify({

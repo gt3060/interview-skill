@@ -1,0 +1,16 @@
+export default [
+    require('../components/picture/cssLogo.jpeg'),
+    require('../components/picture/html.jpeg'),
+    require('../components/picture/javascript1.jpeg'),
+    require('../components/picture/javascript2.jpeg'),
+    require('../components/picture/javascript3.jpeg'),
+    require('../components/picture/javascript4.jpeg'),
+    require('../components/picture/javascript5.jpeg'),
+    require('../components/picture/javascript6.jpeg'),
+    require('../components/picture/javascript7.jpeg'),
+    require('../components/picture/javascript8.jpeg'),
+    require('../components/picture/test_two.jpeg'),
+    require('../components/picture/test.jpeg'),
+    require('../components/picture/vue.jpeg'),
+    require('../components/picture/webpackBg.jpg'),
+]
