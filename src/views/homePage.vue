@@ -161,6 +161,16 @@
                                     </div>
                                 </router-link>
                             </div>
+                            <div class="main-mid-card1">
+                                <router-link :to="cardData[14].cardRoute">
+                                    <vueCard img="./picture/token.png"
+                                             :columnNum="cardData[14].columnNum"
+                                             :chapterNum="cardData[14].chapterNum"></vueCard>
+                                    <div>
+                                        <div class="main-mid-card-font">{{ cardData[14].title }}</div>
+                                    </div>
+                                </router-link>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -264,6 +274,12 @@ export default {
                     chapterNum: 10,
                     cardRoute: '/webpack',
                 },
+                {
+                    title: 'token',
+                    columnNum: 1,
+                    chapterNum: 10,
+                    cardRoute: '/token',
+                },
             ],
             isShowLoading: true,
         };
@@ -286,6 +302,7 @@ export default {
             require('../components/picture/test.jpeg'),
             require('../components/picture/vue.jpeg'),
             require('../components/picture/webpackBg.jpg'),
+            require('../components/picture/token.png'),
         ];
         for (let i of img) {
             let image = new Image();
@@ -356,12 +373,4 @@ export default {
 .homePageTopStyle {
     display: flex;
 }
-
-/* a {
-  text-decoration: none;
-}
-
-.router-link-active {
-  text-decoration: none;
-} */
 </style>
