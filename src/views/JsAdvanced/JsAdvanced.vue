@@ -16,6 +16,7 @@
                 <div class="titleStyle">
                     <div class="titleIconStyle">
                         <img src="@/components/picture/javascript5.jpeg"
+                             alt=""
                              class="imgStyle" />
                     </div>
                     <div class="titleFontStyle">
@@ -34,19 +35,10 @@
                                 <span style="font-size:22px; font-weight: bold; margin-left:10px">内容</span>
                             </div>
                             <el-divider></el-divider>
-                            <div id="c0"
-                                 style="margin:20px 0px;">
-                                <div style="display:flex">
-                                    <div style="margin-right:7px;">
-                                        <img src="@/assets/light.png"
-                                             alt="" />
-                                    </div>
-                                    <h4>1.迭代器(iterator)</h4>
-                                </div>
-                                <div class="fontIndent">
-                                    <span></span>
-                                </div>
-                            </div>
+                            <text-field id="c0"
+                                        title="1.迭代器(iterator)"
+                                        catalog>
+                            </text-field>
                             <div id="c1">
                                 <div style="display:flex">
                                     <div style="margin-right:7px;">
@@ -325,10 +317,73 @@
                                 </div>
                             </div>
                             <text-field id="c2"
-                                        title="async/await"
-                                        content=""
+                                        title="3.async/await"
+                                        content="主要记录async/await的使用以及，基本的执行顺序；"
                                         catalog>
                             </text-field>
+                            <text-field content="async写在函数声明前面，返回的是一个promise对象；就算函数return一个常量，也会
+                                                把这个直接两存放再Promise.resolve()封装promise对象，因此我们通过调用async修饰的函数后，
+                                                可以使用then的链式结构调用。例如："></text-field>
+                            <div class="codeBorder fontCodeStyle">
+                                <pre class="codeBorder">
+            async function Person(){<br/>
+                return "person"<br/>
+            }<br/>
+            const p1 = Person(); // 此时p1就是Promise对象<br/>
+            p1.then(res=>console.log(res));
+                                </pre>
+                            </div>
+                            <text-field isBtn
+                                        :btnMethod="handleP1"
+                                        btnText="输出p1"></text-field>
+                            <text-field isBtn
+                                        :btnMethod="handleP1Then"
+                                        btnText="输出p1.then"></text-field>
+                            <text-field content="由js执行顺序可知（先同步后异步，先微任务后宏任务），所以在没有await关键字下执行async函数，
+                                                会立即执行，返回一个Promise对象，不会阻塞下面的语句，这就等同于普通的promise，因此又有了await关键字的衍生。
+                                                "></text-field>
+                            <text-field content="await只能用在async内部，await表达式会暂停当前async函数的执行，等待promise处理完成；
+                                                若promise返回fulfilled，其回调resolve函数的参数作为await返回的值。继续执行async函数。先看下面这个代码："></text-field>
+                            <div class="codeBorder fontCodeStyle">
+                                <pre class="codeBorder">
+            handleAwait() {<br/>
+                console.log('11');<br/>
+                this.outputText();<br/>
+                console.log('44');<br/>
+            },<br/>
+            outputText() {<br/>
+                new Promise((resolve) => {<br/>
+                    resolve('33');<br/>
+                }).then((res) => {<br/>
+                    console.log(res);<br/>
+                });<br/>
+            },
+                                </pre>
+                            </div>
+                            <text-field content="上面代码打印输出：11->44->33"></text-field>
+                            <text-field isBtn
+                                        :btnMethod="handleAwait"
+                                        btnText="异步请求输出"></text-field>
+                            <text-field content="那么如何在使用异步情况下，还可以输出：11->33->44，看下面这个代码："></text-field>
+                            <div class="codeBorder fontCodeStyle">
+                                <pre class="codeBorder">
+            async handleNewAwait() {<br/>
+                console.log('11');<br/>
+                await this.outputText();<br/>
+                console.log('44');<br/>
+            },<br/>
+            outputText() {<br/>
+                new Promise((resolve) => {<br/>
+                    resolve('33');<br/>
+                }).then((res) => {<br/>
+                    console.log(res);<br/>
+                });<br/>
+            },
+                                </pre>
+                            </div>
+                            <text-field isBtn
+                                        :btnMethod="handleNewAwait"
+                                        btnText="await异步请求输出"></text-field>
                         </div>
                     </div>
                     <catalog :catalogData="catalogHtmlData"
@@ -397,6 +452,34 @@ export default {
                 }
             }
             selectData !== '' && this.handleCatalog(selectData);
+        },
+        async Person() {
+            return 'person';
+        },
+        handleP1() {
+            const p1 = this.Person();
+            console.log(p1);
+        },
+        handleP1Then() {
+            const p1 = this.Person();
+            p1.then((res) => console.log(res));
+        },
+        handleAwait() {
+            console.log('11');
+            this.outputText();
+            console.log('44');
+        },
+        outputText() {
+            new Promise((resolve) => {
+                resolve('33');
+            }).then((res) => {
+                console.log(res);
+            });
+        },
+        async handleNewAwait() {
+            console.log('11');
+            await this.outputText();
+            console.log('44');
         },
     },
 };
