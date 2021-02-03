@@ -53,7 +53,7 @@
                 </div>
                 <div v-if="isBtn"
                      class="fontIndent">
-                    <el-button type="text"
+                    <el-button :type="btnType"
                                @click="btnMethod">
                         {{btnText}}
                     </el-button>
@@ -78,6 +78,10 @@ export default {
         btnMethod: {
             type: Function,
             default: () => {},
+        },
+        btnType: {
+            type: String,
+            default: 'text',
         },
     },
     watch: {
