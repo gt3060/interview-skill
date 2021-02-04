@@ -384,6 +384,24 @@
                             <text-field isBtn
                                         :btnMethod="handleNewAwait"
                                         btnText="await异步请求输出"></text-field>
+                            <text-field fontSizeType="small"
+                                        bold
+                                        title='批量并发执行'></text-field>
+                            <text-field content="多个await命令后面的异步操作，如果不存在继发关系，最好让它们同时触发。多个请求并发执行，可以使用Promise.all方法"></text-field>
+                            <div class="codeBorder fontCodeStyle">
+                                <pre class="codeBorder">
+            // 示例：<br/>
+            let foo = await getFoo();<br/>
+            let bar = await getBar();<br/>
+            // 并发写法：<br/>
+            let [foo, bar] = await Promise.all([getFoo(), getBar()]);
+                                </pre>
+                            </div>
+                            <text-field></text-field>
+                            <text-field fontSizeType="small"
+                                        bold
+                                        title='使用场景'></text-field>
+                            <text-field content="使用promise请求后端接口，需要在then获取结果，简之需要的做的事情依赖某个操作的结果时，可以将依赖的操作写成await。"></text-field>
                         </div>
                     </div>
                     <catalog :catalogData="catalogHtmlData"
