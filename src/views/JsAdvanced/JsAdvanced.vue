@@ -402,6 +402,32 @@
                                         bold
                                         title='使用场景'></text-field>
                             <text-field content="使用promise请求后端接口，需要在then获取结果，简之需要的做的事情依赖某个操作的结果时，可以将依赖的操作写成await。"></text-field>
+                            <text-field id="c3"
+                                        title="4.防抖和节流"
+                                        content="浏览器的resize（调整浏览器窗口）、scroll（滚动）、keypress（键盘按键）、mousemove（鼠标移动）等事件在触发时候，会不断的调用
+                                                所绑定的事件函数，极大的浪费资源，降低前端性能，为了优化体验，需要对这类事件进行调用次数的限制。主要通过两种方式：防抖和节流。"
+                                        catalog>
+                            </text-field>
+                            <text-field content="防抖：作用就是在短时间内多次触发一个函数，只执行最后一次，或者只在开始时候执行。"></text-field>
+                            <text-field content="以我们这个项目为例，我们这个项目采用mousewheel来监听鼠标滚动然后获取当前位置，并在右面目录获取到对应锚点的位置。代码如下："></text-field>
+                            <p class="code">window.addEventListener('mousewheel', this.btnoffsetHeight, false);</p>
+                            <text-field content="此时你会发现，只要鼠标滚动，他就会调用一次方法，并且会感觉到特别影响性能。下面，优化代码如下："></text-field>
+                            <div class="codeBorder fontCodeStyle">
+                                <pre class="codeBorder">
+            debounce(fn, delay) {<br/>
+                let timer = null;<br/>
+                return function () {<br/>
+                    // 获取函数的作用域和变量<br/>
+                    let context = this;<br/>
+                    let args = arguments;<br/>
+                    clearTimeout(timer);<br/>
+                    timer = setTimeout(() => {<br/>
+                        fn.apply(context, args);<br/>
+                    }, delay);<br/>
+                };<br/>
+            },
+                                </pre>
+                            </div>
                         </div>
                     </div>
                     <catalog :catalogData="catalogHtmlData"
@@ -435,15 +461,36 @@ export default {
                     name: 'async/await',
                     i: '2',
                 },
+                {
+                    index: 'c3',
+                    name: '防抖和节流',
+                    i: '3',
+                },
             ],
             itemIndex: '',
         };
     },
     mounted() {
         highlightCode();
-        window.addEventListener('mousewheel', this.btnoffsetHeight, false);
+        window.addEventListener(
+            'mousewheel',
+            this.debounce(this.btnoffsetHeight, 200),
+            false
+        );
     },
     methods: {
+        debounce(fn, delay) {
+            let timer = null;
+            return function () {
+                // 获取函数的作用域和变量
+                let context = this;
+                let args = arguments;
+                clearTimeout(timer);
+                timer = setTimeout(() => {
+                    fn.apply(context, args);
+                }, delay);
+            };
+        },
         handlehtmlCatalog(item) {
             this.itemIndex = item.index;
             document.getElementById(item.index).scrollIntoView();
@@ -503,7 +550,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .learnJsAdvanced {
     background-image: linear-gradient(#feefe8, white);
 }
@@ -561,5 +608,8 @@ export default {
 .htmlImgStyle1 {
     margin-left: 30px;
     width: 750px;
+}
+.codeBorder {
+    width: 100%;
 }
 </style>
