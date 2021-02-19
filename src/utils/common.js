@@ -30,6 +30,34 @@ const handleCatalog = (data) => {
     document.getElementById(data.substring(1)).scrollIntoView();
     return data;
 };
+let timer = null;
 
+function debounce(fn, delay) {
+    // 获取函数的作用域和变量
+    let context = this;
+    let args = arguments;
+    if (timer) {
+        clearTimeout(timer);
+    }
+    timer = setTimeout(() => {
+        fn.apply(context, args);
+    }, delay);
+}
+let prevDate = Date.now();
+function throttle(fn, delay) {
+    let context = this;
+    let newDate = Date.now();
+    let args = arguments;
+    if (newDate - prevDate >= delay) {
+        fn.apply(context, args)
+    }
+    prevDate = newDate
+}
 
-export { highlightCode, btnoffsetHeight, handleCatalog };
+export {
+    highlightCode,
+    btnoffsetHeight,
+    handleCatalog,
+    debounce,
+    throttle
+};
