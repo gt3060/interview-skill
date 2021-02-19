@@ -1,5 +1,6 @@
 <template>
-    <div class="learnJsAdvanced">
+    <div class="learnJsAdvanced"
+         @mousewheel="fnScroll">
         <el-backtop></el-backtop>
         <div class="learnCard">
             <div class="learnCardContain">
@@ -414,20 +415,40 @@
                             <text-field content="此时你会发现，只要鼠标滚动，他就会调用一次方法，并且会感觉到特别影响性能。下面，优化代码如下："></text-field>
                             <div class="codeBorder fontCodeStyle">
                                 <pre class="codeBorder">
+            let timer = null; // 初始化一个timer<br/>
             debounce(fn, delay) {<br/>
-                let timer = null;<br/>
-                return function () {<br/>
-                    // 获取函数的作用域和变量<br/>
-                    let context = this;<br/>
-                    let args = arguments;<br/>
+                // 获取函数的作用域和变量<br/>
+                let context = this;<br/>
+                let args = arguments;<br/>
+                if (timer) {<br/>
                     clearTimeout(timer);<br/>
-                    timer = setTimeout(() => {<br/>
-                        fn.apply(context, args);<br/>
-                    }, delay);<br/>
-                };<br/>
+                }<br/>
+                timer = setTimeout(() => {<br/>
+                    fn.apply(context, args);<br/>
+                }, delay);<br/>
             },
                                 </pre>
                             </div>
+                            <text-field content="使用场景："></text-field>
+                            <text-field content="①：使用search实时搜索，当用户不断输入值时候，用防抖的思想来节约ajax请求；"></text-field>
+                            <text-field content="②：window触发resize（调整浏览器窗口）时，用防抖的思想来节约触发事件请求次数。"></text-field>
+                            <text-field content="节流：作用就是规定在一个单位时间内，只触发一次这个函数，如果单位时间内多次触发这个函数，只有一次生效。"></text-field>
+                            <text-field content="首先，介绍一种用事件戳的方法，如下："></text-field>
+                            <div class="codeBorder fontCodeStyle">
+                                <pre class="codeBorder">
+            let prevDate = Date.now();<br/>
+            function throttle(fn, delay) {<br/>
+                let context = this;<br/>
+                let newDate = Date.now();<br/>
+                let args = arguments;<br/>
+                if (newDate - prevDate >= delay) {<br/>
+                    fn.apply(context, args)<br/>
+                }<br/>
+                prevDate = newDate<br/>
+            }
+                                </pre>
+                            </div>
+                            <text-field content="上面这个方法，是利用时间戳来实现，"></text-field>
                         </div>
                     </div>
                     <catalog :catalogData="catalogHtmlData"
@@ -440,7 +461,12 @@
 
 <script>
 import catalog from '../../components/catalog';
-import { highlightCode } from '../../utils/common';
+import {
+    highlightCode,
+    // debounce,
+    throttle,
+} from '../../utils/common';
+// import { highlightCode } from '../../utils/common';
 import TextField from '../../components/textField.vue';
 export default {
     components: {
@@ -472,24 +498,11 @@ export default {
     },
     mounted() {
         highlightCode();
-        window.addEventListener(
-            'mousewheel',
-            this.debounce(this.btnoffsetHeight, 200),
-            false
-        );
     },
     methods: {
-        debounce(fn, delay) {
-            let timer = null;
-            return function () {
-                // 获取函数的作用域和变量
-                let context = this;
-                let args = arguments;
-                clearTimeout(timer);
-                timer = setTimeout(() => {
-                    fn.apply(context, args);
-                }, delay);
-            };
+        fnScroll() {
+            // debounce(this.btnoffsetHeight, 200);
+            throttle(this.btnoffsetHeight, 2000);
         },
         handlehtmlCatalog(item) {
             this.itemIndex = item.index;
@@ -503,6 +516,7 @@ export default {
         },
 
         btnoffsetHeight() {
+            console.log('btnoffsetHeight');
             let selectData = '';
             for (let k in this.catalogHtmlData) {
                 let height =
