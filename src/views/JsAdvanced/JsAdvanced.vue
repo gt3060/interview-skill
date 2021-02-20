@@ -433,7 +433,7 @@
                             <text-field content="①：使用search实时搜索，当用户不断输入值时候，用防抖的思想来节约ajax请求；"></text-field>
                             <text-field content="②：window触发resize（调整浏览器窗口）时，用防抖的思想来节约触发事件请求次数。"></text-field>
                             <text-field content="节流：作用就是规定在一个单位时间内，只触发一次这个函数，如果单位时间内多次触发这个函数，只有一次生效。"></text-field>
-                            <text-field content="首先，介绍一种用事件戳的方法，如下："></text-field>
+                            <text-field content="首先，介绍一种用时间戳的方法，如下："></text-field>
                             <div class="codeBorder fontCodeStyle">
                                 <pre class="codeBorder">
             let prevDate = Date.now();<br/>
@@ -443,12 +443,33 @@
                 let args = arguments;<br/>
                 if (newDate - prevDate >= delay) {<br/>
                     fn.apply(context, args)<br/>
+                    prevDate = newDate<br/>
                 }<br/>
-                prevDate = newDate<br/>
             }
                                 </pre>
                             </div>
-                            <text-field content="上面这个方法，是利用时间戳来实现，"></text-field>
+                            <text-field content="如果不断触发方法，就每隔delay秒才触发函数
+                                                这种方法，会在第一次触发事件时立即执行，每经过delay秒才再执行一次，
+                                                并且最后一次触发事件不会执行。"></text-field>
+                            <text-field content="再看下面这个方法，利用定时器实现："></text-field>
+                            <div class="codeBorder fontCodeStyle">
+                                <pre class="codeBorder">
+            let timerThrottle = null;<br/>
+            function throttleTimer(fn, delay) {<br/>
+                let context = this;<br/>
+                let args = arguments;<br/>
+                if (!timerThrottle) {<br/>
+                    timerThrottle = setTimeout(() => {<br/>
+                        fn.apply(context, args);<br/>
+                        timerThrottle = null<br/>
+                    }, delay);<br/>
+                }<br/>
+            }
+                                </pre>
+                            </div>
+                            <text-field content="这个方法与上面的方法不同之处在于，一是方法不同，采用定时器方法；
+                                                二是触发时间有所不同，定时器实现的节流函数在第一次不会触发，而是在
+                                                delay秒后开始执行，并且在最后一次触发事件之后，还会再执行一次函数。"></text-field>
                         </div>
                     </div>
                     <catalog :catalogData="catalogHtmlData"
@@ -464,9 +485,9 @@ import catalog from '../../components/catalog';
 import {
     highlightCode,
     // debounce,
-    throttle,
+    // throttle,
+    throttleTimer,
 } from '../../utils/common';
-// import { highlightCode } from '../../utils/common';
 import TextField from '../../components/textField.vue';
 export default {
     components: {
@@ -501,8 +522,12 @@ export default {
     },
     methods: {
         fnScroll() {
+            // 防抖：
             // debounce(this.btnoffsetHeight, 200);
-            throttle(this.btnoffsetHeight, 2000);
+            // 节流（利用时间戳方法）：
+            // throttle(this.btnoffsetHeight, 2000);
+            // 节流（利用定时器方法）：
+            throttleTimer(this.btnoffsetHeight, 2000);
         },
         handlehtmlCatalog(item) {
             this.itemIndex = item.index;

@@ -49,9 +49,21 @@ function throttle(fn, delay) {
     let newDate = Date.now();
     let args = arguments;
     if (newDate - prevDate >= delay) {
-        fn.apply(context, args)
+        fn.apply(context, args);
+        prevDate = newDate
     }
-    prevDate = newDate
+}
+
+let timerThrottle = null;
+function throttleTimer(fn, delay) {
+    let context = this;
+    let args = arguments;
+    if (!timerThrottle) {
+        timerThrottle = setTimeout(() => {
+            fn.apply(context, args);
+            timerThrottle = null
+        }, delay);
+    }
 }
 
 export {
@@ -59,5 +71,6 @@ export {
     btnoffsetHeight,
     handleCatalog,
     debounce,
-    throttle
+    throttle,
+    throttleTimer
 };
