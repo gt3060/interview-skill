@@ -1,31 +1,122 @@
 <template>
     <div class="main">
-        <div class="changeMonths">左右</div>
+        <div class="changeMonths">
+            <div style="width:75%">{{currYear}}年{{currMonth}}月</div>
+            <div style="width:25%">
+                <el-button-group>
+                    <el-button type="primary"
+                               size="small"
+                               plain
+                               @click="jumpBeforeMonth">上个月</el-button>
+                    <el-button type="primary"
+                               size="small"
+                               plain
+                               @click="jumpToday">今天</el-button>
+                    <el-button type="primary"
+                               size="small"
+                               plain
+                               @click="jumpNextMonth">下个月</el-button>
+                </el-button-group>
+            </div>
+
+        </div>
+        <el-divider></el-divider>
         <div class="tableStyle">
-            <table border="1">
+            <table border=1>
                 <thead>
                     <tr>
+                        <th id="sunday">日</th>
                         <th id="monday">一</th>
                         <th id="tuesday">二</th>
                         <th id="wednesday">三</th>
                         <th id="thursday">四</th>
                         <th id="firdy">五</th>
                         <th id="saturday">六</th>
-                        <th id="sunday">日</th>
                     </tr>
                 </thead>
+                <tbody>
+                    <tr v-for="(item,index) in dayArray"
+                        :key="index">
+                        <th v-for="(item1,index1) in item"
+                            :key="index1"
+                            :id="index1">{{item1}}</th>
+                    </tr>
+                </tbody>
             </table>
         </div>
     </div>
 </template>
 
 <script>
-export default {};
+export default {
+    data() {
+        return {
+            currYear: 0,
+            currMonth: 0,
+            currDate: 0,
+            dayArray: [],
+        };
+    },
+    created() {
+        this.initCalendar();
+    },
+    methods: {
+        initCalendar(year, month) {
+            console.log('year', year, month);
+            let date = new Date();
+            // getFullYear是获取4位完整年份，gerYear是当年份位1900-1999时候返回两位数字，否则，等同于getFullYear
+            this.currYear = date.getFullYear();
+            this.currMonth = date.getMonth() + 1;
+            this.currDate = date.getDate();
+            let totalDay = new Date(this.currYear, this.currMonth, 0).getDate();
+            date.setDate(1);
+            let firstWeek = date.getDay() === 0 ? 7 : date.getDay();
+            let weekTimes = 0;
+            let dayArray = [];
+            let i = 1;
+            while (i <= totalDay) {
+                dayArray[weekTimes] = {};
+                if (weekTimes === 0) {
+                    for (let j = 0; j < 7; j++) {
+                        if (j < firstWeek) {
+                            dayArray[weekTimes][j] = '';
+                        } else {
+                            dayArray[weekTimes][j] = i;
+                            i++;
+                        }
+                    }
+                    weekTimes++;
+                } else {
+                    for (let j = 0; j < 7; j++) {
+                        if (i <= totalDay) {
+                            dayArray[weekTimes][j] = i;
+                            i++;
+                        } else {
+                            dayArray[weekTimes][j] = '';
+                        }
+                    }
+                    weekTimes++;
+                }
+            }
+            this.dayArray = dayArray;
+            console.log('最终结果：', dayArray);
+        },
+        jumpBeforeMonth() {
+            if (this.currMonth !== '1') {
+                this.currMonth--;
+            } else {
+                this.currYear--;
+                this.currMonth = 12;
+            }
+        },
+        jumpToday() {},
+        jumpNextMonth() {},
+    },
+};
 </script>
 
 <style lang="less" scoped>
 .main {
-    border: 1px solid black;
     width: 840px;
     height: 720px;
     .changeMonths {
@@ -33,7 +124,21 @@ export default {};
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 70px;
+        height: 40px;
+        // div {
+        //     &:first-child {
+        //         width: 70%;
+        //     }
+        // }
+    }
+    table {
+        width: 100%;
+        border: 1px solid #ccc;
+        border-collapse: collapse;
+    }
+    th,
+    td {
+        padding: 15px;
     }
 }
 </style>
