@@ -24,7 +24,7 @@
             </div>
             <div style=" width:75%;">
                 <div class="catalogStyle fontStyle">
-                    <calendar></calendar>
+                    <calendar :selectDate="siteCatalog"></calendar>
                     <text-field></text-field>
                 </div>
             </div>
@@ -40,7 +40,11 @@ export default {
     data() {
         return {};
     },
-    methods: {},
+    methods: {
+        siteCatalog(year, month, day) {
+            console.log('点击的年月日：', year, month, day);
+        },
+    },
     components: {
         TextField,
         calendar,

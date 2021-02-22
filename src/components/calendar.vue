@@ -38,9 +38,14 @@
                     <tr v-for="(item,index) in dayArray"
                         :key="index">
                         <th v-for="(item1,index1) in item"
-                            :class="item1 === currDate ? 'currDateStyle':''"
+                            class="dateStyle"
+                            :class=" isActived === index1&& lineIndex === index?'dateStyleActived':''"
                             :key="index1"
-                            :id="index1">{{item1}}</th>
+                            @click="handleIsActived(index,index1,item1)"
+                            :id="index1">
+                            <span :class="item1 === currDate ?'currDateStyle':''">{{item1}}
+                            </span>
+                        </th>
                     </tr>
                 </tbody>
             </table>
@@ -50,13 +55,22 @@
 
 <script>
 export default {
+    name: 'calendar',
     data() {
         return {
             currYear: 0,
             currMonth: 0,
             currDate: 0,
             dayArray: [],
+            isActived: 0,
+            lineIndex: 0,
         };
+    },
+    props: {
+        selectDate: {
+            type: Function,
+            default: () => {},
+        },
     },
     created() {
         let date = new Date();
@@ -112,7 +126,6 @@ export default {
                 dayArray.shift();
             }
             this.dayArray = dayArray;
-            console.log('最终结果：', dayArray, isSunday);
         },
         jumpBeforeMonth() {
             if (this.currMonth !== 0) {
@@ -138,6 +151,11 @@ export default {
                 this.currMonth = 0;
             }
             this.initCalendar();
+        },
+        handleIsActived(index, index1, item) {
+            this.lineIndex = index;
+            this.isActived = index1;
+            this.selectDate(this.currYear, this.currMonth + 1, item);
         },
     },
 };
@@ -170,6 +188,13 @@ export default {
     }
     .currDateStyle {
         color: #409eff;
+    }
+    .dateStyle:hover {
+        background-color: #f2f8fe;
+    }
+    .dateStyleActived {
+        background-color: #f2f8fe;
+        color: #1989fa;
     }
 }
 </style>
