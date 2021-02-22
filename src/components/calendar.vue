@@ -1,7 +1,7 @@
 <template>
     <div class="main">
         <div class="changeMonths">
-            <div style="width:75%">{{currYear}}年{{currMonth}}月</div>
+            <div style="width:75%">{{currYear}}年{{currMonth+1}}月</div>
             <div style="width:25%">
                 <el-button-group>
                     <el-button type="primary"
@@ -38,6 +38,7 @@
                     <tr v-for="(item,index) in dayArray"
                         :key="index">
                         <th v-for="(item1,index1) in item"
+                            :class="item1 === currDate ? 'currDateStyle':''"
                             :key="index1"
                             :id="index1">{{item1}}</th>
                     </tr>
@@ -58,17 +59,23 @@ export default {
         };
     },
     created() {
+        let date = new Date();
+        // getFullYear是获取4位完整年份，gerYear是当年份位1900-1999时候返回两位数字，否则，等同于getFullYear
+        this.currYear = date.getFullYear();
+        this.currMonth = date.getMonth();
+        this.currDate = date.getDate();
         this.initCalendar();
     },
     methods: {
-        initCalendar(year, month) {
-            console.log('year', year, month);
+        initCalendar() {
             let date = new Date();
-            // getFullYear是获取4位完整年份，gerYear是当年份位1900-1999时候返回两位数字，否则，等同于getFullYear
-            this.currYear = date.getFullYear();
-            this.currMonth = date.getMonth() + 1;
-            this.currDate = date.getDate();
-            let totalDay = new Date(this.currYear, this.currMonth, 0).getDate();
+            let totalDay = new Date(
+                this.currYear,
+                this.currMonth + 1,
+                0
+            ).getDate();
+            date.setYear(this.currYear);
+            date.setMonth(this.currMonth);
             date.setDate(1);
             let firstWeek = date.getDay() === 0 ? 7 : date.getDay();
             let weekTimes = 0;
@@ -98,19 +105,40 @@ export default {
                     weekTimes++;
                 }
             }
+            let isSunday = Object.values(dayArray[0]).find(
+                (item) => item !== ''
+            );
+            if (isSunday === undefined) {
+                dayArray.shift();
+            }
             this.dayArray = dayArray;
-            console.log('最终结果：', dayArray);
+            console.log('最终结果：', dayArray, isSunday);
         },
         jumpBeforeMonth() {
-            if (this.currMonth !== '1') {
+            if (this.currMonth !== 0) {
                 this.currMonth--;
             } else {
                 this.currYear--;
-                this.currMonth = 12;
+                this.currMonth = 11;
             }
+            this.initCalendar();
         },
-        jumpToday() {},
-        jumpNextMonth() {},
+        jumpToday() {
+            let date = new Date();
+            this.currYear = date.getFullYear();
+            this.currMonth = date.getMonth();
+            this.currDate = date.getDate();
+            this.initCalendar();
+        },
+        jumpNextMonth() {
+            if (this.currMonth !== 11) {
+                this.currMonth++;
+            } else {
+                this.currYear++;
+                this.currMonth = 0;
+            }
+            this.initCalendar();
+        },
     },
 };
 </script>
@@ -139,6 +167,9 @@ export default {
     th,
     td {
         padding: 15px;
+    }
+    .currDateStyle {
+        color: #409eff;
     }
 }
 </style>

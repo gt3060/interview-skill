@@ -19,7 +19,7 @@
                 <div class="titleFontStyle">
                     <span style="font-size:25px">每日试题</span>
                     <el-divider></el-divider>
-                    <p>此篇主要对token的简单记录。</p>
+                    <p></p>
                 </div>
             </div>
             <div style=" width:75%;">
