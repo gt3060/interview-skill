@@ -229,7 +229,7 @@
                                     </div>
                                     <h4>vue常用的事件修饰符？</h4>
                                 </div>
-                                <div class="fontIndent">
+                                <div style="margin-left:2em">
                                     <ul>
                                         <li>
                                             .stop阻止事件冒泡，相当于调用event.stopPropagation()方法
@@ -291,7 +291,7 @@
                                     </div>
                                     <h4>vue与react和angular区别</h4>
                                 </div>
-                                <div class="fontIndent">
+                                <div style="margin-left:2em">
                                     <ul>
                                         <li>
                                             vue更轻量级，压缩后只有20k+；react有44k，angular有56k，所以对于移动端来说vue更适合；
@@ -300,7 +300,7 @@
                                             vue更易上手，学习曲线平稳，而angular入门比较难，概念较多，react同样需要学习很多，包括react全家桶；
                                         </li>
                                         <li>
-                                            vue借用了angular的v-hide、v-show指令，和react的组件化；
+                                            vue借用了angular的v-hide、v-show指令和模板绑定技术，又借用了react的组件化和虚拟dom思想；
                                         </li>
                                         <li>vue还有自己的计算属性。</li>
                                     </ul>
@@ -314,7 +314,7 @@
                                     </div>
                                     <h4>vue核心思想</h4>
                                 </div>
-                                <div class="fontIndent">
+                                <div style="margin-left:2em">
                                     <ul>
                                         <li>
                                             数据驱动，手动改变数据，vue通过指令对dom数据进行封装，当数据改变时候，通过指令进行修改对应的dom，数据驱动dom变化；

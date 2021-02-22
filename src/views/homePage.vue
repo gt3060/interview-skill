@@ -171,6 +171,16 @@
                                     </div>
                                 </router-link>
                             </div>
+                            <div class="main-mid-card1">
+                                <router-link :to="cardData[15].cardRoute">
+                                    <vueCard img="./picture/dayTestSite.jpeg"
+                                             :columnNum="cardData[15].columnNum"
+                                             :chapterNum="cardData[15].chapterNum"></vueCard>
+                                    <div>
+                                        <div class="main-mid-card-font">{{ cardData[15].title }}</div>
+                                    </div>
+                                </router-link>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -279,6 +289,12 @@ export default {
                     columnNum: 1,
                     chapterNum: 10,
                     cardRoute: '/token',
+                },
+                {
+                    title: '每日试题',
+                    columnNum: 1,
+                    chapterNum: 10,
+                    cardRoute: '/dayTestSite',
                 },
             ],
             isShowLoading: true,

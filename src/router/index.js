@@ -215,6 +215,16 @@ const routes = [
         path: '/token',
         name: 'token',
         component: token
+    },
+    {
+        path: '/dayTestSite',
+        name: 'dayTestSite',
+        component: () =>
+            import(
+                '../views/dayTestSite/testSiteHome.vue'
+            ).catch(err => {
+                console.log('每日试题视图加载错误', err)
+            })
     }
 
 

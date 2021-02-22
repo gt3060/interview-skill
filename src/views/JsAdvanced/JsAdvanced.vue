@@ -470,6 +470,10 @@
                             <text-field content="这个方法与上面的方法不同之处在于，一是方法不同，采用定时器方法；
                                                 二是触发时间有所不同，定时器实现的节流函数在第一次不会触发，而是在
                                                 delay秒后开始执行，并且在最后一次触发事件之后，还会再执行一次函数。"></text-field>
+                            <text-field content="使用场景："></text-field>
+                            <text-field content="①：鼠标点击事件，比如mousedown只触发一次；"></text-field>
+                            <text-field content="②：监听滚动事件，比如是否加载到底部，显示更多；"></text-field>
+                            <text-field content="③：比如游戏中子弹发射的频率（只允许1s/一发）。"></text-field>
                         </div>
                     </div>
                     <catalog :catalogData="catalogHtmlData"
