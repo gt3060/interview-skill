@@ -23,7 +23,8 @@
             </div>
             <el-divider></el-divider>
             <div style=" width:90%;">
-                <content20210222 v-if="date ==='20210222'"></content20210222>
+                <content20210222 v-if="date === '20210222'"></content20210222>
+                <content20210223 v-if="date === '20210223'"></content20210223>
             </div>
         </div>
     </div>
@@ -31,6 +32,7 @@
 
 <script>
 import content20210222 from './dayTestContent/content20210222';
+import content20210223 from './dayTestContent/content20210223';
 export default {
     name: 'testSiteDetail',
     data() {
@@ -57,6 +59,7 @@ export default {
     },
     components: {
         content20210222,
+        content20210223,
     },
 };
 </script>
