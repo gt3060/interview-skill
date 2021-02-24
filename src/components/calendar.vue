@@ -164,7 +164,7 @@ export default {
 <style lang="less" scoped>
 .main {
     width: 840px;
-    height: 720px;
+    height: 520px;
     .changeMonths {
         width: 100%;
         display: flex;
