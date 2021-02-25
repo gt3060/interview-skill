@@ -25,6 +25,7 @@
             <div style=" width:90%;">
                 <content20210222 v-if="date === '20210222'"></content20210222>
                 <content20210223 v-if="date === '20210223'"></content20210223>
+                <content20210224 v-if="date === '20210224'"></content20210224>
             </div>
         </div>
     </div>
@@ -33,6 +34,7 @@
 <script>
 import content20210222 from './dayTestContent/content20210222';
 import content20210223 from './dayTestContent/content20210223';
+import content20210224 from './dayTestContent/content20210224';
 export default {
     name: 'testSiteDetail',
     data() {
@@ -60,6 +62,7 @@ export default {
     components: {
         content20210222,
         content20210223,
+        content20210224,
     },
 };
 </script>
