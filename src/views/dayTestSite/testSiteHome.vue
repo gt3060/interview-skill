@@ -19,7 +19,7 @@
                 <div class="titleFontStyle">
                     <span style="font-size:25px">每日试题</span>
                     <el-divider></el-divider>
-                    <p></p>
+                    <p>第一天：2021年2月22日</p>
                 </div>
             </div>
             <div style=" width:80%;">
@@ -43,8 +43,14 @@
                         <div v-else-if="Object.keys(item)[0] === 'css'"
                              style="color:#F0C227"
                              class="catalogTag">[&nbsp;css&nbsp;]</div>
-                        <div v-else
+                        <div v-else-if="Object.keys(item)[0] === 'vue'"
                              style="color:#2db55d"
+                             class="catalogTag">[&nbsp;css&nbsp;]</div>
+                        <div v-else-if="Object.keys(item)[0] === 'react'"
+                             style="color:#F56C6C"
+                             class="catalogTag">[&nbsp;css&nbsp;]</div>
+                        <div v-else
+                             style="color:#2d8cf0"
                              class="catalogTag">[&nbsp;其他&nbsp;]</div>
                         <span class="catalogDetail">{{Object.values(item)[0]}}</span>
                     </div>

@@ -51,6 +51,8 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 |-- package.json                     // 项目基本信息<br/>
 |-- package-lock.json                // 项目依赖详细信息<br/>
 
+### 每日试题练习到：
+2019-04-21
 ### 参考链接：
 
 vue官方文档；
@@ -66,3 +68,5 @@ webpack官方文档：https://www.webpackjs.com/concepts/
 html-webpack-plugin:https://www.cnblogs.com/wonyun/p/6030090.html
 
 es5和es6区别：https://www.cnblogs.com/sunshinezjb/p/9248533.html
+
+每日试题参考：http://www.h-camel.com/index.html
