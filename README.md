@@ -51,6 +51,8 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 |-- package.json                     // 项目基本信息<br/>
 |-- package-lock.json                // 项目依赖详细信息<br/>
 
+### 每日试题练习到：
+2019-04-21
 ### 参考链接：
 
 vue官方文档；
