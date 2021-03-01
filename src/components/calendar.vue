@@ -154,13 +154,6 @@ export default {
             this.currMonth = date.getMonth();
             this.currDate = date.getDate();
             this.isCurrDate = true;
-            console.log(
-                '----',
-                date,
-                this.currYear,
-                this.currMonth,
-                this.currDate
-            );
             this.initCalendar();
         },
         async jumpNextMonth() {
