@@ -43,7 +43,7 @@
                             :key="index1"
                             @click="handleIsActived(index,index1,item1)"
                             :id="index1">
-                            <span :class="item1 === currDate ?'currDateStyle':''">{{item1}}
+                            <span :class="item1 === currDate && isCurrDate ?'currDateStyle':''">{{item1}}
                             </span>
                         </th>
                     </tr>
@@ -64,6 +64,7 @@ export default {
             dayArray: [],
             isActived: 0,
             lineIndex: 0,
+            isCurrDate: true,
         };
     },
     props: {
@@ -127,29 +128,45 @@ export default {
             }
             this.dayArray = dayArray;
         },
-        jumpBeforeMonth() {
+        async jumpBeforeMonth() {
             if (this.currMonth !== 0) {
                 this.currMonth--;
             } else {
                 this.currYear--;
                 this.currMonth = 11;
             }
+            this.isCurrDate = await this.handleIsCurrDate(
+                this.currMonth,
+                this.currYear
+            );
             this.initCalendar();
+        },
+        handleIsCurrDate(month, year) {
+            let date = new Date();
+            if (date.getFullYear() === year && date.getMonth() === month) {
+                return true;
+            }
+            return false;
         },
         jumpToday() {
             let date = new Date();
             this.currYear = date.getFullYear();
             this.currMonth = date.getMonth();
             this.currDate = date.getDate();
+            this.isCurrDate = true;
             this.initCalendar();
         },
-        jumpNextMonth() {
+        async jumpNextMonth() {
             if (this.currMonth !== 11) {
                 this.currMonth++;
             } else {
                 this.currYear++;
                 this.currMonth = 0;
             }
+            this.isCurrDate = await this.handleIsCurrDate(
+                this.currMonth,
+                this.currYear
+            );
             this.initCalendar();
         },
         handleIsActived(index, index1, item) {

@@ -1,72 +1,84 @@
 <template>
     <div>
         <text-field catalog
-                    title="CSS-样式导入，使用link和@import的区别"
+                    title="CSS-页面隐藏元素的方法有哪些"
                     content=""
                     fontSizeType="middle">
         </text-field>
         <text-field :list="cssList" />
+        <text-field content="虽然，利用visibility方式和opacity方式都只会导致浏览器重绘而不导致重排，但是，还是有
+                            一定的差异性：例如在事件绑定上，opacity方式仍会触发绑定事件，但是visibility方式则不会，
+                            通过下面这个例子，就能看出：">
+        </text-field>
+        <el-card style="margin-top:20px">
+            <el-button @click="handleReset"
+                       type="primary">重置</el-button>
+            <div style="display:flex; margin-top:20px;">
+                <div class="moduleStyle">
+                    <div class="isShowStyle"
+                         @click="handleVisibilityDiv('display')"
+                         :class="isDisplay?'displayStyle':''">1</div>
+                    <el-button type="primary"
+                               style="margin-top:20px"
+                               @click="handleDisplay">display:none</el-button>
+                </div>
+                <div class="moduleStyle">
+                    <div class="isShowStyle"
+                         @click="handleVisibilityDiv('visibility')"
+                         :class="isvisibility?'visibilityStyle':''">2</div>
+                    <el-button type="primary"
+                               style="margin-top:20px"
+                               @click="handleVisibility">visibility:hidden</el-button>
+                </div>
+                <div class="moduleStyle">
+                    <div class="isShowStyle"
+                         @click="handleVisibilityDiv('opacity')"
+                         :class="isOpacity?'opacityStyle':''">3</div>
+                    <el-button type="primary"
+                               style="margin-top:20px"
+                               @click="handleOpacity">opacity:0</el-button>
+                </div>
+            </div>
+        </el-card>
+        <el-divider></el-divider>
         <text-field catalog
-                    title="JS-用递归实现，数组长度为5且随机数在0-30间不重复的值"
+                    title="JS-写一个方法去掉字符串中的空格"
                     content=""
                     fontSizeType="middle">
         </text-field>
-        <text-field content="首先用一种代码比较少的一种方式，sort方法，但是这种方式并没有递归，不过先写上："></text-field>
-        <div class="codeBorder fontCodeStyle">
+        <text-field content="以下面这个字符串为例：‘Welcome To Chin！ ’,注意:！后面也有个空格。"></text-field>
+        <p class="commonStyle">
+            <span>原字符串：</span>
+            <span>{{oldString}}</span>
+        </p>
+        <el-button type="primary"
+                   class="commonStyle"
+                   @click="handleRemoveNull">消除</el-button>
+        <el-button type="primary"
+                   @click="handleRemoveReg"
+                   class="commonStyle">正则消除</el-button>
+        <p class="commonStyle">
+            <span>新字符串：</span>
+            <span>{{newString}}</span>
+        </p>
+        <div class="codeBorder fontCodeStyle commonStyle">
             <pre class="codeBorder">
-        function sjsz(num){<br/>
-            var ary = [];*//创建一个空数组用来保存随机数组*<br/>
-            for(var i=0; i&lt;num; i++){*//按照正常排序填充数组*<br/>
-                    ary[i] = i+1;<br/>
-            }<br/>
-            ary.sort(function(){<br/>
-                return 0.5-Math.random();*//返回随机正负值*<br/>
+        handleRemoveNull() {<br/>
+            let oldString = 'Welcome To Chin！';<br/>
+            // 字符串转数组：<br/>
+            let splitArr = oldString.split('');<br/>
+            let filterArr = splitArr.filter((item) => {<br/>
+                return item !== ' ';<br/>
             });<br/>
-            return ary;*//返回数组*<br/>
-        }
-            </pre>
-        </div>
-        <text-field content="效果图如下："></text-field>
-        <el-card style="margin-top:15px">
-            <div class="randomStyle">
-                <span>随机数数量：</span>
-                <el-input v-model="randomNum"
-                          class="inputStyle"
-                          placeholder="请输入随机数"></el-input>
-            </div>
-            <div class="randomStyle">
-                <span>随机数区间：</span>
-                <el-input v-model="randomMixNum"
-                          class="inputStyle"
-                          placeholder="请输入最小值"></el-input>
-                <span class="spanStyle">~</span>
-                <el-input v-model="randomMaxNum"
-                          class="inputStyle"
-                          placeholder="请输入最大值"></el-input>
-            </div>
-            <text-field isBtn
-                        btnText="生成随机数："
-                        :btnMethod="addRandomData"></text-field>
-            <text-field :content="JSON.stringify(testData)"></text-field>
-        </el-card>
-        <text-field content="代码如下："></text-field>
-        <div class="codeBorder fontCodeStyle">
-            <pre class="codeBorder">
-        mapAddRandom() {<br/>
-            if (this.testData.length + '' === this.randomNum) {<br/>
-                return;<br/>
-            }<br/>
-            let randomBoundary =<br/>
-                Math.random() * (this.randomMaxNum - this.randomMixNum);<br/>
-            let random = Math.floor(<br/>
-                randomBoundary + parseInt(this.randomMixNum)<br/>
-            );<br/>
-            if (this.testData.indexOf(random) >= 0) {<br/>
-                this.mapAddRandom(this.testData);<br/>
-            } else {<br/>
-                this.testData.push(random);<br/>
-                this.mapAddRandom(this.testData);<br/>
-            }<br/>
+            // 将数组转为字符串，也可以使用：toString()/toLocalString()<br/>
+            let newString = filterArr.join('');<br/>
+            this.newString = `'${newString}'`;<br/>
+        },<br/>
+
+        // 除了上面方法利用js处理外，也可以使用正则：<br/>
+        handleRemoveReg() {<br/>
+            let oldString = 'Welcome To Chin! ';<br/>
+            this.newString = `'${oldString.replace(/\s*/g, '')}'`;<br/>
         },
             </pre>
         </div>
@@ -86,60 +98,64 @@ export default {
                 routeList: [
                     {
                         data:
-                            'link方式是html标签，除了可以引入css样式以外，还可以定义rss等其他事务，而@import是css提供的，只能引入css；',
+                            'display:none;------简单粗暴，就是讲元素从页面移除，不会占用页面空间，造成浏览器的重排和重绘；',
                     },
                     {
                         data:
-                            'link在页面加载时候就一同加载，@import是在页面加载结束之后加载；',
+                            'visibility:hidden;------隐藏元素，但仍占用空间，只会导致浏览器重绘而不导致重排；',
                     },
                     {
                         data:
-                            'link是html标签，不需要兼容；@import需要ie5以上才可以使用。',
-                    },
-                    {
-                        data:
-                            'link可以通过js操作DOM动态引入样式表改变样式，而@import不可以',
+                            'opacity:0;------设置元素透明度为0，只会导致浏览器重绘而不导致重排。',
                     },
                 ],
             },
-            testData: [],
-            randomNum: '',
-            randomMixNum: '',
-            randomMaxNum: '',
+            isDisplay: false,
+            isvisibility: false,
+            isOpacity: false,
+            oldString: "'Welcome To Chin! '",
+            newString: '',
         };
     },
     methods: {
-        addRandomData() {
-            this.testData = [];
-            // 先生成一个符合条件得数字
-            if (
-                this.randomNum === '' ||
-                this.randomMixNum === '' ||
-                this.randomMaxNum === ''
-            ) {
-                this.$message({
-                    message: '随机数量或取值范围不允许为空',
-                    type: 'warning',
-                });
-                return;
-            }
-            this.mapAddRandom();
+        handleDisplay() {
+            this.isDisplay = true;
         },
-        mapAddRandom() {
-            if (this.testData.length + '' === this.randomNum) {
-                return;
+        handleVisibility() {
+            this.isvisibility = true;
+        },
+        handleOpacity() {
+            this.isOpacity = true;
+        },
+        handleVisibilityDiv(item) {
+            switch (item) {
+                case 'visibility':
+                    console.log('-----点击了visibility:hidden');
+                    break;
+                case 'display':
+                    console.log('点击了display:none');
+                    break;
+                case 'opacity':
+                    console.log('---点击了opacity:0');
+                    break;
             }
-            let randomBoundary =
-                Math.random() * (this.randomMaxNum - this.randomMixNum);
-            let random = Math.floor(
-                randomBoundary + parseInt(this.randomMixNum)
-            );
-            if (this.testData.indexOf(random) >= 0) {
-                this.mapAddRandom(this.testData);
-            } else {
-                this.testData.push(random);
-                this.mapAddRandom(this.testData);
-            }
+        },
+        handleReset() {
+            this.isDisplay = false;
+        },
+        handleRemoveNull() {
+            let oldString = 'Welcome To Chin! ';
+            let splitArr = oldString.split('');
+            let filterArr = splitArr.filter((item) => {
+                return item !== ' ';
+            });
+            // 也可以使用：toString()/toLocalString()
+            let newString = filterArr.join('');
+            this.newString = `'${newString}'`;
+        },
+        handleRemoveReg() {
+            let oldString = 'Welcome To Chin! ';
+            this.newString = `'${oldString.replace(/\s*/g, '')}'`;
         },
     },
     components: {
@@ -156,20 +172,23 @@ export default {
     width: 100%;
     border-radius: 10px;
 }
-.randomStyle {
-    display: flex;
-    margin: 20px;
-    span {
-        &:first-child {
-            margin-top: 7px;
-        }
-    }
-    .spanStyle {
-        margin: 0px 15px;
-        margin-top: 7px;
-    }
+.isShowStyle {
+    border: 1px solid black;
+    padding: 53px;
 }
-.inputStyle {
-    width: 20%;
+.displayStyle {
+    display: none;
+}
+.visibilityStyle {
+    visibility: hidden;
+}
+.opacityStyle {
+    opacity: 0;
+}
+.moduleStyle {
+    margin-right: 20px;
+}
+.commonStyle {
+    margin-top: 20px;
 }
 </style>
