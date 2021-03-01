@@ -104,7 +104,7 @@
             <span>去除字母：</span>
             <el-input v-model="removeLetter"
                       class="inputStyle"
-                      placeholder="请输入随机数"></el-input>
+                      placeholder="请输入去除字母"></el-input>
         </div>
         <el-button type="primary"
                    class="commonStyle"
