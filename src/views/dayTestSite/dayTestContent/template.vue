@@ -41,8 +41,7 @@ export default {
                 listTitle: '',
                 routeList: [
                     {
-                        data:
-                            'link方式是html标签，除了可以引入css样式以外，还可以定义rss等其他事务，而@import是css提供的，只能引入css；',
+                        data: '',
                     },
                 ],
             },
