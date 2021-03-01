@@ -27,6 +27,8 @@
                 <content20210223 v-if="date === '20210223'"></content20210223>
                 <content20210224 v-if="date === '20210224'"></content20210224>
                 <content20210225 v-if="date === '20210225'"></content20210225>
+                <content20210226 v-if="date === '20210226'"></content20210226>
+                <content20210227 v-if="date === '20210227'"></content20210227>
             </div>
         </div>
     </div>
@@ -37,8 +39,18 @@ import content20210222 from './dayTestContent/content20210222';
 import content20210223 from './dayTestContent/content20210223';
 import content20210224 from './dayTestContent/content20210224';
 import content20210225 from './dayTestContent/content20210225';
+import content20210226 from './dayTestContent/content20210226';
+import content20210227 from './dayTestContent/content20210227';
 export default {
     name: 'testSiteDetail',
+    components: {
+        content20210222,
+        content20210223,
+        content20210224,
+        content20210225,
+        content20210226,
+        content20210227,
+    },
     data() {
         return {
             date: '',
@@ -60,12 +72,6 @@ export default {
         goBack() {
             this.$router.go(-1);
         },
-    },
-    components: {
-        content20210222,
-        content20210223,
-        content20210224,
-        content20210225,
     },
 };
 </script>
