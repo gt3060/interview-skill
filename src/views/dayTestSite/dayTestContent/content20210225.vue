@@ -11,7 +11,6 @@
                     content=""
                     fontSizeType="middle">
         </text-field>
-        <text-field content="首先用一种代码比较少的一种方式，sort方法，但是这种方式并没有递归，不过先写上："></text-field>
         <div class="codeBorder fontCodeStyle">
             <pre class="codeBorder">
         function sjsz(num){<br/>
@@ -24,50 +23,6 @@
             });<br/>
             return ary;*//返回数组*<br/>
         }
-            </pre>
-        </div>
-        <text-field content="效果图如下："></text-field>
-        <el-card style="margin-top:15px">
-            <div class="randomStyle">
-                <span>随机数数量：</span>
-                <el-input v-model="randomNum"
-                          class="inputStyle"
-                          placeholder="请输入随机数"></el-input>
-            </div>
-            <div class="randomStyle">
-                <span>随机数区间：</span>
-                <el-input v-model="randomMixNum"
-                          class="inputStyle"
-                          placeholder="请输入最小值"></el-input>
-                <span class="spanStyle">~</span>
-                <el-input v-model="randomMaxNum"
-                          class="inputStyle"
-                          placeholder="请输入最大值"></el-input>
-            </div>
-            <text-field isBtn
-                        btnText="生成随机数："
-                        :btnMethod="addRandomData"></text-field>
-            <text-field :content="JSON.stringify(testData)"></text-field>
-        </el-card>
-        <text-field content="代码如下："></text-field>
-        <div class="codeBorder fontCodeStyle">
-            <pre class="codeBorder">
-        mapAddRandom() {<br/>
-            if (this.testData.length + '' === this.randomNum) {<br/>
-                return;<br/>
-            }<br/>
-            let randomBoundary =<br/>
-                Math.random() * (this.randomMaxNum - this.randomMixNum);<br/>
-            let random = Math.floor(<br/>
-                randomBoundary + parseInt(this.randomMixNum)<br/>
-            );<br/>
-            if (this.testData.indexOf(random) >= 0) {<br/>
-                this.mapAddRandom(this.testData);<br/>
-            } else {<br/>
-                this.testData.push(random);<br/>
-                this.mapAddRandom(this.testData);<br/>
-            }<br/>
-        },
             </pre>
         </div>
     </div>
@@ -102,46 +57,9 @@ export default {
                     },
                 ],
             },
-            testData: [],
-            randomNum: '',
-            randomMixNum: '',
-            randomMaxNum: '',
         };
     },
-    methods: {
-        addRandomData() {
-            this.testData = [];
-            // 先生成一个符合条件得数字
-            if (
-                this.randomNum === '' ||
-                this.randomMixNum === '' ||
-                this.randomMaxNum === ''
-            ) {
-                this.$message({
-                    message: '随机数量或取值范围不允许为空',
-                    type: 'warning',
-                });
-                return;
-            }
-            this.mapAddRandom();
-        },
-        mapAddRandom() {
-            if (this.testData.length + '' === this.randomNum) {
-                return;
-            }
-            let randomBoundary =
-                Math.random() * (this.randomMaxNum - this.randomMixNum);
-            let random = Math.floor(
-                randomBoundary + parseInt(this.randomMixNum)
-            );
-            if (this.testData.indexOf(random) >= 0) {
-                this.mapAddRandom(this.testData);
-            } else {
-                this.testData.push(random);
-                this.mapAddRandom(this.testData);
-            }
-        },
-    },
+    methods: {},
     components: {
         TextField,
     },
