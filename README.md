@@ -57,6 +57,8 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 vue官方文档；
 
+创建三角形：https://www.cnblogs.com/chengxs/p/11406278.html
+
 技术胖关于vue2.x的教程；
 
 时间复杂度/空间复杂度：https://zhuanlan.zhihu.com/p/50479555

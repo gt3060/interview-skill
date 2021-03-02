@@ -46,7 +46,7 @@
                     content=""
                     fontSizeType="middle">
         </text-field>
-        <text-field content="以下面这个字符串为例：‘Welcome To Chin！ ’,注意:！后面也有个空格。"></text-field>
+        <text-field content="以下面这个字符串为例：‘Welcome To China！ ’,注意:！后面也有个空格。"></text-field>
         <p class="commonStyle">
             <span>原字符串：</span>
             <span>{{oldString}}</span>

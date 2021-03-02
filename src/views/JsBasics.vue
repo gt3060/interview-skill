@@ -1221,6 +1221,14 @@ export default {
             isShowTimeToDate: false,
         };
     },
+    beforeRouteEnter(to, from, next) {
+        next((vm) => {
+            let id = vm.$route.params.id;
+            if (id) {
+                document.getElementById(id).scrollIntoView();
+            }
+        });
+    },
     mounted() {
         window.addEventListener('mousewheel', this.btnoffsetHeight, false);
     },

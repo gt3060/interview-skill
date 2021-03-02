@@ -8,21 +8,27 @@
         <text-field :list="htmlList" />
         <el-divider></el-divider>
         <text-field catalog
-                    title="JS-写一个加密字符串方法"
+                    title="JS-写一个加密/解密字符串方法"
                     content=""
                     fontSizeType="middle">
         </text-field>
         <div class="randomStyle">
-            <span>按照几进制加密（2，8，10，16）：</span>
+            <span>按照几进制加密/解密（2，8，10，16）：</span>
             <el-input v-model="encryptNum"
                       class="inputStyle"
-                      placeholder="请输入按几进制加密"></el-input>
+                      placeholder="请输入按几进制加密/解密"></el-input>
         </div>
         <div class="randomStyle">
             <span>输入要加密的字符串：</span>
             <el-input v-model="encryptStr"
                       class="inputStyle"
                       placeholder="请输入要加密的字符串"></el-input>
+        </div>
+        <div class="randomStyle">
+            <span>输入要解密的字符串：</span>
+            <el-input v-model="decryptStr"
+                      class="inputStyle"
+                      placeholder="请输入要解密的字符串"></el-input>
         </div>
         <div class="randomStyle">
             <span>最终结果为：</span>
@@ -33,9 +39,14 @@
         <el-button type="primary"
                    @click="handleToEncrypt"
                    class="commonStyle">加密</el-button>
-        <text-field content="代码如下："></text-field>
+        <el-button type="primary"
+                   @click="handleToDecrypt"
+                   class="commonStyle">解密</el-button>
+        <text-field content="代码如下："
+                    class="commonStyle"></text-field>
         <div class="codeBorder fontCodeStyle commonStyle">
             <pre class="codeBorder">
+        // 加密<br/>
         handleToEncrypt() {<br/>
             let length = this.encryptStr.length;<br/>
             let valueStr = '';<br/>
@@ -47,9 +58,21 @@
                     .toString(this.encryptNum)}`;<br/>
             }<br/>
             this.endValue = valueStr;<br/>
+        },<br/>
+        // 解密<br/>
+        handleToDecrypt() {<br/>
+            let strArray = this.decryptStr.split('/');<br/>
+            let newValue = '';<br/>
+            for (let i = 1; i &lt; strArray.length; i++) {<br/>
+                // 其他进制数据转为10进制，用parseInt(str, num),其中str为数据字符串，num为此时数据为几进制<br/>
+                // String.fromCharCode是用来将unicode编码的数据转为字符<br/>
+                newValue += String.fromCharCode(parseInt(strArray[i], 8));<br/>
+            }<br/>
+            this.endValue = newValue;<br/>
         },
             </pre>
         </div>
+
     </div>
 </template>
 
@@ -85,27 +108,68 @@ export default {
             encryptNum: '',
             encryptStr: '',
             endValue: '',
+            decryptStr: '',
         };
     },
     methods: {
         handleToEncrypt() {
+            if (this.verity('encode')) {
+                return;
+            }
             let length = this.encryptStr.length;
             let valueStr = '';
             for (let i = 0; i < length; i++) {
                 // charCodeAt:将字符串第几个字符转为unicode；
                 // toString()中参数为Number表示将字符串转为几进制
-                valueStr += `\\${this.encryptStr
+                valueStr += `/${this.encryptStr
                     .charCodeAt(i)
                     .toString(this.encryptNum)}`;
             }
             this.endValue = valueStr;
+        },
+        handleToDecrypt() {
+            if (this.verity('decode')) {
+                return;
+            }
+            let strArray = this.decryptStr.split('/');
+            let newValue = '';
+            for (let i = 1; i < strArray.length; i++) {
+                // 其他进制数据转为10进制，用parseInt(str, num),其中str为数据字符串，num为此时数据为几进制
+                // String.fromCharCode是用来将unicode编码的数据转为字符
+                newValue += String.fromCharCode(parseInt(strArray[i], 8));
+            }
+            this.endValue = newValue;
+        },
+        // 校验输入框是否为空
+        verity(str) {
+            if (this.encryptNum === '') {
+                this.$message({
+                    message: '请输入按几进制加密/解密',
+                    type: 'warning',
+                });
+                return;
+            }
+            if (str === 'encode' && this.encryptStr === '') {
+                this.$message({
+                    message: '请输入要加密的字符串',
+                    type: 'warning',
+                });
+                return;
+            }
+            if (str === 'decode' && this.decryptStr === '') {
+                this.$message({
+                    message: '请输入要解密的字符串',
+                    type: 'warning',
+                });
+                return;
+            }
         },
     },
     components: {
         TextField,
     },
 
-    Templatemounted() {
+    mounted() {
         highlightCode();
     },
 };
