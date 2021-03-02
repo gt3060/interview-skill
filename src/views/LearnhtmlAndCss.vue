@@ -673,7 +673,7 @@ export default {
     beforeRouteEnter(to, from, next) {
         next((vm) => {
             let id = vm.$route.params.id;
-            document.getElementById(id).scrollIntoView();
+            id && document.getElementById(id).scrollIntoView();
         });
     },
     mounted() {

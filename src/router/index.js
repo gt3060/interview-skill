@@ -21,6 +21,7 @@ import VueSet from "../views/vueInterview/VueSet.vue";
 import VueWatch from "../views/vueInterview/VueWatch.vue";
 import webpack from "../views/webpack/webpack";
 import token from '../views/token/token';
+import testNewPage from '../views/testPage/testNewPage';
 
 Vue.use(VueRouter)
 
@@ -235,9 +236,12 @@ const routes = [
             ).catch(err => {
                 console.log('每日试题视图加载错误', err)
             }),
+    },
+    {
+        path: '/testPage',
+        name: 'testPage',
+        component: testNewPage
     }
-
-
 ]
 
 const router = new VueRouter({

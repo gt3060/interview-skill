@@ -250,6 +250,15 @@ export default {
             tableCSS3Data: css3Data(),
         };
     },
+    beforeRouteEnter(to, from, next) {
+        next((vm) => {
+            let id = vm.$route.params.id;
+            if (id) {
+                vm.containNum = '06';
+                document.getElementById(id).scrollIntoView();
+            }
+        });
+    },
     created() {
         if (JSON.parse(localStorage.getItem('currentTableRow')).catalogNum) {
             this.containNum = JSON.parse(
