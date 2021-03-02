@@ -14,16 +14,6 @@
         </text-field>
         <div class="codeBorder fontCodeStyle">
             <pre class="codeBorder">
-        function sjsz(num){<br/>
-            var ary = [];*//创建一个空数组用来保存随机数组*<br/>
-            for(var i=0; i&lt;num; i++){*//按照正常排序填充数组*<br/>
-                    ary[i] = i+1;<br/>
-            }<br/>
-            ary.sort(function(){<br/>
-                return 0.5-Math.random();*//返回随机正负值*<br/>
-            });<br/>
-            return ary;*//返回数组*<br/>
-        }
             </pre>
         </div>
     </div>
@@ -61,5 +51,8 @@ export default {
 .codeBorder {
     width: 100%;
     border-radius: 10px;
+}
+.commonStyle {
+    margin-top: 20px;
 }
 </style>
