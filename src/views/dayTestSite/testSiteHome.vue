@@ -73,6 +73,14 @@ export default {
             date: '',
         };
     },
+    mounted() {
+        highlightCode();
+        let date = new Date();
+        let currYear = date.getFullYear();
+        let currMonth = date.getMonth();
+        let currDay = date.getDate();
+        this.siteCatalog(currYear, currMonth + 1, currDay);
+    },
     methods: {
         ...mapActions(['promiseTestSiteCatalog']),
         siteCatalog(year, month, day) {
@@ -115,9 +123,6 @@ export default {
     },
     components: {
         calendar,
-    },
-    mounted() {
-        highlightCode();
     },
 };
 </script>
