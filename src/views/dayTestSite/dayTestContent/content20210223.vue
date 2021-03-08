@@ -143,6 +143,10 @@ export default {
         jumpCSS3() {
             this.$router.push({
                 name: 'LearnCSS',
+                params: {
+                    id: 'CSS3',
+                    type: '',
+                },
             });
         },
         jumpes6() {

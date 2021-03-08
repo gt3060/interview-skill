@@ -253,9 +253,21 @@ export default {
     beforeRouteEnter(to, from, next) {
         next((vm) => {
             let id = vm.$route.params.id;
-            if (id) {
-                vm.containNum = '06';
-                document.getElementById(id).scrollIntoView();
+            switch (id) {
+                case 'CSS3':
+                    vm.containNum = '05';
+                    break;
+                case 'clearFloat':
+                    vm.containNum = '06';
+                    document.getElementById(id).scrollIntoView();
+                    break;
+                case 'bfc':
+                    vm.containNum = '03';
+                    vm.containChildNum = '03-3';
+                    document.getElementById(id).scrollIntoView();
+                    break;
+                default:
+                    break;
             }
         });
     },
