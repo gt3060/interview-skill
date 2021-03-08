@@ -1345,6 +1345,9 @@ export default {
             // });
         },
     },
+    destroyed() {
+        window.removeEventListener('mousewheel', this.btnoffsetHeight, false);
+    },
 };
 </script>
 

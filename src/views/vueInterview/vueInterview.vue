@@ -724,12 +724,6 @@ export default {
         // this.itemIndex = btnoffsetHeight(this.catalogHtmlData);
         highlightCode();
         console.log('this.itemIndex', this.itemIndex);
-        // window.addEventListener(
-        //     'mousewheel',
-        //     // btnoffsetHeight(this.catalogHtmlData),
-        //     this.btnoffsetHeight(),
-        //     false
-        // );
         window.addEventListener('mousewheel', this.btnoffsetHeight, false);
     },
     methods: {
@@ -791,6 +785,9 @@ export default {
             console.log('this.$refs', this.$refs);
             this.mapDataIntroduce = JSON.stringify(this.$refs);
         },
+    },
+    destroyed() {
+        window.removeEventListener('mousewheel', this.btnoffsetHeight, false);
     },
 };
 </script>

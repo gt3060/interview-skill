@@ -721,7 +721,7 @@ export default {
             //     document.getElementById(item.index).offsetTop -
             //     document.documentElement.scrollTop;
             //   console.log(item.index, height);
-            //   if (height >= 0 && height < 20) {
+            //   if (height >= 0 && height <script 20) {
             //     selectData.push(item.index);
             //   }
             // });
@@ -735,6 +735,9 @@ export default {
         handleHtml5Detail() {
             window.open('https://www.cnblogs.com/sarah-wen/p/10767178.html');
         },
+    },
+    destroyed() {
+        window.removeEventListener('mousewheel', this.btnoffsetHeight, false);
     },
 };
 </script>

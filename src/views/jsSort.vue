@@ -1037,6 +1037,9 @@ export default {
             this.newRadixData = oldData;
         },
     },
+    destroyed() {
+        window.removeEventListener('mousewheel', this.btnoffsetHeight, false);
+    },
 };
 </script>
 

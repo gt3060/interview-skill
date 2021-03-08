@@ -1608,6 +1608,9 @@ export default {
             this.finalReduceIncludesData = arr1;
         },
     },
+    destroyed() {
+        window.removeEventListener('mousewheel', this.btnoffsetHeight, false);
+    },
 };
 </script>
 

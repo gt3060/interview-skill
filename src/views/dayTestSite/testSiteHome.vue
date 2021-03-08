@@ -51,7 +51,7 @@
                              class="catalogTag">[&nbsp;css&nbsp;]</div>
                         <div v-else
                              style="color:#2d8cf0"
-                             class="catalogTag">[&nbsp;其他&nbsp;]</div>
+                             class="catalogTag">[&nbsp;{{Object.keys(item).toString()}}&nbsp;]</div>
                         <span class="catalogDetail">{{Object.values(item)[0]}}</span>
                     </div>
                 </el-card>
@@ -72,6 +72,14 @@ export default {
             catalog: [],
             date: '',
         };
+    },
+    mounted() {
+        highlightCode();
+        let date = new Date();
+        let currYear = date.getFullYear();
+        let currMonth = date.getMonth();
+        let currDay = date.getDate();
+        this.siteCatalog(currYear, currMonth + 1, currDay);
     },
     methods: {
         ...mapActions(['promiseTestSiteCatalog']),
@@ -115,9 +123,6 @@ export default {
     },
     components: {
         calendar,
-    },
-    mounted() {
-        highlightCode();
     },
 };
 </script>
