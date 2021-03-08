@@ -51,7 +51,7 @@
                              class="catalogTag">[&nbsp;css&nbsp;]</div>
                         <div v-else
                              style="color:#2d8cf0"
-                             class="catalogTag">[&nbsp;其他&nbsp;]</div>
+                             class="catalogTag">[&nbsp;{{Object.keys(item).toString()}}&nbsp;]</div>
                         <span class="catalogDetail">{{Object.values(item)[0]}}</span>
                     </div>
                 </el-card>
