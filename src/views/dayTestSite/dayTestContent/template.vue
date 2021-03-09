@@ -23,7 +23,7 @@
         </div>
         <text-field :list="cssList" />
         <el-button type="text"
-                   @click="jumpToHTTPsatus">详情跳转</el-button>
+                   @click="jumpTo">详情跳转</el-button>
     </div>
 </template>
 
@@ -45,7 +45,9 @@ export default {
             },
         };
     },
-    methods: {},
+    methods: {
+        jumpTo() {},
+    },
     components: {
         TextField,
     },
