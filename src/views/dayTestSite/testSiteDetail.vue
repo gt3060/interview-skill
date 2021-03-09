@@ -36,6 +36,8 @@
                 <content20210304 v-if="date === '20210304'"></content20210304>
                 <content20210305 v-if="date === '20210305'"></content20210305>
                 <content20210307 v-if="date === '20210307'"></content20210307>
+                <content20210308 v-if="date === '20210308'"></content20210308>
+                <content20210309 v-if="date === '20210309'"></content20210309>
             </div>
         </div>
     </div>
@@ -54,6 +56,9 @@ import content20210302 from './dayTestContent/content20210302';
 import content20210303 from './dayTestContent/content20210303';
 import content20210304 from './dayTestContent/content20210304';
 import content20210305 from './dayTestContent/content20210305';
+import content20210307 from './dayTestContent/content20210307';
+import content20210308 from './dayTestContent/content20210308';
+import content20210309 from './dayTestContent/content20210309';
 
 export default {
     name: 'testSiteDetail',
@@ -70,6 +75,9 @@ export default {
         content20210303,
         content20210304,
         content20210305,
+        content20210307,
+        content20210308,
+        content20210309,
     },
     data() {
         return {

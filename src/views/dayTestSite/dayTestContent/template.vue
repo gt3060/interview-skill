@@ -5,7 +5,12 @@
                     content=""
                     fontSizeType="middle">
         </text-field>
-        <text-field :list="cssList" />
+        <el-divider></el-divider>
+        <text-field catalog
+                    title="JS-用递归实现，数组长度为5且随机数在0-30间不重复的值"
+                    content=""
+                    fontSizeType="middle">
+        </text-field>
         <el-divider></el-divider>
         <text-field catalog
                     title="JS-用递归实现，数组长度为5且随机数在0-30间不重复的值"
@@ -16,6 +21,9 @@
             <pre class="codeBorder">
             </pre>
         </div>
+        <text-field :list="cssList" />
+        <el-button type="text"
+                   @click="jumpTo">详情跳转</el-button>
     </div>
 </template>
 
@@ -37,7 +45,9 @@ export default {
             },
         };
     },
-    methods: {},
+    methods: {
+        jumpTo() {},
+    },
     components: {
         TextField,
     },
