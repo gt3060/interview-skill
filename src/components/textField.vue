@@ -3,7 +3,8 @@
     // ----title：标题
     // ----content：内容
     // ----id：此标题的id，用于和右边有模块时的联动
-// 在没有catalog属性时：
+// 是否存在isInput属性
+// 在没有上面两个情况时：
     //----bold：是否加粗
     // ----fontSize：定义标题字体大小，取值有：nomall、middle、small，默认值nomall
     // ----title：标题
@@ -36,6 +37,18 @@
                 </template>
             </div>
         </template>
+        <template v-else-if="isInput">
+            <div class="randomStyle"
+                 v-for="(item,index) in inputList"
+                 :key="index">
+                <span>{{item.title}}：</span>
+                <el-input v-model="inputValue[item.key]"
+                          class="inputStyle"
+                          placeholder="请输入"></el-input>
+            </div>
+            <el-button @click="handleInput"
+                       type="primary">确认</el-button>
+        </template>
         <template v-else>
             <template>
                 <p :class="bold?`${fontSize} fontBold`:fontSize"
@@ -66,6 +79,18 @@
 <script>
 export default {
     props: {
+        isInput: {
+            type: Boolean,
+            default: false,
+        },
+        isInitInput: {
+            type: Boolean,
+            default: false,
+        },
+        inputList: {
+            type: Array,
+            default: () => [],
+        },
         title: String, // 标题
         content: String, // 内容
         fontSizeType: String, // 用于定义不同字体的标题（middle、small、nomall），默认nomall
@@ -93,6 +118,7 @@ export default {
         },
     },
     created() {
+        this.inputValue = {};
         if (this.fontSizeType === 'middle') {
             this.fontSize = 'fontSizeMiddle';
         } else if (this.fontSizeType === 'small') {
@@ -104,12 +130,19 @@ export default {
     data() {
         return {
             fontSize: 'fontSize',
+            inputValue: {},
         };
+    },
+    methods: {
+        handleInput() {
+            this.$emit('callback', this.inputValue);
+            this.inputValue = this.isInitInput ? {} : this.inputValue;
+        },
     },
 };
 </script>
 
-<style scoped>
+<style scoped lang="less">
 .fontSize {
     font-size: 25px;
 }
@@ -129,5 +162,17 @@ export default {
 
 .fontBold {
     font-weight: bold;
+}
+.randomStyle {
+    display: flex;
+    margin: 20px 20px 0px 0px;
+    span {
+        &:first-child {
+            margin-right: 15px;
+        }
+    }
+    .inputStyle {
+        width: 30%;
+    }
 }
 </style>
