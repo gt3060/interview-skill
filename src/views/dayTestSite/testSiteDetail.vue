@@ -24,20 +24,21 @@
             <el-divider></el-divider>
             <div style=" width:90%;">
                 <content20210222 v-if="date === '20210222'"></content20210222>
-                <content20210223 v-if="date === '20210223'"></content20210223>
-                <content20210224 v-if="date === '20210224'"></content20210224>
-                <content20210225 v-if="date === '20210225'"></content20210225>
-                <content20210226 v-if="date === '20210226'"></content20210226>
-                <content20210227 v-if="date === '20210227'"></content20210227>
-                <content20210228 v-if="date === '20210228'"></content20210228>
-                <content20210301 v-if="date === '20210301'"></content20210301>
-                <content20210302 v-if="date === '20210302'"></content20210302>
-                <content20210303 v-if="date === '20210303'"></content20210303>
-                <content20210304 v-if="date === '20210304'"></content20210304>
-                <content20210305 v-if="date === '20210305'"></content20210305>
-                <content20210307 v-if="date === '20210307'"></content20210307>
-                <content20210308 v-if="date === '20210308'"></content20210308>
-                <content20210309 v-if="date === '20210309'"></content20210309>
+                <content20210223 v-else-if="date === '20210223'"></content20210223>
+                <content20210224 v-else-if="date === '20210224'"></content20210224>
+                <content20210225 v-else-if="date === '20210225'"></content20210225>
+                <content20210226 v-else-if="date === '20210226'"></content20210226>
+                <content20210227 v-else-if="date === '20210227'"></content20210227>
+                <content20210228 v-else-if="date === '20210228'"></content20210228>
+                <content20210301 v-else-if="date === '20210301'"></content20210301>
+                <content20210302 v-else-if="date === '20210302'"></content20210302>
+                <content20210303 v-else-if="date === '20210303'"></content20210303>
+                <content20210304 v-else-if="date === '20210304'"></content20210304>
+                <content20210305 v-else-if="date === '20210305'"></content20210305>
+                <content20210307 v-else-if="date === '20210307'"></content20210307>
+                <content20210308 v-else-if="date === '20210308'"></content20210308>
+                <content20210309 v-else-if="date === '20210309'"></content20210309>
+                <content20210310 v-else-if="date === '20210310'"></content20210310>
             </div>
         </div>
     </div>
@@ -59,6 +60,7 @@ import content20210305 from './dayTestContent/content20210305';
 import content20210307 from './dayTestContent/content20210307';
 import content20210308 from './dayTestContent/content20210308';
 import content20210309 from './dayTestContent/content20210309';
+import content20210310 from './dayTestContent/content20210310';
 
 export default {
     name: 'testSiteDetail',
@@ -78,6 +80,7 @@ export default {
         content20210307,
         content20210308,
         content20210309,
+        content20210310,
     },
     data() {
         return {
