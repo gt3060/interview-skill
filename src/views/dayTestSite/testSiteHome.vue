@@ -24,7 +24,8 @@
             </div>
             <div style=" width:80%;">
                 <div class="catalogStyle fontStyle">
-                    <calendar :selectDate="siteCatalog"></calendar>
+                    <calendar :selectDate="siteCatalog"
+                              :notComplete="notComplete"></calendar>
                 </div>
                 <el-divider></el-divider>
                 <el-card v-if="catalog.length > 0"
@@ -71,18 +72,34 @@ export default {
         return {
             catalog: [],
             date: '',
+            isHasContain: '',
+            notComplete: [],
         };
     },
     mounted() {
         highlightCode();
-        let date = new Date();
-        let currYear = date.getFullYear();
-        let currMonth = date.getMonth();
-        let currDay = date.getDate();
-        this.siteCatalog(currYear, currMonth + 1, currDay);
+        this.initColor();
     },
     methods: {
         ...mapActions(['promiseTestSiteCatalog']),
+        initColor() {
+            let params = {
+                date: '',
+            };
+            this.promiseTestSiteCatalog(params).then((res) => {
+                // let obj = {};
+                res.data.content.map((item) => {
+                    if (item.isHasContain) {
+                        this.notComplete.push(item);
+                    }
+                });
+                let date = new Date();
+                let currYear = date.getFullYear();
+                let currMonth = date.getMonth();
+                let currDay = date.getDate();
+                this.siteCatalog(currYear, currMonth + 1, currDay);
+            });
+        },
         siteCatalog(year, month, day) {
             const loading = this.$loading({
                 lock: true,
@@ -98,10 +115,11 @@ export default {
             };
             this.promiseTestSiteCatalog(params)
                 .then((res) => {
-                    console.log(res.data);
                     this.catalog = [];
                     if (res.data.content.length > 0) {
-                        this.catalog = res.data.content[0].catalog;
+                        this.catalog = res.data.content[0].catalog
+                            ? res.data.content[0].catalog
+                            : [];
                     }
                     loading.close();
                 })
