@@ -22,7 +22,7 @@
                     <p>第一天：2021年2月22日</p>
                 </div>
             </div>
-            <div style=" width:80%;">
+            <div style=" width:90%;">
                 <div class="catalogStyle fontStyle">
                     <calendar :selectDate="siteCatalog"
                               :notComplete="notComplete"></calendar>
