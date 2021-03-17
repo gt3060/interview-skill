@@ -39,11 +39,13 @@
                         :key="index">
                         <th v-for="(item1,index1) in item"
                             class="dateStyle"
-                            :class=" isActived === index1&& lineIndex === index?'dateStyleActived':''"
+                            :class="[ isActived === index1&& lineIndex === index?'dateStyleActived':'',
+                                        item1 === currDate && isCurrDate ?'currDateStyle':'']"
                             :key="index1"
                             @click="handleIsActived(index,index1,item1)"
                             :id="index1">
-                            <span :class="item1 === currDate && isCurrDate ?'currDateStyle':''">{{item1}}
+                            <span :class="numArr.indexOf(item1.toString())!==-1?'redStyle':''">
+                                {{item1}}
                             </span>
                         </th>
                     </tr>
@@ -65,12 +67,28 @@ export default {
             isActived: 0,
             lineIndex: 0,
             isCurrDate: true,
+            changeDayColor: '',
+            completeArr: [],
+            numArr: [],
         };
     },
     props: {
         selectDate: {
             type: Function,
             default: () => {},
+        },
+        notComplete: {
+            type: Array,
+            default: () => [],
+        },
+    },
+    watch: {
+        notComplete: {
+            handler(newObj) {
+                this.completeArr = newObj;
+                this.initCalendar();
+            },
+            deep: true,
         },
     },
     created() {
@@ -79,7 +97,6 @@ export default {
         this.currYear = date.getFullYear();
         this.currMonth = date.getMonth();
         this.currDate = date.getDate();
-        this.initCalendar();
     },
     methods: {
         initCalendar() {
@@ -89,6 +106,26 @@ export default {
                 this.currMonth + 1,
                 0
             ).getDate();
+            if (this.completeArr.length > 0) {
+                let month = this.currMonth + 1;
+                let yearAndMonth =
+                    month < 10
+                        ? this.currYear + '' + 0 + '' + month
+                        : this.currYear + month + '';
+                let arr = this.completeArr.filter((item) => {
+                    return item.date.indexOf(yearAndMonth) !== -1;
+                });
+                let numArr = [];
+                arr.map((item) => {
+                    let str = item.date.substring(6);
+                    if (str.substring(0, 1) === '0') {
+                        numArr.push(str.substring(1));
+                    } else {
+                        numArr.push(str);
+                    }
+                });
+                this.numArr = numArr;
+            }
             date.setYear(this.currYear);
             date.setMonth(this.currMonth);
             date.setDate(1);
@@ -212,6 +249,9 @@ export default {
     .dateStyleActived {
         background-color: #f2f8fe;
         color: #1989fa;
+    }
+    .redStyle {
+        color: red;
     }
 }
 </style>
