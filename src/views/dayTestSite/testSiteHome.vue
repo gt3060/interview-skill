@@ -19,7 +19,7 @@
                 <div class="titleFontStyle">
                     <span style="font-size:25px">每日试题</span>
                     <el-divider></el-divider>
-                    <p>第一天：2021年2月22日</p>
+                    <p>第一天：2021年2月21日</p>
                 </div>
             </div>
             <div style=" width:90%;">

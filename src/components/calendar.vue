@@ -44,7 +44,7 @@
                                 :key="index1"
                                 @click="handleIsActived(index,index1,item1)"
                                 :id="index1">
-                                <span :class="numArr.indexOf(item1.toString())!==-1?'redStyle':''">
+                                <span :class="numArr[item1] === '0'?'hasStyle':(numArr[item1] === '1'?'pendingStyle':'')">
                                     {{item1}}
                                 </span>
                             </th>
@@ -85,6 +85,10 @@ export default {
                 {
                     color: '#FF9900',
                     contain: '未完善',
+                },
+                {
+                    color: '#4ad121',
+                    contain: '完善中',
                 },
                 {
                     color: '#1989fa',
@@ -144,9 +148,9 @@ export default {
                 arr.map((item) => {
                     let str = item.date.substring(6);
                     if (str.substring(0, 1) === '0') {
-                        numArr.push(str.substring(1));
+                        numArr[parseInt(str.substring(1))] = item.isHasContain;
                     } else {
-                        numArr.push(str);
+                        numArr[parseInt(str)] = item.isHasContain;
                     }
                 });
                 this.numArr = numArr;
@@ -275,8 +279,11 @@ export default {
         background-color: #f2f8fe;
         color: #1989fa;
     }
-    .redStyle {
+    .hasStyle {
         color: #ff9900;
+    }
+    .pendingStyle {
+        color: #4ad121;
     }
 }
 .main_right {
