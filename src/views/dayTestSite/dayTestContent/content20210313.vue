@@ -2,9 +2,13 @@
     <div>
         <text-field catalog
                     title="CSS-浏览器解析CSS过程"
-                    content=""
+                    content="cssom树构造：当浏览器接受到css代码后，浏览器首先构造节点并生成cssom，在这一过程中浏览器会确定
+                            每一个节点的样式是怎么样的，这一过程很消耗资源。因为这一过程浏览器需要递归cssom树，来确定设置节点位置。
+                            因此，dom树要尽量小，css尽量使用id或者class，减少过渡层叠。"
                     fontSizeType="middle">
         </text-field>
+        <text-field content="构造dom树和cssom树后需要合并构成渲染树，渲染树只会包括需要显示的节点和这样节点的样式，如果某个节点
+                            是display:none那么就不会在渲染树中显示。"></text-field>
         <el-divider></el-divider>
         <text-field catalog
                     title="JS-如何快速让一个数组乱序"
