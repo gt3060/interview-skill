@@ -46,10 +46,10 @@
                              class="catalogTag">[&nbsp;css&nbsp;]</div>
                         <div v-else-if="Object.keys(item)[0] === 'vue'"
                              style="color:#2db55d"
-                             class="catalogTag">[&nbsp;css&nbsp;]</div>
+                             class="catalogTag">[&nbsp;vue&nbsp;]</div>
                         <div v-else-if="Object.keys(item)[0] === 'react'"
                              style="color:#F56C6C"
-                             class="catalogTag">[&nbsp;css&nbsp;]</div>
+                             class="catalogTag">[&nbsp;react&nbsp;]</div>
                         <div v-else
                              style="color:#2d8cf0"
                              class="catalogTag">[&nbsp;{{Object.keys(item).toString()}}&nbsp;]</div>
