@@ -1,58 +1,69 @@
 <template>
-    <div class="main">
-        <div class="changeMonths">
-            <div style="width:75%">{{currYear}}年{{currMonth+1}}月</div>
-            <div style="width:25%">
-                <el-button-group>
-                    <el-button type="primary"
-                               size="small"
-                               plain
-                               @click="jumpBeforeMonth">上个月</el-button>
-                    <el-button type="primary"
-                               size="small"
-                               plain
-                               @click="jumpToday">今天</el-button>
-                    <el-button type="primary"
-                               size="small"
-                               plain
-                               @click="jumpNextMonth">下个月</el-button>
-                </el-button-group>
+    <div style="display:flex;">
+        <div class="main">
+            <div class="changeMonths">
+                <div style="width:75%">{{currYear}}年{{currMonth+1}}月</div>
+                <div style="width:25%">
+                    <el-button-group>
+                        <el-button type="primary"
+                                   size="small"
+                                   plain
+                                   @click="jumpBeforeMonth">上个月</el-button>
+                        <el-button type="primary"
+                                   size="small"
+                                   plain
+                                   @click="jumpToday">今天</el-button>
+                        <el-button type="primary"
+                                   size="small"
+                                   plain
+                                   @click="jumpNextMonth">下个月</el-button>
+                    </el-button-group>
+                </div>
             </div>
-
-        </div>
-        <el-divider></el-divider>
-        <div class="tableStyle">
-            <table border=1>
-                <thead>
-                    <tr>
-                        <th id="sunday">日</th>
-                        <th id="monday">一</th>
-                        <th id="tuesday">二</th>
-                        <th id="wednesday">三</th>
-                        <th id="thursday">四</th>
-                        <th id="firdy">五</th>
-                        <th id="saturday">六</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="(item,index) in dayArray"
-                        :key="index">
-                        <th v-for="(item1,index1) in item"
-                            class="dateStyle"
-                            :class="[ isActived === index1&& lineIndex === index?'dateStyleActived':'',
+            <el-divider></el-divider>
+            <div class="tableStyle">
+                <table border=1>
+                    <thead>
+                        <tr>
+                            <th id="sunday">日</th>
+                            <th id="monday">一</th>
+                            <th id="tuesday">二</th>
+                            <th id="wednesday">三</th>
+                            <th id="thursday">四</th>
+                            <th id="firdy">五</th>
+                            <th id="saturday">六</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="(item,index) in dayArray"
+                            :key="index">
+                            <th v-for="(item1,index1) in item"
+                                class="dateStyle"
+                                :class="[ isActived === index1&& lineIndex === index?'dateStyleActived':'',
                                         item1 === currDate && isCurrDate ?'currDateStyle':'']"
-                            :key="index1"
-                            @click="handleIsActived(index,index1,item1)"
-                            :id="index1">
-                            <span :class="numArr.indexOf(item1.toString())!==-1?'redStyle':''">
-                                {{item1}}
-                            </span>
-                        </th>
-                    </tr>
-                </tbody>
-            </table>
+                                :key="index1"
+                                @click="handleIsActived(index,index1,item1)"
+                                :id="index1">
+                                <span :class="numArr[item1] === '0'?'hasStyle':(numArr[item1] === '1'?'pendingStyle':'')">
+                                    {{item1}}
+                                </span>
+                            </th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="main_right">
+            <div v-for="(item,index) in mainRight"
+                 style="display:flex"
+                 :key="index">
+                <div class="square"
+                     :style="{'background':item.color}"></div>
+                <div class="fontContain">{{item.contain}}</div>
+            </div>
         </div>
     </div>
+
 </template>
 
 <script>
@@ -70,6 +81,24 @@ export default {
             changeDayColor: '',
             completeArr: [],
             numArr: [],
+            mainRight: [
+                {
+                    color: '#FF9900',
+                    contain: '未完善',
+                },
+                {
+                    color: '#4ad121',
+                    contain: '完善中',
+                },
+                {
+                    color: '#1989fa',
+                    contain: '选定日期',
+                },
+                {
+                    color: '#83c1ff',
+                    contain: '当前日期',
+                },
+            ],
         };
     },
     props: {
@@ -119,9 +148,9 @@ export default {
                 arr.map((item) => {
                     let str = item.date.substring(6);
                     if (str.substring(0, 1) === '0') {
-                        numArr.push(str.substring(1));
+                        numArr[parseInt(str.substring(1))] = item.isHasContain;
                     } else {
-                        numArr.push(str);
+                        numArr[parseInt(str)] = item.isHasContain;
                     }
                 });
                 this.numArr = numArr;
@@ -241,7 +270,7 @@ export default {
         padding: 15px;
     }
     .currDateStyle {
-        color: #409eff;
+        color: #83c1ff;
     }
     .dateStyle:hover {
         background-color: #f2f8fe;
@@ -250,8 +279,25 @@ export default {
         background-color: #f2f8fe;
         color: #1989fa;
     }
-    .redStyle {
-        color: red;
+    .hasStyle {
+        color: #ff9900;
+    }
+    .pendingStyle {
+        color: #4ad121;
+    }
+}
+.main_right {
+    margin-left: 6%;
+    flex: 1;
+    .square {
+        margin-top: 15px;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+    }
+    .fontContain {
+        margin-left: 11px;
+        margin-top: 2px;
     }
 }
 </style>
