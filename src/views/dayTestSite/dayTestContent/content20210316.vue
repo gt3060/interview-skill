@@ -55,19 +55,18 @@
             </pre>
         </div>
         <text-field content="上面就实现了一个简单的双向数据绑定模式，但是在实际vue中，一个data会在不同的视图中都会用到，那么此时就引入了一个新的概念：
-                            发布-订阅者设计模式。"></text-field>
-        <text-field content="发布者只有一个，订阅者可能有多个，也被称观察者模式。"></text-field>
+                            发布-订阅者设计模式。发布者只有一个，订阅者可能有多个，也被称观察者模式。"></text-field>
         <el-divider></el-divider>
         <text-field catalog
                     title="CSS-浏览器是如何判断一个元素和某个css选择器匹配"
-                    content=""
+                    content="先产生一个元素集合，然后从后向前判断，例如下面这个例子：body.test #testId > .testChild"
                     fontSizeType="middle">
         </text-field>
+        <text-field content="浏览器会先遍历把所有class为testChild找出来组成一个集合，然后上一层，查找元素每个父级的id是否为testId，
+                            如果不是，则将该元素从集合中删除，再向上，查找标签为body并且class为test的元素，不满足删除，循环这个规则，
+                            最后剩下的集合中每个元素，即为最终要匹配的元素。"></text-field>
+        <text-field content="之所以从后往前找是因为这种方式更高效，寻找元素的父级比寻找元素的兄弟及儿子节点更高效。"></text-field>
         <el-divider></el-divider>
-
-        <text-field :list="cssList" />
-        <el-button type="text"
-                   @click="jumpTo">详情跳转</el-button>
     </div>
 </template>
 
