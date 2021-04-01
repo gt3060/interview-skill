@@ -1,5 +1,5 @@
 import axios from 'axios';
-const url = 'http://mock.studyinghome.com/mock/5fe3f9df23564445774b0676/interviewSkill/';
+const url = 'https://www.fastmock.site/mock/5fbc0b1f0b43faebea99f608e0064df8/interviewSkill/';
 export default {
     promiseTestData({ commit }, data) {
         // 异步传参 方法返回第二个是所传的参数
