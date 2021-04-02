@@ -86,6 +86,12 @@ export default {
             let params = {
                 date: '',
             };
+            const loading = this.$loading({
+                lock: true,
+                text: '加载中......',
+                spinner: 'el-icon-loading',
+                background: 'rgba(0, 0, 0, 0.7)',
+            });
             this.promiseTestSiteCatalog(params).then((res) => {
                 // let obj = {};
                 res.data.content.map((item) => {
@@ -98,6 +104,7 @@ export default {
                 let currMonth = date.getMonth();
                 let currDay = date.getDate();
                 this.siteCatalog(currYear, currMonth + 1, currDay);
+                loading.close();
             });
         },
         siteCatalog(year, month, day) {
