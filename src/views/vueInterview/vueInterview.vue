@@ -45,13 +45,13 @@
                                     <div style="margin: 6px 7px 0px 0px">
                                         <img src="@/assets/light.png" />
                                     </div>
-                                    <h4>MVC和MVVC</h4>
+                                    <h4>MVC和MVVM</h4>
                                 </div>
                                 <div class="fontIndent">
                                     <p>
                                         MVC是后端分层开发的概念（M指的是数据层Model，V指的是视图层View，C是逻辑层Controller）
                                     </p>
-                                    <p>MVVC是前端视图层的概念，具体区别如下：</p>
+                                    <p>MVVM是前端视图层的概念，具体区别如下：</p>
                                     <el-card>
                                         <img src="@/assets/MVC_MVVM.png"
                                              width="95%" />
@@ -621,7 +621,7 @@ export default {
     data() {
         return {
             catalogHtmlData: [
-                { index: 'c0', name: '1.MVC和MVVC', i: '0' },
+                { index: 'c0', name: '1.MVC和MVVM', i: '0' },
                 { index: 'c1', name: '2.vue生命周期', i: '1' },
                 { index: 'c2', name: '3.vue实现数据绑定原理', i: '2' },
                 { index: 'c3', name: '4.vue组件之间参数传递', i: '3' },
