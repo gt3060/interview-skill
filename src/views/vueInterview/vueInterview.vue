@@ -482,6 +482,19 @@
                             <div>通过获取dom元素赋值this.msg3 = this.$refs.msgRef.innerHTML-----{{msg3}}</div>
                             <el-button type="primary"
                                        @click="handleMsg">按钮</el-button>
+                            <div class="codeBorder fontCodeStyle"
+                                 style="margin-top:7px">
+                                <pre class="codeBorder">
+        handleMsg() {<br/>
+            this.msg = 'Hello Gt';<br/>
+            this.msg1 = this.$refs.msgRef.innerHTML;<br/>
+            this.$nextTick(() => {<br/>
+                this.msg2 = this.$refs.msgRef.innerHTML;<br/>
+            });<br/>
+            this.msg3 = this.$refs.msgRef.innerHTML;<br/>
+        },
+                                        </pre>
+                            </div>
                             <text-field content="可以看到，msg已经改变，但是通过dom元素获取值还是获取到改变之前值，这是
                                                 因为：vue响应式改变了一个值后，此时dom并不会立刻更新，如果需要立刻获取改变后
                                                 的dom值，需要用到this.$nextTick()"></text-field>
@@ -613,6 +626,7 @@ import TextField from '../../components/textField.vue';
 import catalog from '../../components/catalog.vue';
 import Child from '../../components/Child.vue';
 export default {
+    name: 'vueInterview',
     components: {
         TextField,
         catalog,
@@ -706,6 +720,14 @@ export default {
             mapData: [1, 2, 3, 4, 5],
             mapDataIntroduce: '',
         };
+    },
+    beforeRouteEnter(to, from, next) {
+        next((vm) => {
+            let id = vm.$route.params.id;
+            if (id) {
+                document.getElementById(id).scrollIntoView();
+            }
+        });
     },
     beforeCreate() {
         let imgs = [
