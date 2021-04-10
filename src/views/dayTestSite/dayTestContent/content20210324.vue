@@ -21,11 +21,6 @@
                     fontSizeType="middle">
         </text-field>
         <text-field :list="vueTransList" />
-        <div>
-            {{testData}}
-        </div>
-        <el-button type="text"
-                   @click="changeData">改变</el-button>
     </div>
 </template>
 
