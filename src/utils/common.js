@@ -65,6 +65,8 @@ function throttleTimer(fn, delay) {
         }, delay);
     }
 }
+let testName = 234;
+export default testName
 
 export {
     highlightCode,

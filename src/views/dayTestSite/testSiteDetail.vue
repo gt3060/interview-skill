@@ -23,7 +23,8 @@
             </div>
             <el-divider></el-divider>
             <div style=" width:90%;">
-                <component :is="dateComp"></component>
+                <component :is="dateComp"
+                           :testData.sync='testData'></component>
             </div>
         </div>
     </div>
@@ -58,6 +59,10 @@ import content20210320 from './dayTestContent/content20210320';
 import content20210321 from './dayTestContent/content20210321';
 import content20210322 from './dayTestContent/content20210322';
 import content20210323 from './dayTestContent/content20210323';
+import content20210324 from './dayTestContent/content20210324';
+import content20210408 from './dayTestContent/content20210408';
+import content20210409 from './dayTestContent/content20210409';
+import content20210412 from './dayTestContent/content20210412';
 
 export default {
     name: 'testSiteDetail',
@@ -90,6 +95,10 @@ export default {
         content20210321,
         content20210322,
         content20210323,
+        content20210324,
+        content20210408,
+        content20210409,
+        content20210412,
     },
     data() {
         return {
@@ -98,6 +107,7 @@ export default {
             currMonth: '',
             currDay: '',
             dateComp: '',
+            testData: 0,
         };
     },
     created() {
@@ -113,6 +123,9 @@ export default {
     methods: {
         goBack() {
             this.$router.go(-1);
+        },
+        changeData(data) {
+            this.testData = data;
         },
     },
 };

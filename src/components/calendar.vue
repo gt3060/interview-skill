@@ -84,11 +84,11 @@ export default {
             mainRight: [
                 {
                     color: '#FF9900',
-                    contain: '未完善',
+                    contain: '完善中',
                 },
                 {
                     color: '#4ad121',
-                    contain: '完善中',
+                    contain: '已完善',
                 },
                 {
                     color: '#1989fa',
@@ -279,10 +279,10 @@ export default {
         background-color: #f2f8fe;
         color: #1989fa;
     }
-    .hasStyle {
+    .pendingStyle {
         color: #ff9900;
     }
-    .pendingStyle {
+    .hasStyle {
         color: #4ad121;
     }
 }
