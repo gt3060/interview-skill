@@ -1,3 +1,5 @@
 import './static/css/index.css'
-
-document.getElementById('title').innerHTML = 'Hello Webpack Demo1';
+function sum(a, b) {
+    return a + b;
+}
+console.log(sum(1, 2))
