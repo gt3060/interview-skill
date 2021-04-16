@@ -89,6 +89,7 @@
                                 content="首先需要配置webpack.config.js文件，这个文件的作用是配置webpack的，是需要自己手动创建的，下面这个就是webpack.cofig.js文件初始化的结构："
                                 fontSizeType="small">
                     </text-field>
+                    <text-field content="所有构建工具都是基于nodejs平台运行的，模块化默认采用commonjs"></text-field>
                     <div class="codeBorder fontCodeStyle">
                         <pre class="codeBorder">
         module.exports = {<br/>
@@ -142,11 +143,15 @@
                     </div>
                     <text-field content="[name]的意思是根据入口文件的名称打包成相同的名称，即：有几个入口文件就有几个出口文件。"></text-field>
                     <text-field catalog
+                                title="webpack打包静态html资源"
+                                content="先下载插件：html-webpack-plugin，详见下面插件的使用"
+                                fontSizeType="small"></text-field>
+                    <text-field catalog
                                 title="服务及热更新"
                                 content="先说下，热更新：即所见即所得，怎么实现呢，通过配置webpack.config.js文件，这个文件的作用是配置webpack的，是需要自己手动创建的，下面这个就是webpack.cofig.js文件初始化的结构："
                                 fontSizeType="small">
                     </text-field>
-                    <text-field content="首先安装webpack服务，npm install webpack-dev-server --save-dev，下载好后，需要进行配置，
+                    <text-field content="首先安装webpack服务，npm install webpack-dev-server --save -dev，(-dev指的是安装到开发环境下，也可以写-D)下载好后，需要进行配置，
                                         仍然在webpack.config.js文件中配置，如下："></text-field>
                     <div class="codeBorder fontCodeStyle">
                         <pre class="codeBorder">
@@ -305,6 +310,56 @@
                                 fontSizeType="small">
                     </text-field>
                     <text-field content="模式：默认有两种，一种是production（生产模式）一种是development（开发模式），代码：mode: 'development'"></text-field>
+                    <text-field content="生产环境和开发环境能将es6模块编译成浏览器能识别得模块化，生产环境比开发环境多一个压缩js代码。"></text-field>
+                    <text-field catalog
+                                title="打包图片资源"
+                                fontSizeType="small">
+                    </text-field>
+                    <text-field content='首先如果设置一个div的background-image为***，那么如何将他打包呢，还是先下载对应的loader，涉及到的loader有两个，url-loader/file-loader
+                                        但是在引用时候只需要引用url-loader就可以，因为他是基于file-loader的，'></text-field>
+                    <div class="codeBorder fontCodeStyle"
+                         style="width:100%">
+                        <pre class="codeBorder">
+        #box1{<br/>
+            background-image: url('../../components/picture/javascript7.jpeg');<br/>
+        }<br/>
+        #box2{<br/>
+            background-image: url('../../components/picture/CSS.png');<br/>
+        }<br/>
+        #box3{<br/>
+            background-image: url('../../components/picture/layout.png');<br/>
+        }<br/>
+        module: {<br/>
+            rules:[<br/>
+                {<br/>
+                    test: /\.(jpg|png|gif|jpeg)$/,<br/>
+                    // 使用多个loader用use，使用一个loader可以用use也可以直接使用loader<br/>
+                    // use: ['url-loader', 'file-loader'],<br/>
+                    loader: 'url-loader',<br/>
+                    options: {<br/>
+                        // 图片大小小于8kb就会被base64处理，<br/>
+                        // base64处理的优点就是减少请求数量，减轻服务器压力，缺点就是体积会更大，<br/>
+                        limit: 8 * 1024,<br/>
+                        // fallback: require.resolve('file-loader')<br/>
+                    }<br/>
+                }<br/>
+            ]<br/>
+        },
+                        </pre>
+                    </div>
+                    <text-field content="最终打包的结果可以看到只生成了一个img文件，其余两个哪去了，是因为，其余两张图片大小都小于8kb，
+                                        故都转换成base64嵌入到js中。"></text-field>
+                    <img src="@/assets/webpackImg.jpg"
+                         alt="" />
+                    <text-field content="除了上述这种引入图片的方式外，还有直接利用img标签引入图片"></text-field>
+                    <text-field content="如果还用上面那种方式进行打包图片，则会发现，虽然打包成功，但是界面不显示这两个图片，
+                                        提示找不到图片路径。这是因为打包后的html文件夹并不存在这样的一个路径，那么要想找到
+                                        这两个图片，则需要引入另外一个loader：html-loader"></text-field>
+                    <text-field catalog
+                                title="打包其他资源"
+                                content="其他资源指除了html/js/css资源意外的资源，打包方式采用file-loader"
+                                fontSizeType="small">
+                    </text-field>
                     <text-field catalog
                                 title="更改webpack.config.js文件的名字"
                                 content="之所以会命名webpack.config.js这个名字，我们可以通过在node_modules->webpack-cli->.bin->config-yargs.js看到
