@@ -356,6 +356,11 @@
                                         提示找不到图片路径。这是因为打包后的html文件夹并不存在这样的一个路径，那么要想找到
                                         这两个图片，则需要引入另外一个loader：html-loader"></text-field>
                     <text-field catalog
+                                title="打包其他资源"
+                                content="其他资源指除了html/js/css资源意外的资源，打包方式采用file-loader"
+                                fontSizeType="small">
+                    </text-field>
+                    <text-field catalog
                                 title="更改webpack.config.js文件的名字"
                                 content="之所以会命名webpack.config.js这个名字，我们可以通过在node_modules->webpack-cli->.bin->config-yargs.js看到
                                         有一个属性：options->defaultDescription的值为:webpack.config.js/webpackfile.js。"

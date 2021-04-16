@@ -45,13 +45,36 @@ module.exports = {
                     // 给图片重命名
                     // [hash:10]：取哈希值前10位
                     // [ext]：取文件原来扩展名
-                    name: '[hash:10].[ext]'
+                    name: '[hash:10].[ext]',
+                    // 将打包后的所有图片放到imgs文件夹下
+                    outputPath: 'imgs'
                 }
             },
             // {
             //     test: /\.html$/,
             //     // 处理html文件的img标签里面的图片，负责引入img进而被url-loader识别
             //     loader: 'html-loader'
+            // },
+            {
+                // 打包其他资源（除了css/js/html）
+                exclude: /\.(css|js|html|jpg|png|gif|jpeg)$/,
+                loader: 'file-loader',
+                options: {
+                    name: '[hash:10].[ext]'
+                }
+            },
+            // {
+            //     // vuecli也包括这个eslint校验
+            //     // 在package.json文件中有配置，
+            //     test: /\.js$/,
+            //     // 排除node_modules中的js代码
+            //     exclude: /node_modules/,
+            //     loader: 'eslint-loader',
+            //     options: {
+            //         // 自动修复eslint错误
+            //         fix: true
+            //     }
+
             // }
         ]
     },
@@ -68,17 +91,22 @@ module.exports = {
     ],
 
     // 配置webpack开发服务功能
+    // 自动编译，自动打开浏览器，自动刷新浏览器
+    // 特点：只会在内存编译打包，不会有任何输出
     devServer: {
         // 设置基本目录结构
         contentBase: path.resolve(__dirname, 'dist'),
 
         // 服务器的ip地址，可以使用ip也可以使用localhost
-        host: '0.0.0.0',
+        // host: '0.0.0.0',
 
-        // 服务端压缩是否开启
+        // 服务端压缩(gzip)是否开启
         compress: true,
 
         // 配置服务端口号
-        port: 8081
+        port: 8081,
+
+        // 自动打开默认浏览器
+        open: true,
     }
 }
