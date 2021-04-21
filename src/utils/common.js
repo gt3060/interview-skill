@@ -66,7 +66,7 @@ function throttleTimer(fn, delay) {
     }
 }
 let testName = 234;
-export default testName
+export default testName;
 
 export {
     highlightCode,
@@ -74,5 +74,5 @@ export {
     handleCatalog,
     debounce,
     throttle,
-    throttleTimer
+    throttleTimer,
 };
