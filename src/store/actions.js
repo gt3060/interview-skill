@@ -20,5 +20,9 @@ export default {
                 params: data,
             })
         )
+    },
+    testActionData({ commit, state }) {
+        commit('add');
+        console.log(state.count)
     }
 }
