@@ -1308,12 +1308,14 @@ export default {
 
         //处理事件冒泡（捕获）父元素
         handleFather(type) {
+            console.log('---', type);
             if (type === 'true') {
                 Message.success('parent');
             } else {
                 document.getElementById('parentId').addEventListener(
                     'click',
                     function () {
+                        console.log('+++++');
                         Message.success('parent');
                     },
                     true
