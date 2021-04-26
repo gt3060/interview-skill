@@ -67,6 +67,7 @@ import content20210413 from './dayTestContent/content20210413';
 import content20210414 from './dayTestContent/content20210414';
 import content20210415 from './dayTestContent/content20210415';
 import content20210416 from './dayTestContent/content20210416';
+import content20210419 from './dayTestContent/content20210419';
 
 export default {
     name: 'testSiteDetail',
@@ -107,6 +108,7 @@ export default {
         content20210414,
         content20210415,
         content20210416,
+        content20210419,
     },
     data() {
         return {
