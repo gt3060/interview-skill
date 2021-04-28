@@ -12,7 +12,7 @@
         <text-field content="②getters"></text-field>
         <text-field content="其实getters就可以想象成时store中的计算属性，就是，将从store获取的state再进行数据逻辑处理，‘
                             并可在其他组件有相同处理时，我们可以将这个处理后的state放到getters中，"></text-field>
-        <text-field content="那么访问一个getters方法：this.$store.getters.author"></text-field>
+        <text-field content="那么访问一个getters方法：this.$ .getters.author"></text-field>
         <text-field content="同样如果想要获取多个计算属性的方法就是利用mapGetters，mapGetters
                             同样生成的是计算属性，故需要放到computed中"></text-field>
         <text-field content="③mutations"></text-field>
